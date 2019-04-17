@@ -43,20 +43,46 @@ public class GoogleBooksApi_Interface_LookUp {
     )   
     {
             try {
-            URL url = new URL(GOOGLE_BOOK_SEARCH_URL+ISBN_locator);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Accept", "application/json");
-            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String output;
-            System.out.println("Output from Server .... \n");
-                while ((output = br.readLine()) != null)
-                {
-                    System.out.println(output);
-                };
-            }
+            
+                    //create an object to hold the parse results
+                    Book_Parse_Object bpo = new Book_Parse_Object();
+
+                    //setup connection to the google api
+                    //search for book based off of the isbn
+                    URL url = new URL(GOOGLE_BOOK_SEARCH_URL+ISBN_locator);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Accept", "application/json");
+                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String output;
+            
+            
+                    System.out.println("Output from Server .... \n");
+                    while ((output = br.readLine()) != null)
+                        {
+                            System.out.println(output);
+                            String parseResult = "";
+                            switch(parseResult)
+                                {
+                                    case "authors"          :  bpo.setBookAuthors(parseResult);   
+                                                        break;
+                                    case "title"           :   bpo.setBookTitle(parseResult);
+                                                        break;
+                                    case "publisher"       :   bpo.setPublisher(parseResult);
+                                                        break;
+                                    case "publicationdate" :   bpo.setPublicationDate(parseResult);
+                                                        break;
+                                    case "designator"      :   bpo.setLanugageDesignator(parseResult);
+                                                        break;
+                                    case "pages"           :   bpo.setPageCount(1);
+                                                        break;
+                                };
+                        };
+                }
             catch (Exception e)
-            {};
+                {
+                    
+                };
     }
 
 
