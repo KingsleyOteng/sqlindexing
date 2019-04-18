@@ -7,7 +7,6 @@ package BookWareHousing;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-import com.sun.org.apache.bcel.internal.generic.Select;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 

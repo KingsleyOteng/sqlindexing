@@ -19,6 +19,8 @@ import java.util.Scanner;
 import java.net.*;
 import java.util.*;
 import java.io.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.net.ssl.HttpsURLConnection;
 
 
@@ -55,26 +57,60 @@ public class GoogleBooksApi_Interface_LookUp {
                     conn.setRequestProperty("Accept", "application/json");
                     BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     String output;
-            
+                    
+
+                    Pattern p_general;
+                    p_general = Pattern.compile("\"?\\w*\"?:?");
+                    // Pattern p_authors = Pattern.compile("\"authors\":\\s");
+                    // Pattern p_title = Pattern.compile("\"title\":\\s");
+                    // Pattern p_subtitle = Pattern.compile("\"subtitle\":\\s");
+                    // Pattern p_publisher = Pattern.compile("\"publisher\":\\s");
+                    // Pattern p_publicationdate = Pattern.compile("\"publicationDate\":\\s");
+                    // Pattern p_pagecount = Pattern.compile("\"printedPageCount\":\\s");
+                    // Pattern p_designator = Pattern.compile("\"categories\":\\s");
+                    // Pattern p_country = Pattern.compile("\"country\":\\s");
+                    // Pattern p_image = Pattern.compile("\"thumbnail\":\\s");
+                
+                    
             
                     System.out.println("Output from Server .... \n");
                     while ((output = br.readLine()) != null)
                         {
+                            Matcher matcher_general = p_general.matcher(output);
+                           //  Matcher matcher_authors = p_authors.matcher(output);
+                           //  Matcher matcher_title = p_title.matcher(output);
+                           //  Matcher matcher_subtitle = p_subtitle.matcher(output);
+                           //  Matcher matcher_publisher = p_publisher.matcher(output);
+                            // Matcher matcher_publicationDate = p_publicationdate.matcher(output);
+                            // Matcher matcher_pagecount = p_pagecount.matcher(output);
+                           //  Matcher matcher_designator = p_designator.matcher(output);
+                            // Matcher matcher_country = p_country.matcher(output);
+                            // Matcher matcher_image = p_image.matcher(output);
+                            
+                            
                             System.out.println(output);
                             String parseResult = "";
-                            switch(parseResult)
+                            
+                            // requirement is to determine which match group gives us a single string. likely 
+                            switch(matcher_general.group(2))
                                 {
-                                    case "authors"          :  bpo.setBookAuthors(parseResult);   
+                                    case "author"           :  bpo.setBookAuthors(parseResult);   
+                                                       break;
+                                    case "title"            :   bpo.setBookTitle(parseResult);
                                                         break;
-                                    case "title"           :   bpo.setBookTitle(parseResult);
+                                    case "subtitle"         :   bpo.setBookTitle(parseResult);
                                                         break;
-                                    case "publisher"       :   bpo.setPublisher(parseResult);
+                                    case "publisher"        :   bpo.setPublisher(parseResult);
                                                         break;
-                                    case "publicationdate" :   bpo.setPublicationDate(parseResult);
+                                    case "publicationdate"  :   bpo.setPublicationDate(parseResult);
                                                         break;
-                                    case "designator"      :   bpo.setLanugageDesignator(parseResult);
+                                    case "categories"       :   bpo.setLanugageDesignator(parseResult);
                                                         break;
-                                    case "pages"           :   bpo.setPageCount(1);
+                                    case "country"          :   bpo.setPublicationDate(parseResult);
+                                                        break;
+                                    case "thumbnail"        :   bpo.setLanugageDesignator(parseResult);
+                                                        break;
+                                    case "printedPageCount" :   bpo.setPageCount(1);
                                                         break;
                                 };
                         };
