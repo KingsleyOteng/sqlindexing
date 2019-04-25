@@ -5,6 +5,7 @@
  */
 package BookWareHousing;
 
+import static BookWareHousing.Bookwarehouse.rs;
 import static BookWareHousing.JDBC_Interface_Logic.st;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
@@ -56,8 +57,14 @@ public class GoogleBooksApi_Interface_LookUp {
                     conn.setRequestMethod("GET");
                     conn.setRequestProperty("Accept", "application/json");
                     BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    String output;
+                    StringBuilder value = new StringBuilder();
+                    char[] buffer = new char[1024];
+                    for (int length = 0; (length = br.read(buffer)) > 0;) {
+                        value.append(buffer, 0, length); 
+                    }
+                    System.out.println(value.toString());
                     
+                    String output;
 
                     Pattern p_general;
                     p_general = Pattern.compile("\"?\\w*\"?:?");

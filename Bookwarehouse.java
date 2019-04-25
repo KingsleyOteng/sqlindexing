@@ -41,10 +41,13 @@ public class Bookwarehouse {
                 while(rs.next())
             {
                 System.out.println(rs.next());
-            };
+            }
             
             String sql1 = "INSERT INTO BookDB.userdata VALUES('UA502f', 'Venice');";
             st.executeUpdate(sql1);
+            
+            GoogleBooksApi_Interface_LookUp gn = new GoogleBooksApi_Interface_LookUp();
+            gn.find_book("9780310432593");
             
         } 
         catch (Exception e) {
