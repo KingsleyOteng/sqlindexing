@@ -60,72 +60,81 @@ public class GoogleBooksApi_Interface_LookUp {
                     StringBuilder value = new StringBuilder();
                     char[] buffer = new char[1024];
                     for (int length = 0; (length = br.read(buffer)) > 0;) {
+                        //value.append(" ",0,1);
                         value.append(buffer, 0, length); 
+                       
+                        
                     }
-                    System.out.println(value.toString());
+                    System.out.println("block contents: " + value.toString());
+                    System.out.println("length of block:  " + value.length());
                     
                     String output;
 
                     Pattern p_general;
-                    p_general = Pattern.compile("\"?\\w*\"?:?");
-                    // Pattern p_authors = Pattern.compile("\"authors\":\\s");
-                    // Pattern p_title = Pattern.compile("\"title\":\\s");
-                    // Pattern p_subtitle = Pattern.compile("\"subtitle\":\\s");
-                    // Pattern p_publisher = Pattern.compile("\"publisher\":\\s");
-                    // Pattern p_publicationdate = Pattern.compile("\"publicationDate\":\\s");
-                    // Pattern p_pagecount = Pattern.compile("\"printedPageCount\":\\s");
-                    // Pattern p_designator = Pattern.compile("\"categories\":\\s");
-                    // Pattern p_country = Pattern.compile("\"country\":\\s");
-                    // Pattern p_image = Pattern.compile("\"thumbnail\":\\s");
-                
-                    
-            
+                     //p_general = Pattern.compile("\"?\\w*\"?:?");
+                     //p_general = Pattern.compile("\"\\w*\":?");
+                     p_general = Pattern.compile("\\s+?\"[A-Za-z]+\":\\s+?(\"?\\[?[A-Za-z0-9+#:/'.\\s+&_=?\"-]+\\]?\"?)");
+                     
                     System.out.println("Output from Server .... \n");
-                    while ((output = br.readLine()) != null)
+                    int i = 1;
+                    //while ((output = br.readLine()) != null)
                         {
-                            Matcher matcher_general = p_general.matcher(output);
-                           //  Matcher matcher_authors = p_authors.matcher(output);
-                           //  Matcher matcher_title = p_title.matcher(output);
-                           //  Matcher matcher_subtitle = p_subtitle.matcher(output);
-                           //  Matcher matcher_publisher = p_publisher.matcher(output);
-                            // Matcher matcher_publicationDate = p_publicationdate.matcher(output);
-                            // Matcher matcher_pagecount = p_pagecount.matcher(output);
-                           //  Matcher matcher_designator = p_designator.matcher(output);
-                            // Matcher matcher_country = p_country.matcher(output);
-                            // Matcher matcher_image = p_image.matcher(output);
                             
+                            i++;
+                            Matcher matcher_general = p_general.matcher(value);
                             
-                            System.out.println(output);
+
                             String parseResult = "";
                             
-                            // requirement is to determine which match group gives us a single string. likely 
-                            switch(matcher_general.group(2))
+                            int count = 0;
+                            int groupCount = matcher_general.groupCount();
+                            while(matcher_general.find()) {
+                                System.out.println("group count "+groupCount);
+                                for (int ii = 0; ii <= groupCount; ii++) {
+                                System.out.println("hello "+ ii + " " + matcher_general.group(ii));
+                                };
+                                System.out.println("found: " + count + " : "
+                                    + matcher_general.start() + " - " + matcher_general.end());
+                               
+                                
+                                switch(matcher_general.group(0))
                                 {
-                                    case "author"           :  bpo.setBookAuthors(parseResult);   
+                                    case "author"           :  
+                                                        System.out.print("yes\n");
+                                                        bpo.setBookAuthors(matcher_general.group(1));   
                                                        break;
-                                    case "title"            :   bpo.setBookTitle(parseResult);
+                                    case "title"            :   bpo.setBookTitle(matcher_general.group(1));
                                                         break;
-                                    case "subtitle"         :   bpo.setBookTitle(parseResult);
+                                    case "subtitle"         :   bpo.setBookTitle(matcher_general.group(1));
                                                         break;
-                                    case "publisher"        :   bpo.setPublisher(parseResult);
+                                    case "publisher"        :   bpo.setPublisher(matcher_general.group(1));
                                                         break;
-                                    case "publicationdate"  :   bpo.setPublicationDate(parseResult);
+                                    case "publicationdate"  :   bpo.setPublicationDate(matcher_general.group(1));
                                                         break;
-                                    case "categories"       :   bpo.setLanugageDesignator(parseResult);
+                                    case "categories"       :   bpo.setLanugageDesignator(matcher_general.group(1));
                                                         break;
-                                    case "country"          :   bpo.setPublicationDate(parseResult);
+                                    case "country"          :   bpo.setPublicationDate(matcher_general.group(1));
                                                         break;
-                                    case "thumbnail"        :   bpo.setLanugageDesignator(parseResult);
+                                    case "thumbnail"        :   bpo.setLanugageDesignator(matcher_general.group(1));
                                                         break;
                                     case "printedPageCount" :   bpo.setPageCount(1);
                                                         break;
                                 };
+                            };
+                            
+                            //System.out.println(matcher_general.find("author"));
+                           
+                            
+                            
+                            // requirement is to determine which match group gives us a single string. likely 
+                            
                         };
                 }
             catch (Exception e)
                 {
                     
                 };
+            System.out.println("and we are done");
     }
 
 
