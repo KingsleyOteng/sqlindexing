@@ -7,8 +7,10 @@ package BookWareHousing;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -23,7 +25,7 @@ public class Bookwarehouse {
     static Statement st; 
     static ResultSet rs; 
 
-    public static void main(String[] args) 
+    public static void main(String[] args) throws IOException 
     {
         
         JDBC_Interface_Logic jdbc_conn = new JDBC_Interface_Logic();
@@ -50,7 +52,7 @@ public class Bookwarehouse {
             gn.find_book("9780310432593");
             
         } 
-        catch (Exception e) {
+        catch (IOException | ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
         

@@ -20,6 +20,7 @@ import java.util.Scanner;
 import java.net.*;
 import java.util.*;
 import java.io.*;
+import static java.lang.System.in;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.net.ssl.HttpsURLConnection;
@@ -43,9 +44,8 @@ public class GoogleBooksApi_Interface_LookUp {
     void find_book
     (
             String ISBN_locator        
-    )   
+    ) throws MalformedURLException, IOException   
     {
-            try {
             
                     //create an object to hold the parse results
                     Book_Parse_Object bpo = new Book_Parse_Object();
@@ -90,37 +90,51 @@ public class GoogleBooksApi_Interface_LookUp {
                             int groupCount = matcher_general.groupCount();
                             while(matcher_general.find()) {
                                 System.out.println("group count "+groupCount);
-                                for (int ii = 0; ii <= groupCount; ii++) {
-                                System.out.println("hello "+ ii + " " + matcher_general.group(ii));
-                                };
+                                for (int ii = 0; ii <= groupCount; ii++) 
+                                {
+                                    System.out.println("hello "+ ii + " " + matcher_general.group(ii));
+                                }
+                                
                                 System.out.println("found: " + count + " : "
                                     + matcher_general.start() + " - " + matcher_general.end());
                                
+                               
+                                // we throw the the regex key to a case statement which will then match
+                                //switch(matcher_general.group(0))
                                 
-                                switch(matcher_general.group(0))
+                                String matched_group;
+                                matched_group = matcher_general.group(0);
+                                String[] testString = new String[] { "authors", "title", "subtitle", "publisher", "publicationdate", "categories", "country", "thumbnail", "printedPageCount"};
+
+                                for (String s : testString)
                                 {
-                                    case "author"           :  
-                                                        System.out.print("yes\n");
-                                                        bpo.setBookAuthors(matcher_general.group(1));   
-                                                       break;
-                                    case "title"            :   bpo.setBookTitle(matcher_general.group(1));
-                                                        break;
-                                    case "subtitle"         :   bpo.setBookTitle(matcher_general.group(1));
-                                                        break;
-                                    case "publisher"        :   bpo.setPublisher(matcher_general.group(1));
-                                                        break;
-                                    case "publicationdate"  :   bpo.setPublicationDate(matcher_general.group(1));
-                                                        break;
-                                    case "categories"       :   bpo.setLanugageDesignator(matcher_general.group(1));
-                                                        break;
-                                    case "country"          :   bpo.setPublicationDate(matcher_general.group(1));
-                                                        break;
-                                    case "thumbnail"        :   bpo.setLanugageDesignator(matcher_general.group(1));
-                                                        break;
-                                    case "printedPageCount" :   bpo.setPageCount(1);
-                                                        break;
-                                };
-                            };
+                                    while (matched_group.contains(s))
+                                    {
+                                        switch (s)
+                                        {
+                                            case "authors"           :  
+                                                                System.out.print("-------------------------------------------------------->yes\n");
+                                                                bpo.setBookAuthors(matcher_general.group(1));   
+                                                               break;
+                                            case "title"            :   bpo.setBookTitle(matcher_general.group(1));
+                                                                break;
+                                            case "subtitle"         :   bpo.setBookTitle(matcher_general.group(1));
+                                                                break;
+                                            case "publisher"        :   bpo.setPublisher(matcher_general.group(1));
+                                                                break;
+                                            case "publicationdate"  :   bpo.setPublicationDate(matcher_general.group(1));
+                                                                break;
+                                            case "categories"       :   bpo.setLanugageDesignator(matcher_general.group(1));
+                                                                break;
+                                            case "country"          :   bpo.setPublicationDate(matcher_general.group(1));
+                                                                break;
+                                            case "thumbnail"        :   bpo.setLanugageDesignator(matcher_general.group(1));
+                                                                break;
+                                            case "printedPageCount" :   bpo.setPageCount(1);
+                                                                break;
+                                        }
+                                    }
+                                }
                             
                             //System.out.println(matcher_general.find("author"));
                            
@@ -128,17 +142,15 @@ public class GoogleBooksApi_Interface_LookUp {
                             
                             // requirement is to determine which match group gives us a single string. likely 
                             
-                        };
+                        }
                 }
-            catch (Exception e)
-                {
-                    
-                };
+            
             System.out.println("and we are done");
     }
+    }        
 
 
     
     
     
-};
+
