@@ -106,11 +106,18 @@ public class GoogleBooksApi_Interface_LookUp {
                                 matched_group = matcher_general.group(0);
                                 String[] testString = new String[] { "authors", "title", "subtitle", "publisher", "publicationdate", "categories", "country", "thumbnail", "printedPageCount"};
 
-                                for (String s : testString)
+                                //for (String s : testString)
+                                String s;
+                                String y;
+
+                               s = matcher_general.group(1);
+                               y = matcher_general.group(0);
                                 {
-                                    while (matched_group.contains(s))
-                                    {
-                                        switch (s)
+                                    while (Arrays.stream(testString).anyMatch(matcher_general.group(0)::contains))
+                                    {   
+                                        
+                                        //System.out.println(">>>"+Arrays.stream(testString).filter(matcher_general.group(0)::contains).toArray().//);
+                                        switch (matcher_general.group(1))
                                         {
                                             case "authors"           :  
                                                                 System.out.print("-------------------------------------------------------->yes\n");
