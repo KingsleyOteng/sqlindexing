@@ -111,18 +111,24 @@ public class GoogleBooksApi_Interface_LookUp {
                                 String y;
 
                                s = matcher_general.group(1);
-                               y = matcher_general.group(0);
+                               String stringMatcherPhrase = matcher_general.group(0);
+                                String[] spltStringMatcherPhrase  = stringMatcherPhrase.split("\\b+");
+                               
                                 {
-                                    while (Arrays.stream(testString).anyMatch(matcher_general.group(0)::contains))
+                                   //while (Arrays.stream(testString).anyMatch(matcher_general.group(0)::contains))
+                                for (int xI = 0; xI < testString.length; xI++)
+                                {
+                                    String matchedPhrase = testString[xI];
+                                    if (Arrays.asList(spltStringMatcherPhrase).contains(matchedPhrase))
                                     {   
                                         
                                         //System.out.println(">>>"+Arrays.stream(testString).filter(matcher_general.group(0)::contains).toArray().//);
-                                        switch (matcher_general.group(1))
+                                        switch (matchedPhrase)
                                         {
                                             case "authors"           :  
                                                                 System.out.print("-------------------------------------------------------->yes\n");
                                                                 bpo.setBookAuthors(matcher_general.group(1));   
-                                                               break;
+                                                                break;
                                             case "title"            :   bpo.setBookTitle(matcher_general.group(1));
                                                                 break;
                                             case "subtitle"         :   bpo.setBookTitle(matcher_general.group(1));
@@ -141,6 +147,7 @@ public class GoogleBooksApi_Interface_LookUp {
                                                                 break;
                                         }
                                     }
+                                }
                                 }
                             
                             //System.out.println(matcher_general.find("author"));
