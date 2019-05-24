@@ -106,7 +106,7 @@ public class GoogleBooksApi_Interface_LookUp {
                                 
                                 String matched_group;
                                 matched_group = matcher_general.group(0);
-                                String[] testString = new String[] { "authors", "title", "subtitle", "publisher", "publicationdate", "categories", "country", "thumbnail", "printedPageCount"};
+                                String[] testString = new String[] { " ", "authors", "title", "subtitle", "publisher", "publicationdate", "categories", "country", "thumbnail", "printedPageCount"};
                                 List<String> testStringList = Arrays.asList(testString);
                                 
                                 //for (String s : testString)
@@ -116,13 +116,36 @@ public class GoogleBooksApi_Interface_LookUp {
                                s = matcher_general.group(1);
                                String stringMatcherPhrase = matcher_general.group(0);
                                String[] spltStringMatcherPhrase  = stringMatcherPhrase.split("\\b+");
-                               List<String> testSpltStringMatcherPhrase = Arrays.asList(spltStringMatcherPhrase);
                                
+                               List<String> testSpltStringMatcherPhrase = new ArrayList<String>();
+                               testSpltStringMatcherPhrase = Arrays.asList(spltStringMatcherPhrase);
+                               
+                                // include a dummy variable for matching
+                               testSpltStringMatcherPhrase.add("a");
+                               
+                               
+                               testStringList.contains(testSpltStringMatcherPhrase);
+                               
+                               HashSet<String> intersection = new HashSet<>();
+                               intersection.addAll(testStringList);
+                               intersection.retainAll(testSpltStringMatcherPhrase);
+                               
+                              
+                               
+                               
+                               
+                               if (testStringList.contains(testSpltStringMatcherPhrase))
+                                       {
                                testStringList.retainAll(testSpltStringMatcherPhrase);
+                                       }
+                               else
+                                       {
+                                testStringList = Arrays.asList(new String[] {""});
+                                       }  
                                
                                 {
                                    //while (Arrays.stream(testString).anyMatch(matcher_general.group(0)::contains))
-                                for (int xI = 0; xI < testString.length; xI++)
+                                for (int xI = 0; xI < testStringList.size(); xI++)
                                 {
                                     String matchedPhrase = testString[xI];
                                     if (Arrays.asList(spltStringMatcherPhrase).contains(matchedPhrase))
@@ -149,6 +172,7 @@ public class GoogleBooksApi_Interface_LookUp {
                                                                 break;
                                             case "printedPageCount" :   bpo.setPageCount(1);
                                                                 break;
+                                            case " " : break;
                                         }
                                     }
                                 }
