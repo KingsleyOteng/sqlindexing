@@ -89,7 +89,9 @@ public class GoogleBooksApi_Interface_LookUp {
                             int count = 0;
                             int groupCount = matcher_general.groupCount();
                             while(matcher_general.find()) {
+                                
                                 System.out.println("group count "+groupCount);
+                                
                                 for (int ii = 0; ii <= groupCount; ii++) 
                                 {
                                     System.out.println("hello "+ ii + " " + matcher_general.group(ii));
@@ -105,14 +107,18 @@ public class GoogleBooksApi_Interface_LookUp {
                                 String matched_group;
                                 matched_group = matcher_general.group(0);
                                 String[] testString = new String[] { "authors", "title", "subtitle", "publisher", "publicationdate", "categories", "country", "thumbnail", "printedPageCount"};
-
+                                List<String> testStringList = Arrays.asList(testString);
+                                
                                 //for (String s : testString)
                                 String s;
                                 String y;
 
                                s = matcher_general.group(1);
                                String stringMatcherPhrase = matcher_general.group(0);
-                                String[] spltStringMatcherPhrase  = stringMatcherPhrase.split("\\b+");
+                               String[] spltStringMatcherPhrase  = stringMatcherPhrase.split("\\b+");
+                               List<String> testSpltStringMatcherPhrase = Arrays.asList(spltStringMatcherPhrase);
+                               
+                               testStringList.retainAll(testSpltStringMatcherPhrase);
                                
                                 {
                                    //while (Arrays.stream(testString).anyMatch(matcher_general.group(0)::contains))
@@ -125,9 +131,7 @@ public class GoogleBooksApi_Interface_LookUp {
                                         //System.out.println(">>>"+Arrays.stream(testString).filter(matcher_general.group(0)::contains).toArray().//);
                                         switch (matchedPhrase)
                                         {
-                                            case "authors"           :  
-                                                                System.out.print("-------------------------------------------------------->yes\n");
-                                                                bpo.setBookAuthors(matcher_general.group(1));   
+                                            case "authors"           :  bpo.setBookAuthors(matcher_general.group(1));   
                                                                 break;
                                             case "title"            :   bpo.setBookTitle(matcher_general.group(1));
                                                                 break;
