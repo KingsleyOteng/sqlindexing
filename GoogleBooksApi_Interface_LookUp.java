@@ -106,7 +106,7 @@ public class GoogleBooksApi_Interface_LookUp {
                                 
                                 String matched_group;
                                 matched_group = matcher_general.group(0);
-                                String[] testString = new String[] { " ", "authors", "title", "subtitle", "publisher", "publicationdate", "categories", "country", "thumbnail", "printedPageCount"};
+                                String[] testString = new String[] { "XX", "authors", "title", "subtitle", "publisher", "publicationdate", "categories", "country", "thumbnail", "printedPageCount"};
                                 List<String> testStringList = Arrays.asList(testString);
                                 
                                 //for (String s : testString)
@@ -115,13 +115,16 @@ public class GoogleBooksApi_Interface_LookUp {
 
                                s = matcher_general.group(1);
                                String stringMatcherPhrase = matcher_general.group(0);
+                               // add a terminator to the end of the phrase
+                               stringMatcherPhrase = stringMatcherPhrase+"#XX";
+                               
                                String[] spltStringMatcherPhrase  = stringMatcherPhrase.split("\\b+");
                                
                                List<String> testSpltStringMatcherPhrase = new ArrayList<String>();
                                testSpltStringMatcherPhrase = Arrays.asList(spltStringMatcherPhrase);
                                
                                 // include a dummy variable for matching
-                               testSpltStringMatcherPhrase.add("a");
+                               
                                
                                
                                testStringList.contains(testSpltStringMatcherPhrase);
@@ -129,26 +132,13 @@ public class GoogleBooksApi_Interface_LookUp {
                                HashSet<String> intersection = new HashSet<>();
                                intersection.addAll(testStringList);
                                intersection.retainAll(testSpltStringMatcherPhrase);
-                               
-                              
-                               
-                               
-                               
-                               if (testStringList.contains(testSpltStringMatcherPhrase))
-                                       {
-                               testStringList.retainAll(testSpltStringMatcherPhrase);
-                                       }
-                               else
-                                       {
-                                testStringList = Arrays.asList(new String[] {""});
-                                       }  
-                               
-                                {
+                               Object[] stringIntersection = intersection.toArray();                              
+                                
                                    //while (Arrays.stream(testString).anyMatch(matcher_general.group(0)::contains))
-                                for (int xI = 0; xI < testStringList.size(); xI++)
+                                for (int xI = 0; xI < stringIntersection.length; xI++)
                                 {
-                                    String matchedPhrase = testString[xI];
-                                    if (Arrays.asList(spltStringMatcherPhrase).contains(matchedPhrase))
+                                    String matchedPhrase = stringIntersection[xI].toString();
+                                    if ((Arrays.asList(spltStringMatcherPhrase).contains(matchedPhrase)) && (!"XX".equals(matchedPhrase)))
                                     {   
                                         
                                         //System.out.println(">>>"+Arrays.stream(testString).filter(matcher_general.group(0)::contains).toArray().//);
@@ -172,11 +162,11 @@ public class GoogleBooksApi_Interface_LookUp {
                                                                 break;
                                             case "printedPageCount" :   bpo.setPageCount(1);
                                                                 break;
-                                            case " " : break;
+                                            case "XX" : break;
                                         }
                                     }
                                 }
-                                }
+                                
                             
                             //System.out.println(matcher_general.find("author"));
                            
