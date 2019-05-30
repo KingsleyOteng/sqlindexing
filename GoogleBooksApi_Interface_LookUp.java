@@ -28,11 +28,9 @@ public class GoogleBooksApi_Interface_LookUp {
     public static final String GOOGLE_BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=isbn:";
     
     
-    
-    
     void find_book
     (
-            String ISBN_locator        
+     String ISBN_locator      
     ) throws MalformedURLException, IOException   
     {
             
@@ -187,7 +185,7 @@ public class GoogleBooksApi_Interface_LookUp {
                            
                             
                             
-                            // requirement is to determine which match group gives us a single string. likely 
+                
                             
                         }
                 }

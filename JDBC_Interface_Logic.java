@@ -46,7 +46,8 @@ public class JDBC_Interface_Logic {
                 
             };
     };
-    
+
+// structure for a borrower request
 void new_borrow_request
         (
             
@@ -92,7 +93,7 @@ void new_borrow_request
             }
     };
         
-    
+// structure for an overdue book request   
 void overdue_book
     (
             String borrowerID,
@@ -114,6 +115,7 @@ void overdue_book
                 parsed = format.parse(dateDue);
                 java.sql.Date sqlDateDue = new java.sql.Date(parsed.getTime());
                 
+                // insert the actual book details into the database
                 st.executeUpdate("INSERT INTO BookDB.OverdueBooks  " + "VALUES( '"+borrowerID+"','"+sqlDateBorrowed+"','"+sqlDateDue+"','"+dayOverdue+"','"+ISBNs[0]+"','"+ISBNs[1]+"')");
                 
                 cn.close();
@@ -126,7 +128,8 @@ void overdue_book
             }
     
     };
-        
+    
+// structure for a catalogue request    
 void catalogue
     (
             String bookName,
@@ -153,7 +156,7 @@ void catalogue
                 parsed = format.parse(dateDue);
                 java.sql.Date sqlDateDue = new java.sql.Date(parsed.getTime());
                 
-                
+                // insert the book catalogue details into the database
                 st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+bookName+"','"+author+"','"+category+"','"+categoryDescription+"','"+bookID+"','"+sqlDateBorrowed+"','"+sqlDateDue+"','"+ISBNs[0]+"','"+ISBNs[1]+"','"+copy+"','"+location+"')");
                  
                 cn.close();
@@ -164,7 +167,8 @@ void catalogue
             }
     
     };
-        
+
+//structure for a book return
 void returns
     (
             String bookID,

@@ -32,7 +32,7 @@ public class Bookwarehouse {
         
         String[] BookID = new String[] { "12345678", "9101112131415161718", "12345678", "9101112131415161718" ,"12345678" };
         
-        jdbc_conn.new_borrow_request("oteng-amoako","20010101",7,2,1,"11111111","Hilltop", BookID ,"20010101", "KWajwo");
+        //jdbc_conn.new_borrow_request("oteng-amoako","20010101",7,2,1,"11111111","Hilltop", BookID ,"20010101", "KWajwo");
         
         // sql logic here
         try {
@@ -45,9 +45,11 @@ public class Bookwarehouse {
                 System.out.println(rs.next());
             }
             
+            // test the book insertion routine
             String sql1 = "INSERT INTO BookDB.userdata VALUES('UA502f', 'Venice');";
             st.executeUpdate(sql1);
             
+            // test the catalogue search
             GoogleBooksApi_Interface_LookUp gn = new GoogleBooksApi_Interface_LookUp();
             gn.find_book("9780310432593");
             
@@ -56,6 +58,7 @@ public class Bookwarehouse {
             System.out.println(e);
         }
         
+        // test the book lookup
         GoogleBooksApi_Interface_LookUp gn = new GoogleBooksApi_Interface_LookUp();
         gn.find_book("9780310432593");
    

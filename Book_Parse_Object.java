@@ -40,6 +40,7 @@ public class Book_Parse_Object {
             Book_Parse_Object.linkURLLargeThumbNail = "";
         };
     
+   // routines to update the object used for update the database
     void setPrintType(String printType)
         {
             Book_Parse_Object.printType = printType;
