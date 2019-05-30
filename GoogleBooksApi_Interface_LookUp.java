@@ -5,25 +5,14 @@
  */
 package BookWareHousing;
 
-import static BookWareHousing.Bookwarehouse.rs;
-import static BookWareHousing.JDBC_Interface_Logic.st;
-import java.awt.HeadlessException;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 import java.io.IOException;
-import java.util.Scanner;
-
 import java.net.*;
 import java.util.*;
 import java.io.*;
-import static java.lang.System.in;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.net.ssl.HttpsURLConnection;
 
 
 
@@ -120,49 +109,75 @@ public class GoogleBooksApi_Interface_LookUp {
                                
                                String[] spltStringMatcherPhrase  = stringMatcherPhrase.split("\\b+");
                                
-                               List<String> testSpltStringMatcherPhrase = new ArrayList<String>();
+                               List<String> testSpltStringMatcherPhrase;
+                                testSpltStringMatcherPhrase = new ArrayList<String>();
                                testSpltStringMatcherPhrase = Arrays.asList(spltStringMatcherPhrase);
                                
                                 // include a dummy variable for matching
                                
                                
+                                // initially seartch such that only candidate strings are searched
+                                testStringList.contains(testSpltStringMatcherPhrase);
                                
-                               testStringList.contains(testSpltStringMatcherPhrase);
+                                HashSet<String> intersection = new HashSet<>();
                                
-                               HashSet<String> intersection = new HashSet<>();
-                               intersection.addAll(testStringList);
-                               intersection.retainAll(testSpltStringMatcherPhrase);
-                               Object[] stringIntersection = intersection.toArray();                              
+                                // add the set of key fields
+                                intersection.addAll(testStringList);
+                               
+                                // determine if there is a match with the new google phrases
+                                intersection.retainAll(testSpltStringMatcherPhrase);
+                               
+                                // convert from hashset to array
+                                Object[] stringIntersection = intersection.toArray();                              
                                 
-                                   //while (Arrays.stream(testString).anyMatch(matcher_general.group(0)::contains))
+                               
+                                //cycle through the set of phrases scraped from 
                                 for (int xI = 0; xI < stringIntersection.length; xI++)
                                 {
+                                    // backout the current match phrase which will be used to update the database keyfield
                                     String matchedPhrase = stringIntersection[xI].toString();
+                                    
+                                    
                                     if ((Arrays.asList(spltStringMatcherPhrase).contains(matchedPhrase)) && (!"XX".equals(matchedPhrase)))
                                     {   
                                         
                                         //System.out.println(">>>"+Arrays.stream(testString).filter(matcher_general.group(0)::contains).toArray().//);
                                         switch (matchedPhrase)
                                         {
+                                            
+                                            // set the authors name
                                             case "authors"           :  bpo.setBookAuthors(matcher_general.group(1));   
                                                                 break;
+                                            // set the title         
                                             case "title"            :   bpo.setBookTitle(matcher_general.group(1));
                                                                 break;
+                                            // set the subtitle 
                                             case "subtitle"         :   bpo.setBookTitle(matcher_general.group(1));
-                                                                break;
+                                                                break;                  
+                                            // set the publishers name
                                             case "publisher"        :   bpo.setPublisher(matcher_general.group(1));
                                                                 break;
+                                            // set the publication date                     
                                             case "publicationdate"  :   bpo.setPublicationDate(matcher_general.group(1));
                                                                 break;
+                                            // set the category name
                                             case "categories"       :   bpo.setLanugageDesignator(matcher_general.group(1));
                                                                 break;
+                                            // set the country details
                                             case "country"          :   bpo.setPublicationDate(matcher_general.group(1));
                                                                 break;
+                                            // set the thumbnail link
                                             case "thumbnail"        :   bpo.setLanugageDesignator(matcher_general.group(1));
+                                                                break;              
+                                            // set the printed page count
+                                            case "printedPageCount" :   bpo.setPageCount(Integer.parseInt(matcher_general.group(1)));
                                                                 break;
-                                            case "printedPageCount" :   bpo.setPageCount(1);
+                                            // capture the introduced value
+                                            case "XX" : 
                                                                 break;
-                                            case "XX" : break;
+                                            // break
+                                            default : 
+                                                                break;
                                         }
                                     }
                                 }
