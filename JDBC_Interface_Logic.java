@@ -82,6 +82,8 @@ void new_borrow_request
                 java.sql.Date sqlBorrowDate = new java.sql.Date(parsed.getTime());
                 
                 st.executeUpdate
+                
+                // update the database
                 ("INSERT INTO BookDB.BookedRecords  " + "VALUES( '"+lastName+"','"+sqlRecordCreationDate+"','"+classWhenRecordCreated+"','"+numberOfBooksBorrowed+"','"+overdue+"','"+borrowerID+"','"+school+"','"+bookID[0]+"','"+bookID[1]+"','"+bookID[2]+"','"+bookID[3]+"','"+bookID[4]+"','"+sqlBorrowDate+"','"+firstName+"')");
                  
             
@@ -193,5 +195,41 @@ void returns
                 System.out.println("hello Returns: "+e);
             }
     
+    };
+    
+  void getDBEntry
+    (
+            String bookID
+    )
+    {
+            try 
+            {
+                //st.executeUpdate;
+                System.out.println("SELECT * FROM BookDB.BookedRecords WHERE BookID4 = "+bookID);
+                rs = st.executeQuery("SELECT * FROM BookDB.BookedRecords WHERE BookID4 = 9780310432593");
+                System.out.println(rs.toString());
+                System.out.println("00000");
+                String ln = rs.getString("LastName");
+                System.out.print(ln);
+                  System.out.println("00001");
+                while (rs.next())
+                {
+                            System.out.println("hello");
+                            //int id = rs.getInt("id");
+                            //String ln = rs.getString("LastName");
+                            String rcd = rs.getString("RecordCreationDate");
+                            String cwrc = rs.getString("ClassWhenRecordCreated");
+        
+                            // print the results
+                            System.out.format("%s, %s, %s\n", ln, rcd, cwrc);
+                            
+                            cn.close();
+                }
+            }
+            catch (SQLException e)
+            {
+                            System.out.println("hello Returns: "+e);
+            }
+          
     };
 }

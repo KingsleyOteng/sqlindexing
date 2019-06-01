@@ -28,7 +28,16 @@ public class GoogleBooksApi_Interface_LookUp {
     public static final String GOOGLE_BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=isbn:";
     
     
-    void find_book
+    void database_find_book
+    (
+            String ISBN_locator 
+    ) 
+            throws MalformedURLException, IOException
+    {
+            
+    };
+    
+    void google_find_book
     (
      String ISBN_locator      
     ) throws MalformedURLException, IOException   
@@ -112,8 +121,6 @@ public class GoogleBooksApi_Interface_LookUp {
                                testSpltStringMatcherPhrase = Arrays.asList(spltStringMatcherPhrase);
                                
                                 // include a dummy variable for matching
-                               
-                               
                                 // initially seartch such that only candidate strings are searched
                                 testStringList.contains(testSpltStringMatcherPhrase);
                                

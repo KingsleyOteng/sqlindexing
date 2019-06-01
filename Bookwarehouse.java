@@ -51,7 +51,7 @@ public class Bookwarehouse {
             
             // test the catalogue search
             GoogleBooksApi_Interface_LookUp gn = new GoogleBooksApi_Interface_LookUp();
-            gn.find_book("9780310432593");
+            gn.google_find_book("9780310432593");
             
         } 
         catch (IOException | ClassNotFoundException | SQLException e) {
@@ -60,7 +60,8 @@ public class Bookwarehouse {
         
         // test the book lookup
         GoogleBooksApi_Interface_LookUp gn = new GoogleBooksApi_Interface_LookUp();
-        gn.find_book("9780310432593");
+        jdbc_conn.getDBEntry("9780310432593");
+        
    
     }
     
