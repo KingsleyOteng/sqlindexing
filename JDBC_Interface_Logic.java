@@ -31,6 +31,7 @@ public class JDBC_Interface_Logic {
     
      /**
      * @param args the command line arguments
+     * @date 4 June 2019
      */
     
     JDBC_Interface_Logic() 
@@ -208,7 +209,7 @@ void returns
                 System.out.println("SELECT * FROM BookDB.BookedRecords WHERE BookID4 = "+bookID);
                 Connection conn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
                 Statement s = (Statement) conn2.createStatement();
-                rs = s.executeQuery("SELECT * FROM BookDB.BookedRecords");
+                rs = s.executeQuery("SELECT * FROM BookDB.BookedRecords WHERE BookID4 = '9101112131415161718'");
                 //System.out.println(rs.toString());
            //     System.out.println("00000");
             //    String ln = rs.getString("LastName");
@@ -218,10 +219,20 @@ void returns
                 {
                             System.out.println("hello");
                             //int id = rs.getInt("id");
-                            //String ln = rs.getString("LastName");
-                            String rcd = rs.getString("RecordCreationDate");
-                            System.out.format("%s\n", rcd);
-                            String cwrc = rs.getString("ClassWhenReocordCreated");
+                            String ln       = rs.getString("LastName");
+                            String rcd      = rs.getString("RecordCreationDate");
+                            String cwrc     = rs.getString("ClassWhenReocordCreated");
+                            String nbb      = rs.getString("NumberBooksBorrowed");
+                            String overdue  = rs.getString("Overdue");
+                            String bid      = rs.getString("BorrowerID");
+                            String school   = rs.getString("School");
+                            String bid1     = rs.getString("BookID1");
+                            String bid2     = rs.getString("BookID2");
+                            String bid3     = rs.getString("BookID3");
+                            String bid4     = rs.getString("BookID4");
+                            String bid5     = rs.getString("BookID5");
+                            String bd       = rs.getString("BorrowDate");
+                            String fn       = rs.getString("FirstName");
         
                             // print the results
                             System.out.format("%s\n", cwrc);

@@ -15,6 +15,7 @@ import java.sql.SQLException;
 /**
  *
  * @author kwadwooteng-amoako
+ * @date 4 June 2019
  */
 public class Bookwarehouse {
 
@@ -30,7 +31,7 @@ public class Bookwarehouse {
         
         JDBC_Interface_Logic jdbc_conn = new JDBC_Interface_Logic();
         
-        String[] BookID = new String[] { "12345678", "9101112131415161718", "12345678", "9101112131415161718" ,"12345678" };
+        //String[] BookID = new String[] { "12345678", "9101112131415161718", "12345678", "9101112131415161718" ,"12345678" };
         
         //jdbc_conn.new_borrow_request("oteng-amoako","20010101",7,2,1,"11111111","Hilltop", BookID ,"20010101", "KWajwo");
         
@@ -41,26 +42,27 @@ public class Bookwarehouse {
                 st = (Statement) cn.createStatement();
                 rs = st.executeQuery("select * from userdata;");
                 while(rs.next())
-            {
-                System.out.println(rs.next());
-            }
+                {
+                    System.out.println(rs.next());
+                }
             
             // test the book insertion routine
-            String sql1 = "INSERT INTO BookDB.userdata VALUES('UA502f', 'Venice');";
-            st.executeUpdate(sql1);
+            //String sql1 = "INSERT INTO BookDB.WorkWithOne VALUES(9, 'UA502f', 'Venice');";
+            //st.executeUpdate(sql1);
             
             // test the catalogue search
             GoogleBooksApi_Interface_LookUp gn = new GoogleBooksApi_Interface_LookUp();
-            gn.google_find_book("9780310432593");
-            
+            Book_Parse_Object output = new Book_Parse_Object();
+            output = gn.google_find_book("9780310432593");
+            System.out.println("hello");
         } 
         catch (IOException | ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
         
         // test the book lookup
-        GoogleBooksApi_Interface_LookUp gn = new GoogleBooksApi_Interface_LookUp();
-        jdbc_conn.getDBEntry("9780310432593");
+        //GoogleBooksApi_Interface_LookUp gn = new GoogleBooksApi_Interface_LookUp();
+        //jdbc_conn.getDBEntry("9780310432593");
         
    
     }

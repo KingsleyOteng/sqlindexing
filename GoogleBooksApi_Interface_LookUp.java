@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 /**
  *
  * @author kwadwooteng-amoako
+ * @date 4 June 2019
  */
 public class GoogleBooksApi_Interface_LookUp {
     
@@ -37,7 +38,7 @@ public class GoogleBooksApi_Interface_LookUp {
             
     };
     
-    void google_find_book
+    Book_Parse_Object google_find_book
     (
      String ISBN_locator      
     ) throws MalformedURLException, IOException   
@@ -135,14 +136,11 @@ public class GoogleBooksApi_Interface_LookUp {
                                 // convert from hashset to array
                                 Object[] stringIntersection = intersection.toArray();                              
                                 
-                               
-                                //cycle through the set of phrases scraped from 
-                                for (int xI = 0; xI < stringIntersection.length; xI++)
-                                {
+                                bpo.setIdentifier(ISBN_locator);
+                                //cycle through the set of phrases scraped from
+                                for (Object stringIntersection1 : stringIntersection) {
                                     // backout the current match phrase which will be used to update the database keyfield
-                                    String matchedPhrase = stringIntersection[xI].toString();
-                                    
-                                    
+                                    String matchedPhrase = stringIntersection1.toString();
                                     if ((Arrays.asList(spltStringMatcherPhrase).contains(matchedPhrase)) && (!"XX".equals(matchedPhrase)))
                                     {   
                                         
@@ -151,44 +149,45 @@ public class GoogleBooksApi_Interface_LookUp {
                                         {
                                             
                                             // set the authors name
-                                            case "authors"           :  bpo.setBookAuthors(matcher_general.group(1));   
-                                                                break;
+                                            case "authors"           :  bpo.setBookAuthors(matcher_general.group(1));
+                                            break;
                                             // set the title         
                                             case "title"            :   bpo.setBookTitle(matcher_general.group(1));
-                                                                break;
+                                            break;
                                             // set the subtitle 
                                             case "subtitle"         :   bpo.setBookTitle(matcher_general.group(1));
-                                                                break;                  
+                                            break;                  
                                             // set the publishers name
                                             case "publisher"        :   bpo.setPublisher(matcher_general.group(1));
-                                                                break;
+                                            break;
                                             // set the publication date                     
                                             case "publicationdate"  :   bpo.setPublicationDate(matcher_general.group(1));
-                                                                break;
+                                            break;
                                             // set the category name
                                             case "categories"       :   bpo.setLanugageDesignator(matcher_general.group(1));
-                                                                break;
+                                            break;
                                             // set the country details
                                             case "country"          :   bpo.setPublicationDate(matcher_general.group(1));
-                                                                break;
+                                            break;
                                             // set the thumbnail link
                                             case "thumbnail"        :   bpo.setLanugageDesignator(matcher_general.group(1));
-                                                                break;              
+                                            break;              
                                             // set the printed page count
                                             case "printedPageCount" :   bpo.setPageCount(Integer.parseInt(matcher_general.group(1)));
-                                                                break;
+                                            break;
+                                            // set isbn identifier
+                                            case "identifier" :   bpo.setIdentifier(matcher_general.group(1));
+                                            break;                 
                                             // capture the introduced value
-                                            case "XX" : 
-                                                                break;
-                                            // break
-                                            default : 
-                                                                break;
+                                            case "XX" :
+                                                break;
+                                                // break
+                                            default :
+                                                break;
                                         }
                                     }
                                 }
-                                
-                            
-                            //System.out.println(matcher_general.find("author"));
+                                //System.out.println(matcher_general.find("author"));
                            
                             
                             
@@ -198,6 +197,7 @@ public class GoogleBooksApi_Interface_LookUp {
                 }
             
             System.out.println("and we are done");
+            return bpo;
     }
     }        
 
