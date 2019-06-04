@@ -206,22 +206,25 @@ void returns
             {
                 //st.executeUpdate;
                 System.out.println("SELECT * FROM BookDB.BookedRecords WHERE BookID4 = "+bookID);
-                rs = st.executeQuery("SELECT * FROM BookDB.BookedRecords WHERE BookID4 = 9780310432593");
-                System.out.println(rs.toString());
-                System.out.println("00000");
-                String ln = rs.getString("LastName");
-                System.out.print(ln);
-                  System.out.println("00001");
+                Connection conn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+                Statement s = (Statement) conn2.createStatement();
+                rs = s.executeQuery("SELECT * FROM BookDB.BookedRecords");
+                //System.out.println(rs.toString());
+           //     System.out.println("00000");
+            //    String ln = rs.getString("LastName");
+              //  System.out.print(ln);
+               //   System.out.println("00001");
                 while (rs.next())
                 {
                             System.out.println("hello");
                             //int id = rs.getInt("id");
                             //String ln = rs.getString("LastName");
                             String rcd = rs.getString("RecordCreationDate");
-                            String cwrc = rs.getString("ClassWhenRecordCreated");
+                            System.out.format("%s\n", rcd);
+                            String cwrc = rs.getString("ClassWhenReocordCreated");
         
                             // print the results
-                            System.out.format("%s, %s, %s\n", ln, rcd, cwrc);
+                            System.out.format("%s\n", cwrc);
                             
                             cn.close();
                 }
