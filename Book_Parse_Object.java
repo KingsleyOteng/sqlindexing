@@ -135,7 +135,7 @@ public class Book_Parse_Object {
             publicationDate = publicationDate.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, "'");
             Book_Parse_Object.publicationDate = publicationDate;
         };
-    
+
     void setPageCount(int pageCount)
         {
             Book_Parse_Object.pageCount = pageCount;

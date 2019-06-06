@@ -173,10 +173,13 @@ public class GoogleBooksApi_Interface_LookUp {
                                             case "thumbnail"        :   bpo.setLanugageDesignator(matcher_general.group(1));
                                             break;              
                                             // set the printed page count
-                                            case "printedPageCount" :   bpo.setPageCount(Integer.parseInt(matcher_general.group(1)));
+                                            case "pageCount" :          bpo.setPageCount(Integer.parseInt(matcher_general.group(1)));
+                                            break;
+                                            // set the printed page count
+                                            case "printType" :          bpo.setPrintType(matcher_general.group(1));
                                             break;
                                             // set isbn identifier
-                                            case "identifier" :   bpo.setIdentifier(matcher_general.group(1));
+                                            case "identifier" :         bpo.setIdentifier(matcher_general.group(1));
                                             break;                 
                                             // capture the introduced value
                                             case "XX" :
