@@ -103,7 +103,8 @@ public class GoogleBooksApi_Interface_LookUp {
                                 
                                 String matched_group;
                                 matched_group = matcher_general.group(0);
-                                String[] testString = new String[] { "XX", "authors", "title", "subtitle", "publisher", "publicationdate", "categories", "country", "thumbnail", "printedPageCount"};
+                                String[] testString;
+                                testString = new String[] { "XX", "authors", "title", "subtitle", "publisher", "publicationDate", "categories", "country", "thumbnail", "printType", "pageCount"};
                                 List<String> testStringList = Arrays.asList(testString);
                                 
                                 //for (String s : testString)
@@ -161,10 +162,10 @@ public class GoogleBooksApi_Interface_LookUp {
                                             case "publisher"        :   bpo.setPublisher(matcher_general.group(1));
                                             break;
                                             // set the publication date                     
-                                            case "publicationdate"  :   bpo.setPublicationDate(matcher_general.group(1));
+                                            case "publicationDate"  :   bpo.setPublicationDate(matcher_general.group(1));
                                             break;
                                             // set the category name
-                                            case "categories"       :   bpo.setLanugageDesignator(matcher_general.group(1));
+                                            case "categories"       :   bpo.setCategories(matcher_general.group(1));
                                             break;
                                             // set the country details
                                             case "country"          :   bpo.setPublicationDate(matcher_general.group(1));

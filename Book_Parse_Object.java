@@ -12,8 +12,14 @@ package BookWareHousing;
  */
 public class Book_Parse_Object {
     
+    // string constants with regex matching values used to match entries in the book record object
     public static final String REPLACEMENT_FLAGS = "\"|\n";
-    public static final String REPLACEMENT_FLAG_SINGLE_COMMA  = "\'";
+    public static final String REPLACEMENT_FLAG_SINGLE_COMMA  = "\\'";
+    public static final String REPLACEMENT_FLAG_BRACKETS = "\\[|\\]";
+    
+    // string constants with regex matching values used to replace entries in the book record object
+    public static final String REPLACEMENT_FLAG_SINGLE_COMMA_VALUE  = "'";
+    public static final String REPLACEMENT_FLAGS_VALUE_SPACE = "";
     
     static private String bookTitle;
     static private String bookAuthors;
@@ -47,71 +53,82 @@ public class Book_Parse_Object {
    // routines to update the object used for update the database
     void setPrintType(String printType)
         {
-            printType = printType.replaceAll(REPLACEMENT_FLAGS, "");
-            printType = printType.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, "'");
+            printType = printType.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            printType = printType.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
             Book_Parse_Object.printType = printType;
            
         };
     
     void setMainCategory(String mainCategory)
         {
-            mainCategory = mainCategory.replaceAll(REPLACEMENT_FLAGS, "");
-            mainCategory = mainCategory.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, "'");
+            mainCategory = mainCategory.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            mainCategory = mainCategory.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
             Book_Parse_Object.mainCategory = mainCategory;
         };
     
     void setLanugageDesignator(String lanugageDesignator)
         {
-            lanugageDesignator = lanugageDesignator.replaceAll(REPLACEMENT_FLAGS, "");
-            lanugageDesignator = lanugageDesignator.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, "'");
+            lanugageDesignator = lanugageDesignator.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            lanugageDesignator = lanugageDesignator.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
             Book_Parse_Object.lanugageDesignator = lanugageDesignator;
         };
     
     void setILinkURLSmallThumbNail(String linkURLSmallThumbNail)
         {
-            linkURLSmallThumbNail = linkURLSmallThumbNail.replaceAll(REPLACEMENT_FLAGS, "");
-            linkURLSmallThumbNail = linkURLSmallThumbNail.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, "'");
+            linkURLSmallThumbNail = linkURLSmallThumbNail.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            linkURLSmallThumbNail = linkURLSmallThumbNail.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
             Book_Parse_Object.linkURLSmallThumbNail = linkURLSmallThumbNail;
+        };
+    
+    void setCategories(String categories)
+        {
+            categories = categories.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            categories = categories.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+            categories = categories.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            categories = categories.replaceAll("\\s+", REPLACEMENT_FLAGS_VALUE_SPACE);
+            Book_Parse_Object.mainCategory = categories;
         };
    
      void setILinkURLLargeThumbNail(String linkURLLargeThumbNail)
         {
-            linkURLLargeThumbNail = linkURLLargeThumbNail.replaceAll(REPLACEMENT_FLAGS, "");
-            linkURLLargeThumbNail = linkURLLargeThumbNail.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, "'");
+            linkURLLargeThumbNail = linkURLLargeThumbNail.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            linkURLLargeThumbNail = linkURLLargeThumbNail.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
             Book_Parse_Object.linkURLLargeThumbNail = linkURLLargeThumbNail;
         };
     
     void setBookTitle(String bookTitle)
         {
-            bookTitle = bookTitle.replaceAll(REPLACEMENT_FLAGS, "");
-            bookTitle = bookTitle.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, "'");
+            bookTitle = bookTitle.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            bookTitle = bookTitle.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
             Book_Parse_Object.bookTitle = bookTitle;
         };
     
     void setBookAuthors(String bookAuthors)
         {
-            bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAGS, "");
-            bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, "'");
+            bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+            bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            bookAuthors = bookAuthors.replaceAll("\\s+", REPLACEMENT_FLAGS_VALUE_SPACE);
             Book_Parse_Object.bookAuthors = bookAuthors;
         };
     
     void setISBN10(String isbn10)
         {
-            isbn10 = isbn10.replaceAll(REPLACEMENT_FLAGS, "");
-            isbn10 = isbn10.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, "'");
+            isbn10 = isbn10.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            isbn10 = isbn10.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
             Book_Parse_Object.isbn10 = isbn10;
         };
     
     void setISBN13(String isbn13)
         {
-            isbn13 = isbn13.replaceAll(REPLACEMENT_FLAGS, "");
-            isbn13 = isbn13.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, "'");
+            isbn13 = isbn13.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            isbn13 = isbn13.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
             Book_Parse_Object.isbn13 = isbn13;
         };
     
     void setIdentifier(String ISBN)
         {
-            ISBN = ISBN.replaceAll(REPLACEMENT_FLAGS, "");
+            ISBN = ISBN.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
             if (ISBN.length() > 10)
                     {
                         Book_Parse_Object.isbn13 = ISBN;
@@ -124,15 +141,18 @@ public class Book_Parse_Object {
     
     void setPublisher(String publisher)
         {
-            publisher = publisher.replaceAll(REPLACEMENT_FLAGS, "");
-            publisher = publisher.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, "'");
+            publisher = publisher.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            publisher = publisher.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+            publisher = publisher.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
             Book_Parse_Object.publisher = publisher;
         };
     
     void setPublicationDate(String publicationDate)
         {
-            publicationDate = publicationDate.replaceAll(REPLACEMENT_FLAGS, "");
-            publicationDate = publicationDate.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, "'");
+            publicationDate = publicationDate.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            publicationDate = publicationDate.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+            publicationDate = publicationDate.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
+            publicationDate = publicationDate.replaceAll("\\s+", REPLACEMENT_FLAGS_VALUE_SPACE);
             Book_Parse_Object.publicationDate = publicationDate;
         };
 
