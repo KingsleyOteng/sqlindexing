@@ -5,9 +5,12 @@
  */
 package BookWareHousing;
 
+import static BookWareHousing.Bookwarehouse.cn;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.awt.HeadlessException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,7 +37,7 @@ public class JDBC_Interface_Logic {
      * @date 4 June 2019
      */
     
-    JDBC_Interface_Logic() 
+    JDBC_Interface_Logic() throws SQLException 
     {
             try
             {
@@ -42,12 +45,54 @@ public class JDBC_Interface_Logic {
                 cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
                 st = (Statement) cn.createStatement();    
             }
-            catch (Exception e)
+            catch (ClassNotFoundException | SQLException e)
             {
                 
-            };
+            }
     };
 
+    
+// jdbc find a book
+Book_Parse_Object jfbc_find_book
+(
+    String ISBN_locator      
+) 
+    throws MalformedURLException, IOException, SQLException   
+{
+        
+        Book_Parse_Object bpo = new Book_Parse_Object();
+        JDBC_Interface_Logic jdbc_conn = new JDBC_Interface_Logic();
+        
+        
+        try {
+                Class.forName("com.mysql.jdbc.Driver");
+                cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+                st = (Statement) cn.createStatement();
+                rs = st.executeQuery("select * from BookDB.Catalogue where BookID2 ="+ISBN_locator+";");
+                while(rs.next())
+                {
+                    bpo.setBookAuthors(rs.getString("Author"));
+                    bpo.setBookTitle(rs.getString("BookName"));
+                    bpo.setCategories(rs.getString("CategoryDescription"));
+                    bpo.setMainCategory(rs.getString("Category"));
+                    //bpo.setILinkURLLargeThumbNail(ISBN_locator);
+                    //bpo.setILinkURLSmallThumbNail(ISBN_locator);
+                    //bpo.setISBN10(ISBN_locator);
+                    //bpo.setISBN13(ISBN_locator);
+                    //bpo.setPageCount(0);
+                    //bpo.setPrintType(ISBN_locator);
+                    
+
+                }    
+            } 
+            catch (ClassNotFoundException | SQLException e) 
+            {
+                    System.out.println(e);
+            }
+        
+        return bpo;
+};
+        
 // structure for a borrower request
 void new_borrow_request
         (
