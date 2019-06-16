@@ -161,4 +161,9 @@ public class Book_Parse_Object {
             Book_Parse_Object.pageCount = pageCount;
         };
     
+    String getPrintType()
+    {
+        return Book_Parse_Object.printType;
+    }
+    
 }

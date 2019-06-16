@@ -36,12 +36,13 @@ public class Bookwarehouse {
         //jdbc_conn.new_borrow_request("oteng-amoako","20010101",7,2,1,"11111111","Hilltop", BookID ,"20010101", "KWajwo");
         
         // sql logic here
-        try {
+        try 
+            {
                 Class.forName("com.mysql.jdbc.Driver");
                 cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
                 st = (Statement) cn.createStatement();
                 rs = st.executeQuery("select * from userdata;");
-                while(rs.next())
+            while(rs.next())
                 {
                     System.out.println(rs.next());
                 }
