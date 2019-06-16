@@ -26,7 +26,7 @@ public class Bookwarehouse {
     static Statement st; 
     static ResultSet rs; 
 
-    public static void main(String[] args) throws IOException 
+    public static void main(String[] args) throws IOException, SQLException 
     {
         
         JDBC_Interface_Logic jdbc_conn = new JDBC_Interface_Logic();
@@ -54,7 +54,7 @@ public class Bookwarehouse {
             GoogleBooksApi_Interface_LookUp gn = new GoogleBooksApi_Interface_LookUp();
             Book_Parse_Object output = new Book_Parse_Object();
             output = gn.google_find_book("9780310432593");
-            System.out.println("hello");
+           
         } 
         catch (IOException | ClassNotFoundException | SQLException e) {
             System.out.println(e);
