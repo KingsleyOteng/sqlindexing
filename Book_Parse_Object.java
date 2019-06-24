@@ -8,7 +8,9 @@ package BookWareHousing;
 /**
  *
  * @author kwadwooteng-amoako
- * @date 4 June 2019
+ * @date 24 June 2019
+ * @description class mainly deals with formatting the output from google
+ * 
  */
 public class Book_Parse_Object {
     

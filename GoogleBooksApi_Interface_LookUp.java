@@ -17,9 +17,10 @@ import java.util.regex.Pattern;
 
 
 /**
- *
  * @author kwadwooteng-amoako
- * @date 4 June 2019
+ * @date 24 June 2019
+ * @description the following section captures the google api search routines
+ *
  */
 public class GoogleBooksApi_Interface_LookUp {
     

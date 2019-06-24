@@ -33,8 +33,10 @@ public class JDBC_Interface_Logic {
     static ResultSet rs; 
     
      /**
-     * @param args the command line arguments
-     * @date 4 June 2019
+     * @author kwadwooteng-amoako
+     * @date 24 June 2019
+     * @description the following section captures the JDBC search routines
+     *
      */
     
     JDBC_Interface_Logic() throws SQLException 
