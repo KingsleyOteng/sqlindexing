@@ -11,8 +11,8 @@ import java.net.MalformedURLException;
 /**
  *
  * @author kwadwooteng-amoako
- * @date 24 June 2019
- * @description the following class combines the SQL search with a google search
+ * @date 25 June 2019
+ * @description the following class combines the SQL search with a google search; we decided to combine the two classes into one instead of calling them seperately.
  *
  */
 public class Book_Search {
