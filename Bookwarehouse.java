@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
-*
+ *
  * @author kwadwooteng-amoako
  * @date 24 June 2019
  * @description the programs main section
