@@ -7,6 +7,7 @@ package BookWareHousing;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.sql.SQLException;
 
 /**
  *
@@ -43,9 +44,33 @@ public class Book_Search {
     (
             String ISBN_locator 
     ) 
-            throws MalformedURLException, IOException
+            throws MalformedURLException, IOException, SQLException
     {
             
+            //First search the local database and if found do nothing else
+            JDBC_Interface_Logic sql_handle                 = new JDBC_Interface_Logic();
+            GoogleBooksApi_Interface_LookUp google_handle   = new GoogleBooksApi_Interface_LookUp();
+            Book_Parse_Object BPO1, BPO2 = new Book_Parse_Object();
+            
+            BPO1 = sql_handle.jdbc_find_book(ISBN_locator);
+            
+            
+            // where the sql search is successful, proceed
+            if (BPO1.getSearchResult())
+                {
+                        
+                        
+                }
+          
+           
+            // where the sql seart is not succesful proceed with a google search
+            if (!BPO1.getSearchResult()) 
+                {
+                    BPO2 = google_handle.google_find_book(ISBN_locator);
+                
+                }
+            
+         
     };
     
 }

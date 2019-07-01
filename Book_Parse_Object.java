@@ -35,6 +35,7 @@ public class Book_Parse_Object {
     static private String lanugageDesignator;
     static private String linkURLSmallThumbNail;
     static private String linkURLLargeThumbNail;
+    static private Boolean found;
     
     Book_Parse_Object()
         {
@@ -50,6 +51,22 @@ public class Book_Parse_Object {
             Book_Parse_Object.lanugageDesignator = "";
             Book_Parse_Object.linkURLSmallThumbNail = "";
             Book_Parse_Object.linkURLLargeThumbNail = "";
+            Book_Parse_Object.found = false;
+        };
+    
+    
+    // routines to highlight whether a book has been found
+    void setSearchResult()
+        {
+            Book_Parse_Object.found = true;
+           
+        };
+    
+    // routines to highlight whether a book has been found
+    Boolean getSearchResult()
+        {
+            return Book_Parse_Object.found;
+           
         };
     
    // routines to update the object used for update the database

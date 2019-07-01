@@ -5,7 +5,7 @@
  */
 package BookWareHousing;
 
-import static BookWareHousing.Bookwarehouse.cn;
+//import static BookWareHousing.Bookwarehouse.cn;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.awt.HeadlessException;
@@ -55,7 +55,7 @@ public class JDBC_Interface_Logic {
 
     
 // jdbc find a book
-Book_Parse_Object jfbc_find_book
+Book_Parse_Object jdbc_find_book
 (
     String ISBN_locator      
 ) 
