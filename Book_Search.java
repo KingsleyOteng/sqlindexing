@@ -52,22 +52,17 @@ public class Book_Search {
             GoogleBooksApi_Interface_LookUp google_handle   = new GoogleBooksApi_Interface_LookUp();
             Book_Parse_Object BPO1, BPO2 = new Book_Parse_Object();
             
-            BPO1 = sql_handle.jdbc_find_book(ISBN_locator);
-            
-            
             // where the sql search is successful, proceed
+            BPO1 = sql_handle.jdbc_find_book(ISBN_locator);
             if (BPO1.getSearchResult())
                 {
-                        
-                        
+                    System.out.println("Searching using sql....");         
                 }
-          
-           
-            // where the sql seart is not succesful proceed with a google search
-            if (!BPO1.getSearchResult()) 
+            else 
                 {
+                       // where the sql seart is not succesful proceed with a google search
                     BPO2 = google_handle.google_find_book(ISBN_locator);
-                
+                    System.out.println("Searching using google....");
                 }
             
          

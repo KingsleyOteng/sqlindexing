@@ -40,26 +40,31 @@ public class Bookwarehouse {
         // sql logic here
         try 
             {
-                Class.forName("com.mysql.jdbc.Driver");
-                cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
-                st = (Statement) cn.createStatement();
-                rs = st.executeQuery("select * from userdata;");
-            while(rs.next())
-                {
-                    System.out.println(rs.next());
-                }
-            
-            // test the book insertion routine
-            //String sql1 = "INSERT INTO BookDB.WorkWithOne VALUES(9, 'UA502f', 'Venice');";
-            //st.executeUpdate(sql1);
-            
-            // test the catalogue search
-            GoogleBooksApi_Interface_LookUp gn = new GoogleBooksApi_Interface_LookUp();
-            Book_Parse_Object output = new Book_Parse_Object();
-            output = gn.google_find_book("9780310432593");
+                            Book_Search BSO = new Book_Search();
+                            BSO.universal_find(("9780310432593"));
+                            
+                            //Class.forName("com.mysql.jdbc.Driver");
+                            //cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+                            //st = (Statement) cn.createStatement();
+                            //rs = st.executeQuery("select * from userdata;");
+                            //while(rs.next())
+                            //{
+                            //   System.out.println(rs.next());
+                            //}
+
+                            // test the book insertion routine
+                            //String sql1 = "INSERT INTO BookDB.WorkWithOne VALUES(9, 'UA502f', 'Venice');";
+                            //st.executeUpdate(sql1);
+
+                            // test the catalogue search
+                            //GoogleBooksApi_Interface_LookUp gn = new GoogleBooksApi_Interface_LookUp();
+                            //Book_Parse_Object output = new Book_Parse_Object();
+                            //output = gn.google_find_book("9780310432593");
            
         } 
-        catch (IOException | ClassNotFoundException | SQLException e) {
+        //catch (IOException | ClassNotFoundException | SQLException e) 
+        catch(Exception e)
+        {
             System.out.println(e);
         }
         
