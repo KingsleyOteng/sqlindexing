@@ -70,9 +70,10 @@ Book_Parse_Object jdbc_find_book
                 Class.forName("com.mysql.jdbc.Driver");
                 cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
                 st = (Statement) cn.createStatement();
-                rs = st.executeQuery("select * from BookDB.Catalogue where BookID2 ="+ISBN_locator+";");
+                rs = st.executeQuery("select * from BookDB.Catalogue where BookID ="+ISBN_locator+";");
                 while(rs.next())
-                {
+                {   
+                    bpo.setSearchResult(true);
                     bpo.setBookAuthors(rs.getString("Author"));
                     bpo.setBookTitle(rs.getString("BookName"));
                     bpo.setCategories(rs.getString("CategoryDescription"));

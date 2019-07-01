@@ -56,13 +56,13 @@ public class Book_Search {
             BPO1 = sql_handle.jdbc_find_book(ISBN_locator);
             if (BPO1.getSearchResult())
                 {
-                    System.out.println("Searching using sql....");         
+                    System.out.println("-------------------------------------------------> Searching using sql....");         
                 }
             else 
                 {
                        // where the sql seart is not succesful proceed with a google search
                     BPO2 = google_handle.google_find_book(ISBN_locator);
-                    System.out.println("Searching using google....");
+                    System.out.println("-------------------------------------------------> Searching using google....");
                 }
             
          

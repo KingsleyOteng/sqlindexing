@@ -56,9 +56,9 @@ public class Book_Parse_Object {
     
     
     // routines to highlight whether a book has been found
-    void setSearchResult()
+    void setSearchResult(Boolean search_result)
         {
-            Book_Parse_Object.found = true;
+            Book_Parse_Object.found = search_result;
            
         };
     
@@ -66,7 +66,6 @@ public class Book_Parse_Object {
     Boolean getSearchResult()
         {
             return Book_Parse_Object.found;
-           
         };
     
    // routines to update the object used for update the database
