@@ -34,7 +34,7 @@ public class JDBC_Interface_Logic {
     
      /**
      * @author kwadwooteng-amoako
-     * @date 24 June 2019
+     * @date  2 July 2019
      * @description the following section captures the JDBC search routines
      *
      */
@@ -45,7 +45,7 @@ public class JDBC_Interface_Logic {
             {
                 Class.forName("com.mysql.jdbc.Driver");
                 cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
-                st = (Statement) cn.createStatement();    
+                st = (Statement) cn.createStatement ();    
             }
             catch (ClassNotFoundException | SQLException e)
             {
@@ -62,14 +62,14 @@ Book_Parse_Object jdbc_find_book
     throws MalformedURLException, IOException, SQLException   
 {
         
-        Book_Parse_Object bpo = new Book_Parse_Object();
-        JDBC_Interface_Logic jdbc_conn = new JDBC_Interface_Logic();
+        Book_Parse_Object bpo = new Book_Parse_Object ();
+        JDBC_Interface_Logic jdbc_conn = new JDBC_Interface_Logic ();
         
         
         try {
                 Class.forName("com.mysql.jdbc.Driver");
                 cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
-                st = (Statement) cn.createStatement();
+                st = (Statement) cn.createStatement ();
                 rs = st.executeQuery("select * from BookDB.Catalogue where BookID ="+ISBN_locator+";");
                 while(rs.next())
                 {   
@@ -123,12 +123,12 @@ void new_borrow_request
                 // New overdue books
                 SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
                 Date parsed = format.parse(recordCreationDate);
-                java.sql.Date sqlRecordCreationDate = new java.sql.Date(parsed.getTime());
+                java.sql.Date sqlRecordCreationDate = new java.sql.Date(parsed.getTime ());
                 
                 // manual date insertion
                 
                 parsed = format.parse(borrowDate);
-                java.sql.Date sqlBorrowDate = new java.sql.Date(parsed.getTime());
+                java.sql.Date sqlBorrowDate = new java.sql.Date(parsed.getTime ());
                 
                 st.executeUpdate
                 
@@ -161,10 +161,10 @@ void overdue_book
                 // Pull up the list of overdue books
                 SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
                 Date parsed = format.parse(dateBorrowed);
-                java.sql.Date sqlDateBorrowed= new java.sql.Date(parsed.getTime());
+                java.sql.Date sqlDateBorrowed= new java.sql.Date(parsed.getTime ());
                 
                 parsed = format.parse(dateDue);
-                java.sql.Date sqlDateDue = new java.sql.Date(parsed.getTime());
+                java.sql.Date sqlDateDue = new java.sql.Date(parsed.getTime ());
                 
                 // insert the actual book details into the database
                 st.executeUpdate("INSERT INTO BookDB.OverdueBooks  " + "VALUES( '"+borrowerID+"','"+sqlDateBorrowed+"','"+sqlDateDue+"','"+dayOverdue+"','"+ISBNs[0]+"','"+ISBNs[1]+"')");
@@ -179,7 +179,6 @@ void overdue_book
             }
     
     };
-    
 // structure for a catalogue request    
 void catalogue
     (
@@ -202,13 +201,42 @@ void catalogue
                 // Pull up the catalogue of books
                 SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
                 Date parsed = format.parse(dateBorrowed);
-                java.sql.Date sqlDateBorrowed = new java.sql.Date(parsed.getTime());
+                java.sql.Date sqlDateBorrowed = new java.sql.Date(parsed.getTime ());
                 
                 parsed = format.parse(dateDue);
-                java.sql.Date sqlDateDue = new java.sql.Date(parsed.getTime());
+                java.sql.Date sqlDateDue = new java.sql.Date(parsed.getTime ());
                 
                 // insert the book catalogue details into the database
                 st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+bookName+"','"+author+"','"+category+"','"+categoryDescription+"','"+bookID+"','"+sqlDateBorrowed+"','"+sqlDateDue+"','"+ISBNs[0]+"','"+ISBNs[1]+"','"+copy+"','"+location+"')");
+                 
+                cn.close();
+            }
+            catch (SQLException | ParseException | HeadlessException e)
+            {
+                System.out.println("hello Catalogue: "+e);
+            }
+    
+    };
+    
+// structure for a catalogue request    
+void setDBEntry
+    (
+            Book_Parse_Object bpo
+    )   
+    
+    {
+            try 
+            {
+                // Pull up the catalogue of books
+                SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+                Date parsed = format.parse(bpo.getBookBorrowDate ());
+                java.sql.Date sqlDateBorrowed = new java.sql.Date(parsed.getTime ());
+                
+                parsed = format.parse(bpo.getBookDueDate ());
+                java.sql.Date sqlDateDue = new java.sql.Date(parsed.getTime ());
+                
+                // insert the book catalogue details into the database
+                st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+bpo.getBookName ()+"','"+bpo.getAuthor ()+"','"+bpo.getCategory ()+"','"+bpo.getCategoryDescription ()+"','"+bpo.getBookID ()+"','"+bpo.getSqlDateBorrowed ()+"','"+bpo.getSqlDateDue ()+"','"+bpo.getISBNs (0)+"','"+bpo.getISBNs (1)+"','"+bpo.getCopy ()+"','"+bpo.getLocation ()+"')");
                  
                 cn.close();
             }
@@ -233,7 +261,7 @@ void returns
                 // Returned books to the digital catalogue
                 SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
                 Date parsed = format.parse(dateReturned);
-                java.sql.Date sqlDateReturned = new java.sql.Date(parsed.getTime());
+                java.sql.Date sqlDateReturned = new java.sql.Date(parsed.getTime ());
                 
                 st.executeUpdate("INSERT INTO BookDB.Returns  " + "VALUES( '"+bookID+"','"+sqlDateReturned+"','"+location+"')");
                  
@@ -256,7 +284,7 @@ void returns
                 //st.executeUpdate;
                 System.out.println("SELECT * FROM BookDB.BookedRecords WHERE BookID4 = "+bookID);
                 Connection conn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
-                Statement s = (Statement) conn2.createStatement();
+                Statement s = (Statement) conn2.createStatement ();
                 rs = s.executeQuery("SELECT * FROM BookDB.BookedRecords WHERE BookID4 = '9101112131415161718'");
                 //System.out.println(rs.toString());
            //     System.out.println("00000");

@@ -62,6 +62,7 @@ public class Book_Search {
                 {
                        // where the sql seart is not succesful proceed with a google search
                     BPO2 = google_handle.google_find_book(ISBN_locator);
+                    sql_handle.setDBEntry(BPO2);
                     System.out.println("-------------------------------------------------> Searching using google....");
                 }
             

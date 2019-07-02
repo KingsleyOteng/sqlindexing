@@ -35,6 +35,8 @@ public class Book_Parse_Object {
     static private String lanugageDesignator;
     static private String linkURLSmallThumbNail;
     static private String linkURLLargeThumbNail;
+    static private String borrowDate;
+    static private String returnDate;
     static private Boolean found;
     
     Book_Parse_Object()
@@ -51,7 +53,10 @@ public class Book_Parse_Object {
             Book_Parse_Object.lanugageDesignator = "";
             Book_Parse_Object.linkURLSmallThumbNail = "";
             Book_Parse_Object.linkURLLargeThumbNail = "";
+            Book_Parse_Object.borrowDate = "";
+            Book_Parse_Object.returnDate = "";
             Book_Parse_Object.found = false;
+            
         };
     
     
@@ -147,7 +152,10 @@ public class Book_Parse_Object {
     void setIdentifier(String ISBN)
         {
             ISBN = ISBN.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            if (ISBN.length() > 10)
+            
+     
+            
+            if (ISBN.length() > 10) 
                     {
                         Book_Parse_Object.isbn13 = ISBN;
                     }
@@ -184,4 +192,63 @@ public class Book_Parse_Object {
         return Book_Parse_Object.printType;
     }
     
+    String getBookBorrowDate()
+    {
+        return Book_Parse_Object.borrowDate;
+    }
+    
+    String getBookDueDate()
+    {
+        return Book_Parse_Object.returnDate;
+    }
+    
+    String getBookName()
+    {
+        return Book_Parse_Object.bookTitle;
+    }
+    
+    String getAuthor()
+    {
+        return Book_Parse_Object.bookAuthors;
+    }
+    
+    String getCategory()
+    {
+        return Book_Parse_Object.mainCategory;
+    }
+    
+    String getCategoryDescription()
+    {
+        return Book_Parse_Object.mainCategory;
+    }
+    
+    String getBookID()
+    {
+        return Book_Parse_Object.isbn10;
+    }
+    
+    String getSqlDateBorrowed()
+    {
+        return Book_Parse_Object.borrowDate;
+    }
+    
+    String getSqlDateDue()
+    {
+        return Book_Parse_Object.returnDate;
+    }
+      
+    String getISBNs(int isbn_type)
+    {
+        return (isbn_type == 0) ? Book_Parse_Object.isbn10 : Book_Parse_Object.isbn10 ;
+    }
+            
+    String getCopy()
+    {
+        return "Single";
+    }
+                
+    String getLocation()
+    {
+        return Book_Parse_Object.lanugageDesignator;
+    }
 }
