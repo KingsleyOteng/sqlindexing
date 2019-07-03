@@ -12,7 +12,7 @@ import java.sql.SQLException;
 /**
  *
  * @author kwadwooteng-amoako
- * @date 2 July 2019
+ * @date 3 July 2019
  * @description the following class combines the SQL search with a google search; we decided to combine the two classes into one instead of calling them seperately.
  *
  */
@@ -48,22 +48,23 @@ public class Book_Search {
     {
             
             //First search the local database and if found do nothing else
-            JDBC_Interface_Logic sql_handle                 = new JDBC_Interface_Logic();
-            GoogleBooksApi_Interface_LookUp google_handle   = new GoogleBooksApi_Interface_LookUp();
-            Book_Parse_Object BPO1, BPO2 = new Book_Parse_Object();
+            JDBC_Interface_Logic sql_handle                 = new JDBC_Interface_Logic ();
+            GoogleBooksApi_Interface_LookUp google_handle   = new GoogleBooksApi_Interface_LookUp ();
+            Book_Parse_Object BPO1, BPO2 = new Book_Parse_Object ();
             
             // where the sql search is successful, proceed
             BPO1 = sql_handle.jdbc_find_book(ISBN_locator);
-            if (BPO1.getSearchResult())
+            if (BPO1.getSearchResult ())
                 {
-                    System.out.println("-------------------------------------------------> Searching using sql....");         
+                    System.out.println("-------------------------------------------------> Searching using sql....");     
+                    sql_handle.setDBEntry(BPO1);
                 }
             else 
                 {
                        // where the sql seart is not succesful proceed with a google search
-                    BPO2 = google_handle.google_find_book(ISBN_locator);
-                    sql_handle.setDBEntry(BPO2);
-                    System.out.println("-------------------------------------------------> Searching using google....");
+                    BPO1 = google_handle.google_find_book (ISBN_locator);
+                    sql_handle.setDBEntry (BPO1);
+                    System.out.println ("-------------------------------------------------> Searching using google....");
                 }
             
          

@@ -34,7 +34,7 @@ public class JDBC_Interface_Logic {
     
      /**
      * @author kwadwooteng-amoako
-     * @date  2 July 2019
+     * @date  3 July 2019
      * @description the following section captures the JDBC search routines
      *
      */

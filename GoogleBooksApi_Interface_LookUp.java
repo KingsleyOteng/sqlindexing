@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 
 /**
  * @author kwadwooteng-amoako
- * @date  2 July 2019
+ * @date  3 July 2019
  * @description the following section captures the google api search routines
  *
  */
@@ -57,7 +57,7 @@ public class GoogleBooksApi_Interface_LookUp {
                     BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     StringBuilder value = new StringBuilder();
                     char[] buffer = new char[1024];
-                    for (int length = 0; (length = br.read(buffer)) > 0;) {
+                    for (int length = 0x0; (length = br.read(buffer)) > 0;) {
                         //value.append(" ",0,1);
                         value.append(buffer, 0, length); 
                        
@@ -120,7 +120,6 @@ public class GoogleBooksApi_Interface_LookUp {
                                String[] spltStringMatcherPhrase  = stringMatcherPhrase.split("\\b+");
                                
                                List<String> testSpltStringMatcherPhrase;
-                                testSpltStringMatcherPhrase = new ArrayList<String>();
                                testSpltStringMatcherPhrase = Arrays.asList(spltStringMatcherPhrase);
                                
                                 // include a dummy variable for matching
