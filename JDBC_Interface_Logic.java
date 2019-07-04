@@ -34,7 +34,7 @@ public class JDBC_Interface_Logic {
     
      /**
      * @author kwadwooteng-amoako
-     * @date  3 July 2019
+     * @date  4 July 2019
      * @description the following section captures the JDBC search routines
      *
      */
@@ -218,10 +218,22 @@ void catalogue
     
     };
     
-// structure for a catalogue request    
+void setBorrowDates 
+    (
+        Book_Parse_Object bpo, 
+        String borrow_date, 
+        String return_date 
+    )
+            
+    {
+        bpo.setBookBorrowDate(borrow_date);
+        bpo.setBookDueDate(return_date);
+    };
+    
+// structure for a catalogue request to be filed in the database    
 void setDBEntry
     (
-            Book_Parse_Object bpo
+        Book_Parse_Object bpo
     )   
     
     {
@@ -229,8 +241,11 @@ void setDBEntry
             {
                 // Pull up the catalogue of books
                 SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+                String temp;
+                temp = bpo.getBookBorrowDate ();
                 Date parsed = format.parse(bpo.getBookBorrowDate ());
-                java.sql.Date sqlDateBorrowed = new java.sql.Date(parsed.getTime ());
+                java.sql.Date sqlDateBorrowed;
+                sqlDateBorrowed = new java.sql.Date(parsed.getTime ());
                 
                 parsed = format.parse(bpo.getBookDueDate ());
                 java.sql.Date sqlDateDue = new java.sql.Date(parsed.getTime ());

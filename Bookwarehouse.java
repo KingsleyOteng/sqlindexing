@@ -15,7 +15,7 @@ import java.sql.SQLException;
 /**
  *
  * @author kwadwooteng-amoako
- * @date  3 July 2019
+ * @date  4 July 2019
  * @description the programs main section
  *
  */

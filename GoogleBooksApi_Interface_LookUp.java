@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 
 /**
  * @author kwadwooteng-amoako
- * @date  3 July 2019
+ * @date  4 July 2019
  * @description the following section captures the google api search routines
  *
  */
@@ -57,12 +57,11 @@ public class GoogleBooksApi_Interface_LookUp {
                     BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     StringBuilder value = new StringBuilder();
                     char[] buffer = new char[1024];
+                    
                     for (int length = 0x0; (length = br.read(buffer)) > 0;) {
-                        //value.append(" ",0,1);
-                        value.append(buffer, 0, length); 
-                       
-                        
+                        value.append(buffer, 0, length);   
                     }
+                    
                     System.out.println("block contents: " + value.toString());
                     System.out.println("length of block:  " + value.length());
                     
@@ -176,16 +175,20 @@ public class GoogleBooksApi_Interface_LookUp {
                                             // set the printed page count
                                             case "pageCount" :          bpo.setPageCount(Integer.parseInt(matcher_general.group(1)));
                                             break;
+                                            
                                             // set the printed page count
                                             case "printType" :          bpo.setPrintType(matcher_general.group(1));
                                             break;
+                                            
                                             // set isbn identifier
                                             case "identifier" :         bpo.setIdentifier(matcher_general.group(1));
                                             break;                 
+                                            
                                             // capture the introduced value
                                             case "XX" :
                                                 break;
-                                                // break
+                                                
+                                            // break
                                             default :
                                                 break;
                                         }

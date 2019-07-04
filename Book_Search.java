@@ -12,7 +12,7 @@ import java.sql.SQLException;
 /**
  *
  * @author kwadwooteng-amoako
- * @date 3 July 2019
+ * @date 4 July 2019
  * @description the following class combines the SQL search with a google search; we decided to combine the two classes into one instead of calling them seperately.
  *
  */
@@ -63,7 +63,10 @@ public class Book_Search {
                 {
                        // where the sql seart is not succesful proceed with a google search
                     BPO1 = google_handle.google_find_book (ISBN_locator);
-                    sql_handle.setDBEntry (BPO1);
+                    String borrow_date = "20191130";
+                    String return_date = "20191101";
+                    sql_handle.setBorrowDates ( BPO1, borrow_date, return_date );
+                    sql_handle.setDBEntry ( BPO1 );
                     System.out.println ("-------------------------------------------------> Searching using google....");
                 }
             

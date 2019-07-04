@@ -8,7 +8,7 @@ package BookWareHousing;
 /**
  *
  * @author kwadwooteng-amoako
- * @date  3 July 2019
+ * @date  4 July 2019
  * @description class mainly deals with formatting the output from google
  * 
  */
@@ -59,6 +59,16 @@ public class Book_Parse_Object {
             
         };
     
+    
+    void setBookBorrowDate( String date)
+    {
+        Book_Parse_Object.borrowDate = date;
+    }
+    
+    void setBookDueDate( String date)
+    {
+        Book_Parse_Object.returnDate = date;
+    }
     
     // routines to highlight whether a book has been found
     void setSearchResult(Boolean search_result)
