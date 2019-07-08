@@ -6,6 +6,10 @@
 package BookWareHousing;
 
 //import static BookWareHousing.Bookwarehouse.cn;
+import static BookWareHousing.Book_Parse_Object.REPLACEMENT_FLAGS;
+import static BookWareHousing.Book_Parse_Object.REPLACEMENT_FLAGS_VALUE_SPACE;
+import static BookWareHousing.Book_Parse_Object.REPLACEMENT_FLAG_SINGLE_COMMA;
+import static BookWareHousing.Book_Parse_Object.REPLACEMENT_FLAG_SINGLE_COMMA_VALUE;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.awt.HeadlessException;
@@ -252,7 +256,13 @@ void setDBEntry
                 
                 // insert the book catalogue details into the database
                 // st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+bpo.getBookName ()+"','"+bpo.getAuthor ()+"','"+bpo.getCategory ()+"','"+bpo.getCategoryDescription ()+"','"+bpo.getBookID ()+"','"+bpo.getSqlDateBorrowed ()+"','"+bpo.getSqlDateDue ()+"','"+bpo.getISBNs (0)+"','"+bpo.getISBNs (1)+"','"+bpo.getCopy ()+"','"+bpo.getLocation ()+"')");
-                st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( 'one','two','three','four','five','"+sqlDateBorrowed+"','"+sqlDateDue+"','eight','nine','ten','1','twelve')");
+                System.out.println("Hello"+ bpo.getBookName ());
+                String printType = bpo.getBookName();
+                printType = printType.replaceAll("'|\n|#", "");
+                printType = printType.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+                
+                
+                st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+printType+"','two','three','four','five','"+sqlDateBorrowed+"','"+sqlDateDue+"','eight','nine','ten','1','twelve')");
                 
                 
                 cn.close();
