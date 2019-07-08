@@ -34,7 +34,7 @@ public class JDBC_Interface_Logic {
     
      /**
      * @author kwadwooteng-amoako
-     * @date  4 July 2019
+     * @date  8 July 2019
      * @description the following section captures the JDBC search routines
      *
      */
@@ -251,8 +251,10 @@ void setDBEntry
                 java.sql.Date sqlDateDue = new java.sql.Date(parsed.getTime ());
                 
                 // insert the book catalogue details into the database
-                st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+bpo.getBookName ()+"','"+bpo.getAuthor ()+"','"+bpo.getCategory ()+"','"+bpo.getCategoryDescription ()+"','"+bpo.getBookID ()+"','"+bpo.getSqlDateBorrowed ()+"','"+bpo.getSqlDateDue ()+"','"+bpo.getISBNs (0)+"','"+bpo.getISBNs (1)+"','"+bpo.getCopy ()+"','"+bpo.getLocation ()+"')");
-                 
+                // st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+bpo.getBookName ()+"','"+bpo.getAuthor ()+"','"+bpo.getCategory ()+"','"+bpo.getCategoryDescription ()+"','"+bpo.getBookID ()+"','"+bpo.getSqlDateBorrowed ()+"','"+bpo.getSqlDateDue ()+"','"+bpo.getISBNs (0)+"','"+bpo.getISBNs (1)+"','"+bpo.getCopy ()+"','"+bpo.getLocation ()+"')");
+                st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( 'one','two','three','four','five','"+sqlDateBorrowed+"','"+sqlDateDue+"','eight','nine','ten','1','twelve')");
+                
+                
                 cn.close();
             }
             catch (SQLException | ParseException | HeadlessException e)
