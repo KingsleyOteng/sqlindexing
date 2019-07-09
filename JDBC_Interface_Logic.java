@@ -38,7 +38,7 @@ public class JDBC_Interface_Logic {
     
      /**
      * @author kwadwooteng-amoako
-     * @date  8 July 2019
+     * @date  9 July 2019
      * @description the following section captures the JDBC search routines
      *
      */
@@ -262,7 +262,7 @@ void setDBEntry
                 printType = printType.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
                 
                 
-                st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+printType+"','two','three','four','five','"+sqlDateBorrowed+"','"+sqlDateDue+"','eight','nine','ten','1','twelve')");
+                st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+printType+"','"+bpo.getAuthor()+"','"+bpo.getCategory()+ "','four','five','"+bpo.getBookBorrowDate()+"','"+bpo+"','eight','nine','ten','1','twelve')");
                 
                 
                 cn.close();

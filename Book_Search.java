@@ -12,7 +12,7 @@ import java.sql.SQLException;
 /**
  *
  * @author kwadwooteng-amoako
- * @date 8 July 2019
+ * @date 9 July 2019
  * @description the following class combines the SQL search with a google search; we decided to combine the two classes into one instead of calling them seperately.
  *
  */
