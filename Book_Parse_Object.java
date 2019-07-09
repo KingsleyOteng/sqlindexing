@@ -252,9 +252,9 @@ public class Book_Parse_Object {
         return (isbn_type == 0) ? Book_Parse_Object.isbn10 : Book_Parse_Object.isbn10 ;
     }
             
-    String getCopy()
+    int getCopy()
     {
-        return "Single";
+        return 1;
     }
                 
     String getLocation()

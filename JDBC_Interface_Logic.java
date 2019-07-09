@@ -262,8 +262,9 @@ void setDBEntry
                 printType = printType.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
                 
                 
-                st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+printType+"','"+bpo.getAuthor()+"','"+bpo.getCategory()+ "','four','five','"+bpo.getBookBorrowDate()+"','"+bpo+"','eight','nine','ten','1','twelve')");
-                
+                //st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+printType+"','"+bpo.getAuthor()+"','"+bpo.getCategory()+ "','"+bpo.getCategoryDescription()+ "','"+bpo.getBookID()+"','"+bpo.getBookBorrowDate()+"','"+bpo.getBookID()+"','"+bpo.getBookID()+"','nine','ten','1','twelve')");
+                st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+printType+"','"+bpo.getAuthor()+"','"+bpo.getCategory()+"','"+bpo.getCategoryDescription()+"','"+bpo.getBookID()+"','"+bpo.getBookBorrowDate()+"','"+bpo.getBookDueDate()+"','"+bpo.getBookID()+"','"+bpo.getISBNs(0)+"','"+bpo.getISBNs(1)+"','"+bpo.getCopy()+"','"+bpo.getLocation()+"')");
+
                 
                 cn.close();
             }
