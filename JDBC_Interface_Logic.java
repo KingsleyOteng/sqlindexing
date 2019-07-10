@@ -233,6 +233,23 @@ void setBorrowDates
         bpo.setBookBorrowDate(borrow_date);
         bpo.setBookDueDate(return_date);
     };
+
+void delDBEntry
+    (
+            String catalogue_id,
+            Book_Parse_Object bpo
+    )
+    {
+                try
+                {
+                    st.executeUpdate("DELETE FROM BookDB.Catalogue WHERE BookID ="+catalogue_id);
+                }
+                catch (SQLException e)
+                {
+                    System.out.println("hello Catalogue: "+e);
+                }
+  
+    };
     
 // structure for a catalogue request to be filed in the database    
 void setDBEntry
@@ -262,7 +279,6 @@ void setDBEntry
                 printType = printType.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
                 
                 
-                //st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+printType+"','"+bpo.getAuthor()+"','"+bpo.getCategory()+ "','"+bpo.getCategoryDescription()+ "','"+bpo.getBookID()+"','"+bpo.getBookBorrowDate()+"','"+bpo.getBookID()+"','"+bpo.getBookID()+"','nine','ten','1','twelve')");
                 st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+printType+"','"+bpo.getAuthor()+"','"+bpo.getCategory()+"','"+bpo.getCategoryDescription()+"','"+bpo.getBookID()+"','"+bpo.getBookBorrowDate()+"','"+bpo.getBookDueDate()+"','"+bpo.getBookID()+"','"+bpo.getISBNs(0)+"','"+bpo.getISBNs(1)+"','"+bpo.getCopy()+"','"+bpo.getLocation()+"')");
 
                 
