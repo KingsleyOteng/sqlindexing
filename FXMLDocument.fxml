@@ -1,21 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="513.0" prefWidth="690.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userinterface.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="513.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.FXMLDocumentController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <ToolBar prefHeight="40.0" prefWidth="690.0">
-        <items>
-          <Button mnemonicParsing="false" text="Borrow" textFill="#3c16d9" />
-            <Button mnemonicParsing="false" text="Return" textFill="#f80909" />
-            <Button mnemonicParsing="false" text="Mini Statement" textFill="#8f9403" />
-            <Button mnemonicParsing="false" text="Close" textFill="#047916" />
-        </items>
-      </ToolBar>
+      <TabPane prefHeight="513.0" prefWidth="745.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Borrow">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="775.0">
+                     <children>
+                        <TextField layoutX="91.0" layoutY="25.0" prefHeight="27.0" prefWidth="378.0" />
+                        <TextField layoutX="91.0" layoutY="63.0" prefHeight="27.0" prefWidth="378.0" />
+                        <TextField layoutX="91.0" layoutY="100.0" prefHeight="27.0" prefWidth="378.0" />
+                        <TextField layoutX="91.0" layoutY="207.0" prefHeight="111.0" prefWidth="378.0" />
+                        <Label layoutX="7.0" layoutY="30.0" text="Author" />
+                        <Label layoutX="7.0" layoutY="68.0" text="Title" />
+                        <Label layoutX="4.0" layoutY="105.0" text="Published" />
+                        <Label layoutX="4.0" layoutY="143.0" text="Category" />
+                        <TextField layoutX="91.0" layoutY="138.0" prefHeight="27.0" prefWidth="378.0" />
+                        <TextField layoutX="91.0" layoutY="172.0" prefHeight="27.0" prefWidth="378.0" />
+                        <Label layoutX="4.0" layoutY="177.0" text="ISBN" />
+                        <ImageView fitHeight="291.0" fitWidth="234.0" layoutX="492.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextField layoutX="91.0" layoutY="375.0" prefHeight="27.0" prefWidth="378.0" />
+                        <TextField layoutX="91.0" layoutY="411.0" prefHeight="27.0" prefWidth="378.0" />
+                        <Label layoutX="5.0" layoutY="380.0" text="Borrower" />
+                        <Label layoutX="5.0" layoutY="416.0" text="Year" />
+                        <DatePicker layoutX="91.0" layoutY="447.0" />
+                        <Label layoutX="5.0" layoutY="452.0" text="Date Due" />
+                        <CheckBox layoutX="365.0" layoutY="452.0" mnemonicParsing="false" text="Print Receipt" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Return">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ToggleButton layoutX="54.0" layoutY="31.0" mnemonicParsing="false" text="ToggleButton" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="View Catalogue">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="113.0" layoutY="53.0" mnemonicParsing="false" text="Button" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Add Books">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
     </children>
 </AnchorPane>
