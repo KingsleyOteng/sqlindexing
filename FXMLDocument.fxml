@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="513.0" prefWidth="690.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userinterface.FXMLDocumentController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <ToolBar prefHeight="40.0" prefWidth="690.0">
+        <items>
+          <Button mnemonicParsing="false" text="Borrow" textFill="#3c16d9" />
+            <Button mnemonicParsing="false" text="Return" textFill="#f80909" />
+            <Button mnemonicParsing="false" text="Mini Statement" textFill="#8f9403" />
+            <Button mnemonicParsing="false" text="Close" textFill="#047916" />
+        </items>
+      </ToolBar>
+    </children>
+</AnchorPane>
