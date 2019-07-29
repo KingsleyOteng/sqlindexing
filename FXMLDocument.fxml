@@ -42,8 +42,16 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ToggleButton layoutX="54.0" layoutY="31.0" mnemonicParsing="false" text="ToggleButton" />
-                     </children></AnchorPane>
+                        <TextField layoutX="101.0" layoutY="74.0" prefHeight="27.0" prefWidth="378.0" />
+                        <Label layoutX="18.0" layoutY="75.0" text="Title" />
+                        <TextField layoutX="101.0" layoutY="190.0" prefHeight="27.0" prefWidth="378.0" />
+                        <Label layoutX="18.0" layoutY="195.0" text="Borrower" />
+                        <Label layoutX="18.0" layoutY="108.0" text="ISBN" />
+                        <TextField layoutX="101.0" layoutY="107.0" prefHeight="27.0" prefWidth="378.0" />
+                        <DatePicker layoutX="101.0" layoutY="227.0" />
+                        <Label layoutX="17.0" layoutY="232.0" text="Return Date" />
+                     </children>
+                  </AnchorPane>
             </content>
           </Tab>
             <Tab text="View Catalogue">
@@ -61,5 +69,7 @@
             </Tab>
         </tabs>
       </TabPane>
+      <Label layoutX="17.0" layoutY="78.0" text="Author" />
+      <TextField layoutX="101.0" layoutY="73.0" prefHeight="27.0" prefWidth="378.0" />
     </children>
 </AnchorPane>
