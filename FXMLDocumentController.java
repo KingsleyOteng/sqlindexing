@@ -16,13 +16,19 @@ import javafx.scene.control.Label;
 /**
  *
  * @author kwadwooteng-amoako
+ * @date  10 August 2019
+ * @description Controller for the FXML
+ *
  */
 public class FXMLDocumentController implements Initializable {
     
     @FXML
     private Label label;
+    
     @FXML
-    private Button button;
+    private Button myButton;
+    
+
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -30,9 +36,17 @@ public class FXMLDocumentController implements Initializable {
         label.setText("Hello World!");
     }
     
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
+   @FXML
+    private void borrowpage_button(ActionEvent event) {
+       System.out.println("You clicked me!");
+       label.setText("Hello World!");
+    }
+    
+   
 }
