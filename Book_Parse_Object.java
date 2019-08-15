@@ -36,6 +36,7 @@ public class Book_Parse_Object {
     static private String linkURLSmallThumbNail;
     static private String linkURLLargeThumbNail;
     static private String borrowDate;
+    static private String urlidentifier;
     static private String returnDate;
     static private Boolean found;
     
@@ -197,6 +198,12 @@ public class Book_Parse_Object {
             Book_Parse_Object.pageCount = pageCount;
         };
     
+    
+    void setThumbNailIndentifier(String URLidentifier)
+        {
+            Book_Parse_Object.urlidentifier = URLidentifier;
+        };
+        
     String getPrintType()
     {
         return Book_Parse_Object.printType;
@@ -252,6 +259,11 @@ public class Book_Parse_Object {
         return (isbn_type == 0) ? Book_Parse_Object.isbn10 : Book_Parse_Object.isbn10 ;
     }
             
+    String getThumbNailIndentifier()
+        {
+            return Book_Parse_Object.urlidentifier;
+        };
+     
     int getCopy()
     {
         return 1;

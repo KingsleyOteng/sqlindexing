@@ -182,7 +182,11 @@ public class GoogleBooksApi_Interface_LookUp {
                                             
                                             // set isbn identifier
                                             case "identifier" :         bpo.setIdentifier(matcher_general.group(1));
-                                            break;                 
+                                            break;    
+                                            
+                                            // set tumbnail reference
+                                            case "smallThumbnail" :     bpo.setThumbNailIndentifier(matcher_general.group(1));
+                                            break;   
                                             
                                             // capture the introduced value
                                             case "XX" :

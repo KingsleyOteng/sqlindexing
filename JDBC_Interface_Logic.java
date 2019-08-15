@@ -279,7 +279,7 @@ void setDBEntry
                 printType = printType.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
                 
                 
-                st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+printType+"','"+bpo.getAuthor()+"','"+bpo.getCategory()+"','"+bpo.getCategoryDescription()+"','"+bpo.getBookID()+"','"+bpo.getBookBorrowDate()+"','"+bpo.getBookDueDate()+"','"+bpo.getBookID()+"','"+bpo.getISBNs(0)+"','"+bpo.getISBNs(1)+"','"+bpo.getCopy()+"','"+bpo.getLocation()+"')");
+                st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+printType+"','"+bpo.getAuthor()+"','"+bpo.getCategory()+"','"+bpo.getCategoryDescription()+"','"+bpo.getBookID()+"','"+bpo.getBookBorrowDate()+"','"+bpo.getBookDueDate()+"','"+bpo.getBookID()+"','"+bpo.getISBNs(0)+"','"+bpo.getISBNs(1)+"','"+bpo.getCopy()+"','"+bpo.getLocation()+"','"+bpo.getThumbNailIndentifier()+"')");
 
                 
                 cn.close();
