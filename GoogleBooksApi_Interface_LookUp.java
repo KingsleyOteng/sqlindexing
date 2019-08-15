@@ -104,7 +104,7 @@ public class GoogleBooksApi_Interface_LookUp {
                                 String matched_group;
                                 matched_group = matcher_general.group(0);
                                 String[] testString;
-                                testString = new String[] { "XX", "authors", "title", "subtitle", "publisher", "publicationDate", "categories", "country", "thumbnail", "printType", "pageCount"};
+                                testString = new String[] { "XX", "authors", "title", "subtitle", "publisher", "publicationDate", "categories", "country", "smallThumbnail", "printType", "pageCount"};
                                 List<String> testStringList = Arrays.asList(testString);
                                 
                                 //for (String s : testString)
