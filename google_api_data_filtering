@@ -1,0 +1,37 @@
+Pattern p_general;
+Matcher matched_block;
+String matched_group;
+String[] keyWords;
+String[] array_of_matched_block;
+List<String> keywords_aslist;
+List<String> list_of_matched_block;
+HashSet<String> intersection = new HashSet<>();
+
+
+
+				p_general = Pattern.compile("\\s+?\"[A-Za-z]+\":\\s+?(\"?\\[?[A-Za-z0-9+#:/'.\\s+&_=?\"-]+\\]?\"?)");
+				matched_block = p_general.matcher(character_stream);
+
+				// create a keyword dictionary and store as a type list
+         keywords = new String[] { "XX", "authors", "title", "subtitle", "publisher", "publicationDate", "categories", "country", "smallThumbnail", "printType", "pageCount"};
+				 keywords_aslist = Arrays.asList(keywords);
+				
+				// now store the list of keywords in a hashes
+				 intersection.addAll(keywords_aslist);
+
+				while(matched_block.find()) 
+				{
+			 
+					// capture the entire regular expression output (i.e. keyword + message string); introduce a wildcard XX - where the regular expression returns nothing the wildcard will allow checking against our dictionary
+           matched_group = matcher_block.group(0);
+					 matched_group = stringMatcherPhrase+"#XX";
+                                
+					// store the entire expression as an array of string for the set of returned phrases; before converting to a list
+			     array_of_matched_block  = matched_group.split("\\b+");
+           list_of_matched_block = Arrays.asList(array_of_matched_block);
+
+					// check to see whether the current list has any of the keywords; we check against the hashes of keywords any filtering out all keywords from the returned regular expression
+					// limits in this approach are predicate upon our keyword phrases are unique and will not be contained in the actual message string
+					 intersection.retainAll(list_of_matched_block);
+
+			 	 }
