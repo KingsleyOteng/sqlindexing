@@ -44,19 +44,37 @@ public class GoogleBooksApi_Interface_LookUp {
      String ISBN_locator      
     ) throws MalformedURLException, IOException   
     {
-            
+                    Pattern p_general;
+                    Book_Parse_Object bpo;
+                    String output;
+                    BufferedReader br;
+                    StringBuilder value;
+                    char[] buffer;
+                    URL url;
+                    int count;
+                    int groupCount;
+                    String[] testString;
+                    String parseResult;
+                    Matcher matcher_general;
+                    List<String> testStringList;
+                    String stringMatcherPhrase;
+                    HashSet<String> intersection;
+                    String matchedPhrase;
+                    String[] spltStringMatcherPhrase;
+                    Object[] stringIntersection;
+                            
                     //create an object to hold the parse results
-                    Book_Parse_Object bpo = new Book_Parse_Object();
+                    bpo = new Book_Parse_Object();
 
                     //setup connection to the google api
                     //search for book based off of the isbn
-                    URL url = new URL(GOOGLE_BOOK_SEARCH_URL+ISBN_locator);
+                    url = new URL(GOOGLE_BOOK_SEARCH_URL+ISBN_locator);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("GET");
                     conn.setRequestProperty("Accept", "application/json");
-                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    StringBuilder value = new StringBuilder();
-                    char[] buffer = new char[1024];
+                    br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    value = new StringBuilder();
+                    buffer = new char[1024];
                     
                     for (int length = 0x0; (length = br.read(buffer)) > 0;) {
                         value.append(buffer, 0, length);   
@@ -65,12 +83,9 @@ public class GoogleBooksApi_Interface_LookUp {
                     System.out.println("block contents: " + value.toString());
                     System.out.println("length of block:  " + value.length());
                     
-                    String output;
+                    
 
-                    Pattern p_general;
-                     //p_general = Pattern.compile("\"?\\w*\"?:?");
-                     //p_general = Pattern.compile("\"\\w*\":?");
-                     p_general = Pattern.compile("\\s+?\"[A-Za-z]+\":\\s+?(\"?\\[?[A-Za-z0-9+#:/'.\\s+&_=?\"-]+\\]?\"?)");
+                    p_general = Pattern.compile("\\s+?\"[A-Za-z]+\":\\s+?(\"?\\[?[A-Za-z0-9+#:/'.\\s+&_=?\"-]+\\]?\"?)");
                      
                     System.out.println("Output from Server .... \n");
                     int i = 1;
@@ -78,13 +93,13 @@ public class GoogleBooksApi_Interface_LookUp {
                         {
                             
                             i++;
-                            Matcher matcher_general = p_general.matcher(value);
+                            matcher_general = p_general.matcher(value);
                             
 
-                            String parseResult = "";
+                            parseResult = "";
                             
-                            int count = 0;
-                            int groupCount = matcher_general.groupCount();
+                            count = 0;
+                            groupCount = matcher_general.groupCount();
                             while(matcher_general.find()) {
                                 
                                 System.out.println("group count "+groupCount);
@@ -101,22 +116,21 @@ public class GoogleBooksApi_Interface_LookUp {
                                 // we throw the the regex key to a case statement which will then match
                                 //switch(matcher_general.group(0))
                                 
-                                String matched_group;
-                                matched_group = matcher_general.group(0);
-                                String[] testString;
+                                //String matched_group;
+                                //matched_group = matcher_general.group(0);
                                 testString = new String[] { "XX", "authors", "title", "subtitle", "publisher", "publicationDate", "categories", "country", "smallThumbnail", "printType", "pageCount"};
-                                List<String> testStringList = Arrays.asList(testString);
+                                testStringList = Arrays.asList(testString);
                                 
                                 //for (String s : testString)
                                 String s;
                                 String y;
 
                                s = matcher_general.group(1);
-                               String stringMatcherPhrase = matcher_general.group(0);
+                               stringMatcherPhrase = matcher_general.group(0);
                                // add a terminator to the end of the phrase
                                stringMatcherPhrase = stringMatcherPhrase+"#XX";
                                
-                               String[] spltStringMatcherPhrase  = stringMatcherPhrase.split("\\b+");
+                               spltStringMatcherPhrase  = stringMatcherPhrase.split("\\b+");
                                
                                List<String> testSpltStringMatcherPhrase;
                                testSpltStringMatcherPhrase = Arrays.asList(spltStringMatcherPhrase);
@@ -125,7 +139,7 @@ public class GoogleBooksApi_Interface_LookUp {
                                 // initially seartch such that only candidate strings are searched
                                 testStringList.contains(testSpltStringMatcherPhrase);
                                
-                                HashSet<String> intersection = new HashSet<>();
+                                intersection = new HashSet<>();
                                
                                 // add the set of key fields
                                 intersection.addAll(testStringList);
@@ -134,13 +148,13 @@ public class GoogleBooksApi_Interface_LookUp {
                                 intersection.retainAll(testSpltStringMatcherPhrase);
                                
                                 // convert from hashset to array
-                                Object[] stringIntersection = intersection.toArray();                              
+                                stringIntersection = intersection.toArray();                              
                                 
                                 bpo.setIdentifier(ISBN_locator);
                                 //cycle through the set of phrases scraped from
                                 for (Object stringIntersection1 : stringIntersection) {
                                     // backout the current match phrase which will be used to update the database keyfield
-                                    String matchedPhrase = stringIntersection1.toString();
+                                    matchedPhrase = stringIntersection1.toString();
                                     if ((Arrays.asList(spltStringMatcherPhrase).contains(matchedPhrase)) && (!"XX".equals(matchedPhrase)))
                                     {   
                                         
@@ -190,15 +204,14 @@ public class GoogleBooksApi_Interface_LookUp {
                                             
                                             // capture the introduced value
                                             case "XX" :
-                                                break;
+                                            break;
                                                 
                                             // break
                                             default :
-                                                break;
+                                            break;
                                         }
                                     }
                                 }
-                                //System.out.println(matcher_general.find("author"));
                            
                             
                             
