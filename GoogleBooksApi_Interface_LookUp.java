@@ -30,19 +30,8 @@ public class GoogleBooksApi_Interface_LookUp {
     public static final String GOOGLE_BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=isbn:";
     
     
-    void database_find_book
-    (
-            String ISBN_locator 
-    ) 
-            throws MalformedURLException, IOException
-    {
-            
-    };
-    
-    Book_Parse_Object google_find_book
-    (
-     String ISBN_locator      
-    ) throws MalformedURLException, IOException   
+    GoogleBooksApi_Interface_LookUp
+    ()
     {
                     Pattern p_general;
                     Book_Parse_Object bpo;
@@ -61,7 +50,41 @@ public class GoogleBooksApi_Interface_LookUp {
                     HashSet<String> intersection;
                     String matchedPhrase;
                     String[] spltStringMatcherPhrase;
-                    Object[] stringIntersection;
+                    Object[] stringIntersection;   
+    };
+    
+    void database_find_book
+    (
+            String ISBN_locator 
+    ) 
+            throws MalformedURLException, IOException
+    {
+            
+    };
+    
+    Book_Parse_Object google_find_book
+    (
+     String ISBN_locator      
+    ) throws MalformedURLException, IOException   
+    {
+                   Pattern p_general;
+                   Book_Parse_Object bpo;
+                   String output;
+                   BufferedReader br;
+                   StringBuilder value;
+                   char[] buffer;
+                   URL url;
+                   int count;
+                   int groupCount;
+                   String[] testString;
+                   String parseResult;
+                   Matcher matcher_general;
+                   List<String> testStringList;
+                   String stringMatcherPhrase;
+                   HashSet<String> intersection;
+                   String matchedPhrase;
+                   String[] spltStringMatcherPhrase;
+                   Object[] stringIntersection;
                             
                     //create an object to hold the parse results
                     bpo = new Book_Parse_Object();
