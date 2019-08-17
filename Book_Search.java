@@ -47,9 +47,16 @@ public class Book_Search {
             throws MalformedURLException, IOException, SQLException
     {
             
+            JDBC_Interface_Logic sql_handle;
+            GoogleBooksApi_Interface_LookUp google_handle;
+            String borrow_date;
+            String return_date;
+            
+            //Book_Parse_Object BPO1, BPO2;
+            
             //First search the local database and if found do nothing else
-            JDBC_Interface_Logic sql_handle                 = new JDBC_Interface_Logic ();
-            GoogleBooksApi_Interface_LookUp google_handle   = new GoogleBooksApi_Interface_LookUp ();
+            sql_handle                 = new JDBC_Interface_Logic ();
+            google_handle   = new GoogleBooksApi_Interface_LookUp ();
             Book_Parse_Object BPO1, BPO2 = new Book_Parse_Object ();
             
             // where the sql search is successful, proceed
@@ -63,8 +70,8 @@ public class Book_Search {
                 {
                        // where the sql seart is not succesful proceed with a google search
                     BPO1 = google_handle.google_find_book (ISBN_locator);
-                    String borrow_date = "20191130";
-                    String return_date = "20191101";
+                    borrow_date = "20191130";
+                    return_date = "20191101";
                     sql_handle.setBorrowDates ( BPO1, borrow_date, return_date );
                     sql_handle.setDBEntry ( BPO1 );
                     System.out.println ("-------------------------------------------------> Searching using google....");
