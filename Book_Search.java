@@ -55,7 +55,7 @@ public class Book_Search {
             //Book_Parse_Object BPO1, BPO2;
             
             //First search the local database and if found do nothing else
-            sql_handle                 = new JDBC_Interface_Logic ();
+            //sql_handle                 = new JDBC_Interface_Logic ();
             //google_handle   = new GoogleBooksApi_Interface_LookUp ();
             Book_Parse_Object BPO1, BPO2 = new Book_Parse_Object ();
             
