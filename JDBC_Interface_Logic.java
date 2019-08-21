@@ -208,15 +208,23 @@ void catalogue
     )   
     
     {
+        
+             // Pull up the catalogue of books
+                SimpleDateFormat format;
+                Date parsed;
+                java.sql.Date sqlDateBorrowed;
+                java.sql.Date sqlDateDue;
+                
+                
             try 
             {
                 // Pull up the catalogue of books
-                SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-                Date parsed = format.parse(dateBorrowed);
-                java.sql.Date sqlDateBorrowed = new java.sql.Date(parsed.getTime ());
+                format = new SimpleDateFormat("yyyyMMdd");
+                parsed = format.parse(dateBorrowed);
+                sqlDateBorrowed = new java.sql.Date(parsed.getTime ());
                 
                 parsed = format.parse(dateDue);
-                java.sql.Date sqlDateDue = new java.sql.Date(parsed.getTime ());
+                sqlDateDue = new java.sql.Date(parsed.getTime ());
                 
                 // insert the book catalogue details into the database
                 st.executeUpdate("INSERT INTO BookDB.Catalogue  " + "VALUES( '"+bookName+"','"+author+"','"+category+"','"+categoryDescription+"','"+bookID+"','"+sqlDateBorrowed+"','"+sqlDateDue+"','"+ISBNs[0]+"','"+ISBNs[1]+"','"+copy+"','"+location+"')");
@@ -353,11 +361,7 @@ void returns
                 conn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
                 s = (Statement) conn2.createStatement ();
                 rs = s.executeQuery("SELECT * FROM BookDB.BookedRecords WHERE BookID4 = '9101112131415161718'");
-                //System.out.println(rs.toString());
-           //     System.out.println("00000");
-            //    String ln = rs.getString("LastName");
-              //  System.out.print(ln);
-               //   System.out.println("00001");
+    
                 while (rs.next())
                 {
                             System.out.println("hello");
