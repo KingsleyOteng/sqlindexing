@@ -67,6 +67,8 @@ public class Book_Search {
             
             // where the sql object is successful created, proceed to search
             BPO1 = sql_handle.jdbc_find_book(ISBN_locator);
+            
+            // work though the SQL objects and the SQL tables
             if (BPO1.getSearchResult ())
                 {
                     System.out.println("-------------------------------------------------> Searching using sql....");     
@@ -75,10 +77,15 @@ public class Book_Search {
             else 
                 {
                     // where the sql seart is not succesful proceed with a google search
+                    // pass the class an ISBN locator as a type string - it then returns an object with the filled parameters
                     BPO1 = google_handle.google_find_book (ISBN_locator);
+                    
+                    // let us store the object in the SQL table; using the object returned set the corresponding data parameters
                     borrow_date = "20191130";
                     return_date = "20191101";
                     sql_handle.setBorrowDates ( BPO1, borrow_date, return_date );
+                    
+                    // store the borrowing object in the SQL database
                     sql_handle.setDBEntry ( BPO1 );
                     System.out.println ("-------------------------------------------------> Searching using google....");
                 }
