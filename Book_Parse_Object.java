@@ -41,32 +41,33 @@ public class Book_Parse_Object {
     static private Boolean found;
     
     Book_Parse_Object()
-        {
-            Book_Parse_Object.bookTitle = "";
-            Book_Parse_Object.bookAuthors = "";
-            Book_Parse_Object.isbn10 = "";
-            Book_Parse_Object.isbn13 = "";
-            Book_Parse_Object.publisher = "";
-            Book_Parse_Object.publicationDate = "";
-            Book_Parse_Object.pageCount = 0;
-            Book_Parse_Object.printType = "";
-            Book_Parse_Object.mainCategory = "";
-            Book_Parse_Object.lanugageDesignator = "";
-            Book_Parse_Object.linkURLSmallThumbNail = "";
-            Book_Parse_Object.linkURLLargeThumbNail = "";
-            Book_Parse_Object.borrowDate = "";
-            Book_Parse_Object.returnDate = "";
-            Book_Parse_Object.found = false;
-            
-        };
+    {
+        Book_Parse_Object.bookTitle = "";
+        Book_Parse_Object.bookAuthors = "";
+        Book_Parse_Object.isbn10 = "";
+        Book_Parse_Object.isbn13 = "";
+        Book_Parse_Object.publisher = "";
+        Book_Parse_Object.publicationDate = "";
+        Book_Parse_Object.pageCount = 0;
+        Book_Parse_Object.printType = "";
+        Book_Parse_Object.mainCategory = "";
+        Book_Parse_Object.lanugageDesignator = "";
+        Book_Parse_Object.linkURLSmallThumbNail = "";
+        Book_Parse_Object.linkURLLargeThumbNail = "";
+        Book_Parse_Object.borrowDate = "";
+        Book_Parse_Object.returnDate = "";
+        Book_Parse_Object.found = false;
+
+    };
     
     
+    // the method sets the books return date
     void setBookBorrowDate( String date)
     {
         Book_Parse_Object.borrowDate = date;
     }
     
-    // the method sets the return date
+    // the method sets the books due date
     void setBookDueDate( String date)
     {
         Book_Parse_Object.returnDate = date;
@@ -74,136 +75,150 @@ public class Book_Parse_Object {
     
     // routines to highlight whether a book has been found
     void setSearchResult(Boolean search_result)
-        {
-            Book_Parse_Object.found = search_result;
-           
-        };
+    {
+        Book_Parse_Object.found = search_result;
+
+    };
     
     // routines to highlight whether a book has been found
     Boolean getSearchResult()
-        {
-            return Book_Parse_Object.found;
-        };
-    
+    {
+        return Book_Parse_Object.found;
+    };
+
    // routines to update the object used for update the database
     void setPrintType(String printType)
-        {
-            printType = printType.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            printType = printType.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
-            Book_Parse_Object.printType = printType;
-           
-        };
-    
-    void setMainCategory(String mainCategory)
-        {
-            mainCategory = mainCategory.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            mainCategory = mainCategory.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
-            Book_Parse_Object.mainCategory = mainCategory;
-        };
-    
-    void setLanugageDesignator(String lanugageDesignator)
-        {
-            lanugageDesignator = lanugageDesignator.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            lanugageDesignator = lanugageDesignator.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
-            Book_Parse_Object.lanugageDesignator = lanugageDesignator;
-        };
-    
-    void setILinkURLSmallThumbNail(String linkURLSmallThumbNail)
-        {
-            linkURLSmallThumbNail = linkURLSmallThumbNail.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            linkURLSmallThumbNail = linkURLSmallThumbNail.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
-            Book_Parse_Object.linkURLSmallThumbNail = linkURLSmallThumbNail;
-        };
-    
-    void setCategories(String categories)
-        {
-            categories = categories.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            categories = categories.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
-            categories = categories.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            categories = categories.replaceAll("\\s+", REPLACEMENT_FLAGS_VALUE_SPACE);
-            Book_Parse_Object.mainCategory = categories;
-        };
-   
-     void setILinkURLLargeThumbNail(String linkURLLargeThumbNail)
-        {
-            linkURLLargeThumbNail = linkURLLargeThumbNail.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            linkURLLargeThumbNail = linkURLLargeThumbNail.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
-            Book_Parse_Object.linkURLLargeThumbNail = linkURLLargeThumbNail;
-        };
-    
-    void setBookTitle(String bookTitle)
-        {
-            bookTitle = bookTitle.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            bookTitle = bookTitle.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
-            Book_Parse_Object.bookTitle = bookTitle;
-        };
-    
-    void setBookAuthors(String bookAuthors)
-        {
-            bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
-            bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            bookAuthors = bookAuthors.replaceAll("\\s+", REPLACEMENT_FLAGS_VALUE_SPACE);
-            Book_Parse_Object.bookAuthors = bookAuthors;
-        };
-    
-    void setISBN10(String isbn10)
-        {
-            isbn10 = isbn10.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            isbn10 = isbn10.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
-            Book_Parse_Object.isbn10 = isbn10;
-        };
-    
-    void setISBN13(String isbn13)
-        {
-            isbn13 = isbn13.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            isbn13 = isbn13.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
-            Book_Parse_Object.isbn13 = isbn13;
-        };
-    
-    void setIdentifier(String ISBN)
-        {
-            ISBN = ISBN.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            
-     
-            
-            if (ISBN.length() > 10) 
-                    {
-                        Book_Parse_Object.isbn13 = ISBN;
-                    }
-            else 
-                    {
-                        Book_Parse_Object.isbn10 = ISBN;
-                    }
-        };
-    
-    void setPublisher(String publisher)
-        {
-            publisher = publisher.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            publisher = publisher.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
-            publisher = publisher.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            Book_Parse_Object.publisher = publisher;
-        };
-    
-    void setPublicationDate(String publicationDate)
-        {
-            publicationDate = publicationDate.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            publicationDate = publicationDate.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
-            publicationDate = publicationDate.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
-            publicationDate = publicationDate.replaceAll("\\s+", REPLACEMENT_FLAGS_VALUE_SPACE);
-            Book_Parse_Object.publicationDate = publicationDate;
-        };
+    {
+        printType = printType.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        printType = printType.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+        Book_Parse_Object.printType = printType;
 
+    };
+    
+    // the method sets the books category flag - perhaps this might be backed out from the ISBN number later
+    void setMainCategory(String mainCategory)
+    {
+        mainCategory = mainCategory.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        mainCategory = mainCategory.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+        Book_Parse_Object.mainCategory = mainCategory;
+    };
+    
+    // sets the books language flag
+    void setLanugageDesignator(String lanugageDesignator)
+    {
+        lanugageDesignator = lanugageDesignator.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        lanugageDesignator = lanugageDesignator.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+        Book_Parse_Object.lanugageDesignator = lanugageDesignator;
+    };
+    
+    // sets a link to the URL of the book
+    void setILinkURLSmallThumbNail(String linkURLSmallThumbNail)
+    {
+        linkURLSmallThumbNail = linkURLSmallThumbNail.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        linkURLSmallThumbNail = linkURLSmallThumbNail.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+        Book_Parse_Object.linkURLSmallThumbNail = linkURLSmallThumbNail;
+    };
+    
+    // sets a field for the book categorisation
+    void setCategories(String categories)
+    {
+        categories = categories.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        categories = categories.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+        categories = categories.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        categories = categories.replaceAll("\\s+", REPLACEMENT_FLAGS_VALUE_SPACE);
+        Book_Parse_Object.mainCategory = categories;
+    };
+   
+     // sets a link to the URL of the book - a large image
+     void setILinkURLLargeThumbNail(String linkURLLargeThumbNail)
+    {
+        linkURLLargeThumbNail = linkURLLargeThumbNail.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        linkURLLargeThumbNail = linkURLLargeThumbNail.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+        Book_Parse_Object.linkURLLargeThumbNail = linkURLLargeThumbNail;
+    };
+    
+    // sets the books title
+    void setBookTitle(String bookTitle)
+    {
+        bookTitle = bookTitle.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        bookTitle = bookTitle.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+        Book_Parse_Object.bookTitle = bookTitle;
+    };
+    
+    // sets the books author flag
+    void setBookAuthors(String bookAuthors)
+    {
+        bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+        bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        bookAuthors = bookAuthors.replaceAll("\\s+", REPLACEMENT_FLAGS_VALUE_SPACE);
+        Book_Parse_Object.bookAuthors = bookAuthors;
+    };
+
+    // sets the ISBN flag identifier - ISBN 10 format
+    void setISBN10(String isbn10)
+    {
+        isbn10 = isbn10.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        isbn10 = isbn10.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+        Book_Parse_Object.isbn10 = isbn10;
+    };
+
+      // sets the ISBN flag identifier - ISBN 13 format
+    void setISBN13(String isbn13)
+    {
+        isbn13 = isbn13.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        isbn13 = isbn13.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+        Book_Parse_Object.isbn13 = isbn13;
+    };
+
+    
+    // filters through and determines which ISBN format to store
+    void setIdentifier(String ISBN)
+    {
+        ISBN = ISBN.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+
+
+
+        if (ISBN.length() > 10) 
+                {
+                    Book_Parse_Object.isbn13 = ISBN;
+                }
+        else 
+                {
+                    Book_Parse_Object.isbn10 = ISBN;
+                }
+    };
+
+    // sets the books publisher flag
+    void setPublisher(String publisher)
+    {
+        publisher = publisher.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        publisher = publisher.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+        publisher = publisher.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        Book_Parse_Object.publisher = publisher;
+    };
+    
+    // sets the books publication date
+    void setPublicationDate(String publicationDate)
+    {
+        publicationDate = publicationDate.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        publicationDate = publicationDate.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
+        publicationDate = publicationDate.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
+        publicationDate = publicationDate.replaceAll("\\s+", REPLACEMENT_FLAGS_VALUE_SPACE);
+        Book_Parse_Object.publicationDate = publicationDate;
+    };
+
+    // sets the books page count flag
     void setPageCount(int pageCount)
-        {
-            Book_Parse_Object.pageCount = pageCount;
-        };
+    {
+        Book_Parse_Object.pageCount = pageCount;
+    };
     
-    
+    // ----- this identifier needs likely to be replaced
     void setThumbNailIndentifier(String URLidentifier)
-        {
-            Book_Parse_Object.urlidentifier = URLidentifier;
-        };
+    {
+        Book_Parse_Object.urlidentifier = URLidentifier;
+    };
         
     String getPrintType()
     {
@@ -261,9 +276,9 @@ public class Book_Parse_Object {
     }
             
     String getThumbNailIndentifier()
-        {
-            return Book_Parse_Object.urlidentifier;
-        };
+    {
+        return Book_Parse_Object.urlidentifier;
+    };
      
     int getCopy()
     {
