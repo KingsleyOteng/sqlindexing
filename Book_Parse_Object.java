@@ -66,6 +66,7 @@ public class Book_Parse_Object {
         Book_Parse_Object.borrowDate = date;
     }
     
+    // the method sets the return date
     void setBookDueDate( String date)
     {
         Book_Parse_Object.returnDate = date;
