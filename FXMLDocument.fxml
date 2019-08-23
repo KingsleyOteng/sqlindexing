@@ -95,6 +95,7 @@
                             <TableColumn fx:id="name" prefWidth="75.0" text="name" />
                               <TableColumn fx:id="year" prefWidth="75.0" text="year" />
                               <TableColumn fx:id="book" prefWidth="75.0" text="book" />
+                              <TableColumn fx:id="author" prefWidth="75.0" text="author" />
                           </columns>
                         </TableView>
                      </children></AnchorPane>

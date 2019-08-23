@@ -37,7 +37,7 @@ public class FXMLDocumentController implements Initializable {
     private TableView<LibraryBooksStatus> employee;
 
     @FXML
-    private TableColumn<LibraryBooksStatus, String> name,book;
+    private TableColumn<LibraryBooksStatus, String> name, book, author;
 
     @FXML
     private TableColumn<LibraryBooksStatus, Integer> id, year;
@@ -55,25 +55,25 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives"));
-        employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights"));
+        employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
+        employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
 
         year.setCellValueFactory(new PropertyValueFactory<>("year"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         book.setCellValueFactory(new PropertyValueFactory<>("book"));
+        author.setCellValueFactory(new PropertyValueFactory<>("author"));
     }
 
     @FXML
     private void borrowpage_button(ActionEvent event) {
         System.out.println("You clicked me!");
         //label.setText("Hello World!");
-       // fx_borrowpage_author.setText("author");
+        // fx_borrowpage_author.setText("author");
         //fx_borrowpage_title.setText("title");
         //fx_borrowpage_published.setText("published");
 
-       // System.out.println(fx_borrowpage_overview.getText());
-
+        // System.out.println(fx_borrowpage_overview.getText());
     }
 
 }
