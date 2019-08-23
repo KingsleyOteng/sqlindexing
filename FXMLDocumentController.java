@@ -15,7 +15,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -38,10 +37,10 @@ public class FXMLDocumentController implements Initializable {
     private TableView<LibraryBooksStatus> employee;
 
     @FXML
-    private TableColumn<LibraryBooksStatus, String> name;
+    private TableColumn<LibraryBooksStatus, String> name,book;
 
     @FXML
-    private TableColumn<LibraryBooksStatus, Integer> id, salary;
+    private TableColumn<LibraryBooksStatus, Integer> id, year;
 
     @FXML
     private void handleButtonAction(ActionEvent event, String Hello) {
@@ -56,12 +55,13 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100));
-        employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000));
+        employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives"));
+        employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights"));
 
-        salary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        year.setCellValueFactory(new PropertyValueFactory<>("year"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        book.setCellValueFactory(new PropertyValueFactory<>("book"));
     }
 
     @FXML
