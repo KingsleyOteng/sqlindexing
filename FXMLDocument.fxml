@@ -59,15 +59,6 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="View Catalogue">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="64.0" layoutY="26.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="653.0" text="Catalogue Status" />
-                        <TextField layoutX="65.0" layoutY="59.0" prefHeight="377.0" prefWidth="650.0" />
-                     </children></AnchorPane>
-               </content>
-            </Tab>
             <Tab text="Add Books">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="769.0">
@@ -89,6 +80,22 @@
                         <Label layoutX="14.0" layoutY="358.0" text="Borrower" />
                         <Label layoutX="14.0" layoutY="394.0" text="Year" />
                         <Button layoutX="133.0" layoutY="439.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="508.0" text="Add Item" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="View Catalogue">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="64.0" layoutY="26.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="678.0" text="Catalogue" />
+                        <TextField layoutX="65.0" layoutY="59.0" prefHeight="377.0" prefWidth="650.0" />
+                        <TableView fx:id="employee" layoutX="65.0" layoutY="59.0" prefHeight="377.0" prefWidth="678.0">
+                          <columns>
+                            <TableColumn fx:id="id" prefWidth="75.0" text="id" />
+                            <TableColumn fx:id="name" prefWidth="75.0" text="name" />
+                              <TableColumn fx:id="salary" prefWidth="75.0" text="salary" />
+                          </columns>
+                        </TableView>
                      </children></AnchorPane>
                </content>
             </Tab>
