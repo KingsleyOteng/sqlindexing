@@ -8,7 +8,7 @@ package BookWareHousing;
 /**
  *
  * @author kwadwooteng-amoako
- * @date  9 July 2019
+ * @date  23 August 2019
  * @description class mainly deals with formatting the output from google
  * 
  */
@@ -40,6 +40,7 @@ public class Book_Parse_Object {
     static private String returnDate;
     static private Boolean found;
     
+    // initializer
     Book_Parse_Object()
     {
         Book_Parse_Object.bookTitle = "";
@@ -219,72 +220,86 @@ public class Book_Parse_Object {
     {
         Book_Parse_Object.urlidentifier = URLidentifier;
     };
-        
+    
+    // get the books media type
     String getPrintType()
     {
         return Book_Parse_Object.printType;
     }
     
+    // obtain information on when the book was lent out
     String getBookBorrowDate()
     {
         return Book_Parse_Object.borrowDate;
     }
     
+    // obtain information detailing when the book is due back
     String getBookDueDate()
     {
         return Book_Parse_Object.returnDate;
     }
     
+    // obtain information related to the books name
     String getBookName()
     {
         return Book_Parse_Object.bookTitle;
     }
     
+    // obtain the books author
     String getAuthor()
     {
         return Book_Parse_Object.bookAuthors;
     }
     
+    // obtain the categorisation of the book
     String getCategory()
     {
         return Book_Parse_Object.mainCategory;
     }
     
+    // obtain a description of the categorisation of the book
     String getCategoryDescription()
     {
         return Book_Parse_Object.mainCategory;
     }
     
+    // obtain the book identification
     String getBookID()
     {
         return Book_Parse_Object.isbn10;
     }
     
+    // ----- likely needs to be deleted, double up
     String getSqlDateBorrowed()
     {
         return Book_Parse_Object.borrowDate;
     }
     
+    // ----- likely needs to be deleted, double up
     String getSqlDateDue()
     {
         return Book_Parse_Object.returnDate;
     }
       
+    // obtain the books isbn number
     String getISBNs(int isbn_type)
     {
         return (isbn_type == 0) ? Book_Parse_Object.isbn10 : Book_Parse_Object.isbn10 ;
     }
-            
+    
+    // obtain the url which points to the books image
     String getThumbNailIndentifier()
     {
         return Book_Parse_Object.urlidentifier;
     };
      
+    // obtain information detailing the version of the book
     int getCopy()
     {
         return 1;
     }
-                
+   
+    // obtain information detailing where the book is typically held
     String getLocation()
     {
         return Book_Parse_Object.lanugageDesignator;

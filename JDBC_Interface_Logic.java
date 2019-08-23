@@ -24,8 +24,9 @@ import java.util.Date;
 
 
 /**
- *
  * @author kwadwooteng-amoako
+ * @date  23 August 2019
+ * @description the following section captures the google api search routines
  */
 public class JDBC_Interface_Logic {
     
@@ -38,11 +39,12 @@ public class JDBC_Interface_Logic {
     
      /**
      * @author kwadwooteng-amoako
-     * @date  9 July 2019
+     * @date  23 August 2019
      * @description the following section captures the JDBC search routines
      *
      */
     
+    // initiate the JDBC logic interface
     JDBC_Interface_Logic() throws SQLException 
     {
             try
@@ -345,7 +347,8 @@ void returns
             }
     
     };
-    
+  
+  // the following method is used to obtain information from the SQL database
   void getDBEntry
     (
             String bookID
@@ -362,6 +365,7 @@ void returns
                 s = (Statement) conn2.createStatement ();
                 rs = s.executeQuery("SELECT * FROM BookDB.BookedRecords WHERE BookID4 = '9101112131415161718'");
     
+                // where we obtain information for the following SQL fields
                 while (rs.next())
                 {
                             System.out.println("hello");
