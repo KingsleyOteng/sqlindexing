@@ -22,7 +22,6 @@ public class LibraryBooksStatus {
         this.author = author;
     }
 
-    
     public int getId() {
         return id;
     }
@@ -36,13 +35,13 @@ public class LibraryBooksStatus {
     }
 
     public String getBook() {
-        return book; 
+        return book;
     }
-    
+
     public String getAuthor() {
-        return author; 
+        return author;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -54,21 +53,13 @@ public class LibraryBooksStatus {
     public void setName(String name) {
         this.name = name;
     }
-    
-    public void setBook(String book)
-    {
-        this.book = book; 
-    }
-    
-    public void setAuthor(String author)
-    {
-        this.author = author; 
-    }
-    
-    
 
-    
-    
-    
-    
+    public void setBook(String book) {
+        this.book = book;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
 }

@@ -5,7 +5,10 @@
  */
 package userinterface;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,7 +62,7 @@ public class FXMLDocumentController implements Initializable {
         employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
         employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
         employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
-        
+
         year.setCellValueFactory(new PropertyValueFactory<>("year"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -68,7 +71,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void borrowpage_button(ActionEvent event) {
+    private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException {
         System.out.println("You clicked me again!");
         //BookObject buch = new BookObject();
         //buch.setId(10);
@@ -76,32 +79,64 @@ public class FXMLDocumentController implements Initializable {
         //buch.setBook_name("The Holy Bible");
         //buch.setStudent_name("Christians");
         //buch.setStudent_year(200);
-        
+
+        BookObject[] bucher = new BookObject[1000];
+        bucher[0] = new BookObject();
+        bucher[1] = new BookObject();
+        //new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
+        bucher[1] = new BookObject(11, "kojo", 2019, "Book of Mormon", "Mormons");
+        bucher[0] = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
         BookObject buch = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
-        this.insert_book_entry(buch);
-        //label.setText("Hello World!");
-        // fx_borrowpage_author.setText("author");
-        //fx_borrowpage_title.setText("title");
-        //fx_borrowpage_published.setText("published")
-        // System.out.println(fx_borrowpage_overview.getText());
+        this.insert_book_entry(bucher);
+
+        JDBC_Controller socket = new JDBC_Controller();
+        socket.jdbc_find_book();
     }
-    
-    
-    
+
+// ----------------------------------------------->
     /**
-    *
-    * @author kwadwooteng-amoako
-    * @date 24 August 2019
-    * @description following method takes a book object and inserts it into table view
-    *
-    */
+     *
+     * @author kwadwooteng-amoako
+     * @date 24 August 2019
+     * @description following method takes a book object and inserts it into
+     * table view
+     *
+     */
     @FXML
-    private void insert_book_entry(BookObject bucher)
-    {
-      employee.getItems().add(new LibraryBooksStatus(bucher.getId(),bucher.getStudent_name(),bucher.getStudent_year(),bucher.getBook_name(),bucher.getAuthor()));
-    
-  
-    
+    private void insert_book_entry(BookObject bucher) {
+        // output to tableview
+        employee.getItems().add(new LibraryBooksStatus(bucher.getId(), bucher.getStudent_name(), bucher.getStudent_year(), bucher.getBook_name(), bucher.getAuthor()));
+
+    }
+
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 24 August 2019
+     * @description inserts an array into the table view
+     *
+     */
+    @FXML
+    private void insert_book_entry(BookObject bucher[]) {
+        // output the contents of the entire array
+        for (int i = 0; i <= (bucher.length); ++i) {
+            // exit when we reach the end of the array
+            if (bucher[i] == null) {
+                break;
+            }
+
+            // output to tableview
+            employee.getItems().add(new LibraryBooksStatus(bucher[i].getId(), bucher[i].getStudent_name(), bucher[i].getStudent_year(), bucher[i].getBook_name(), bucher[i].getAuthor()));
+        }
+    }
+
+    private void connect_to_sqldatabase() {
+
+    }
+
    
+    
+    private void print_hello() {
+        System.out.println("hello people");
     }
 }
