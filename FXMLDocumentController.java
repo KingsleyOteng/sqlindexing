@@ -81,16 +81,19 @@ public class FXMLDocumentController implements Initializable {
         //buch.setStudent_year(200);
 
         BookObject[] bucher = new BookObject[1000];
-        bucher[0] = new BookObject();
-        bucher[1] = new BookObject();
+        JDBC_Controller socket = new JDBC_Controller();
+        bucher = socket.jdbc_find_book( bucher);
+        
+        //bucher[0] = new BookObject();
+        //bucher[1] = new BookObject();
         //new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
-        bucher[1] = new BookObject(11, "kojo", 2019, "Book of Mormon", "Mormons");
-        bucher[0] = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
-        BookObject buch = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
+        //bucher[1] = new BookObject(11, "kojo", 2019, "Book of Mormon", "Mormons");
+        //bucher[0] = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
+        //BookObject buch = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
+       
         this.insert_book_entry(bucher);
 
-        JDBC_Controller socket = new JDBC_Controller();
-        socket.jdbc_find_book();
+        
     }
 
 // ----------------------------------------------->
