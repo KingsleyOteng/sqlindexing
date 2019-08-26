@@ -18,6 +18,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -34,16 +36,31 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button button1;
+    
+    @FXML
+    // note togglegroup and togglebuttons must be defined in controller class
+    private ToggleButton  button_title, button_author, button_isbn;
+    
+    @FXML
+    // note togglegroup and togglebuttons must be defined in controller class
+    private final ToggleGroup toggleGroup = new ToggleGroup();
+        
     private TextField borrow_author;
 
     @FXML
-    private TableView<LibraryBooksStatus> employee;
+    private TableView<LibraryBooksStatus> employee, employee1, employee2;
 
     @FXML
-    private TableColumn<LibraryBooksStatus, String> name, book, author;
+    private TableColumn<LibraryBooksStatus, String> name, book, author, name1, book1, status;
 
     @FXML
     private TableColumn<LibraryBooksStatus, Integer> id, year;
+
+    public FXMLDocumentController() {
+        //this.toggleGroup = new ToggleGroup();
+        
+       
+    }
 
     @FXML
     private void handleButtonAction(ActionEvent event, String Hello) {
@@ -68,6 +85,14 @@ public class FXMLDocumentController implements Initializable {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         book.setCellValueFactory(new PropertyValueFactory<>("book"));
         author.setCellValueFactory(new PropertyValueFactory<>("author"));
+       
+        
+        //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
+        button_title.setToggleGroup(toggleGroup);
+        button_author.setToggleGroup(toggleGroup);
+        button_isbn.setToggleGroup(toggleGroup);
+       
+
     }
 
     @FXML
@@ -111,6 +136,8 @@ public class FXMLDocumentController implements Initializable {
         employee.getItems().add(new LibraryBooksStatus(bucher.getId(), bucher.getStudent_name(), bucher.getStudent_year(), bucher.getBook_name(), bucher.getAuthor()));
 
     }
+    
+    
 
     /**
      *
@@ -142,4 +169,12 @@ public class FXMLDocumentController implements Initializable {
     private void print_hello() {
         System.out.println("hello people");
     }
+    
+    
+    
+    
+   
+
+
+    
 }
