@@ -20,9 +20,9 @@
                      <children>
                         <Pane fx:id="search_tab" layoutX="-6.0" prefHeight="587.0" prefWidth="791.0">
                            <children>
-                              <ToggleButton fx:id="button_title" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" onAction="#toggle_group_action" prefHeight="27.0" prefWidth="205.0" text="Title" />
-                              <ToggleButton fx:id="button_author" layoutX="298.0" layoutY="65.0" mnemonicParsing="false" onAction="#toggle_group_action" prefHeight="27.0" prefWidth="207.0" text="Author" />
-                              <ToggleButton fx:id="button_isbn" layoutX="513.0" layoutY="65.0" mnemonicParsing="false" onAction="#toggle_group_action" prefHeight="27.0" prefWidth="209.0" text="ISBN" />
+                              <ToggleButton fx:id="button_title" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" onAction="#toggle_group_action" prefHeight="27.0" prefWidth="210.0" text="Title" />
+                              <ToggleButton fx:id="button_author" layoutX="305.0" layoutY="65.0" mnemonicParsing="false" onAction="#toggle_group_action" prefHeight="27.0" prefWidth="210.0" text="Author" />
+                              <ToggleButton fx:id="button_isbn" layoutX="525.0" layoutY="65.0" mnemonicParsing="false" onAction="#toggle_group_action" prefHeight="27.0" prefWidth="210.0" text="ISBN" />
                            </children>
                         </Pane>
                         <ImageView fitHeight="37.0" fitWidth="40.0" layoutX="31.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
@@ -30,9 +30,9 @@
                               <Image url="file:/Users/kwadwooteng-amoako/right-pointing-magnifying-glass_1f50e%20(1).png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="fxsearchtab_search" layoutX="79.0" layoutY="21.0" prefHeight="38.0" prefWidth="637.0" promptText="Search by title, author or ISBN" />
-                        <Text layoutX="730.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
-                        <TableView fx:id="employee1" layoutX="79.0" layoutY="100.0" prefHeight="467.0" prefWidth="637.0">
+                        <TextField fx:id="fxsearchtab_search" layoutX="79.0" layoutY="21.0" prefHeight="38.0" prefWidth="649.0" promptText="Search by title, author or ISBN" />
+                        <Text layoutX="735.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
+                        <TableView fx:id="employee1" layoutX="79.0" layoutY="100.0" prefHeight="467.0" prefWidth="648.0">
                            <columns>
                               <TableColumn fx:id="book1" prefWidth="362.0" text="book" />
                               <TableColumn fx:id="author1" minWidth="0.0" prefWidth="159.0" text="author" />
@@ -65,8 +65,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="register_studentnumber" layoutX="64.0" layoutY="72.0" mnemonicParsing="false" onAction="#borrowpage_button" prefHeight="36.0" prefWidth="220.0" text="surname" />
-                        <TableView fx:id="employee2" layoutX="65.0" layoutY="112.0" prefHeight="464.0" prefWidth="678.0">
+                        <TableView fx:id="employee2" layoutX="65.0" layoutY="105.0" prefHeight="471.0" prefWidth="650.0">
                            <columns>
                               <TableColumn fx:id="id1" prefWidth="75.0" text="id" />
                               <TableColumn fx:id="name1" prefWidth="75.0" text="name" />
@@ -75,15 +74,15 @@
                               <TableColumn fx:id="author2" prefWidth="75.0" text="author" />
                            </columns>
                         </TableView>
-                        <Text layoutX="670.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
-                        <TextField layoutX="65.0" layoutY="29.0" prefHeight="37.0" prefWidth="678.0" promptText="Search by student surname" />
+                        <TextField layoutX="65.0" layoutY="29.0" prefHeight="37.0" prefWidth="650.0" promptText="Search by student number, surname or firstname" />
                         <ImageView fitHeight="38.0" fitWidth="44.0" layoutX="14.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="file:/Users/kwadwooteng-amoako/right-pointing-magnifying-glass_1f50e%20(1).png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="register_lastname" layoutX="294.0" layoutY="72.0" mnemonicParsing="false" onAction="#borrowpage_button" prefHeight="36.0" prefWidth="220.0" text="first name" />
-                        <Button fx:id="register_studentlastname" layoutX="523.0" layoutY="72.0" mnemonicParsing="false" onAction="#borrowpage_button" prefHeight="36.0" prefWidth="220.0" text="#id" />
+                        <ToggleButton fx:id="register_surnames" layoutX="65.0" layoutY="72.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="210.0" text="surnames" />
+                        <ToggleButton fx:id="register_firstnames" layoutX="285.0" layoutY="72.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="210.0" text="firstnames" />
+                        <ToggleButton fx:id="register_ids" layoutX="505.0" layoutY="72.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="210.0" text="number" />
                      </children>
                   </AnchorPane>
                </content>
@@ -92,15 +91,15 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField layoutX="83.0" layoutY="74.0" prefHeight="27.0" prefWidth="409.0" />
+                        <TextField layoutX="80.0" layoutY="77.0" prefHeight="27.0" prefWidth="700.0" />
                         <Label layoutX="5.0" layoutY="75.0" text="Title" />
-                        <TextField layoutX="87.0" layoutY="190.0" prefHeight="27.0" prefWidth="405.0" />
+                        <TextField layoutX="80.0" layoutY="190.0" prefHeight="27.0" prefWidth="700.0" />
                         <Label layoutX="6.0" layoutY="195.0" text="Borrower" />
                         <Label layoutX="6.0" layoutY="108.0" text="ISBN" />
-                        <TextField layoutX="84.0" layoutY="107.0" prefHeight="27.0" prefWidth="408.0" />
-                        <DatePicker layoutX="88.0" layoutY="227.0" prefHeight="27.0" prefWidth="207.0" />
+                        <TextField layoutX="80.0" layoutY="107.0" prefHeight="27.0" prefWidth="700.0" />
+                        <DatePicker layoutX="80.0" layoutY="227.0" prefHeight="27.0" prefWidth="207.0" />
                         <Label layoutX="4.0" layoutY="232.0" text="Return Date" />
-                        <Button layoutX="93.0" layoutY="331.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="396.0" text="RETURN" />
+                        <Button layoutX="80.0" layoutY="331.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="700.0" text="Return" />
                         <Text layoutX="670.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" wrappingWidth="120.21875" />
                      </children>
                   </AnchorPane>
@@ -142,34 +141,30 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="769.0">
                      <children>
-                        <TextField layoutX="133.0" layoutY="38.0" prefHeight="27.0" prefWidth="509.0" />
-                        <TextField layoutX="133.0" layoutY="72.0" prefHeight="27.0" prefWidth="509.0" />
-                        <TextField layoutX="133.0" layoutY="107.0" prefHeight="27.0" prefWidth="509.0" />
-                        <TextField layoutX="133.0" layoutY="142.0" prefHeight="27.0" prefWidth="509.0" />
-                        <TextField layoutX="133.0" layoutY="177.0" prefHeight="27.0" prefWidth="509.0" />
-                        <TextField layoutX="133.0" layoutY="213.0" prefHeight="104.0" prefWidth="509.0" />
-                        <TextField layoutX="133.0" layoutY="353.0" prefHeight="27.0" prefWidth="509.0" />
-                        <TextField layoutX="133.0" layoutY="389.0" prefHeight="27.0" prefWidth="508.0" />
+                        <TextField layoutX="80.0" layoutY="38.0" prefHeight="27.0" prefWidth="550.0" />
+                        <TextField layoutX="80.0" layoutY="72.0" prefHeight="27.0" prefWidth="550.0" />
+                        <TextField layoutX="80.0" layoutY="107.0" prefHeight="27.0" prefWidth="550.0" />
+                        <TextField layoutX="80.0" layoutY="142.0" prefHeight="27.0" prefWidth="550.0" />
+                        <TextField layoutX="80.0" layoutY="177.0" prefHeight="27.0" prefWidth="550.0" />
+                        <TextField layoutX="80.0" layoutY="213.0" prefHeight="104.0" prefWidth="550.0" />
+                        <TextField layoutX="80.0" layoutY="353.0" prefHeight="27.0" prefWidth="550.0" />
+                        <TextField layoutX="80.0" layoutY="389.0" prefHeight="27.0" prefWidth="550.0" />
                         <Label layoutX="14.0" layoutY="43.0" text="Author" />
                         <Label layoutX="14.0" layoutY="77.0" text="Title" />
                         <Label layoutX="14.0" layoutY="112.0" text="Published" />
-                        <Label layoutX="14.0" layoutY="156.0" text="Category" />
+                        <Label layoutX="14.0" layoutY="147.0" text="Category" />
                         <Label layoutX="14.0" layoutY="182.0" text="ISBN" />
-                        <Label layoutX="14.0" layoutY="213.0" text="Description" />
+                        <Label layoutX="14.0" layoutY="213.0" text="Brief" />
                         <Label layoutX="14.0" layoutY="358.0" text="Borrower" />
                         <Label layoutX="14.0" layoutY="394.0" text="Year" />
-                        <Button layoutX="133.0" layoutY="439.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="508.0" text="Add Item" />
+                        <Button layoutX="80.0" layoutY="439.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="550.0" text="Add Item" />
                         <Text layoutX="670.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
                      </children></AnchorPane>
                </content>
             </Tab>
             <Tab text="About">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Text layoutX="670.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" wrappingWidth="120.21875" />
-                     </children>
-                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
             </Tab>
         </tabs>

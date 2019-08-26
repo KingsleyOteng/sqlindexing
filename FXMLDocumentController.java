@@ -39,11 +39,21 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
-    private ToggleButton button_title, button_author, button_isbn;
+    private ToggleButton button_title, button_author, button_isbn, register_surnames, register_firstnames, register_ids;
+
+    
+    //@FXML
+    // note togglegroup and togglebuttons must be defined in controller class
+    //private ToggleButton b2;
+            //register_firstname, register_lastname, register_studentidnumber;
 
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
     private final ToggleGroup toggleGroup = new ToggleGroup();
+    
+    @FXML
+    // note togglegroup and togglebuttons must be defined in controller class
+    private final ToggleGroup toggleGroupStudentRegister = new ToggleGroup();
 
     private TextField borrow_author;
 
@@ -74,11 +84,15 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        employee.setPlaceholder(new Label("Search books"));
+        employee1.setPlaceholder(new Label("Search books"));
+        employee2.setPlaceholder(new Label("Search students"));
+        
         employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
         employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
         employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
         employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
-
+        
         year.setCellValueFactory(new PropertyValueFactory<>("year"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -93,7 +107,15 @@ public class FXMLDocumentController implements Initializable {
         button_isbn.setToggleGroup(toggleGroup);
         button_isbn.setUserData("isbn");
         
-        System.out.println(toggleGroup.getSelectedToggle());
+        //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
+        register_firstnames.setToggleGroup(toggleGroupStudentRegister);
+        register_firstnames.setUserData("firstname");
+        register_surnames.setToggleGroup(toggleGroupStudentRegister);
+        register_surnames.setUserData("lastname");
+        register_ids.setToggleGroup(toggleGroupStudentRegister);
+        register_ids.setUserData("studentnumber");
+        
+        //System.out.println(toggleGroup.getSelectedToggle());
 
     }
 

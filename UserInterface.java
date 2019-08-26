@@ -23,6 +23,8 @@ public class UserInterface extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
     
+        //AcnhorPane anch1 = loader.load()
+   
         
         Scene scene = new Scene(root);
 
