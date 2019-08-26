@@ -36,15 +36,15 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button button1;
-    
+
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
-    private ToggleButton  button_title, button_author, button_isbn;
-    
+    private ToggleButton button_title, button_author, button_isbn;
+
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
     private final ToggleGroup toggleGroup = new ToggleGroup();
-        
+
     private TextField borrow_author;
 
     @FXML
@@ -58,8 +58,7 @@ public class FXMLDocumentController implements Initializable {
 
     public FXMLDocumentController() {
         //this.toggleGroup = new ToggleGroup();
-        
-       
+
     }
 
     @FXML
@@ -85,13 +84,16 @@ public class FXMLDocumentController implements Initializable {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         book.setCellValueFactory(new PropertyValueFactory<>("book"));
         author.setCellValueFactory(new PropertyValueFactory<>("author"));
-       
-        
+
         //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
         button_title.setToggleGroup(toggleGroup);
+        button_title.setUserData("title");
         button_author.setToggleGroup(toggleGroup);
+        button_author.setUserData("author");
         button_isbn.setToggleGroup(toggleGroup);
-       
+        button_isbn.setUserData("isbn");
+        
+        System.out.println(toggleGroup.getSelectedToggle());
 
     }
 
@@ -107,18 +109,16 @@ public class FXMLDocumentController implements Initializable {
 
         BookObject[] bucher = new BookObject[1000];
         JDBC_Controller socket = new JDBC_Controller();
-        bucher = socket.jdbc_find_book( bucher);
-        
+        bucher = socket.jdbc_find_book(bucher);
+
         //bucher[0] = new BookObject();
         //bucher[1] = new BookObject();
         //new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
         //bucher[1] = new BookObject(11, "kojo", 2019, "Book of Mormon", "Mormons");
         //bucher[0] = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
         //BookObject buch = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
-       
         this.insert_book_entry(bucher);
 
-        
     }
 
 // ----------------------------------------------->
@@ -136,8 +136,6 @@ public class FXMLDocumentController implements Initializable {
         employee.getItems().add(new LibraryBooksStatus(bucher.getId(), bucher.getStudent_name(), bucher.getStudent_year(), bucher.getBook_name(), bucher.getAuthor()));
 
     }
-    
-    
 
     /**
      *
@@ -163,18 +161,23 @@ public class FXMLDocumentController implements Initializable {
     private void connect_to_sqldatabase() {
 
     }
-
-   
     
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 26 August 2019
+     * @description will return the button in the toggle key depressed; if we combine that with a search to sql we may dynamically display names
+     *
+     */
+    @FXML
+    private void toggle_group_action()
+    {    
+          String btnDepressedId = toggleGroup.getSelectedToggle().getUserData().toString();
+          System.out.println(btnDepressedId);
+    };
+
     private void print_hello() {
         System.out.println("hello people");
     }
-    
-    
-    
-    
-   
 
-
-    
 }
