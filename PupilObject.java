@@ -10,7 +10,7 @@ package userinterface;
  * @author kwadwooteng-amoako
  */
 public class PupilObject {
-    
+
     private int numberofbooksborrowed, date, timestamp;
     private String lastname, firstname, classwhenrecordcreated, borrowerid, school, bookid;
     private static String library;
@@ -119,5 +119,4 @@ public class PupilObject {
         PupilObject.library = library;
     }
 
-    
 }

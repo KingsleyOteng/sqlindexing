@@ -41,36 +41,43 @@ public class FXMLDocumentController implements Initializable {
     // note togglegroup and togglebuttons must be defined in controller class
     private ToggleButton button_title, button_author, button_isbn, register_surnames, register_firstnames, register_ids;
 
-    
     //@FXML
     // note togglegroup and togglebuttons must be defined in controller class
     //private ToggleButton b2;
-            //register_firstname, register_lastname, register_studentidnumber;
-
+    //register_firstname, register_lastname, register_studentidnumber;
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
     private final ToggleGroup toggleGroup = new ToggleGroup();
-    
+
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
     private final ToggleGroup toggleGroupStudentRegister = new ToggleGroup();
 
     private TextField borrow_author;
-    
-    @FXML 
-    private TextField fxsearchtab_search = new TextField();
-    
-    @FXML 
-    private TextField studentsearchquery = new TextField();
 
     @FXML
-    private TableView<LibraryBooksStatus> employee, employee1, employee2;
+    private TextField fxsearchtab_search = new TextField();
 
+    @FXML
+    private TextField newsearch = new TextField();
+
+    @FXML
+    private TableView<LibraryBooksStatus> employee, employee1;
+    
+     @FXML
+    private TableView<StudentRegisterStatus> employee2;
+     
     @FXML
     private TableColumn<LibraryBooksStatus, String> name, book, author, name1, book1, status;
+    
+    @FXML
+    private TableColumn<StudentRegisterStatus, String> name_sregister, book_sregister, author_sregister;
 
     @FXML
     private TableColumn<LibraryBooksStatus, Integer> id, year;
+    
+    @FXML
+    private TableColumn<StudentRegisterStatus, Integer> id_sregister, year_sregister;
 
     public FXMLDocumentController() {
         //this.toggleGroup = new ToggleGroup();
@@ -93,11 +100,21 @@ public class FXMLDocumentController implements Initializable {
         employee.setPlaceholder(new Label("Search books"));
         employee1.setPlaceholder(new Label("Search books"));
         employee2.setPlaceholder(new Label("Search students"));
+
+        employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
+        employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
+        employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
+        employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
+
+        employee2.getItems().add(new StudentRegisterStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
         
-        employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
-        employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
-        employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
-        employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
+        year_sregister.setCellValueFactory(new PropertyValueFactory<>("year"));
+        id_sregister.setCellValueFactory(new PropertyValueFactory<>("id"));
+        name_sregister.setCellValueFactory(new PropertyValueFactory<>("name"));
+        book_sregister.setCellValueFactory(new PropertyValueFactory<>("book"));
+        author_sregister.setCellValueFactory(new PropertyValueFactory<>("author"));
+        
+
         
         year.setCellValueFactory(new PropertyValueFactory<>("year"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -112,7 +129,7 @@ public class FXMLDocumentController implements Initializable {
         button_author.setUserData("author");
         button_isbn.setToggleGroup(toggleGroup);
         button_isbn.setUserData("isbn");
-        
+
         //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
         register_firstnames.setToggleGroup(toggleGroupStudentRegister);
         register_firstnames.setUserData("firstname");
@@ -120,9 +137,8 @@ public class FXMLDocumentController implements Initializable {
         register_surnames.setUserData("lastname");
         register_ids.setToggleGroup(toggleGroupStudentRegister);
         register_ids.setUserData("studentnumber");
-        
-        //System.out.println(toggleGroup.getSelectedToggle());
 
+        //System.out.println(toggleGroup.getSelectedToggle());
     }
 
     @FXML
@@ -158,23 +174,22 @@ public class FXMLDocumentController implements Initializable {
         //buch.setBook_name("The Holy Bible");
         //buch.setStudent_name("Christians");
         //buch.setStudent_year(200);
-        
+
         String btnDepressedId = new String();
         String searchQuery = new String();
         System.out.println("-->");
-        
-        btnDepressedId= toggleGroupStudentRegister.getSelectedToggle().getUserData().toString();
-        searchQuery = studentsearchquery.getText();
-        System.out.println("-->"+btnDepressedId+searchQuery+" ");
-        
-        System.out.println("fx"+fxsearchtab_search.getText());
-        System.out.println("ss"+studentsearchquery.getText());
-        
-        
+
+        btnDepressedId = toggleGroupStudentRegister.getSelectedToggle().getUserData().toString();
+        searchQuery = newsearch.getText();
+        System.out.println("-->" + btnDepressedId + searchQuery + " ");
+
+        System.out.println("fx" + fxsearchtab_search.getText());
+        System.out.println("ss" + newsearch.getText());
+
         PupilObject[] kinder = new PupilObject[1000];
         JDBC_Controller socket = new JDBC_Controller();
-        
-        kinder = socket.jdbc_find_student(kinder, toggleGroupStudentRegister.getSelectedToggle().getUserData().toString(), studentsearchquery.getText());
+
+        kinder = socket.jdbc_find_student(kinder, toggleGroupStudentRegister.getSelectedToggle().getUserData().toString(), newsearch.getText());
 
         //bucher[0] = new BookObject();
         //bucher[1] = new BookObject();
@@ -222,42 +237,49 @@ public class FXMLDocumentController implements Initializable {
             employee.getItems().add(new LibraryBooksStatus(bucher[i].getId(), bucher[i].getStudent_name(), bucher[i].getStudent_year(), bucher[i].getBook_name(), bucher[i].getAuthor()));
         }
     }
-    
+
     @FXML
     private void insert_students_entry(PupilObject kinder[]) {
         // output the contents of the entire array
+         employee2.getItems().add(new StudentRegisterStatus(1, "otengamoako", 2, "989898", "3"));
+         
         for (int i = 0; i <= (kinder.length); ++i) {
             // exit when we reach the end of the array
             if (kinder[i] == null) {
                 break;
             }
-
+            
             // output to tableview
-            employee2.getItems().add(new LibraryBooksStatus(1, kinder[i].getLastname(), 2, kinder[i].getBookid(), ""));
+            //employee2.getItems().add(new LibraryBooksStatus(1, kinder[i].getLastname(), 2, kinder[i].getBookid(), ""));
+           
         }
+            System.out.println("run");
+         employee2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
     }
 
     private void search_pane_query() {
         String btnDepressedId = new String();
         String searchQuery = new String();
-        
-        btnDepressedId= toggleGroup.getSelectedToggle().getUserData().toString();
+
+        btnDepressedId = toggleGroup.getSelectedToggle().getUserData().toString();
         searchQuery = fxsearchtab_search.getText();
     }
-    
+
     /**
      *
      * @author kwadwooteng-amoako
      * @date 26 August 2019
-     * @description will return the button in the toggle key depressed; if we combine that with a search to sql we may dynamically display names
+     * @description will return the button in the toggle key depressed; if we
+     * combine that with a search to sql we may dynamically display names
      *
      */
     @FXML
-    private void toggle_group_action()
-    {    
-          String btnDepressedId = toggleGroup.getSelectedToggle().getUserData().toString();
-          System.out.println(btnDepressedId);
-    };
+    private void toggle_group_action() {
+        String btnDepressedId = toggleGroup.getSelectedToggle().getUserData().toString();
+        System.out.println(btnDepressedId);
+    }
+
+    ;
 
     private void print_hello() {
         System.out.println("hello people");

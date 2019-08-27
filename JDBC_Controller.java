@@ -156,12 +156,14 @@ public class JDBC_Controller {
                 obj[i].setBookid(rs.getString("BookID"));
                 obj[i].setBorrowerid(rs.getString("BorrowerID"));
                 obj[i].setClasswhenrecordcreated(rs.getString("ClassWhenRecordCreated"));
-                obj[i].setDate(Integer.parseInt(rs.getString("Date")));
+                //obj[i].setDate((rs.getString("Date")));
+                obj[i].setDate(1);
                 obj[i].setFirstname(rs.getString("FirstName"));
                 obj[i].setLastname(rs.getString("LastName"));
                 obj[i].setNumberofbooksborrowed(Integer.parseInt(rs.getString("NumberOfBooksBorrowed")));
                 obj[i].setSchool(rs.getString("School"));
-                obj[i].setTimestamp(Integer.parseInt(rs.getString("TimeStamp")));
+                //obj[i].setTimestamp(Integer.parseInt(rs.getString("TimeStamp")));
+                obj[i].setTimestamp(2);
                 i++;
                 
                 //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));

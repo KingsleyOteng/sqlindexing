@@ -43,7 +43,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="School Catalogue">
+            <Tab fx:id="newsearchtext" text="School Catalogue">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -61,20 +61,20 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab text="Students Register">
+            <Tab fx:id="studentsearchqueryss" text="Students Register">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="employee2" layoutX="65.0" layoutY="105.0" prefHeight="471.0" prefWidth="650.0">
+                        <TableView fx:id="employee2" layoutX="65.0" layoutY="105.0" onSort="#searchpage_query" prefHeight="471.0" prefWidth="650.0">
                            <columns>
-                              <TableColumn fx:id="id1" prefWidth="75.0" text="id" />
-                              <TableColumn fx:id="name1" prefWidth="75.0" text="name" />
-                              <TableColumn fx:id="year1" prefWidth="75.0" text="year" />
-                              <TableColumn fx:id="book2" prefWidth="75.0" text="book" />
-                              <TableColumn fx:id="author2" prefWidth="75.0" text="author" />
+                              <TableColumn fx:id="id_sregister" prefWidth="75.0" text="id" />
+                              <TableColumn fx:id="name_sregister" prefWidth="75.0" text="name" />
+                              <TableColumn fx:id="year_sregister" prefWidth="75.0" text="year" />
+                              <TableColumn fx:id="book_sregister" prefWidth="75.0" text="book" />
+                              <TableColumn fx:id="author_sregister" prefWidth="75.0" text="author" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="studentsearchquery" layoutX="65.0" layoutY="29.0" onAction="#searchpage_query" prefHeight="37.0" prefWidth="650.0" promptText="Search by student number, surname or firstname" />
+                        <TextField fx:id="newsearch" layoutX="65.0" layoutY="29.0" onAction="#searchpage_query" prefHeight="37.0" prefWidth="650.0" promptText="Search by student number, surname or firstname" />
                         <ImageView fitHeight="38.0" fitWidth="44.0" layoutX="14.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="file:/Users/kwadwooteng-amoako/right-pointing-magnifying-glass_1f50e%20(1).png" />
