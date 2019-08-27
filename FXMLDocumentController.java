@@ -56,6 +56,12 @@ public class FXMLDocumentController implements Initializable {
     private final ToggleGroup toggleGroupStudentRegister = new ToggleGroup();
 
     private TextField borrow_author;
+    
+    @FXML 
+    private TextField fxsearchtab_search = new TextField();
+    
+    @FXML 
+    private TextField studentsearchquery = new TextField();
 
     @FXML
     private TableView<LibraryBooksStatus> employee, employee1, employee2;
@@ -143,6 +149,43 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    @FXML
+    private void searchpage_query(ActionEvent event) throws MalformedURLException, IOException, SQLException {
+        System.out.println("You student search me again!");
+        //BookObject buch = new BookObject();
+        //buch.setId(10);
+        //buch.setAuthor("God");
+        //buch.setBook_name("The Holy Bible");
+        //buch.setStudent_name("Christians");
+        //buch.setStudent_year(200);
+        
+        String btnDepressedId = new String();
+        String searchQuery = new String();
+        System.out.println("-->");
+        
+        btnDepressedId= toggleGroupStudentRegister.getSelectedToggle().getUserData().toString();
+        searchQuery = studentsearchquery.getText();
+        System.out.println("-->"+btnDepressedId+searchQuery+" ");
+        
+        System.out.println("fx"+fxsearchtab_search.getText());
+        System.out.println("ss"+studentsearchquery.getText());
+        
+        
+        PupilObject[] kinder = new PupilObject[1000];
+        JDBC_Controller socket = new JDBC_Controller();
+        
+        kinder = socket.jdbc_find_student(kinder, toggleGroupStudentRegister.getSelectedToggle().getUserData().toString(), studentsearchquery.getText());
+
+        //bucher[0] = new BookObject();
+        //bucher[1] = new BookObject();
+        //new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
+        //bucher[1] = new BookObject(11, "kojo", 2019, "Book of Mormon", "Mormons");
+        //bucher[0] = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
+        //BookObject buch = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
+        this.insert_students_entry(kinder);
+
+    }
+
 // ----------------------------------------------->
     /**
      *
@@ -179,9 +222,27 @@ public class FXMLDocumentController implements Initializable {
             employee.getItems().add(new LibraryBooksStatus(bucher[i].getId(), bucher[i].getStudent_name(), bucher[i].getStudent_year(), bucher[i].getBook_name(), bucher[i].getAuthor()));
         }
     }
+    
+    @FXML
+    private void insert_students_entry(PupilObject kinder[]) {
+        // output the contents of the entire array
+        for (int i = 0; i <= (kinder.length); ++i) {
+            // exit when we reach the end of the array
+            if (kinder[i] == null) {
+                break;
+            }
 
-    private void connect_to_sqldatabase() {
+            // output to tableview
+            employee2.getItems().add(new LibraryBooksStatus(1, kinder[i].getLastname(), 2, kinder[i].getBookid(), ""));
+        }
+    }
 
+    private void search_pane_query() {
+        String btnDepressedId = new String();
+        String searchQuery = new String();
+        
+        btnDepressedId= toggleGroup.getSelectedToggle().getUserData().toString();
+        searchQuery = fxsearchtab_search.getText();
     }
     
     /**

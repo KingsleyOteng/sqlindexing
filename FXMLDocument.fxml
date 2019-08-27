@@ -74,7 +74,7 @@
                               <TableColumn fx:id="author2" prefWidth="75.0" text="author" />
                            </columns>
                         </TableView>
-                        <TextField layoutX="65.0" layoutY="29.0" prefHeight="37.0" prefWidth="650.0" promptText="Search by student number, surname or firstname" />
+                        <TextField fx:id="studentsearchquery" layoutX="65.0" layoutY="29.0" onAction="#searchpage_query" prefHeight="37.0" prefWidth="650.0" promptText="Search by student number, surname or firstname" />
                         <ImageView fitHeight="38.0" fitWidth="44.0" layoutX="14.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="file:/Users/kwadwooteng-amoako/right-pointing-magnifying-glass_1f50e%20(1).png" />
