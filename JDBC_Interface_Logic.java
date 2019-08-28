@@ -76,12 +76,7 @@ Book_Parse_Object jdbc_find_book(
                 bpo.setBookTitle(rs.getString("BookName"));
                 bpo.setCategories(rs.getString("CategoryDescription"));
                 bpo.setMainCategory(rs.getString("Category"));
-                //bpo.setILinkURLLargeThumbNail(ISBN_locator);
-                //bpo.setILinkURLSmallThumbNail(ISBN_locator);
-                //bpo.setISBN10(ISBN_locator);
-                //bpo.setISBN13(ISBN_locator);
-                //bpo.setPageCount(0);
-                //bpo.setPrintType(ISBN_locator);
+             
 
             }
         } catch (ClassNotFoundException | SQLException e) {

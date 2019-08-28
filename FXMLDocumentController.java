@@ -111,22 +111,20 @@ public class FXMLDocumentController implements Initializable {
         employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
 
         employee.getColumns().addListener(new ListChangeListener() {
-        public boolean suspended;    
-            
-        @Override
-        public void onChanged(Change change) {
-            
-          change.next();
-          if(change.wasReplaced()) {
-              employee.getColumns().clear();
-              employee.getColumns().addAll(year,id,name, book,author);
-             
-          }
-        }
+            public boolean suspended;
+
+            @Override
+            public void onChanged(Change change) {
+
+                change.next();
+                if (change.wasReplaced()) {
+                    employee.getColumns().clear();
+                    employee.getColumns().addAll(year, id, name, book, author);
+
+                }
+            }
         });
-        
-        
-                
+
         //employee2.getItems().add(new StudentRegisterStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
         year_sregister.setCellValueFactory(new PropertyValueFactory<>("year"));
         id_sregister.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -139,7 +137,7 @@ public class FXMLDocumentController implements Initializable {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         book.setCellValueFactory(new PropertyValueFactory<>("book"));
         author.setCellValueFactory(new PropertyValueFactory<>("author"));
-        
+
         //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
         button_title.setToggleGroup(toggleGroup);
         button_title.setUserData("title");
@@ -157,7 +155,6 @@ public class FXMLDocumentController implements Initializable {
         register_ids.setUserData("studentnumber");
 
         //System.out.println(toggleGroup.getSelectedToggle());
-        
     }
 
     @FXML
@@ -234,7 +231,7 @@ public class FXMLDocumentController implements Initializable {
     private void insert_book_entry(BookObject bucher) throws InterruptedException {
         // output to tableview
         employee.getItems().add(new LibraryBooksStatus(bucher.getId(), bucher.getStudent_name(), bucher.getStudent_year(), bucher.getBook_name(), bucher.getAuthor()));
-        
+
     }
 
     /**
@@ -247,7 +244,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void insert_book_entry(BookObject bucher[]) throws InterruptedException {
         // output the contents of the entire array
-        for (int i = 0; i <= (bucher.length); ++i) {
+        for (int i = 0x0; i <= (bucher.length); ++i) {
             // exit when we reach the end of the array
             if (bucher[i] == null) {
                 break;
@@ -256,7 +253,7 @@ public class FXMLDocumentController implements Initializable {
             // output to tableview
             employee.getItems().add(new LibraryBooksStatus(bucher[i].getId(), bucher[i].getStudent_name(), bucher[i].getStudent_year(), bucher[i].getBook_name(), bucher[i].getAuthor()));
         }
-     
+
     }
 
     @FXML
@@ -264,20 +261,18 @@ public class FXMLDocumentController implements Initializable {
         // output the contents of the entire array
         //employee2.getItems().add(new StudentRegisterStatus(1, "otengamoako", 2, "989898", "3"));
 
-        for (int i = 0; i <= (kinder.length); ++i) {
+        for (int i = 0x0; i <= (kinder.length); ++i) {
             // exit when we reach the end of the array
             if (kinder[i] == null) {
                 break;
             }
-            
-        
 
             // output to tableview
             //employee2.getItems().add(new LibraryBooksStatus(1, kinder[i].getLastname(), 2, kinder[i].getBookid(), ""));
         }
         System.out.println("run");
         employee2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
-        
+
     }
 
     private void search_pane_query() {
@@ -300,7 +295,9 @@ public class FXMLDocumentController implements Initializable {
     private void toggle_group_action() {
         String btnDepressedId = toggleGroup.getSelectedToggle().getUserData().toString();
         System.out.println(btnDepressedId);
-    };
+    }
+
+    ;
 
     private void print_hello() {
         System.out.println("hello people");

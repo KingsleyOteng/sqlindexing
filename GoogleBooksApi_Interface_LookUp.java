@@ -131,7 +131,7 @@ public class GoogleBooksApi_Interface_LookUp {
                 testString = new String[]{"XX", "authors", "title", "subtitle", "publisher", "publicationDate", "categories", "country", "smallThumbnail", "printType", "pageCount"};
                 testStringList = Arrays.asList(testString);
 
-                //for (String s : testString)
+               
                 String s;
                 String y;
 
