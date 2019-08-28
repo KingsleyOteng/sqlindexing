@@ -5,11 +5,15 @@
  */
 package userinterface;
 
+import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.stream.Stream;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -63,19 +67,19 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TableView<LibraryBooksStatus> employee, employee1;
-    
-     @FXML
+
+    @FXML
     private TableView<StudentRegisterStatus> employee2;
-     
+
     @FXML
     private TableColumn<LibraryBooksStatus, String> name, book, author, name1, book1, status;
-    
+
     @FXML
     private TableColumn<StudentRegisterStatus, String> name_sregister, book_sregister, author_sregister;
 
     @FXML
     private TableColumn<LibraryBooksStatus, Integer> id, year;
-    
+
     @FXML
     private TableColumn<StudentRegisterStatus, Integer> id_sregister, year_sregister;
 
@@ -106,22 +110,36 @@ public class FXMLDocumentController implements Initializable {
         employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
         employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
 
-        employee2.getItems().add(new StudentRegisterStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
+        employee.getColumns().addListener(new ListChangeListener() {
+        public boolean suspended;    
+            
+        @Override
+        public void onChanged(Change change) {
+            
+          change.next();
+          if(change.wasReplaced()) {
+              employee.getColumns().clear();
+              employee.getColumns().addAll(year,id,name, book,author);
+             
+          }
+        }
+        });
         
+        
+                
+        //employee2.getItems().add(new StudentRegisterStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
         year_sregister.setCellValueFactory(new PropertyValueFactory<>("year"));
         id_sregister.setCellValueFactory(new PropertyValueFactory<>("id"));
         name_sregister.setCellValueFactory(new PropertyValueFactory<>("name"));
         book_sregister.setCellValueFactory(new PropertyValueFactory<>("book"));
         author_sregister.setCellValueFactory(new PropertyValueFactory<>("author"));
-        
 
-        
         year.setCellValueFactory(new PropertyValueFactory<>("year"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         book.setCellValueFactory(new PropertyValueFactory<>("book"));
         author.setCellValueFactory(new PropertyValueFactory<>("author"));
-
+        
         //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
         button_title.setToggleGroup(toggleGroup);
         button_title.setUserData("title");
@@ -139,10 +157,11 @@ public class FXMLDocumentController implements Initializable {
         register_ids.setUserData("studentnumber");
 
         //System.out.println(toggleGroup.getSelectedToggle());
+        
     }
 
     @FXML
-    private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException {
+    private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
         System.out.println("You clicked me again!");
         //BookObject buch = new BookObject();
         //buch.setId(10);
@@ -162,11 +181,12 @@ public class FXMLDocumentController implements Initializable {
         //bucher[0] = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
         //BookObject buch = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
         this.insert_book_entry(bucher);
+        Thread.sleep(1000);
 
     }
 
     @FXML
-    private void searchpage_query(ActionEvent event) throws MalformedURLException, IOException, SQLException {
+    private void searchpage_query(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
         System.out.println("You student search me again!");
         //BookObject buch = new BookObject();
         //buch.setId(10);
@@ -198,7 +218,7 @@ public class FXMLDocumentController implements Initializable {
         //bucher[0] = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
         //BookObject buch = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
         this.insert_students_entry(kinder);
-
+        Thread.sleep(1000);
     }
 
 // ----------------------------------------------->
@@ -211,10 +231,10 @@ public class FXMLDocumentController implements Initializable {
      *
      */
     @FXML
-    private void insert_book_entry(BookObject bucher) {
+    private void insert_book_entry(BookObject bucher) throws InterruptedException {
         // output to tableview
         employee.getItems().add(new LibraryBooksStatus(bucher.getId(), bucher.getStudent_name(), bucher.getStudent_year(), bucher.getBook_name(), bucher.getAuthor()));
-
+        
     }
 
     /**
@@ -225,7 +245,7 @@ public class FXMLDocumentController implements Initializable {
      *
      */
     @FXML
-    private void insert_book_entry(BookObject bucher[]) {
+    private void insert_book_entry(BookObject bucher[]) throws InterruptedException {
         // output the contents of the entire array
         for (int i = 0; i <= (bucher.length); ++i) {
             // exit when we reach the end of the array
@@ -236,25 +256,28 @@ public class FXMLDocumentController implements Initializable {
             // output to tableview
             employee.getItems().add(new LibraryBooksStatus(bucher[i].getId(), bucher[i].getStudent_name(), bucher[i].getStudent_year(), bucher[i].getBook_name(), bucher[i].getAuthor()));
         }
+     
     }
 
     @FXML
-    private void insert_students_entry(PupilObject kinder[]) {
+    private void insert_students_entry(PupilObject kinder[]) throws InterruptedException {
         // output the contents of the entire array
-         employee2.getItems().add(new StudentRegisterStatus(1, "otengamoako", 2, "989898", "3"));
-         
+        //employee2.getItems().add(new StudentRegisterStatus(1, "otengamoako", 2, "989898", "3"));
+
         for (int i = 0; i <= (kinder.length); ++i) {
             // exit when we reach the end of the array
             if (kinder[i] == null) {
                 break;
             }
             
+        
+
             // output to tableview
             //employee2.getItems().add(new LibraryBooksStatus(1, kinder[i].getLastname(), 2, kinder[i].getBookid(), ""));
-           
         }
-            System.out.println("run");
-         employee2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
+        System.out.println("run");
+        employee2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
+        
     }
 
     private void search_pane_query() {
@@ -277,9 +300,7 @@ public class FXMLDocumentController implements Initializable {
     private void toggle_group_action() {
         String btnDepressedId = toggleGroup.getSelectedToggle().getUserData().toString();
         System.out.println(btnDepressedId);
-    }
-
-    ;
+    };
 
     private void print_hello() {
         System.out.println("hello people");
