@@ -14,9 +14,11 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -101,6 +103,31 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        ObservableList columns = employee.getColumns();
+        
+        
+        employee.getColumns().addListener(new ListChangeListener() {
+            public boolean suspended;
+            ObservableList columns = employee.getColumns();
+            String x = columns.get(0).toString();
+        
+            
+            
+            @Override
+            public void onChanged(Change change) {
+                
+                change.next();
+                if (change.wasReplaced()) {
+                    employee.getColumns().clear();
+                    employee.getColumns().addAll(id,name,year,book,author);
+                    employee.refresh();
+
+                }
+            }
+        });
+
+       
         employee.setPlaceholder(new Label("Search books"));
         employee1.setPlaceholder(new Label("Search books"));
         employee2.setPlaceholder(new Label("Search students"));
@@ -110,20 +137,8 @@ public class FXMLDocumentController implements Initializable {
         employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
         employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
 
-        employee.getColumns().addListener(new ListChangeListener() {
-            public boolean suspended;
-
-            @Override
-            public void onChanged(Change change) {
-
-                change.next();
-                if (change.wasReplaced()) {
-                    employee.getColumns().clear();
-                    employee.getColumns().addAll(year, id, name, book, author);
-
-                }
-            }
-        });
+        
+        
 
         //employee2.getItems().add(new StudentRegisterStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
         year_sregister.setCellValueFactory(new PropertyValueFactory<>("year"));
@@ -155,6 +170,7 @@ public class FXMLDocumentController implements Initializable {
         register_ids.setUserData("studentnumber");
 
         //System.out.println(toggleGroup.getSelectedToggle());
+
     }
 
     @FXML
