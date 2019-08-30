@@ -61,10 +61,10 @@ public class FXMLDocumentController implements Initializable {
     private TextField borrow_author;
 
     @FXML
-    private TextField fxsearchtab_search = new TextField();
+    private final TextField fxsearchtab_search = new TextField();
 
     @FXML
-    private TextField newsearch = new TextField();
+    private final TextField newsearch = new TextField();
 
     @FXML
     private TableView<LibraryBooksStatus> schoolCatalogueTable, searchTableCatalogue;
