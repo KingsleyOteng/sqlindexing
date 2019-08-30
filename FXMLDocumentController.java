@@ -5,20 +5,19 @@
  */
 package userinterface;
 
-import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Arrays;
+
 import java.util.ResourceBundle;
-import java.util.stream.Stream;
+
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -68,16 +67,19 @@ public class FXMLDocumentController implements Initializable {
     private TextField newsearch = new TextField();
 
     @FXML
-    private TableView<LibraryBooksStatus> employee, employee1;
+    private TableView<LibraryBooksStatus> schoolCatalogueTable, searchTableCatalogue;
 
     @FXML
-    private TableView<StudentRegisterStatus> employee2;
+    private TableView<StudentRegisterStatus> table2;
 
     @FXML
     private TableColumn<LibraryBooksStatus, String> name, book, author, name1, book1, status;
 
     @FXML
     private TableColumn<StudentRegisterStatus, String> name_sregister, book_sregister, author_sregister;
+
+    @FXML
+    private TableColumn<LibraryBooksStatus, String> author_search, book_search, status_search;
 
     @FXML
     private TableColumn<LibraryBooksStatus, Integer> id, year;
@@ -103,44 +105,74 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        ObservableList columns = employee.getColumns();
-        
-        
-        employee.getColumns().addListener(new ListChangeListener() {
+
+        // listener to reset table ordering after a move; table search
+        searchTableCatalogue.getColumns().addListener(new ListChangeListener() {
             public boolean suspended;
-            ObservableList columns = employee.getColumns();
+            ObservableList columns = searchTableCatalogue.getColumns();
             String x = columns.get(0).toString();
-        
-            
-            
+
             @Override
-            public void onChanged(Change change) {
-                
+            public void onChanged(ListChangeListener.Change change) {
+
                 change.next();
                 if (change.wasReplaced()) {
-                    employee.getColumns().clear();
-                    employee.getColumns().addAll(id,name,year,book,author);
-                    employee.refresh();
+                    searchTableCatalogue.getColumns().clear();
+                    searchTableCatalogue.getColumns().addAll(book_search, author_search, status_search);
+                    searchTableCatalogue.refresh();
 
                 }
             }
         });
 
-       
-        employee.setPlaceholder(new Label("Search books"));
-        employee1.setPlaceholder(new Label("Search books"));
-        employee2.setPlaceholder(new Label("Search students"));
+        // listener to reset table ordering after a move; table search
+        schoolCatalogueTable.getColumns().addListener(new ListChangeListener() {
+            public boolean suspended;
+            ObservableList columns = schoolCatalogueTable.getColumns();
+            String x = columns.get(0).toString();
 
-        employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
-        employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
-        employee.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
-        employee.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
+            @Override
+            public void onChanged(Change change) {
 
-        
-        
+                change.next();
+                if (change.wasReplaced()) {
+                    schoolCatalogueTable.getColumns().clear();
+                    schoolCatalogueTable.getColumns().addAll(id, name, year, book, author);
+                    schoolCatalogueTable.refresh();
 
-        //employee2.getItems().add(new StudentRegisterStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
+                }
+            }
+        });
+
+        // listener to reset table ordering after a move; table school catalogue
+        table2.getColumns().addListener(new ListChangeListener() {
+            public boolean suspended;
+            ObservableList columns = schoolCatalogueTable.getColumns();
+            String x = columns.get(0).toString();
+
+            @Override
+            public void onChanged(ListChangeListener.Change change) {
+
+                change.next();
+                if (change.wasReplaced()) {
+                    table2.getColumns().clear();
+                    table2.getColumns().addAll(id_sregister, name_sregister, year_sregister, book_sregister, author_sregister);
+                    table2.refresh();
+
+                }
+            }
+        });
+
+        schoolCatalogueTable.setPlaceholder(new Label("Search books"));
+        searchTableCatalogue.setPlaceholder(new Label("Search books"));
+        table2.setPlaceholder(new Label("Search students"));
+
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
+
+        //table2.getItems().add(new StudentRegisterStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
         year_sregister.setCellValueFactory(new PropertyValueFactory<>("year"));
         id_sregister.setCellValueFactory(new PropertyValueFactory<>("id"));
         name_sregister.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -170,6 +202,8 @@ public class FXMLDocumentController implements Initializable {
         register_ids.setUserData("studentnumber");
 
         //System.out.println(toggleGroup.getSelectedToggle());
+        //System.out.println(schoolCatalogueTable.lookupAll(".column-header").toString());
+        String yy = schoolCatalogueTable.lookupAll(".column-header").toString();
 
     }
 
@@ -208,8 +242,8 @@ public class FXMLDocumentController implements Initializable {
         //buch.setStudent_name("Christians");
         //buch.setStudent_year(200);
 
-        String btnDepressedId = new String();
-        String searchQuery = new String();
+        String btnDepressedId;
+        String searchQuery;
         System.out.println("-->");
 
         btnDepressedId = toggleGroupStudentRegister.getSelectedToggle().getUserData().toString();
@@ -246,7 +280,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void insert_book_entry(BookObject bucher) throws InterruptedException {
         // output to tableview
-        employee.getItems().add(new LibraryBooksStatus(bucher.getId(), bucher.getStudent_name(), bucher.getStudent_year(), bucher.getBook_name(), bucher.getAuthor()));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(bucher.getId(), bucher.getStudent_name(), bucher.getStudent_year(), bucher.getBook_name(), bucher.getAuthor()));
 
     }
 
@@ -267,7 +301,7 @@ public class FXMLDocumentController implements Initializable {
             }
 
             // output to tableview
-            employee.getItems().add(new LibraryBooksStatus(bucher[i].getId(), bucher[i].getStudent_name(), bucher[i].getStudent_year(), bucher[i].getBook_name(), bucher[i].getAuthor()));
+            schoolCatalogueTable.getItems().add(new LibraryBooksStatus(bucher[i].getId(), bucher[i].getStudent_name(), bucher[i].getStudent_year(), bucher[i].getBook_name(), bucher[i].getAuthor()));
         }
 
     }
@@ -275,7 +309,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void insert_students_entry(PupilObject kinder[]) throws InterruptedException {
         // output the contents of the entire array
-        //employee2.getItems().add(new StudentRegisterStatus(1, "otengamoako", 2, "989898", "3"));
+        //table2.getItems().add(new StudentRegisterStatus(1, "otengamoako", 2, "989898", "3"));
 
         for (int i = 0x0; i <= (kinder.length); ++i) {
             // exit when we reach the end of the array
@@ -284,10 +318,10 @@ public class FXMLDocumentController implements Initializable {
             }
 
             // output to tableview
-            //employee2.getItems().add(new LibraryBooksStatus(1, kinder[i].getLastname(), 2, kinder[i].getBookid(), ""));
+            //table2.getItems().add(new LibraryBooksStatus(1, kinder[i].getLastname(), 2, kinder[i].getBookid(), ""));
         }
         System.out.println("run");
-        employee2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
+        table2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
 
     }
 
