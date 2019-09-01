@@ -61,10 +61,13 @@ public class FXMLDocumentController implements Initializable {
     private TextField borrow_author;
 
     @FXML
-    private final TextField fxsearchtab_search = new TextField();
+    private  TextField fxsearchtab_search = new TextField();
 
     @FXML
-    private final TextField newsearch = new TextField();
+    private  TextField newsearch2 = new TextField();
+    
+    @FXML
+    private  TextField onemoretime = new TextField();
 
     @FXML
     private TableView<LibraryBooksStatus> schoolCatalogueTable, searchTableCatalogue;
@@ -210,23 +213,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
         System.out.println("You clicked me again!");
-        //BookObject buch = new BookObject();
-        //buch.setId(10);
-        //buch.setAuthor("God");
-        //buch.setBook_name("The Holy Bible");
-        //buch.setStudent_name("Christians");
-        //buch.setStudent_year(200);
 
         BookObject[] bucher = new BookObject[1000];
         JDBC_Controller socket = new JDBC_Controller();
         bucher = socket.jdbc_find_book(bucher);
 
-        //bucher[0] = new BookObject();
-        //bucher[1] = new BookObject();
-        //new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
-        //bucher[1] = new BookObject(11, "kojo", 2019, "Book of Mormon", "Mormons");
-        //bucher[0] = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
-        //BookObject buch = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
         this.insert_book_entry(bucher);
         Thread.sleep(1000);
 
@@ -235,35 +226,25 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void searchpage_query(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
         System.out.println("You student search me again!");
-        //BookObject buch = new BookObject();
-        //buch.setId(10);
-        //buch.setAuthor("God");
-        //buch.setBook_name("The Holy Bible");
-        //buch.setStudent_name("Christians");
-        //buch.setStudent_year(200);
 
         String btnDepressedId;
         String searchQuery;
         System.out.println("-->");
 
         btnDepressedId = toggleGroupStudentRegister.getSelectedToggle().getUserData().toString();
-        searchQuery = newsearch.getText();
+        searchQuery = newsearch2.getText();
         System.out.println("-->" + btnDepressedId + searchQuery + " ");
 
         System.out.println("fx" + fxsearchtab_search.getText());
-        System.out.println("ss" + newsearch.getText());
+        System.out.println("ss" + newsearch2.getText());
+        System.out.println("ss>>>>>>>>>" + onemoretime.getText());
 
         PupilObject[] kinder = new PupilObject[1000];
         JDBC_Controller socket = new JDBC_Controller();
 
-        kinder = socket.jdbc_find_student(kinder, toggleGroupStudentRegister.getSelectedToggle().getUserData().toString(), newsearch.getText());
+        System.out.println("newsearch.getText()"+ newsearch2.getText());
+        kinder = socket.jdbc_find_student(kinder, toggleGroupStudentRegister.getSelectedToggle().getUserData().toString(), newsearch2.getText());
 
-        //bucher[0] = new BookObject();
-        //bucher[1] = new BookObject();
-        //new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
-        //bucher[1] = new BookObject(11, "kojo", 2019, "Book of Mormon", "Mormons");
-        //bucher[0] = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
-        //BookObject buch = new BookObject(10, "kwadwo", 2019, "The Holy Bible", "Christians");
         this.insert_students_entry(kinder);
         Thread.sleep(1000);
     }
@@ -314,14 +295,16 @@ public class FXMLDocumentController implements Initializable {
         for (int i = 0x0; i <= (kinder.length); ++i) {
             // exit when we reach the end of the array
             if (kinder[i] == null) {
-                break;
+                break;  
             }
 
+                System.out.println(" ------------>detail "+i);
             // output to tableview
-            //table2.getItems().add(new LibraryBooksStatus(1, kinder[i].getLastname(), 2, kinder[i].getBookid(), ""));
+             table2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
         }
-        System.out.println("run");
-        table2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
+        //System.out.println("run");
+        //System.out.println("kinder[0].getLastname()"+kinder[0].getLastname());
+        //table2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
 
     }
 
