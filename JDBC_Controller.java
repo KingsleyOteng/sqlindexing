@@ -186,4 +186,63 @@ public class JDBC_Controller {
 
         return obj;
     }
+    
+    
+    // jdbc find a book
+    BookObject[] jdbc_search_book(BookObject[] obj, String toggle, String query)
+            throws MalformedURLException, IOException, SQLException {
+
+        //Book_Parse_Object bpo = new Book_Parse_Object();
+        // JDBC_Controller jdbc_conn = new JDBC_Controller();
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+            st = (Statement) cn.createStatement();
+            //rs = st.executeQuery("select * from BookDB.Catalogue where BookID =" + ISBN_locator + ";");
+
+            switch (toggle) {
+                case "searchtitle":
+                    rs = st.executeQuery("select * from BookDB.StudentRecords where BorrowerID = '" + query + "';");
+                    break;
+                case "searchauthor":
+                    rs = st.executeQuery("select * from BookDB.StudentRecords where LastName = '" + query + "';");
+                    break;
+                case "searchisbn":
+                    rs = st.executeQuery("select * from BookDB.StudentRecords where FirstName = '" + query + "';");
+                    break;
+                default:
+                    System.out.println("hello");
+            }
+
+            int i = 0;
+
+            while (rs.next()) {
+
+                obj[i] = new BookObject();
+                obj[i].setBook_name(rs.getString("BookName"));
+                obj[i].setAuthor(rs.getString("Author"));
+                obj[i].setId(1);
+                obj[i].setStudent_name("1");
+                obj[i].setStudent_year(1994);
+                i++;
+
+                //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));
+                //bpo.setSearchResult(true);
+                //bpo.setBookAuthors(rs.getString("Author"));
+                //bpo.setBookTitle(rs.getString("BookName"));
+                //bpo.setCategories(rs.getString("CategoryDescription"));
+                //bpo.setMainCategory(rs.getString("Category"));
+                //bpo.setILinkURLLargeThumbNail(ISBN_locator);
+                //bpo.setILinkURLSmallThumbNail(ISBN_locator);
+                //bpo.setISBN10(ISBN_locator);
+                //bpo.setISBN13(ISBN_locator);
+                //bpo.setPageCount(0);
+                //bpo.setPrintType(ISBN_locator);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+        }
+
+        return obj;
+    }
 }

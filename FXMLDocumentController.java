@@ -9,15 +9,12 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
-
 import java.util.ResourceBundle;
-
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -44,7 +41,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
-    private ToggleButton button_title, button_author, button_isbn, register_surnames, register_firstnames, register_ids;
+    private ToggleButton button_title, button_author, button_isbn,
+            register_surnames, register_firstnames, register_ids,
+            search_bks_title, search_bks_author, search_bks_isbn;
 
     //@FXML
     // note togglegroup and togglebuttons must be defined in controller class
@@ -58,34 +57,44 @@ public class FXMLDocumentController implements Initializable {
     // note togglegroup and togglebuttons must be defined in controller class
     private final ToggleGroup toggleGroupStudentRegister = new ToggleGroup();
 
+    @FXML
+    // note togglegroup and togglebuttons must be defined in controller class
+    private final ToggleGroup toggleGroupBookSearch = new ToggleGroup();
+
     private TextField borrow_author;
 
     @FXML
-    private  TextField fxsearchtab_search = new TextField();
+    private TextField fxsearchtab_search = new TextField();
 
     @FXML
-    private  TextField newsearch2 = new TextField();
-    
-    @FXML
-    private  TextField onemoretime = new TextField();
+    private TextField newsearch2 = new TextField();
 
     @FXML
-    private TableView<LibraryBooksStatus> schoolCatalogueTable, searchTableCatalogue;
+    private TextField onemoretime = new TextField();
 
     @FXML
-    private TableView<StudentRegisterStatus> table2;
+    private TableView<SearchBarBookStatus> searchTableCatalogue;
 
     @FXML
-    private TableColumn<LibraryBooksStatus, String> name, book, author, name1, book1, status;
+    private TableColumn<SearchBarBookStatus, String> book_searchbar, author_searchbar, status_searchbar;
 
     @FXML
-    private TableColumn<StudentRegisterStatus, String> name_sregister, book_sregister, author_sregister;
+    private TableView<LibraryBooksStatus> schoolCatalogueTable;
 
     @FXML
     private TableColumn<LibraryBooksStatus, String> author_search, book_search, status_search;
 
     @FXML
     private TableColumn<LibraryBooksStatus, Integer> id, year;
+
+    @FXML
+    private TableColumn<LibraryBooksStatus, String> name, book, author, name1, book1, status;
+
+    @FXML
+    private TableView<StudentRegisterStatus> table2;
+
+    @FXML
+    private TableColumn<StudentRegisterStatus, String> name_sregister, book_sregister, author_sregister;
 
     @FXML
     private TableColumn<StudentRegisterStatus, Integer> id_sregister, year_sregister;
@@ -121,7 +130,7 @@ public class FXMLDocumentController implements Initializable {
                 change.next();
                 if (change.wasReplaced()) {
                     searchTableCatalogue.getColumns().clear();
-                    searchTableCatalogue.getColumns().addAll(book_search, author_search, status_search);
+                    searchTableCatalogue.getColumns().addAll(book_searchbar, author_searchbar, status_searchbar);
                     searchTableCatalogue.refresh();
 
                 }
@@ -189,12 +198,12 @@ public class FXMLDocumentController implements Initializable {
         author.setCellValueFactory(new PropertyValueFactory<>("author"));
 
         //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
-        button_title.setToggleGroup(toggleGroup);
-        button_title.setUserData("title");
-        button_author.setToggleGroup(toggleGroup);
-        button_author.setUserData("author");
-        button_isbn.setToggleGroup(toggleGroup);
-        button_isbn.setUserData("isbn");
+         //button_title.setToggleGroup(toggleGroup);
+         //button_title.setUserData("title");
+         //button_author.setToggleGroup(toggleGroup);
+         //button_author.setUserData("author");
+         //button_isbn.setToggleGroup(toggleGroup);
+         //button_isbn.setUserData("isbn");
 
         //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
         register_firstnames.setToggleGroup(toggleGroupStudentRegister);
@@ -204,6 +213,14 @@ public class FXMLDocumentController implements Initializable {
         register_ids.setToggleGroup(toggleGroupStudentRegister);
         register_ids.setUserData("studentnumber");
 
+        //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
+        search_bks_title.setToggleGroup(toggleGroupBookSearch);
+        search_bks_title.setUserData("searchtitle");
+        search_bks_author.setToggleGroup(toggleGroupBookSearch);
+        search_bks_author.setUserData("searchauthor");
+        search_bks_isbn.setToggleGroup(toggleGroupBookSearch);
+        search_bks_isbn.setUserData("searchisbn");
+
         //System.out.println(toggleGroup.getSelectedToggle());
         //System.out.println(schoolCatalogueTable.lookupAll(".column-header").toString());
         String yy = schoolCatalogueTable.lookupAll(".column-header").toString();
@@ -212,6 +229,19 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
+        System.out.println("You clicked me again!");
+
+        BookObject[] bucher = new BookObject[1000];
+        JDBC_Controller socket = new JDBC_Controller();
+        bucher = socket.jdbc_find_book(bucher);
+
+        this.insert_book_entry(bucher);
+        Thread.sleep(1000);
+
+    }
+
+    @FXML
+    private void searchpage_borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
         System.out.println("You clicked me again!");
 
         BookObject[] bucher = new BookObject[1000];
@@ -242,7 +272,7 @@ public class FXMLDocumentController implements Initializable {
         PupilObject[] kinder = new PupilObject[1000];
         JDBC_Controller socket = new JDBC_Controller();
 
-        System.out.println("newsearch.getText()"+ newsearch2.getText());
+        System.out.println("newsearch.getText()" + newsearch2.getText());
         kinder = socket.jdbc_find_student(kinder, toggleGroupStudentRegister.getSelectedToggle().getUserData().toString(), newsearch2.getText());
 
         this.insert_students_entry(kinder);
@@ -261,8 +291,29 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void insert_book_entry(BookObject bucher) throws InterruptedException {
         // output to tableview
-        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(bucher.getId(), bucher.getStudent_name(), bucher.getStudent_year(), bucher.getBook_name(), bucher.getAuthor()));
 
+    }
+
+// ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 24 August 2019
+     * @description following method takes a book object and inserts it into
+     * table view
+     *
+     */
+    @FXML
+    private void insert_book_entry_in_search_page(BookObject bucher[]) throws InterruptedException {
+        // output to tableview
+        for (int i = 0x0; i <= (bucher.length); ++i) {
+            // exit when we reach the end of the array
+            if (bucher[i] == null) {
+                break;
+            }
+
+            searchTableCatalogue.getItems().add(new SearchBarBookStatus("1","2","3"));
+        }
     }
 
     /**
@@ -295,12 +346,12 @@ public class FXMLDocumentController implements Initializable {
         for (int i = 0x0; i <= (kinder.length); ++i) {
             // exit when we reach the end of the array
             if (kinder[i] == null) {
-                break;  
+                break;
             }
 
-                System.out.println(" ------------>detail "+i);
+            System.out.println(" ------------>detail " + i);
             // output to tableview
-             table2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
+            table2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
         }
         //System.out.println("run");
         //System.out.println("kinder[0].getLastname()"+kinder[0].getLastname());
@@ -325,8 +376,12 @@ public class FXMLDocumentController implements Initializable {
      *
      */
     @FXML
-    private void toggle_group_action() {
-        String btnDepressedId = toggleGroup.getSelectedToggle().getUserData().toString();
+    private void toggle_group_action_search() {
+        String btnDepressedId;
+        String searchQuery = new String();
+        
+        btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
+        searchQuery = fxsearchtab_search.getText();
         System.out.println(btnDepressedId);
     }
 
