@@ -6,7 +6,8 @@
 package userinterface;
 
 /**
- *
+ * @description pupil object class
+ * @date 5 September 2019
  * @author kwadwooteng-amoako
  */
 public class PupilObject {

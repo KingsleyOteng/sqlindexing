@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 
 /**
- *
+ * @description it handles all of the sql objects
  * @author kwadwooteng-amoako
  */
 public class JDBC_Controller {

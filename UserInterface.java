@@ -12,7 +12,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
+ * @description main start page for the script
+ * @date 5 September 2019
  * @author kwadwooteng-amoako
  */
 public class UserInterface extends Application {
@@ -21,11 +22,11 @@ public class UserInterface extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
 
-        //AcnhorPane anch1 = loader.load()
+        //Start the user interface
         Scene scene = new Scene(root);
-
         stage.setScene(scene);
         stage.show();
+        
     }
 
     /**
