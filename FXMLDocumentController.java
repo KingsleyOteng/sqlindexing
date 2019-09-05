@@ -197,19 +197,18 @@ public class FXMLDocumentController implements Initializable {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         book.setCellValueFactory(new PropertyValueFactory<>("book"));
         author.setCellValueFactory(new PropertyValueFactory<>("author"));
-        
+
         book_search.setCellValueFactory(new PropertyValueFactory<>("book"));
         author_search.setCellValueFactory(new PropertyValueFactory<>("author"));
         status_search.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
-         //button_title.setToggleGroup(toggleGroup);
-         //button_title.setUserData("title");
-         //button_author.setToggleGroup(toggleGroup);
-         //button_author.setUserData("author");
-         //button_isbn.setToggleGroup(toggleGroup);
-         //button_isbn.setUserData("isbn");
-
+        //button_title.setToggleGroup(toggleGroup);
+        //button_title.setUserData("title");
+        //button_author.setToggleGroup(toggleGroup);
+        //button_author.setUserData("author");
+        //button_isbn.setToggleGroup(toggleGroup);
+        //button_isbn.setUserData("isbn");
         //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
         register_firstnames.setToggleGroup(toggleGroupStudentRegister);
         register_firstnames.setUserData("firstname");
@@ -260,24 +259,15 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void searchpage_query(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
-        System.out.println("You student search me again!");
 
         String btnDepressedId;
         String searchQuery;
-        System.out.println("-->");
 
         btnDepressedId = toggleGroupStudentRegister.getSelectedToggle().getUserData().toString();
         searchQuery = newsearch2.getText();
-        System.out.println("-->" + btnDepressedId + searchQuery + " ");
-
-        System.out.println("fx" + fxsearchtab_search.getText());
-        System.out.println("ss" + newsearch2.getText());
-        System.out.println("ss>>>>>>>>>" + onemoretime.getText());
 
         PupilObject[] kinder = new PupilObject[1000];
         JDBC_Controller socket = new JDBC_Controller();
-
-        System.out.println("newsearch.getText()" + newsearch2.getText());
         kinder = socket.jdbc_find_student(kinder, toggleGroupStudentRegister.getSelectedToggle().getUserData().toString(), newsearch2.getText());
 
         this.insert_students_entry(kinder);
@@ -317,7 +307,7 @@ public class FXMLDocumentController implements Initializable {
                 break;
             }
 
-            searchTableCatalogue.getItems().add(new LibraryBooksStatus("1","2","3"));
+            searchTableCatalogue.getItems().add(new LibraryBooksStatus("1", "2", "3"));
         }
     }
 
@@ -342,7 +332,7 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-    
+
     @FXML
     private void insert_book_entry_searchtab(BookObject bucher[]) throws InterruptedException {
         // output the contents of the entire array
@@ -355,11 +345,11 @@ public class FXMLDocumentController implements Initializable {
             // output to tableview
             searchTableCatalogue.getItems().add(
                     new LibraryBooksStatus(
-                        bucher[i].getBook_name(), 
-                        bucher[i].getAuthor(), 
-                        bucher[i].getStatus()
-                        )
-                    );
+                            bucher[i].getBook_name(),
+                            bucher[i].getAuthor(),
+                            bucher[i].getStatus()
+                    )
+            );
         }
 
     }
@@ -375,8 +365,6 @@ public class FXMLDocumentController implements Initializable {
                 break;
             }
 
-            System.out.println(" ------------>detail " + i);
-            // output to tableview
             table2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
         }
         //System.out.println("run");
@@ -384,8 +372,6 @@ public class FXMLDocumentController implements Initializable {
         //table2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
 
     }
-    
-
 
     private void search_pane_query() {
         String btnDepressedId = new String();
@@ -398,7 +384,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      *
      * @author kwadwooteng-amoako
-     * @date 26 August 2019
+     * @date 5 September 2019
      * @description will return the button in the toggle key depressed; if we
      * combine that with a search to sql we may dynamically display names
      *
@@ -407,7 +393,7 @@ public class FXMLDocumentController implements Initializable {
     private void toggle_group_action_search() throws SQLException, IOException, InterruptedException {
         String btnDepressedId;
         String searchQuery = new String();
-        
+
         btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
         searchQuery = fxsearchtab_search.getText();
         System.out.println(btnDepressedId);
@@ -416,7 +402,6 @@ public class FXMLDocumentController implements Initializable {
         JDBC_Controller socket = new JDBC_Controller();
 
         bucher = socket.jdbc_search_book(bucher, toggleGroupBookSearch.getSelectedToggle().getUserData().toString(), fxsearchtab_search.getText());
-        System.out.println("fxsearchtab "+fxsearchtab_search.getText());
         this.insert_book_entry_searchtab(bucher);
         Thread.sleep(1000);
     }

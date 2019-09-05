@@ -21,7 +21,7 @@ public class LibraryBooksStatus {
         this.book = book;
         this.author = author;
     }
-    
+
     public LibraryBooksStatus(String book, String author, String status) {
         this.book = book;
         this.author = author;
