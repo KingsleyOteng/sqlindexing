@@ -202,13 +202,13 @@ public class JDBC_Controller {
 
             switch (toggle) {
                 case "searchtitle":
-                    rs = st.executeQuery("select * from BookDB.StudentRecords where BorrowerID = '" + query + "';");
+                    rs = st.executeQuery("select * from BookDB.Catalogue where BorrowerID = '" + query + "';");
                     break;
                 case "searchauthor":
-                    rs = st.executeQuery("select * from BookDB.StudentRecords where LastName = '" + query + "';");
+                    rs = st.executeQuery("select * from BookDB.Catalogue where Author = '" + query + "';");
                     break;
                 case "searchisbn":
-                    rs = st.executeQuery("select * from BookDB.StudentRecords where FirstName = '" + query + "';");
+                    rs = st.executeQuery("select * from BookDB.Catalogue where ISBN1 = '" + query + "';");
                     break;
                 default:
                     System.out.println("hello");
@@ -222,8 +222,8 @@ public class JDBC_Controller {
                 obj[i].setBook_name(rs.getString("BookName"));
                 obj[i].setAuthor(rs.getString("Author"));
                 obj[i].setId(1);
-                obj[i].setStudent_name("1");
-                obj[i].setStudent_year(1994);
+                //obj[i].setStudent_name("1");
+                obj[i].setStatus("1");
                 i++;
 
                 //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));
@@ -245,4 +245,8 @@ public class JDBC_Controller {
 
         return obj;
     }
+    
+   
+    
+    
 }

@@ -12,7 +12,7 @@ package userinterface;
 public class LibraryBooksStatus {
 
     int id, year;
-    String name, book, author;
+    String name, book, author, status;
 
     public LibraryBooksStatus(int id, String name, int year, String book, String author) {
         this.id = id;
@@ -20,6 +20,12 @@ public class LibraryBooksStatus {
         this.name = name;
         this.book = book;
         this.author = author;
+    }
+    
+    public LibraryBooksStatus(String book, String author, String status) {
+        this.book = book;
+        this.author = author;
+        this.status = status;
     }
 
     public int getId() {
