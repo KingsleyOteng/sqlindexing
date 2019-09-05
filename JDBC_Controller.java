@@ -186,8 +186,7 @@ public class JDBC_Controller {
 
         return obj;
     }
-    
-    
+
     // jdbc find a book
     BookObject[] jdbc_search_book(BookObject[] obj, String toggle, String query)
             throws MalformedURLException, IOException, SQLException {
@@ -245,8 +244,5 @@ public class JDBC_Controller {
 
         return obj;
     }
-    
-   
-    
-    
+
 }
