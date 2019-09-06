@@ -17,6 +17,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -55,6 +57,22 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private final TabPane books_tab_pane = new TabPane();
+    
+    @FXML
+    private final Tab borrows_tabs = new Tab();
+    
+    @FXML
+    private final Tab search_tab = new Tab();
+     
+    @FXML
+    private final Tab newsearchtext = new Tab();
+      
+    @FXML
+    private final Tab studentsearchqueryss = new Tab();
+    
+    @FXML
+    private final Tab teturn_tab = new Tab();
+    
 
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
@@ -414,10 +432,12 @@ public class FXMLDocumentController implements Initializable {
     private void select_search_item_return()
     {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
-        System.out.println("hello");
-        System.out.println(buch.getBook());
-        books_tab_pane.getSelectionModel().select(borrows_tabs);
+      
+        books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab);
+        books_tab_pane.getSelectionModel().selectNext();
         
+          System.out.println("hello");
+        System.out.println(buch.getBook());
         
     }
 }

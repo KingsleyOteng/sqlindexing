@@ -14,7 +14,7 @@
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <TabPane fx:id="books_tab_pane" centerShape="false" layoutX="-3.0" prefHeight="619.0" prefWidth="789.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab text="Search">
+            <Tab fx:id="search_tab" text="Search">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -93,7 +93,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-          <Tab text="Return">
+          <Tab fx:id="teturn_tab" text="Return">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
