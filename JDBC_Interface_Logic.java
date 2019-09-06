@@ -6,8 +6,8 @@
 package BookWareHousing;
 
 //import static BookWareHousing.Bookwarehouse.cn;
-import static BookWareHousing.Book_Parse_Object.REPLACEMENT_FLAGS;
-import static BookWareHousing.Book_Parse_Object.REPLACEMENT_FLAGS_VALUE_SPACE;
+//import static BookWareHousing.Book_Parse_Object.REPLACEMENT_FLAGS;
+//import static BookWareHousing.Book_Parse_Object.REPLACEMENT_FLAGS_VALUE_SPACE;
 import static BookWareHousing.Book_Parse_Object.REPLACEMENT_FLAG_SINGLE_COMMA;
 import static BookWareHousing.Book_Parse_Object.REPLACEMENT_FLAG_SINGLE_COMMA_VALUE;
 import com.mysql.jdbc.Connection;

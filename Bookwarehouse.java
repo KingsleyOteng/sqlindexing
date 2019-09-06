@@ -28,14 +28,16 @@ public class Bookwarehouse {
     static Statement st;
     static ResultSet rs;
 
-    public static void main(String[] args) throws IOException, SQLException {
+    public static void main(String[] args) throws IOException, SQLException 
+    {
 
         JDBC_Interface_Logic jdbc_conn = new JDBC_Interface_Logic();
 
         //String[] BookID = new String[] { "12345678", "9101112131415161718", "12345678", "9101112131415161718" ,"12345678" };
         //jdbc_conn.new_borrow_request("oteng-amoako","20010101",7,2,1,"11111111","Hilltop", BookID ,"20010101", "KWajwo");
         // sql logic here
-        try {
+        try 
+        {
             Book_Search BSO = new Book_Search();
             BSO.universal_find(("9780310432593"));
 
@@ -56,7 +58,8 @@ public class Bookwarehouse {
             //output = gn.google_find_book("9780310432593");
             System.out.println("hello");
         } //catch (IOException | ClassNotFoundException | SQLException e) 
-        catch (Exception e) {
+        catch (Exception e) 
+        {
             System.out.println(e);
         }
 

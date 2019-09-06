@@ -18,14 +18,16 @@ import java.util.regex.Pattern;
  * @description the following section captures the google api search routines
  *
  */
-public class GoogleBooksApi_Interface_LookUp {
+public class GoogleBooksApi_Interface_LookUp 
+{
 
     /**
      *
      */
     public static final String GOOGLE_BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=isbn:";
 
-    GoogleBooksApi_Interface_LookUp() {
+    GoogleBooksApi_Interface_LookUp() 
+    {
         Pattern p_general;
         Book_Parse_Object bpo;
         String output;
@@ -44,18 +46,14 @@ public class GoogleBooksApi_Interface_LookUp {
         String matchedPhrase;
         String[] spltStringMatcherPhrase;
         Object[] stringIntersection;
-    }
-
-    ;
+    };
     
     void database_find_book(
             String ISBN_locator
     )
             throws MalformedURLException, IOException {
 
-    }
-
-    ;
+    };
     
     Book_Parse_Object google_find_book(
             String ISBN_locator
@@ -131,7 +129,6 @@ public class GoogleBooksApi_Interface_LookUp {
                 testString = new String[]{"XX", "authors", "title", "subtitle", "publisher", "publicationDate", "categories", "country", "smallThumbnail", "printType", "pageCount"};
                 testStringList = Arrays.asList(testString);
 
-               
                 String s;
                 String y;
 

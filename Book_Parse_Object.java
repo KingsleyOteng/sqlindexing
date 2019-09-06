@@ -22,7 +22,6 @@ public class Book_Parse_Object {
     // string constants with regex matching values used to replace entries in the book record object
     public static final String REPLACEMENT_FLAG_SINGLE_COMMA_VALUE = "'";
     public static final String REPLACEMENT_FLAGS_VALUE_SPACE = "";
-
     static private String bookTitle;
     static private String bookAuthors;
     static private String isbn10;
@@ -41,7 +40,8 @@ public class Book_Parse_Object {
     static private Boolean found;
 
     // initializer
-    Book_Parse_Object() {
+    Book_Parse_Object() 
+    {
         Book_Parse_Object.bookTitle = "";
         Book_Parse_Object.bookAuthors = "";
         Book_Parse_Object.isbn10 = "";
@@ -64,17 +64,20 @@ public class Book_Parse_Object {
     
     
     // the method sets the books return date
-    void setBookBorrowDate(String date) {
+    void setBookBorrowDate(String date) 
+    {
         Book_Parse_Object.borrowDate = date;
     }
 
     // the method sets the books due date
-    void setBookDueDate(String date) {
+    void setBookDueDate(String date) 
+    {
         Book_Parse_Object.returnDate = date;
     }
 
     // routines to highlight whether a book has been found
-    void setSearchResult(Boolean search_result) {
+    void setSearchResult(Boolean search_result) 
+    {
         Book_Parse_Object.found = search_result;
 
     }
@@ -82,14 +85,16 @@ public class Book_Parse_Object {
     ;
     
     // routines to highlight whether a book has been found
-    Boolean getSearchResult() {
+    Boolean getSearchResult() 
+    {
         return Book_Parse_Object.found;
     }
 
     ;
 
    // routines to update the object used for update the database
-    void setPrintType(String printType) {
+    void setPrintType(String printType) 
+    {
         printType = printType.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
         printType = printType.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
         Book_Parse_Object.printType = printType;
@@ -108,7 +113,8 @@ public class Book_Parse_Object {
     ;
     
     // sets the books language flag
-    void setLanugageDesignator(String lanugageDesignator) {
+    void setLanugageDesignator(String lanugageDesignator) 
+    {
         lanugageDesignator = lanugageDesignator.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
         lanugageDesignator = lanugageDesignator.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
         Book_Parse_Object.lanugageDesignator = lanugageDesignator;
@@ -117,7 +123,8 @@ public class Book_Parse_Object {
     ;
     
     // sets a link to the URL of the book
-    void setILinkURLSmallThumbNail(String linkURLSmallThumbNail) {
+    void setILinkURLSmallThumbNail(String linkURLSmallThumbNail) 
+    {
         linkURLSmallThumbNail = linkURLSmallThumbNail.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
         linkURLSmallThumbNail = linkURLSmallThumbNail.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
         Book_Parse_Object.linkURLSmallThumbNail = linkURLSmallThumbNail;
@@ -126,7 +133,8 @@ public class Book_Parse_Object {
     ;
     
     // sets a field for the book categorisation
-    void setCategories(String categories) {
+    void setCategories(String categories) 
+    {
         categories = categories.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
         categories = categories.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
         categories = categories.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
@@ -137,7 +145,8 @@ public class Book_Parse_Object {
     ;
    
      // sets a link to the URL of the book - a large image
-    void setILinkURLLargeThumbNail(String linkURLLargeThumbNail) {
+    void setILinkURLLargeThumbNail(String linkURLLargeThumbNail) 
+    {
         linkURLLargeThumbNail = linkURLLargeThumbNail.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
         linkURLLargeThumbNail = linkURLLargeThumbNail.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
         Book_Parse_Object.linkURLLargeThumbNail = linkURLLargeThumbNail;
@@ -155,7 +164,8 @@ public class Book_Parse_Object {
     ;
     
     // sets the books author flag
-    void setBookAuthors(String bookAuthors) {
+    void setBookAuthors(String bookAuthors) 
+    {
         bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
         bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
         bookAuthors = bookAuthors.replaceAll(REPLACEMENT_FLAG_BRACKETS, REPLACEMENT_FLAGS_VALUE_SPACE);
@@ -166,7 +176,8 @@ public class Book_Parse_Object {
     ;
 
     // sets the ISBN flag identifier - ISBN 10 format
-    void setISBN10(String isbn10) {
+    void setISBN10(String isbn10) 
+    {
         isbn10 = isbn10.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
         isbn10 = isbn10.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
         Book_Parse_Object.isbn10 = isbn10;
@@ -175,7 +186,8 @@ public class Book_Parse_Object {
     ;
 
       // sets the ISBN flag identifier - ISBN 13 format
-    void setISBN13(String isbn13) {
+    void setISBN13(String isbn13) 
+    {
         isbn13 = isbn13.replaceAll(REPLACEMENT_FLAGS, REPLACEMENT_FLAGS_VALUE_SPACE);
         isbn13 = isbn13.replaceAll(REPLACEMENT_FLAG_SINGLE_COMMA, REPLACEMENT_FLAG_SINGLE_COMMA_VALUE);
         Book_Parse_Object.isbn13 = isbn13;
