@@ -12,7 +12,7 @@
 <AnchorPane id="AnchorPane" prefHeight="619.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userinterface.FXMLDocumentController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <TabPane centerShape="false" layoutX="-3.0" prefHeight="619.0" prefWidth="789.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="books_tab_pane" centerShape="false" layoutX="-3.0" prefHeight="619.0" prefWidth="789.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <Tab text="Search">
                <content>
@@ -111,7 +111,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab id="borrowpage_button" text="Borrow">
+          <Tab id="borrowpage_button" fx:id="borrows_tabs" text="Borrow">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="826.0">
                      <children>

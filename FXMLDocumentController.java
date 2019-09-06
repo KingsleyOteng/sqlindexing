@@ -52,6 +52,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
     private final ToggleGroup toggleGroup = new ToggleGroup();
+    
+    @FXML
+    private final TabPane books_tab_pane = new TabPane();
 
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
@@ -411,6 +414,10 @@ public class FXMLDocumentController implements Initializable {
     private void select_search_item_return()
     {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
-        System.out.println(buch.getAuthor());
+        System.out.println("hello");
+        System.out.println(buch.getBook());
+        books_tab_pane.getSelectionModel().select(borrows_tabs);
+        
+        
     }
 }
