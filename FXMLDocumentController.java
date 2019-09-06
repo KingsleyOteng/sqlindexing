@@ -404,12 +404,13 @@ public class FXMLDocumentController implements Initializable {
         bucher = socket.jdbc_search_book(bucher, toggleGroupBookSearch.getSelectedToggle().getUserData().toString(), fxsearchtab_search.getText());
         this.insert_book_entry_searchtab(bucher);
         Thread.sleep(1000);
+    };
+
+
+    @FXML
+    private void select_search_item_return()
+    {
+        LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+        System.out.println(buch.getAuthor());
     }
-
-    ;
-
-    private void print_hello() {
-        System.out.println("hello people");
-    }
-
 }
