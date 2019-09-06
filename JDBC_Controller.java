@@ -199,7 +199,7 @@ public class JDBC_Controller {
 
             switch (toggle) {
                 case "searchtitle":
-                    rs = st.executeQuery("select * from BookDB.Catalogue where BorrowerID = '" + query + "';");
+                    rs = st.executeQuery("select * from BookDB.Catalogue where BookName = '" + query + "';");
                     break;
                 case "searchauthor":
                     rs = st.executeQuery("select * from BookDB.Catalogue where Author = '" + query + "';");
