@@ -23,7 +23,7 @@
                               <ToggleButton fx:id="search_bks_title" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="200.0" text="Title" />
                               <ToggleButton fx:id="search_bks_author" layoutX="290.0" layoutY="65.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="200.0" text="Author" />
                               <ToggleButton fx:id="search_bks_isbn" layoutX="495.0" layoutY="65.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="198.0" text="ISBN" />
-                              <Button fx:id="borrow_btn" layoutX="701.0" layoutY="133.0" mnemonicParsing="false" onAction="#select_search_item_return" prefHeight="27.0" prefWidth="90.0" text="Borrow" />
+                              <Button fx:id="searchtab_borrowbtn_confirmationwndw" layoutX="701.0" layoutY="133.0" mnemonicParsing="false" onAction="#searchtab_borrowbtn_confirmation" prefHeight="27.0" prefWidth="90.0" text="Borrow" />
                               <Button fx:id="returnbutton" layoutX="701.0" layoutY="167.0" mnemonicParsing="false" onAction="#switch_tab" prefHeight="27.0" prefWidth="90.0" text="Return" />
                               <Button fx:id="search_page_button_depress" layoutX="701.0" layoutY="65.0" mnemonicParsing="false" onAction="#toggle_group_action_search" prefHeight="63.0" prefWidth="90.0" text="GO" />
                            </children>
@@ -163,7 +163,7 @@
                         <Label layoutX="14.0" layoutY="213.0" text="Brief" />
                         <Label layoutX="14.0" layoutY="358.0" text="Borrower" />
                         <Label layoutX="14.0" layoutY="394.0" text="Year" />
-                        <Button fx:id="go_button2" layoutX="80.0" layoutY="439.0" mnemonicParsing="false" onAction="#displaytwo" prefHeight="27.0" prefWidth="550.0" text="GO" />
+                        <Button fx:id="go_button2" layoutX="80.0" layoutY="439.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="550.0" text="GO" />
                         <Text layoutX="670.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
                      </children></AnchorPane>
                </content>

@@ -540,7 +540,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    public void displaytwo() {
+    public void searchtab_borrowbtn_confirmation() {
      
         
         Stage popupwindow = new Stage();
