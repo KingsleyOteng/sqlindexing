@@ -464,7 +464,9 @@ public class FXMLDocumentController implements Initializable {
         String btnDepressedId = new String();
         String searchQuery = new String();
         
-        while ("".equals(btnDepressedId))
+        btnDepressedId = null;
+        
+        while (btnDepressedId == null)
                 {
         btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
         searchQuery = fxsearchtab_search.getText();
