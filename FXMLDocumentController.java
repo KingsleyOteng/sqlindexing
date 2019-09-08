@@ -89,6 +89,27 @@ public class FXMLDocumentController implements Initializable {
     private final ToggleGroup toggleGroupBookSearch = new ToggleGroup();
 
     private TextField borrow_author;
+    
+    @FXML
+    private TextField fx_borrowpage_published  = new TextField();
+    
+    @FXML
+    private TextField fx_borrowpage_description  = new TextField();
+    
+    @FXML
+    private TextField fx_borrowpage_isbn  = new TextField();
+    
+    @FXML
+    private TextField fx_borrowpage_overview  = new TextField();
+    
+    @FXML
+    private TextField fx_borrowpage_borrower  = new TextField();
+    
+    @FXML
+    private TextField fx_borrowpage_school_level  = new TextField();
+    
+    @FXML
+    private TextField fx_borrowpage_id  = new TextField();
 
     @FXML
     private TextField fxsearchtab_search = new TextField();
@@ -479,18 +500,17 @@ public class FXMLDocumentController implements Initializable {
     {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
       
-        System.out.println(buch.getAuthor());
+       System.out.println(buch.getAuthor());
         
        fx_borrowpage_author.setText(buch.getAuthor());
        fx_borrowpage_title.setText(buch.getBook());
-        fx_borrowpage_published.setText(buch.getBook());
-        fx_borrowpage_description.setText(buch.getBook());
-        fx_borrowpage_isbn.setText(buch.getBook());
-        fx_borrowpage_overview.setText(buch.getBook());
-        
-        fx_borrowpage_borrower.setText()
-        fx_borrowpage_school_level.setText()
-        fx_borrowpage_id.setText()
+       fx_borrowpage_published.setText("");
+       fx_borrowpage_description.setText("");
+       fx_borrowpage_isbn.setText("");
+       fx_borrowpage_overview.setText("");
+       fx_borrowpage_borrower.setText("");
+       fx_borrowpage_school_level.setText("");
+       fx_borrowpage_id.setText("");
         
         
     }
