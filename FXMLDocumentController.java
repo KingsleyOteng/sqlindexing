@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -17,7 +18,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -513,21 +517,45 @@ public class FXMLDocumentController implements Initializable {
         popupwindow.initModality(Modality.APPLICATION_MODAL);
         //popupwindow.setTitle("This is a pop up window");
 
-        Label label1 = new Label("Borrow the book: "+buch.getBook()+" by "+ buch.getAuthor()+ "?");
-        Button button1 = new Button("Yes");
+        Label label1 = new Label("Borrow the book: " + buch.getBook() + " by " + buch.getAuthor() + "?");
+        Button button1 = new Button("Borrow");
         button1.setOnAction(e -> popupwindow.close());
-        
-        Button button2 = new Button("No");
+
+        Button button2 = new Button("Cancel");
         button1.setOnAction(e -> popupwindow.close());
-        
-        VBox layout = new VBox(10);
-        layout.getChildren().addAll(label1, button1, button2);
-        
-        
-        layout.setAlignment(Pos.CENTER);
-        Scene scene1 = new Scene(layout, 500, 250);
+
+        //VBox layout = new VBox(10);
+        //layout.getChildren().addAll(label1, button1, button2);
+        HBox hbox = new HBox();
+        hbox.getChildren().addAll(label1, button1, button2);
+
+        //layout.setAlignment(Pos.CENTER);
+        //Scene scene1 = new Scene(layout, 500, 250);
+        hbox.setAlignment(Pos.CENTER);
+        Scene scene1 = new Scene(hbox, 500, 250);
+
         popupwindow.setScene(scene1);
         popupwindow.showAndWait();
+
+    }
+
+    @FXML
+    public void displaytwo() {
+     
+        
+        Stage popupwindow = new Stage();
+        LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Borrow Confirmation");
+        // alert.setHeaderText("Look, a Confirmation Dialog");
+        alert.setContentText("Confirm borrow of: " + buch.getBook() +" by "+ buch.getAuthor() +"?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            select_search_item_return();
+        } else {
+            popupwindow.close();
+        }
 
     }
 }

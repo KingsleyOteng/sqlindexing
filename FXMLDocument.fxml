@@ -163,7 +163,7 @@
                         <Label layoutX="14.0" layoutY="213.0" text="Brief" />
                         <Label layoutX="14.0" layoutY="358.0" text="Borrower" />
                         <Label layoutX="14.0" layoutY="394.0" text="Year" />
-                        <Button fx:id="go_button2" layoutX="80.0" layoutY="439.0" mnemonicParsing="false" onAction="#display" prefHeight="27.0" prefWidth="550.0" text="GO" />
+                        <Button fx:id="go_button2" layoutX="80.0" layoutY="439.0" mnemonicParsing="false" onAction="#displaytwo" prefHeight="27.0" prefWidth="550.0" text="GO" />
                         <Text layoutX="670.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
                      </children></AnchorPane>
                </content>
