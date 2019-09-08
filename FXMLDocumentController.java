@@ -461,12 +461,15 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void toggle_group_action_search() throws SQLException, IOException, InterruptedException {
-        String btnDepressedId;
+        String btnDepressedId = new String();
         String searchQuery = new String();
-
+        
+        while ("".equals(btnDepressedId))
+                {
         btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
         searchQuery = fxsearchtab_search.getText();
         System.out.println(btnDepressedId);
+                };
 
         BookObject[] bucher = new BookObject[1000];
         JDBC_Controller socket = new JDBC_Controller();
@@ -511,7 +514,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    public void display() {
+    public void searchtab_noselection_alert() {
         Stage popupwindow = new Stage();
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -548,7 +551,7 @@ public class FXMLDocumentController implements Initializable {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Borrow Confirmation");
         // alert.setHeaderText("Look, a Confirmation Dialog");
-        alert.setContentText("Confirm borrow of: " + buch.getBook() +" by "+ buch.getAuthor() +"?");
+        alert.setContentText("Confirm borrow: \"" + buch.getBook() +"\" by "+ buch.getAuthor() +"?");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {

@@ -145,6 +145,7 @@ public class JDBC_Controller {
                     break;
                 default:
                     System.out.println("hello");
+                    break;
             }
 
             int i = 0;
