@@ -15,6 +15,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -25,6 +27,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  *
@@ -40,10 +46,10 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button button1;
-    
+
     @FXML
     private Button go_button2;
-    
+
     @FXML
     private Button returnbutton;
 
@@ -60,25 +66,24 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
     private final ToggleGroup toggleGroup = new ToggleGroup();
-    
+
     @FXML
     private final TabPane books_tab_pane = new TabPane();
-    
+
     @FXML
     private final Tab borrows_tabs = new Tab();
-    
+
     @FXML
     private final Tab search_tab = new Tab();
-     
+
     @FXML
     private final Tab newsearchtext = new Tab();
-      
+
     @FXML
     private final Tab studentsearchqueryss = new Tab();
-    
+
     @FXML
     private final Tab teturn_tab = new Tab();
-    
 
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
@@ -89,27 +94,27 @@ public class FXMLDocumentController implements Initializable {
     private final ToggleGroup toggleGroupBookSearch = new ToggleGroup();
 
     private TextField borrow_author;
-    
+
     @FXML
-    private TextField fx_borrowpage_published  = new TextField();
-    
+    private TextField fx_borrowpage_published = new TextField();
+
     @FXML
-    private TextField fx_borrowpage_description  = new TextField();
-    
+    private TextField fx_borrowpage_description = new TextField();
+
     @FXML
-    private TextField fx_borrowpage_isbn  = new TextField();
-    
+    private TextField fx_borrowpage_isbn = new TextField();
+
     @FXML
-    private TextField fx_borrowpage_overview  = new TextField();
-    
+    private TextField fx_borrowpage_overview = new TextField();
+
     @FXML
-    private TextField fx_borrowpage_borrower  = new TextField();
-    
+    private TextField fx_borrowpage_borrower = new TextField();
+
     @FXML
-    private TextField fx_borrowpage_school_level  = new TextField();
-    
+    private TextField fx_borrowpage_school_level = new TextField();
+
     @FXML
-    private TextField fx_borrowpage_id  = new TextField();
+    private TextField fx_borrowpage_id = new TextField();
 
     @FXML
     private TextField fxsearchtab_search = new TextField();
@@ -119,13 +124,13 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TextField onemoretime = new TextField();
-    
+
     @FXML
     private TextField field = new TextField();
-    
+
     @FXML
     private TextField fx_borrowpage_author = new TextField();
-    
+
     @FXML
     private TextField fx_borrowpage_title = new TextField();
 
@@ -174,14 +179,9 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-      
-        books_tab_pane.getTabs().addAll(search_tab,newsearchtext,studentsearchqueryss,teturn_tab,borrows_tabs);
-        
 
-     
-                  
-        
+        books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab, borrows_tabs);
+
         // listener to reset table ordering after a move; table search
         searchTableCatalogue.getColumns().addListener(new ListChangeListener() {
             public boolean suspended;
@@ -196,14 +196,10 @@ public class FXMLDocumentController implements Initializable {
                     searchTableCatalogue.getColumns().clear();
                     searchTableCatalogue.getColumns().addAll(book_searchbar, author_searchbar, status_searchbar);
                     searchTableCatalogue.refresh();
-                    
-                    
-                  
-              
+
                 }
             }
-            
-            
+
         });
 
         // listener to reset table ordering after a move; table search
@@ -248,7 +244,7 @@ public class FXMLDocumentController implements Initializable {
         searchTableCatalogue.setPlaceholder(new Label("Search books teo"));
         table2.setPlaceholder(new Label("Search students"));
 
-        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives","Ira Lee","kwadwo oteng-amoako" ));
+        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira Lee", "kwadwo oteng-amoako"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
@@ -297,8 +293,6 @@ public class FXMLDocumentController implements Initializable {
         //System.out.println(toggleGroup.getSelectedToggle());
         //System.out.println(schoolCatalogueTable.lookupAll(".column-header").toString());
         String yy = schoolCatalogueTable.lookupAll(".column-header").toString();
-        
-                
 
     }
 
@@ -343,8 +337,7 @@ public class FXMLDocumentController implements Initializable {
 
         this.insert_students_entry(kinder);
         Thread.sleep(1000);
-        
-        
+
     }
 
 // ----------------------------------------------->
@@ -477,41 +470,64 @@ public class FXMLDocumentController implements Initializable {
         bucher = socket.jdbc_search_book(bucher, toggleGroupBookSearch.getSelectedToggle().getUserData().toString(), fxsearchtab_search.getText());
         this.insert_book_entry_searchtab(bucher);
         Thread.sleep(1000);
-    };
+    }
+
+    ;
 
     @FXML
-    private void switch_tab()
-    {
-         books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab, borrows_tabs);
-         System.out.println("hello hello");
-         field.setText("hello");
-         System.out.println(books_tab_pane.getSelectionModel().getSelectedIndex());
-         
+    private void switch_tab() {
+        books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab, borrows_tabs);
+        System.out.println("hello hello");
+        field.setText("hello");
+        System.out.println(books_tab_pane.getSelectionModel().getSelectedIndex());
+
         //books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab, borrows_tabs);
         //books_tab_pane.getSelectionModel().selectNext();
-        
-         books_tab_pane.getSelectionModel().select(3);    
-    
-         
+        books_tab_pane.getSelectionModel().select(3);
+
     }
 
     @FXML
-    private void select_search_item_return()
-    {
+    private void select_search_item_return() {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
-      
-       System.out.println(buch.getAuthor());
+
+        System.out.println(buch.getAuthor());
+
+        // pass the selected books fields across to the borrow pane
+        fx_borrowpage_author.setText(buch.getAuthor());
+        fx_borrowpage_title.setText(buch.getBook());
+        fx_borrowpage_published.setText("");
+        fx_borrowpage_description.setText("");
+        fx_borrowpage_isbn.setText("");
+        fx_borrowpage_overview.setText("");
+        fx_borrowpage_borrower.setText("");
+        fx_borrowpage_school_level.setText("");
+        fx_borrowpage_id.setText("");
+
+    }
+
+    @FXML
+    public void display() {
+        Stage popupwindow = new Stage();
+        LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+        popupwindow.initModality(Modality.APPLICATION_MODAL);
+        //popupwindow.setTitle("This is a pop up window");
+
+        Label label1 = new Label("Borrow the book: "+buch.getBook()+" by "+ buch.getAuthor()+ "?");
+        Button button1 = new Button("Yes");
+        button1.setOnAction(e -> popupwindow.close());
         
-       fx_borrowpage_author.setText(buch.getAuthor());
-       fx_borrowpage_title.setText(buch.getBook());
-       fx_borrowpage_published.setText("");
-       fx_borrowpage_description.setText("");
-       fx_borrowpage_isbn.setText("");
-       fx_borrowpage_overview.setText("");
-       fx_borrowpage_borrower.setText("");
-       fx_borrowpage_school_level.setText("");
-       fx_borrowpage_id.setText("");
+        Button button2 = new Button("No");
+        button1.setOnAction(e -> popupwindow.close());
+        
+        VBox layout = new VBox(10);
+        layout.getChildren().addAll(label1, button1, button2);
         
         
+        layout.setAlignment(Pos.CENTER);
+        Scene scene1 = new Scene(layout, 500, 250);
+        popupwindow.setScene(scene1);
+        popupwindow.showAndWait();
+
     }
 }
