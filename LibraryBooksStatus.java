@@ -13,7 +13,7 @@ package userinterface;
 public class LibraryBooksStatus {
 
     int id, year;
-    String name, book, author, status, isbn1;
+    String name, book, author, status, isbn1, student_year;
 
     public LibraryBooksStatus(int id, String name, int year, String book, String author) {
         this.id = id;
@@ -23,19 +23,27 @@ public class LibraryBooksStatus {
         this.author = author;
     }
 
+    public LibraryBooksStatus(String book, String author, String status, String isbn1) {
+        this.book = book;
+        this.author = author;
+        this.status = status;
+        this.isbn1 = isbn1;
+    }
+    
+    public LibraryBooksStatus(String book, String author, String status, String isbn1, String student_year) {
+        this.book = book;
+        this.author = author;
+        this.status = status;
+        this.student_year = student_year;
+    }
+    
     public LibraryBooksStatus(String book, String author, String status) {
         this.book = book;
         this.author = author;
         this.status = status;
     }
 
-    public LibraryBooksStatus(String book, String author, String status, String isbn) {
-        this.book = book;
-        this.author = author;
-        this.status = status;
-        this.isbn1 = isbn;
-    }
-    
+  
     public String getISBN1()
     {
         return isbn1;
@@ -50,6 +58,10 @@ public class LibraryBooksStatus {
     public String getBOOK()
     {
         return book;
+    }
+    
+    public String getStatus() {
+        return status;
     }
     
     public int getId() {
@@ -72,7 +84,13 @@ public class LibraryBooksStatus {
         this.id = id;
     }
 
-   
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+     public void setISBN1(String isbn1) {
+        this.isbn1 = isbn1;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -85,14 +103,30 @@ public class LibraryBooksStatus {
     public void setAuthor(String author) {
         this.author = author;
     }
-    
-    public void setISBN1(String isbn1) {
-        this.isbn1 = isbn1;
-    }
+   
     
     public void setYear(int year) {
         this.year = year;
     }
+
+    public String getIsbn1() {
+        return isbn1;
+    }
+
+    public String getStudent_year() {
+        return student_year;
+    }
+
+    public void setIsbn1(String isbn1) {
+        this.isbn1 = isbn1;
+    }
+
+    public void setStudent_year(String student_year) {
+        this.student_year = student_year;
+    }
+    
+    
+    
 
 
 }

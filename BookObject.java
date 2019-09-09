@@ -27,13 +27,14 @@ public class BookObject {
         isbn1 = "";
     }
 
-    BookObject(int id, String student_name, int student_year, String book_name, String author, String status) {
+    BookObject(int id, String student_name, int student_year, String book_name, String author, String status, String isbn1) {
         this.id = id;
         this.student_name = student_name;
         this.student_year = student_year;
         this.book_name = book_name;
         this.author = author;
         this.status = status;
+        this.isbn1 = isbn1;
     }
 
     private static void setLibrary(String library) {
@@ -69,13 +70,12 @@ public class BookObject {
     }
     
     public String getStatus() {
-        return author;
+        return status;
     }
 
     public String getISBN1() {
         return isbn1;
     }
-
     
     public void setId(int id) {
         this.id = id;
@@ -101,9 +101,8 @@ public class BookObject {
         this.status = status;
     }
     
-    public void setISBN1(String isbn) {
-        System.out.println("here"+isbn);
-        this.isbn1 = isbn;
+    public void setISBN1(String isbn1) {
+        this.isbn1 = isbn1;
     }
 
 

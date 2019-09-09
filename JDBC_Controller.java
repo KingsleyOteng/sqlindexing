@@ -226,7 +226,7 @@ public class JDBC_Controller {
                 obj[i].setISBN1(rs.getString("ISBN1"));
                 
                 //obj[i].setStudent_name("1");
-                obj[i].setStatus("1");
+                obj[i].setStatus(rs.getString("Category"));
                 i++;
 
                 //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));

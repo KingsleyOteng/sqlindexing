@@ -40,7 +40,7 @@
                               <TableColumn fx:id="book_search" prefWidth="203.0" text="book" />
                               <TableColumn fx:id="author_search" minWidth="0.0" prefWidth="122.0" text="author" />
                               <TableColumn fx:id="status_search" minWidth="0.0" prefWidth="140.0" text="status" />
-                              <TableColumn fx:id="isbn_search" minWidth="0.0" prefWidth="140.0" text="isbn1" />
+                              <TableColumn fx:id="isbn_search" minWidth="0.0" prefWidth="140.0" text="isbns" />
                            </columns>
                         </TableView>
                      </children>

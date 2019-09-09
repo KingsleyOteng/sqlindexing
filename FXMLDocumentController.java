@@ -139,22 +139,25 @@ public class FXMLDocumentController implements Initializable {
     private TextField fx_borrowpage_title = new TextField();
 
     @FXML
-    private TableView<LibraryBooksStatus2> searchTableCatalogue;
+    private TableView<LibraryBooksStatus> searchTableCatalogue;
 
     @FXML
-    private TableColumn<LibraryBooksStatus2, String> book_searchbar, author_searchbar, status_searchbar, isbn_searchbar;
+    private TableColumn<LibraryBooksStatus, String> book_searchbar, author_searchbar, status_searchbar, isbn_searchbar;
 
     @FXML
     private TableView<LibraryBooksStatus> schoolCatalogueTable;
 
     @FXML
-    private TableColumn<LibraryBooksStatus2, String> author_search, book_search, status_search, isbn_search, one_search;
+    private TableColumn<LibraryBooksStatus, String> author_search, book_search, status_search, isbn_search;
 
     @FXML
     private TableColumn<LibraryBooksStatus, Integer> id, year;
 
     @FXML
-    private TableColumn<LibraryBooksStatus, String> name, book, author, name1, book1, status, isbn1;
+    private TableColumn<LibraryBooksStatus, String>  book, author, status, isbn1;
+    
+    @FXML
+    private TableColumn<LibraryBooksStatus, String> name, name1, book1;
 
     @FXML
     private TableView<StudentRegisterStatus> table2;
@@ -248,8 +251,8 @@ public class FXMLDocumentController implements Initializable {
         searchTableCatalogue.setPlaceholder(new Label("Search books teo"));
         table2.setPlaceholder(new Label("Search students"));
 
-        searchTableCatalogue.getItems().add(new LibraryBooksStatus2("Stepford Wives", "Iral Lee", "111", "9784150410513"));
-        searchTableCatalogue.getItems().add(new LibraryBooksStatus2("Stepford Wives", "Iral Lee", "111", "9784150410513"));
+        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Iral Lee", "2013", "999"));
+        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Iral Lee", "2012", "999"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
@@ -379,7 +382,7 @@ public class FXMLDocumentController implements Initializable {
                 break;
             }
 
-            searchTableCatalogue.getItems().add(new LibraryBooksStatus2("1", "2", "3"));
+            searchTableCatalogue.getItems().add(new LibraryBooksStatus("1", "2", "3"));
         }
     }
 
@@ -416,17 +419,17 @@ public class FXMLDocumentController implements Initializable {
 
             // output to tableview
             searchTableCatalogue.getItems().add(
-                    new LibraryBooksStatus2(
+                    new LibraryBooksStatus(
                             bucher[i].getBook_name(),
                             bucher[i].getAuthor(),
-                            "hello",
-                            //bucher[i].getStatus(),
-                            //bucher[i].getISBN1()
-                            "11111"
+                            bucher[i].getStatus(),
+                            bucher[i].getISBN1()
+                          
                     )
                     
             );
-            System.out.println("OKay yere"+bucher[i].getISBN1());
+            
+           
         }
 
     }
@@ -505,7 +508,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void select_search_item_return() {
-        LibraryBooksStatus2 buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+        LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
 
         System.out.println(buch.getAuthor());
 
@@ -526,7 +529,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void searchtab_noselection_alert() {
         Stage popupwindow = new Stage();
-        LibraryBooksStatus2 buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+        LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         popupwindow.initModality(Modality.APPLICATION_MODAL);
         //popupwindow.setTitle("This is a pop up window");
 
@@ -557,7 +560,7 @@ public class FXMLDocumentController implements Initializable {
      
         
         Stage popupwindow = new Stage();
-        LibraryBooksStatus2 buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+        LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Borrow Confirmation");
         // alert.setHeaderText("Look, a Confirmation Dialog");
