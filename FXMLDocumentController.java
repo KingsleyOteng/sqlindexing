@@ -503,9 +503,12 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void select_search_item_return() {
+    private void select_search_item_return() throws SQLException, IOException {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
-
+        BookObject buchs = new BookObject();
+        
+        buchs = this.generate_search_object(buchs, buch.getIsbn1());
+                
         System.out.println(buch.getAuthor());
 
         // pass the selected books fields across to the borrow pane
@@ -569,11 +572,18 @@ public class FXMLDocumentController implements Initializable {
 
     }
     
-    @FXML
-    public BookObject generate_search_object()
+    
+    public BookObject generate_search_object(BookObject buch, String ISBN) throws SQLException, IOException
     {
+        
+        // create a socket for jdbc search
+        JDBC_Controller socket = new JDBC_Controller();
+        
+        // generate the equivalent bookobject from the tableview input
+        buch = socket.jdbc_search_singlebook(buch, ISBN);
         // this method will pass a BookObject which will populate the tabs
-        BookObject buch = new BookObject();
+       
+        
         return buch;
     };
 }

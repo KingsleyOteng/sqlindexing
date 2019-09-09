@@ -248,5 +248,58 @@ public class JDBC_Controller {
 
         return obj;
     }
+    
+    // jdbc find a book
+    BookObject jdbc_search_singlebook(BookObject obj, String isbn_query)
+            throws MalformedURLException, IOException, SQLException {
+
+        //Book_Parse_Object bpo = new Book_Parse_Object();
+        // JDBC_Controller jdbc_conn = new JDBC_Controller();
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+            st = (Statement) cn.createStatement();
+            //rs = st.executeQuery("select * from BookDB.Catalogue where BookID =" + ISBN_locator + ";");
+
+         
+            rs = st.executeQuery("select * from BookDB.Catalogue where ISBN1 = '" + isbn_query + "';");
+                   
+
+            int i = 0;
+
+             {
+
+                obj = new BookObject();
+                obj.setBook_name(rs.getString("BookName"));
+                obj.setAuthor(rs.getString("Author"));
+
+                obj.setId(1);
+                System.out.println("output>>> " + rs.getString("ISBN1") + rs.getString("Author"));
+                obj.setISBN1(rs.getString("ISBN1"));
+
+                //obj[i].setStudent_name("1");
+                obj.setStatus(rs.getString("Category"));
+                
+
+                //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));
+                //bpo.setSearchResult(true);
+                //bpo.setBookAuthors(rs.getString("Author"));
+                //bpo.setBookTitle(rs.getString("BookName"));
+                //bpo.setCategories(rs.getString("CategoryDescription"));
+                //bpo.setMainCategory(rs.getString("Category"));
+                //bpo.setILinkURLLargeThumbNail(ISBN_locator);
+                //bpo.setILinkURLSmallThumbNail(ISBN_locator);
+                //bpo.setISBN10(ISBN_locator);
+                //bpo.setISBN13(ISBN_locator);
+                //bpo.setPageCount(0);
+                //bpo.setPrintType(ISBN_locator);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+        }
+
+        return obj;
+    }
+    
 
 }
