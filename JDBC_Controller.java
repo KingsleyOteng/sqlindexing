@@ -220,11 +220,11 @@ public class JDBC_Controller {
                 obj[i] = new BookObject();
                 obj[i].setBook_name(rs.getString("BookName"));
                 obj[i].setAuthor(rs.getString("Author"));
-                
+
                 obj[i].setId(1);
-                System.out.println("output>>> " + rs.getString("ISBN1") + rs.getString("Author") );
+                System.out.println("output>>> " + rs.getString("ISBN1") + rs.getString("Author"));
                 obj[i].setISBN1(rs.getString("ISBN1"));
-                
+
                 //obj[i].setStudent_name("1");
                 obj[i].setStatus(rs.getString("Category"));
                 i++;
@@ -248,6 +248,5 @@ public class JDBC_Controller {
 
         return obj;
     }
-    
-    
+
 }

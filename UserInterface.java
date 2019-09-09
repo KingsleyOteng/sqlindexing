@@ -26,7 +26,7 @@ public class UserInterface extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     /**

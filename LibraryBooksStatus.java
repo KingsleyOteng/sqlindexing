@@ -29,41 +29,37 @@ public class LibraryBooksStatus {
         this.status = status;
         this.isbn1 = isbn1;
     }
-    
+
     public LibraryBooksStatus(String book, String author, String status, String isbn1, String student_year) {
         this.book = book;
         this.author = author;
         this.status = status;
         this.student_year = student_year;
     }
-    
+
     public LibraryBooksStatus(String book, String author, String status) {
         this.book = book;
         this.author = author;
         this.status = status;
     }
 
-  
-    public String getISBN1()
-    {
+    public String getISBN1() {
         return isbn1;
-        
+
     }
-    
-    public int getYear() 
-    {
+
+    public int getYear() {
         return year;
     }
-    
-    public String getBOOK()
-    {
+
+    public String getBOOK() {
         return book;
     }
-    
+
     public String getStatus() {
         return status;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -88,7 +84,7 @@ public class LibraryBooksStatus {
         this.status = status;
     }
 
-     public void setISBN1(String isbn1) {
+    public void setISBN1(String isbn1) {
         this.isbn1 = isbn1;
     }
 
@@ -103,8 +99,7 @@ public class LibraryBooksStatus {
     public void setAuthor(String author) {
         this.author = author;
     }
-   
-    
+
     public void setYear(int year) {
         this.year = year;
     }
@@ -124,9 +119,5 @@ public class LibraryBooksStatus {
     public void setStudent_year(String student_year) {
         this.student_year = student_year;
     }
-    
-    
-    
-
 
 }

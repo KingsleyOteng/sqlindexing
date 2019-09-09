@@ -154,8 +154,8 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<LibraryBooksStatus, Integer> id, year;
 
     @FXML
-    private TableColumn<LibraryBooksStatus, String>  book, author, status, isbn1;
-    
+    private TableColumn<LibraryBooksStatus, String> book, author, status, isbn1;
+
     @FXML
     private TableColumn<LibraryBooksStatus, String> name, name1, book1;
 
@@ -190,7 +190,7 @@ public class FXMLDocumentController implements Initializable {
         books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab, borrows_tabs);
 
         // listener to reset table ordering after a move; table search
-            searchTableCatalogue.getColumns().addListener(new ListChangeListener() {
+        searchTableCatalogue.getColumns().addListener(new ListChangeListener() {
             public boolean suspended;
             ObservableList columns = searchTableCatalogue.getColumns();
             String x = columns.get(0).toString();
@@ -201,7 +201,7 @@ public class FXMLDocumentController implements Initializable {
                 change.next();
                 if (change.wasReplaced()) {
                     searchTableCatalogue.getColumns().clear();
-                    searchTableCatalogue.getColumns().addAll(book_searchbar, author_searchbar, status_searchbar, isbn_searchbar );
+                    searchTableCatalogue.getColumns().addAll(book_searchbar, author_searchbar, status_searchbar, isbn_searchbar);
                     searchTableCatalogue.refresh();
 
                 }
@@ -251,8 +251,8 @@ public class FXMLDocumentController implements Initializable {
         searchTableCatalogue.setPlaceholder(new Label("Search books teo"));
         table2.setPlaceholder(new Label("Search students"));
 
-        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Iral Lee", "2013", "999"));
-        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Iral Lee", "2012", "999"));
+        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Iral Lee", "2013", "9784150410513"));
+        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Iral Lee", "2012", "9788401468711"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
@@ -275,7 +275,7 @@ public class FXMLDocumentController implements Initializable {
         author_search.setCellValueFactory(new PropertyValueFactory<>("author"));
         status_search.setCellValueFactory(new PropertyValueFactory<>("status"));
         isbn_search.setCellValueFactory(new PropertyValueFactory<>("isbn1"));
-        
+
         //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
         //button_title.setToggleGroup(toggleGroup);
         //button_title.setUserData("title");
@@ -424,12 +424,9 @@ public class FXMLDocumentController implements Initializable {
                             bucher[i].getAuthor(),
                             bucher[i].getStatus(),
                             bucher[i].getISBN1()
-                          
                     )
-                    
             );
-            
-           
+
         }
 
     }
@@ -473,15 +470,14 @@ public class FXMLDocumentController implements Initializable {
     private void toggle_group_action_search() throws SQLException, IOException, InterruptedException {
         String btnDepressedId = new String();
         String searchQuery = new String();
-        
+
         btnDepressedId = null;
-        
-        while (btnDepressedId == null)
-                {
-        btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
-        searchQuery = fxsearchtab_search.getText();
-        System.out.println(btnDepressedId);
-                };
+
+        while (btnDepressedId == null) {
+            btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
+            searchQuery = fxsearchtab_search.getText();
+            System.out.println(btnDepressedId);
+        };
 
         BookObject[] bucher = new BookObject[1000];
         JDBC_Controller socket = new JDBC_Controller();
@@ -516,7 +512,6 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_author.setText(buch.getAuthor());
         fx_borrowpage_title.setText(buch.getBook());
         fx_borrowpage_published.setText(String.valueOf(buch.getYear()));
-        System.out.println("Book year "+buch.getYear());
         fx_borrowpage_description.setText("");
         fx_borrowpage_isbn.setText(buch.getISBN1());
         fx_borrowpage_overview.setText("");
@@ -557,14 +552,13 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void searchtab_borrowbtn_confirmation() {
-     
-        
+
         Stage popupwindow = new Stage();
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Borrow Confirmation");
         // alert.setHeaderText("Look, a Confirmation Dialog");
-        alert.setContentText("Confirm borrow: \"" + buch.getBook() +"\" by "+ buch.getAuthor() +"?");
+        alert.setContentText("Confirm borrow: \"" + buch.getBook() + "\" by " + buch.getAuthor() + "?");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
@@ -574,4 +568,12 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
+    
+    @FXML
+    public BookObject generate_search_object()
+    {
+        // this method will pass a BookObject which will populate the tabs
+        BookObject buch = new BookObject();
+        return buch;
+    };
 }

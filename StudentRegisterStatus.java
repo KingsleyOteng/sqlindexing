@@ -62,6 +62,5 @@ public class StudentRegisterStatus {
     public void setAuthor(String author) {
         this.author = author;
     }
-    
 
 }
