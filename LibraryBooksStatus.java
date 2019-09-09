@@ -13,7 +13,7 @@ package userinterface;
 public class LibraryBooksStatus {
 
     int id, year;
-    String name, book, author, status;
+    String name, book, author, status, isbn1;
 
     public LibraryBooksStatus(int id, String name, int year, String book, String author) {
         this.id = id;
@@ -29,16 +29,31 @@ public class LibraryBooksStatus {
         this.status = status;
     }
 
-    public string getISBN1()
+    public LibraryBooksStatus(String book, String author, String status, String isbn) {
+        this.book = book;
+        this.author = author;
+        this.status = status;
+        this.isbn1 = isbn;
+    }
+    
+    public String getISBN1()
     {
+        return isbn1;
         
-    };
+    }
+    
+    public int getYear() 
+    {
+        return year;
+    }
+    
+    public String getBOOK()
+    {
+        return book;
+    }
+    
     public int getId() {
         return id;
-    }
-
-    public int getYear() {
-        return year;
     }
 
     public String getName() {
@@ -57,9 +72,7 @@ public class LibraryBooksStatus {
         this.id = id;
     }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
+   
 
     public void setName(String name) {
         this.name = name;
@@ -72,5 +85,14 @@ public class LibraryBooksStatus {
     public void setAuthor(String author) {
         this.author = author;
     }
+    
+    public void setISBN1(String isbn1) {
+        this.isbn1 = isbn1;
+    }
+    
+    public void setYear(int year) {
+        this.year = year;
+    }
+
 
 }

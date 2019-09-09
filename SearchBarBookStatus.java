@@ -18,6 +18,7 @@ public class SearchBarBookStatus {
         this.book = book;
         this.author = author;
         this.status = status;
+    
   
     }
 
@@ -28,13 +29,13 @@ public class SearchBarBookStatus {
     public String getAuthor() {
         return author;
     }
+    
+    public String getStatus() {
+        return status;
+    }
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getStatus() {
-        return status;
     }
 
     public void setBook(String book) {

@@ -102,6 +102,7 @@ public class BookObject {
     }
     
     public void setISBN1(String isbn) {
+        System.out.println("here"+isbn);
         this.isbn1 = isbn;
     }
 
