@@ -507,7 +507,7 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_title.setText(buch.getBook());
         fx_borrowpage_published.setText("");
         fx_borrowpage_description.setText("");
-        fx_borrowpage_isbn.setText("");
+        fx_borrowpage_isbn.setText(buch.getISBN1());
         fx_borrowpage_overview.setText("");
         fx_borrowpage_borrower.setText("");
         fx_borrowpage_school_level.setText("");

@@ -29,6 +29,10 @@ public class LibraryBooksStatus {
         this.status = status;
     }
 
+    public string getISBN1()
+    {
+        
+    };
     public int getId() {
         return id;
     }

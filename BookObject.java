@@ -13,7 +13,7 @@ package userinterface;
 public class BookObject {
 
     private int id, student_year;
-    private String student_name, book_name, author, status;
+    private String student_name, book_name, author, status, isbn1;
     private static String library;
 
     BookObject() {
@@ -24,6 +24,7 @@ public class BookObject {
         author = "";
         library = "HIBS";
         status = "here";
+        isbn1 = "";
     }
 
     BookObject(int id, String student_name, int student_year, String book_name, String author, String status) {
@@ -71,6 +72,11 @@ public class BookObject {
         return author;
     }
 
+    public String getISBN1() {
+        return isbn1;
+    }
+
+    
     public void setId(int id) {
         this.id = id;
     }
@@ -93,6 +99,10 @@ public class BookObject {
     
     public void setStatus(String status) {
         this.status = status;
+    }
+    
+    public void setISBN1(String isbn) {
+        this.isbn1 = isbn;
     }
 
 
