@@ -514,9 +514,9 @@ public class FXMLDocumentController implements Initializable {
         // pass the selected books fields across to the borrow pane
         fx_borrowpage_author.setText(buchs.getAuthor());
         fx_borrowpage_title.setText(buchs.getBook());
-        fx_borrowpage_published.setText(String.valueOf(buch.getYear()));
+        fx_borrowpage_published.setText(String.valueOf(buchs.getYear()));
         fx_borrowpage_description.setText("");
-        fx_borrowpage_isbn.setText(buch.getISBN1());
+        fx_borrowpage_isbn.setText(buchs.getISBN1());
         fx_borrowpage_overview.setText("");
         fx_borrowpage_borrower.setText("");
         fx_borrowpage_school_level.setText("");
@@ -577,12 +577,13 @@ public class FXMLDocumentController implements Initializable {
 
         // create a socket for jdbc search
         JDBC_Controller socket = new JDBC_Controller();
-
+        BookObject buch_return = new BookObject();
+        
         // generate the equivalent bookobject from the tableview input
-        buch = socket.jdbc_search_singlebook(buch, ISBN);
+        buch_return = socket.jdbc_search_singlebook(buch, ISBN);
         // this method will pass a BookObject which will populate the tabs
 
-        return buch;
+        return buch_return;
     }
 ;
     

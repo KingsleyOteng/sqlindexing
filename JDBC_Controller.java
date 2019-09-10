@@ -256,23 +256,26 @@ public class JDBC_Controller {
         //Book_Parse_Object bpo = new Book_Parse_Object();
         // JDBC_Controller jdbc_conn = new JDBC_Controller();
         try {
+            
+            // create SQL socker
             Class.forName("com.mysql.jdbc.Driver");
             cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+            
+            // initiate a statement
             st = (Statement) cn.createStatement();
-            //rs = st.executeQuery("select * from BookDB.Catalogue where BookID =" + ISBN_locator + ";");
+           
 
-         
-            rs = st.executeQuery("select * from BookDB.Catalogue where ISBN1 = '" + isbn_query + "';");
+            // search by the isbn1 which will be a unique key
+            rs = st.executeQuery("select * from BookDB.Catalogue where ISBN1 = '"+ isbn_query + "';");
                    
-
-            int i = 0;
-
+            // remember; the while command initiates populating the object from SQL
+            while (rs.next())
              {
-
+                 
                 obj = new BookObject();
                 obj.setBook(rs.getString("BookName"));
                 obj.setAuthor(rs.getString("Author"));
-
+                obj.setYear(rs.getString("PublicationYear"));
                 obj.setId(1);
                 System.out.println("output>>> " + rs.getString("ISBN1") + rs.getString("Author"));
                 obj.setISBN1(rs.getString("ISBN1"));
@@ -293,6 +296,9 @@ public class JDBC_Controller {
                 //bpo.setISBN13(ISBN_locator);
                 //bpo.setPageCount(0);
                 //bpo.setPrintType(ISBN_locator);
+                
+                // the break statement forces us to end the loop after one cycle
+                break;
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
