@@ -251,8 +251,8 @@ public class FXMLDocumentController implements Initializable {
         searchTableCatalogue.setPlaceholder(new Label("Search books teo"));
         table2.setPlaceholder(new Label("Search students"));
 
-        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Iral Lee", "2013", "9784150410513"));
-        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Iral Lee", "2012", "9788401468711"));
+        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira Lee", "2013", "9784150410513"));
+        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira    Lee", "2012", "9788401468711"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
@@ -403,7 +403,7 @@ public class FXMLDocumentController implements Initializable {
             }
 
             // output to tableview
-            schoolCatalogueTable.getItems().add(new LibraryBooksStatus(bucher[i].getId(), bucher[i].getStudent_name(), bucher[i].getStudent_year(), bucher[i].getBook_name(), bucher[i].getAuthor()));
+            schoolCatalogueTable.getItems().add(new LibraryBooksStatus(bucher[i].getId(), bucher[i].getStudent_name(), bucher[i].getStudent_year(), bucher[i].getBook(), bucher[i].getAuthor()));
         }
 
     }
@@ -420,7 +420,7 @@ public class FXMLDocumentController implements Initializable {
             // output to tableview
             searchTableCatalogue.getItems().add(
                     new LibraryBooksStatus(
-                            bucher[i].getBook_name(),
+                            bucher[i].getBook(),
                             bucher[i].getAuthor(),
                             bucher[i].getStatus(),
                             bucher[i].getISBN1()
@@ -506,14 +506,14 @@ public class FXMLDocumentController implements Initializable {
     private void select_search_item_return() throws SQLException, IOException {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         BookObject buchs = new BookObject();
-        
+
         buchs = this.generate_search_object(buchs, buch.getIsbn1());
-                
+
         System.out.println(buch.getAuthor());
 
         // pass the selected books fields across to the borrow pane
-        fx_borrowpage_author.setText(buch.getAuthor());
-        fx_borrowpage_title.setText(buch.getBook());
+        fx_borrowpage_author.setText(buchs.getAuthor());
+        fx_borrowpage_title.setText(buchs.getBook());
         fx_borrowpage_published.setText(String.valueOf(buch.getYear()));
         fx_borrowpage_description.setText("");
         fx_borrowpage_isbn.setText(buch.getISBN1());
@@ -554,15 +554,16 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    public void searchtab_borrowbtn_confirmation() {
+    public void searchtab_borrowbtn_confirmation() throws SQLException, IOException {
 
         Stage popupwindow = new Stage();
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Borrow Confirmation");
-        // alert.setHeaderText("Look, a Confirmation Dialog");
-        alert.setContentText("Confirm borrow: \"" + buch.getBook() + "\" by " + buch.getAuthor() + "?");
-
+        alert.setTitle("Initiate Borrowing Session");
+        alert.setHeaderText("Are you sure you wish to borrow this book?");
+        ///alert.setContentText("Confirm borrow: \"" + buch.getBook() + "\" by " + buch.getAuthor() + "?");
+        alert.setContentText("\""+ buch.getBook() + "\" by " + buch.getAuthor());
+        
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             select_search_item_return();
@@ -571,19 +572,29 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-    
-    
-    public BookObject generate_search_object(BookObject buch, String ISBN) throws SQLException, IOException
-    {
-        
+
+    public BookObject generate_search_object(BookObject buch, String ISBN) throws SQLException, IOException {
+
         // create a socket for jdbc search
         JDBC_Controller socket = new JDBC_Controller();
-        
+
         // generate the equivalent bookobject from the tableview input
         buch = socket.jdbc_search_singlebook(buch, ISBN);
         // this method will pass a BookObject which will populate the tabs
-       
-        
+
         return buch;
+    }
+;
+    
+    @FXML
+    public void server_connection_issue() throws SQLException, IOException {
+
+        Stage popupwindow = new Stage();
+
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Network Timeout");
+        alert.setHeaderText("SERVER CONNECTION ISSUE");
+        alert.setContentText("Your connection with the servers has been lost. Please make sure have a reliable network connection and try again. Riverting to local stored databases.");
+        alert.showAndWait(); 
     };
 }

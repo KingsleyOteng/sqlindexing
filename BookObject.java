@@ -61,7 +61,7 @@ public class BookObject {
         return student_year;
     }
 
-    public String getBook_name() {
+    public String getBook() {
         return book_name;
     }
 
@@ -89,7 +89,7 @@ public class BookObject {
         this.student_year = student_year;
     }
 
-    public void setBook_name(String book_name) {
+    public void setBook(String book_name) {
         this.book_name = book_name;
     }
 

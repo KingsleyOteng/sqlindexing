@@ -97,7 +97,7 @@ public class JDBC_Controller {
                 obj[i].setStudent_name("NBN");
                 obj[i].setStudent_year(1992);
                 obj[i].setAuthor(rs.getString("Author"));
-                obj[i].setBook_name(rs.getString("BookName"));
+                obj[i].setBook(rs.getString("BookName"));
                 obj[i].setISBN1("ISBN1");
                 obj[i].setId(i);
                 i++;
@@ -218,7 +218,7 @@ public class JDBC_Controller {
             while (rs.next()) {
 
                 obj[i] = new BookObject();
-                obj[i].setBook_name(rs.getString("BookName"));
+                obj[i].setBook(rs.getString("BookName"));
                 obj[i].setAuthor(rs.getString("Author"));
 
                 obj[i].setId(1);
@@ -270,7 +270,7 @@ public class JDBC_Controller {
              {
 
                 obj = new BookObject();
-                obj.setBook_name(rs.getString("BookName"));
+                obj.setBook(rs.getString("BookName"));
                 obj.setAuthor(rs.getString("Author"));
 
                 obj.setId(1);
