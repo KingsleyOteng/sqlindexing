@@ -226,7 +226,7 @@ public class JDBC_Controller {
                 obj[i].setISBN1(rs.getString("ISBN1"));
 
                 //obj[i].setStudent_name("1");
-                obj[i].setStatus(rs.getString("Category"));
+                obj[i].setStatus(rs.getBoolean("BorrowedStatus"));
                 i++;
 
                 //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));
@@ -276,12 +276,12 @@ public class JDBC_Controller {
                 obj.setBook(rs.getString("BookName"));
                 obj.setAuthor(rs.getString("Author"));
                 obj.setYear(rs.getString("PublicationYear"));
+                
                 obj.setId(1);
-                System.out.println("output>>> " + rs.getString("ISBN1") + rs.getString("Author"));
                 obj.setISBN1(rs.getString("ISBN1"));
 
                 //obj[i].setStudent_name("1");
-                obj.setStatus(rs.getString("Category"));
+                obj.setStatus(rs.getBoolean("BorrowedStatus"));
                 
 
                 //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));

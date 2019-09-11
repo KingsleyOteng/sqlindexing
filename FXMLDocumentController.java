@@ -101,6 +101,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TextField fx_borrowpage_published = new TextField();
+    
+    @FXML
+    private TextField hello = new TextField();
 
     @FXML
     private TextField fx_borrowpage_description = new TextField();
@@ -119,6 +122,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TextField fx_borrowpage_id = new TextField();
+    
+    @FXML
+    private TextField fx_availability_status = new TextField();
 
     @FXML
     private TextField fxsearchtab_search = new TextField();
@@ -517,6 +523,9 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_published.setText(String.valueOf(buchs.getYear()));
         fx_borrowpage_description.setText("");
         fx_borrowpage_isbn.setText(buchs.getISBN1());
+       
+        
+        fx_availability_status.setText(buchs.getStatus());
         fx_borrowpage_overview.setText("");
         fx_borrowpage_borrower.setText("");
         fx_borrowpage_school_level.setText("");

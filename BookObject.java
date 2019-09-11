@@ -23,7 +23,7 @@ public class BookObject {
         book_name = "";
         author = "";
         library = "HIBS";
-        status = "here";
+        status = "Shelved";
         isbn1 = "";
         year = "";
     }
@@ -70,15 +70,15 @@ public class BookObject {
     public String getAuthor() {
         return author;
     }
-    
+
     public String getStatus() {
-        return status;
+        return this.status;
     }
 
     public String getISBN1() {
         return isbn1;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -98,11 +98,15 @@ public class BookObject {
     public void setAuthor(String author) {
         this.author = author;
     }
-    
-    public void setStatus(String status) {
-        this.status = status;
+
+    public void setStatus(Boolean status) {
+        if (status == true) {
+            this.status = "Borrowed";
+        } else {
+            this.status = "Shelved";
+        }
     }
-    
+
     public void setISBN1(String isbn1) {
         this.isbn1 = isbn1;
     }
@@ -114,6 +118,5 @@ public class BookObject {
     public void setYear(String year) {
         this.year = year;
     }
-
 
 }
