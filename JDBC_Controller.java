@@ -222,8 +222,9 @@ public class JDBC_Controller {
                 obj[i].setAuthor(rs.getString("Author"));
 
                 obj[i].setId(1);
-                System.out.println("output>>> " + rs.getString("ISBN1") + rs.getString("Author"));
                 obj[i].setISBN1(rs.getString("ISBN1"));
+                //System.out.println("output>>> " + rs.getString("ISBN1") + rs.getString("Author"));
+        
 
                 //obj[i].setStudent_name("1");
                 obj[i].setStatus(rs.getBoolean("BorrowedStatus"));
