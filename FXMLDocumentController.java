@@ -11,6 +11,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -64,27 +66,26 @@ public class FXMLDocumentController implements Initializable {
     private ToggleButton button_title, button_author, button_isbn,
             register_surnames, register_firstnames, register_ids,
             search_bks_title, search_bks_author, search_bks_isbn;
-    
+
     //------
     // Context menu entries for the Search TabPane's TableView
-    
     @FXML
-    private final MenuItem  borrowSession  = new MenuItem("Borrow this book");
-    
-    @FXML
-    private final MenuItem  returnSession = new MenuItem("Return this book");
-    
-    @FXML
-    private final MenuItem  addBookSession  = new MenuItem("Add new book");
+    private final MenuItem borrowSession = new MenuItem("Borrow this book");
 
     @FXML
-    private final MenuItem  addStudentSession = new MenuItem("Add new student");
-    
+    private final MenuItem returnSession = new MenuItem("Return this book");
+
     @FXML
-    private final MenuItem  editStudentSession = new MenuItem("Edit student entry");
-    
+    private final MenuItem addBookSession = new MenuItem("Add new book");
+
     @FXML
-    private final MenuItem  deleteStudentSession = new MenuItem("Delete student entry");
+    private final MenuItem addStudentSession = new MenuItem("Add new student");
+
+    @FXML
+    private final MenuItem editStudentSession = new MenuItem("Edit student entry");
+
+    @FXML
+    private final MenuItem deleteStudentSession = new MenuItem("Delete student entry");
     //------
 
     //@FXML
@@ -125,7 +126,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TextField fx_borrowpage_published = new TextField();
-    
+
     @FXML
     private TextField hello = new TextField();
 
@@ -146,7 +147,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TextField fx_borrowpage_id = new TextField();
-    
+
     @FXML
     private TextField fx_availability_status = new TextField();
 
@@ -216,8 +217,23 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         // Add a context menu to TableView
+        borrowSession.setOnAction(e -> {
+            try {
+                this.searchtab_borrowbtn_confirmation();
+            } catch (SQLException ex) {
+                this.server_connection_issue();
+            } catch (IOException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+        
+        returnSession.setOnAction(e -> {
+            //complete this section
+
+        });
         searchTableCatalogue.setContextMenu(new ContextMenu(borrowSession, returnSession));
 
         books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab, borrows_tabs);
@@ -550,8 +566,7 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_published.setText(String.valueOf(buchs.getYear()));
         fx_borrowpage_description.setText("");
         fx_borrowpage_isbn.setText(buchs.getISBN1());
-       
-        
+
         fx_availability_status.setText(buchs.getStatus());
         fx_borrowpage_overview.setText("");
         fx_borrowpage_borrower.setText("");
@@ -598,8 +613,8 @@ public class FXMLDocumentController implements Initializable {
         alert.setTitle("Initiate Borrowing Session");
         alert.setHeaderText("Are you sure you wish to borrow this book?");
         ///alert.setContentText("Confirm borrow: \"" + buch.getBook() + "\" by " + buch.getAuthor() + "?");
-        alert.setContentText("\""+ buch.getBook() + "\" by " + buch.getAuthor());
-        
+        alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
+
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             select_search_item_return();
@@ -614,17 +629,18 @@ public class FXMLDocumentController implements Initializable {
         // create a socket for jdbc search
         JDBC_Controller socket = new JDBC_Controller();
         BookObject buch_return = new BookObject();
-        
+
         // generate the equivalent bookobject from the tableview input
         buch_return = socket.jdbc_search_singlebook(buch, ISBN);
         // this method will pass a BookObject which will populate the tabs
 
         return buch_return;
     }
-;
+
+    ;
     
     @FXML
-    public void server_connection_issue() throws SQLException, IOException {
+    public void server_connection_issue()  {
 
         Stage popupwindow = new Stage();
 
@@ -632,8 +648,8 @@ public class FXMLDocumentController implements Initializable {
         alert.setTitle("Network Timeout");
         alert.setHeaderText("SERVER CONNECTION ISSUE");
         alert.setContentText("Your connection with the servers has been lost. Please make sure have a reliable network connection and try again. Riverting to local stored databases.");
-        alert.showAndWait(); 
-    };
-    
-    
+        alert.showAndWait();
+    }
+;
+
 }
