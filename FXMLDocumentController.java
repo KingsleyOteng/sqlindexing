@@ -22,7 +22,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -62,6 +64,28 @@ public class FXMLDocumentController implements Initializable {
     private ToggleButton button_title, button_author, button_isbn,
             register_surnames, register_firstnames, register_ids,
             search_bks_title, search_bks_author, search_bks_isbn;
+    
+    //------
+    // Context menu entries for the Search TabPane's TableView
+    
+    @FXML
+    private final MenuItem  borrowSession  = new MenuItem("Borrow this book");
+    
+    @FXML
+    private final MenuItem  returnSession = new MenuItem("Return this book");
+    
+    @FXML
+    private final MenuItem  addBookSession  = new MenuItem("Add new book");
+
+    @FXML
+    private final MenuItem  addStudentSession = new MenuItem("Add new student");
+    
+    @FXML
+    private final MenuItem  editStudentSession = new MenuItem("Edit student entry");
+    
+    @FXML
+    private final MenuItem  deleteStudentSession = new MenuItem("Delete student entry");
+    //------
 
     //@FXML
     // note togglegroup and togglebuttons must be defined in controller class
@@ -192,6 +216,9 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        // Add a context menu to TableView
+        searchTableCatalogue.setContextMenu(new ContextMenu(borrowSession, returnSession));
 
         books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab, borrows_tabs);
 
@@ -607,4 +634,6 @@ public class FXMLDocumentController implements Initializable {
         alert.setContentText("Your connection with the servers has been lost. Please make sure have a reliable network connection and try again. Riverting to local stored databases.");
         alert.showAndWait(); 
     };
+    
+    
 }
