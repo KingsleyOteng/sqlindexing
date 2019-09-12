@@ -35,6 +35,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 //import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
@@ -102,13 +103,13 @@ public class FXMLDocumentController implements Initializable {
     private final TabPane books_tab_pane = new TabPane();
 
     @FXML
-    private final ImageView catalogue_image1_handle = new ImageView();
+    private  ImageView catalogue_image1_handle = new ImageView();
     
     @FXML
-    private final ImageView borrow_image_box = new ImageView();
+    private  ImageView borrow_image_box = new ImageView();
             
     @FXML
-    private final ImageView borrow_photo_box = new ImageView();
+    private  ImageView borrow_photo_box = new ImageView();
 
     @FXML
     private final Tab borrows_tabs = new Tab();
@@ -312,6 +313,7 @@ public class FXMLDocumentController implements Initializable {
         table2.setPlaceholder(new Label("Search students"));
 
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira Lee", "2013", "9784150410513"));
+        catalogue_image1_handle = new ImageView("image1.jpeg");
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira    Lee", "2012", "9788401468711"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
