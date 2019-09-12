@@ -5,6 +5,7 @@
  */
 package userinterface;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -110,6 +111,9 @@ public class FXMLDocumentController implements Initializable {
             
     @FXML
     private  ImageView borrow_photo_box = new ImageView();
+    
+    @FXML
+    private ImageView image_anchor_1 = new ImageView();
 
     @FXML
     private final Tab borrows_tabs = new Tab();
@@ -230,6 +234,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        
         // Add a context menu to TableView
         borrowSession.setOnAction(e -> {
             try {
@@ -313,7 +318,13 @@ public class FXMLDocumentController implements Initializable {
         table2.setPlaceholder(new Label("Search students"));
 
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira Lee", "2013", "9784150410513"));
-        catalogue_image1_handle = new ImageView("image1.jpeg");
+        File file1 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/image2.jpeg");
+        
+        Image image = new Image("http://icons.iconarchive.com/icons/kidaubis-design/cool-heroes/128/Starwars-Stormtrooper-icon.png");
+        image_anchor_1.setImage(image);
+        
+        
+        
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira    Lee", "2012", "9788401468711"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
