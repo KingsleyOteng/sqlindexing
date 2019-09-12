@@ -62,7 +62,7 @@
                           </columns>
                         </TableView>
                         <Text layoutX="697.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
-                        <Region layoutX="642.0" layoutY="93.0" prefHeight="200.0" prefWidth="133.0" />
+                        <Region fx:id="image1_handle" layoutX="642.0" layoutY="93.0" prefHeight="200.0" prefWidth="133.0" />
                      </children></AnchorPane>
                </content>
             </Tab>
