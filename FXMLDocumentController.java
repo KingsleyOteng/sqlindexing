@@ -37,6 +37,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -95,9 +96,18 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
     private final ToggleGroup toggleGroup = new ToggleGroup();
-
+    
     @FXML
     private final TabPane books_tab_pane = new TabPane();
+
+    @FXML
+    private final Region catalogue_image1_handle = new Region();
+    
+    @FXML
+    private final Region borrow_image_box = new Region();
+    
+    @FXML
+    private final Region borrow_photo_box = new Region();
 
     @FXML
     private final Tab borrows_tabs = new Tab();

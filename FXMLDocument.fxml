@@ -62,7 +62,7 @@
                           </columns>
                         </TableView>
                         <Text layoutX="697.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
-                        <Region fx:id="image1_handle" layoutX="642.0" layoutY="93.0" prefHeight="200.0" prefWidth="133.0" />
+                        <Region fx:id="catalogue_image1_handle" layoutX="642.0" layoutY="93.0" prefHeight="200.0" prefWidth="133.0" />
                      </children></AnchorPane>
                </content>
             </Tab>
@@ -144,7 +144,7 @@
                         <Text layoutX="720.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
                         <TextField fx:id="fx_availability_status" layoutX="112.0" layoutY="363.0" prefHeight="27.0" prefWidth="378.0" promptText="Status" />
                         <Label layoutX="25.0" layoutY="367.0" text="Availability" />
-                        <Region fx:id="image_box" layoutX="504.0" layoutY="147.0" prefHeight="200.0" prefWidth="271.0" />
+                        <Region fx:id="borrow_image_box" layoutX="504.0" layoutY="147.0" prefHeight="200.0" prefWidth="271.0" />
                         <Region fx:id="photo_box" layoutX="575.0" layoutY="390.0" prefHeight="157.0" prefWidth="113.0" />
                      </children></AnchorPane>
             </content>
