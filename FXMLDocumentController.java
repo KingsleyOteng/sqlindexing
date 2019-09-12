@@ -35,9 +35,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+//import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
+//import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -101,13 +102,13 @@ public class FXMLDocumentController implements Initializable {
     private final TabPane books_tab_pane = new TabPane();
 
     @FXML
-    private final Region catalogue_image1_handle = new Region();
+    private final ImageView catalogue_image1_handle = new ImageView();
     
     @FXML
-    private final Region borrow_image_box = new Region();
-    
+    private final ImageView borrow_image_box = new ImageView();
+            
     @FXML
-    private final Region borrow_photo_box = new Region();
+    private final ImageView borrow_photo_box = new ImageView();
 
     @FXML
     private final Tab borrows_tabs = new Tab();
