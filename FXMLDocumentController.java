@@ -318,10 +318,7 @@ public class FXMLDocumentController implements Initializable {
         table2.setPlaceholder(new Label("Search students"));
 
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira Lee", "2013", "9784150410513"));
-        File file1 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/image2.jpeg");
-        
-        Image image = new Image("http://icons.iconarchive.com/icons/kidaubis-design/cool-heroes/128/Starwars-Stormtrooper-icon.png");
-        image_anchor_1.setImage(image);
+   
         
         
         
