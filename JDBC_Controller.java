@@ -277,7 +277,7 @@ public class JDBC_Controller {
 
                 obj.setId(1);
                 obj.setISBN1(rs.getString("ISBN1"));
-
+                obj.setFilePath(rs.getString("ImageFile"));
                 //obj[i].setStudent_name("1");
                 obj.setStatus(rs.getBoolean("BorrowedStatus"));
 
