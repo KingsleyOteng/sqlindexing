@@ -144,7 +144,7 @@
                         <Text layoutX="720.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
                         <TextField fx:id="fx_availability_status" layoutX="112.0" layoutY="363.0" prefHeight="27.0" prefWidth="378.0" promptText="Status" />
                         <Label layoutX="25.0" layoutY="367.0" text="Availability" />
-                        <ImageView fx:id="borrow_image_box" fitHeight="206.0" fitWidth="272.0" layoutX="502.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="borrow_image_box" fitHeight="206.0" fitWidth="136.0" layoutX="571.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="borrow_photo_box" fitHeight="150.0" fitWidth="200.0" layoutX="539.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true" />
                      </children></AnchorPane>
             </content>

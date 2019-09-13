@@ -671,7 +671,7 @@ public class FXMLDocumentController implements Initializable {
         String url = "https://books.google.com.gh/books/content?id=YG9okGt4Wt4C&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70byCnPACD-0f58YqwlX2UmQudfhGYu12SOWgFaiHer6paDzpX5TB2g_8lachuu4XB5MND2zpglrJbIN3OmsOn66AC_9w3DTgw5wtVo7iQpyBoXAnVJ3kOgskojMy8kmw8nvZLz";
         String imagePath = "image1.jpeg";
         
-        File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/image2.jpeg");
+        File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image2.jpeg");
         boolean backgroundLoading = true;
         Image image2 = new Image(file.toURI().toString(), backgroundLoading);
     
@@ -681,11 +681,14 @@ public class FXMLDocumentController implements Initializable {
         // The image is being loaded in the background
         Image image = new Image(url, backgroundLoading);
         
-        borrow_photo_box.setImage(image2);
-        borrow_photo_box.setPreserveRatio(true);
+        borrow_image_box.setImage(image2);
+        borrow_image_box.setPreserveRatio(true);
         
-        catalogue_image1_handle.setImage(image2);
-        catalogue_image1_handle.setPreserveRatio(true);
+        //borrow_image_box.setImage(image2);
+        //borrow_image_box.setPreserveRatio(true);
+        
+        //catalogue_image1_handle.setImage(image2);
+        //catalogue_image1_handle.setPreserveRatio(true);
         
     };
 
