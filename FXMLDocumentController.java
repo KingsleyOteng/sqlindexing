@@ -99,19 +99,19 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
     private final ToggleGroup toggleGroup = new ToggleGroup();
-    
+
     @FXML
     private final TabPane books_tab_pane = new TabPane();
 
     @FXML
-    private  ImageView catalogue_image1_handle = new ImageView();
-    
+    private ImageView catalogue_image1_handle = new ImageView();
+
     @FXML
-    private  ImageView borrow_image_box = new ImageView();
-            
+    private ImageView borrow_image_box = new ImageView();
+
     @FXML
-    private  ImageView borrow_photo_box = new ImageView();
-    
+    private ImageView borrow_photo_box = new ImageView();
+
     @FXML
     private ImageView image_anchor_1 = new ImageView();
 
@@ -234,7 +234,6 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        
         // Add a context menu to TableView
         borrowSession.setOnAction(e -> {
             try {
@@ -246,7 +245,7 @@ public class FXMLDocumentController implements Initializable {
             }
 
         });
-        
+
         returnSession.setOnAction(e -> {
             //complete this section
 
@@ -318,10 +317,6 @@ public class FXMLDocumentController implements Initializable {
         table2.setPlaceholder(new Label("Search students"));
 
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira Lee", "2013", "9784150410513"));
-   
-        
-        
-        
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira    Lee", "2012", "9788401468711"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
@@ -656,12 +651,10 @@ public class FXMLDocumentController implements Initializable {
         // this method will pass a BookObject which will populate the tabs
 
         return buch_return;
-    }
-
-    ;
+    };
     
     @FXML
-    public void server_connection_issue()  {
+    public void server_connection_issue() {
 
         Stage popupwindow = new Stage();
 
@@ -670,7 +663,21 @@ public class FXMLDocumentController implements Initializable {
         alert.setHeaderText("SERVER CONNECTION ISSUE");
         alert.setContentText("Your connection with the servers has been lost. Please make sure have a reliable network connection and try again. Riverting to local stored databases.");
         alert.showAndWait();
-    }
-;
+    };
+    
+    @FXML
+    public void load_image() {
+        System.out.println("hello");
+        String url = "https://tpc.googlesyndication.com/sadbundle/13137600270097139525/logo.jpg";
+        
+        boolean backgroundLoading = true;
+ 
+        // The image is being loaded in the background
+        Image image = new Image(url, backgroundLoading);
+        image_anchor_1.setImage(image);
+        image_anchor_1.setPreserveRatio(true);
+        borrow_photo_box.setImage(image);
+        
+    };
 
 }
