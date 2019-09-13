@@ -668,15 +668,21 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void load_image() {
         System.out.println("hello");
-        String url = "https://tpc.googlesyndication.com/sadbundle/13137600270097139525/logo.jpg";
+        String url = "https://books.google.com.gh/books/content?id=YG9okGt4Wt4C&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70byCnPACD-0f58YqwlX2UmQudfhGYu12SOWgFaiHer6paDzpX5TB2g_8lachuu4XB5MND2zpglrJbIN3OmsOn66AC_9w3DTgw5wtVo7iQpyBoXAnVJ3kOgskojMy8kmw8nvZLz";
+        String imagePath = "image1.jpeg";
         
+        File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/image2.jpeg");
         boolean backgroundLoading = true;
+        Image image2 = new Image(file.toURI().toString(), backgroundLoading);
+    
+        
+        
  
         // The image is being loaded in the background
         Image image = new Image(url, backgroundLoading);
-        image_anchor_1.setImage(image);
-        image_anchor_1.setPreserveRatio(true);
-        borrow_photo_box.setImage(image);
+        
+        borrow_photo_box.setImage(image2);
+        borrow_photo_box.setPreserveRatio(true);
         
     };
 

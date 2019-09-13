@@ -179,12 +179,7 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="259.0" fitWidth="200.0" layoutX="301.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView layoutX="329.0" layoutY="176.0">
-                           <image>
-                              <Image url="@image1.jpeg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="borrow_photo_box" fitHeight="150.0" fitWidth="200.0" layoutX="129.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="borrow_photo_box" fitHeight="217.0" fitWidth="200.0" layoutX="285.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true" />
                      </children></AnchorPane>
                </content>
             </Tab>
