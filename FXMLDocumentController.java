@@ -684,6 +684,9 @@ public class FXMLDocumentController implements Initializable {
         borrow_photo_box.setImage(image2);
         borrow_photo_box.setPreserveRatio(true);
         
+        catalogue_image1_handle.setImage(image2);
+        catalogue_image1_handle.setPreserveRatio(true);
+        
     };
 
 }
