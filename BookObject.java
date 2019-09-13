@@ -13,7 +13,7 @@ package userinterface;
 public class BookObject {
 
     private int id, student_year;
-    private String student_name, book_name, author, status, isbn1, year;
+    private String student_name, book_name, author, status, isbn1, year, filePath;
     private static String library;
 
     BookObject() {
@@ -26,9 +26,10 @@ public class BookObject {
         status = "Shelved";
         isbn1 = "";
         year = "";
+        filePath = "";
     }
 
-    BookObject(int id, String student_name, int student_year, String book_name, String author, String status, String isbn1, String year) {
+    BookObject(int id, String student_name, int student_year, String book_name, String author, String status, String isbn1, String year, String filePath) {
         this.id = id;
         this.student_name = student_name;
         this.student_year = student_year;
@@ -37,6 +38,7 @@ public class BookObject {
         this.status = status;
         this.isbn1 = isbn1;
         this.year = year;
+        this.filePath = filePath;
     }
 
     private static void setLibrary(String library) {
@@ -78,6 +80,10 @@ public class BookObject {
     public String getISBN1() {
         return isbn1;
     }
+    
+    public String getFilePath() {
+        return filePath;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -117,6 +123,10 @@ public class BookObject {
 
     public void setYear(String year) {
         this.year = year;
+    }
+    
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
 }

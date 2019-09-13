@@ -588,6 +588,21 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_borrower.setText("");
         fx_borrowpage_school_level.setText("");
         fx_borrowpage_id.setText("");
+        
+        String fileHandle = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/" + buchs.getFilePath(); 
+        File file = new File(fileHandle);
+        boolean backgroundLoading = true;
+        Image image2 = new Image(file.toURI().toString(), backgroundLoading);
+    
+        
+        
+ 
+       
+        
+        borrow_image_box.setImage(image2);
+        borrow_image_box.setPreserveRatio(true);
+        
+        
 
     }
 
