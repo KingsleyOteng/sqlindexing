@@ -274,12 +274,10 @@ public class JDBC_Controller {
                 obj.setBook(rs.getString("BookName"));
                 obj.setAuthor(rs.getString("Author"));
                 obj.setYear(rs.getString("PublicationYear"));
-
                 obj.setId(1);
                 obj.setISBN1(rs.getString("ISBN1"));
                 obj.setFilePath(rs.getString("ImageFile"));
                 obj.setDescription(rs.getString("CategoryDescription"));
-                //obj[i].setStudent_name("1");
                 obj.setStatus(rs.getBoolean("BorrowedStatus"));
 
                 //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));

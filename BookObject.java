@@ -57,6 +57,51 @@ public class BookObject {
      *
      * @return
      */
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setStudent_name(String student_name) {
+        this.student_name = student_name;
+    }
+
+    public void setStudent_year(int student_year) {
+        this.student_year = student_year;
+    }
+
+    public void setBook(String book_name) {
+        this.book_name = book_name;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setStatus(Boolean status) {
+        if (status == true) {
+            this.status = "Borrowed";
+        } else {
+            this.status = "Shelved";
+        }
+    }
+
+    public void setISBN1(String isbn1) {
+        this.isbn1 = isbn1;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+    
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
     public int getId() {
         return id;
     }
@@ -93,54 +138,11 @@ public class BookObject {
     public String getFilePath() {
         return filePath;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setStudent_name(String student_name) {
-        this.student_name = student_name;
-    }
-
-    public void setStudent_year(int student_year) {
-        this.student_year = student_year;
-    }
-
-    public void setBook(String book_name) {
-        this.book_name = book_name;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setStatus(Boolean status) {
-        if (status == true) {
-            this.status = "Borrowed";
-        } else {
-            this.status = "Shelved";
-        }
-    }
-
-    public void setISBN1(String isbn1) {
-        this.isbn1 = isbn1;
-    }
-
+    
     public String getYear() {
         return year;
     }
 
-    public void setYear(String year) {
-        this.year = year;
-    }
-    
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-    
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
 
     @Override
