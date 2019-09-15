@@ -312,6 +312,12 @@ public class FXMLDocumentController implements Initializable {
             }
         });
 
+        File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
+        boolean backgroundLoading = true;
+        Image image2 = new Image(file.toURI().toString(), backgroundLoading);
+        borrow_photo_box.setImage(image2);
+        borrow_photo_box.setPreserveRatio(true);
+        
         schoolCatalogueTable.setPlaceholder(new Label("Search books"));
         searchTableCatalogue.setPlaceholder(new Label("Search books teo"));
         table2.setPlaceholder(new Label("Search students"));
@@ -700,6 +706,8 @@ public class FXMLDocumentController implements Initializable {
         borrow_image_box.setImage(image2);
         borrow_image_box.setPreserveRatio(true);
         
+        borrow_photo_box.setImage(image2);
+        borrow_photo_box.setPreserveRatio(true);
         //borrow_image_box.setImage(image2);
         //borrow_image_box.setPreserveRatio(true);
         

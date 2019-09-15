@@ -145,11 +145,7 @@
                         <TextField fx:id="fx_availability_status" layoutX="112.0" layoutY="363.0" prefHeight="27.0" prefWidth="378.0" promptText="Status" />
                         <Label layoutX="25.0" layoutY="367.0" text="Availability" />
                         <ImageView fx:id="borrow_image_box" fitHeight="206.0" fitWidth="136.0" layoutX="571.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="154.0" fitWidth="148.0" layoutX="571.0" layoutY="406.0">
-                           <image>
-                              <Image url="@../../../../Desktop/dummy_silo.jpg" />
-                           </image>
-                        </ImageView>
+                        <ImageView fx:id="borrow_photo_box" fitHeight="160.0" fitWidth="112.0" layoutX="583.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true" />
                      </children></AnchorPane>
             </content>
           </Tab>
