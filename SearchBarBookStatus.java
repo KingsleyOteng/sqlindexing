@@ -5,6 +5,8 @@
  */
 package userinterface;
 
+import java.util.Objects;
+
 /**
  * @description searchbar status class
  * @date 5 September 2019
@@ -60,5 +62,34 @@ public class SearchBarBookStatus {
     public void setIsbn1(String isbn1) {
         this.isbn1 = isbn1;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SearchBarBookStatus other = (SearchBarBookStatus) obj;
+        if (!Objects.equals(this.book, other.book)) {
+            return false;
+        }
+        if (!Objects.equals(this.author, other.author)) {
+            return false;
+        }
+        if (!Objects.equals(this.status, other.status)) {
+            return false;
+        }
+        if (!Objects.equals(this.isbn1, other.isbn1)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }

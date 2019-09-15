@@ -5,6 +5,8 @@
  */
 package userinterface;
 
+import java.util.Objects;
+
 /**
  * @description pupil object class
  * @date 5 September 2019
@@ -119,5 +121,49 @@ public class PupilObject {
     public static void setLibrary(String library) {
         PupilObject.library = library;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PupilObject other = (PupilObject) obj;
+        if (this.numberofbooksborrowed != other.numberofbooksborrowed) {
+            return false;
+        }
+        if (this.date != other.date) {
+            return false;
+        }
+        if (this.timestamp != other.timestamp) {
+            return false;
+        }
+        if (!Objects.equals(this.lastname, other.lastname)) {
+            return false;
+        }
+        if (!Objects.equals(this.firstname, other.firstname)) {
+            return false;
+        }
+        if (!Objects.equals(this.classwhenrecordcreated, other.classwhenrecordcreated)) {
+            return false;
+        }
+        if (!Objects.equals(this.borrowerid, other.borrowerid)) {
+            return false;
+        }
+        if (!Objects.equals(this.school, other.school)) {
+            return false;
+        }
+        if (!Objects.equals(this.bookid, other.bookid)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }

@@ -582,6 +582,7 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_published.setText(String.valueOf(buchs.getYear()));
         fx_borrowpage_description.setText("");
         fx_borrowpage_isbn.setText(buchs.getISBN1());
+        fx_borrowpage_description.setText(buchs.getDescription());
 
         fx_availability_status.setText(buchs.getStatus());
         fx_borrowpage_overview.setText("");

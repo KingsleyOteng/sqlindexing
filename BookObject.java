@@ -5,6 +5,8 @@
  */
 package userinterface;
 
+import java.util.Objects;
+
 /**
  * @description the following is a class to hold objects of type 'book'
  * @author kwadwooteng-amoako
@@ -13,7 +15,7 @@ package userinterface;
 public class BookObject {
 
     private int id, student_year;
-    private String student_name, book_name, author, status, isbn1, year, filePath;
+    private String student_name, book_name, author, status, isbn1, year, filePath, description;
     private static String library;
 
     BookObject() {
@@ -24,12 +26,13 @@ public class BookObject {
         author = "";
         library = "HIBS";
         status = "Shelved";
+        description = "";
         isbn1 = "";
         year = "";
         filePath = "";
     }
 
-    BookObject(int id, String student_name, int student_year, String book_name, String author, String status, String isbn1, String year, String filePath) {
+    BookObject(int id, String student_name, int student_year, String book_name, String author, String status, String isbn1, String year, String filePath, String description) {
         this.id = id;
         this.student_name = student_name;
         this.student_year = student_year;
@@ -39,6 +42,7 @@ public class BookObject {
         this.isbn1 = isbn1;
         this.year = year;
         this.filePath = filePath;
+        this.description = description;
     }
 
     private static void setLibrary(String library) {
@@ -55,6 +59,11 @@ public class BookObject {
      */
     public int getId() {
         return id;
+    }
+    
+    public String getDescription()
+    {
+        return description;
     }
 
     public String getStudent_name() {
@@ -128,5 +137,55 @@ public class BookObject {
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
+    
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BookObject other = (BookObject) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.student_year != other.student_year) {
+            return false;
+        }
+        if (!Objects.equals(this.student_name, other.student_name)) {
+            return false;
+        }
+        if (!Objects.equals(this.book_name, other.book_name)) {
+            return false;
+        }
+        if (!Objects.equals(this.author, other.author)) {
+            return false;
+        }
+        if (!Objects.equals(this.status, other.status)) {
+            return false;
+        }
+        if (!Objects.equals(this.isbn1, other.isbn1)) {
+            return false;
+        }
+        if (!Objects.equals(this.year, other.year)) {
+            return false;
+        }
+        if (!Objects.equals(this.filePath, other.filePath)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+    
+    
 }

@@ -5,6 +5,8 @@
  */
 package userinterface;
 
+import java.util.Objects;
+
 /**
  * @description library object class
  * @date 5 September 2019
@@ -120,4 +122,50 @@ public class LibraryBooksStatus {
         this.student_year = student_year;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LibraryBooksStatus other = (LibraryBooksStatus) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.year != other.year) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.book, other.book)) {
+            return false;
+        }
+        if (!Objects.equals(this.author, other.author)) {
+            return false;
+        }
+        if (!Objects.equals(this.status, other.status)) {
+            return false;
+        }
+        if (!Objects.equals(this.isbn1, other.isbn1)) {
+            return false;
+        }
+        if (!Objects.equals(this.student_year, other.student_year)) {
+            return false;
+        }
+        return true;
+    }
+
+    
 }
