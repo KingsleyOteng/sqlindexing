@@ -32,6 +32,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -156,7 +157,7 @@ public class FXMLDocumentController implements Initializable {
     private TextField fx_borrowpage_isbn = new TextField();
 
     @FXML
-    private TextField fx_borrowpage_overview = new TextField();
+    private TextArea fx_borrowpage_overview = new TextArea();
 
     @FXML
     private TextField fx_borrowpage_borrower = new TextField();
@@ -589,14 +590,15 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_author.setText(buchs.getAuthor());
         fx_borrowpage_title.setText(buchs.getBook());
         fx_borrowpage_published.setText(String.valueOf(buchs.getYear()));
-        fx_borrowpage_description.setText("");
         fx_borrowpage_isbn.setText(buchs.getISBN1());
         fx_borrowpage_description.setText(buchs.getDescription());
         fx_availability_status.setText(buchs.getStatus());
-        fx_borrowpage_overview.setText("");
+        fx_borrowpage_overview.setText(buchs.getOverview());       
         fx_borrowpage_borrower.setText("");
         fx_borrowpage_school_level.setText("");
         fx_borrowpage_id.setText("");
+        
+        fx_borrowpage_overview.setWrapText(true);
         
         String fileHandle = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/" + buchs.getFilePath() + ".jpeg"; 
         File file = new File(fileHandle);

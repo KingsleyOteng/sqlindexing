@@ -276,8 +276,9 @@ public class JDBC_Controller {
                 obj.setYear(rs.getString("PublicationYear"));
                 obj.setId(1);
                 obj.setISBN1(rs.getString("ISBN1"));
-                obj.setFilePath(rs.getString("ImageFile"));
                 obj.setDescription(rs.getString("CategoryDescription"));
+                obj.setFilePath(rs.getString("ImageFile"));
+                obj.setOverview(rs.getString("BookDescription"));
                 obj.setStatus(rs.getBoolean("BorrowedStatus"));
 
                 //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));

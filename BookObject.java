@@ -15,7 +15,7 @@ import java.util.Objects;
 public class BookObject {
 
     private int id, student_year;
-    private String student_name, book_name, author, status, isbn1, year, filePath, description;
+    private String student_name, book_name, author, status, isbn1, year, filePath, description, overview;
     private static String library;
 
     BookObject() {
@@ -30,9 +30,10 @@ public class BookObject {
         isbn1 = "";
         year = "";
         filePath = "";
+        overview = "";
     }
 
-    BookObject(int id, String student_name, int student_year, String book_name, String author, String status, String isbn1, String year, String filePath, String description) {
+    BookObject(int id, String student_name, int student_year, String book_name, String author, String status, String isbn1, String year, String filePath, String description, String overview) {
         this.id = id;
         this.student_name = student_name;
         this.student_year = student_year;
@@ -43,6 +44,7 @@ public class BookObject {
         this.year = year;
         this.filePath = filePath;
         this.description = description;
+        this.overview = overview;
     }
 
     private static void setLibrary(String library) {
@@ -57,6 +59,10 @@ public class BookObject {
      *
      * @return
      */
+    
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
     
     public void setId(int id) {
         this.id = id;
@@ -94,23 +100,28 @@ public class BookObject {
         this.year = year;
     }
     
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-    
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
     
     public int getId() {
         return id;
     }
     
+    public String getOverview()
+    {
+        return overview;
+    }
+
     public String getDescription()
     {
         return description;
     }
-
+    
     public String getStudent_name() {
         return student_name;
     }

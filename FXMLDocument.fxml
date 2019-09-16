@@ -120,7 +120,6 @@
                         <TextField fx:id="fx_borrowpage_author" layoutX="112.0" layoutY="65.0" prefHeight="27.0" prefWidth="378.0" promptText="Name" />
                         <TextField fx:id="fx_borrowpage_title" layoutX="112.0" layoutY="103.0" prefHeight="27.0" prefWidth="378.0" promptText="Title" />
                         <TextField fx:id="fx_borrowpage_published" layoutX="112.0" layoutY="140.0" prefHeight="27.0" prefWidth="378.0" promptText="Year" />
-                        <TextField fx:id="fx_borrowpage_overview" layoutX="112.0" layoutY="247.0" prefHeight="111.0" prefWidth="378.0" />
                         <Label layoutX="26.0" layoutY="70.0" text="Author" />
                         <Label layoutX="26.0" layoutY="108.0" text="Title" />
                         <Label layoutX="25.0" layoutY="145.0" text="Published" />
@@ -146,6 +145,7 @@
                         <Label layoutX="25.0" layoutY="367.0" text="Availability" />
                         <ImageView fx:id="borrow_image_box" fitHeight="206.0" fitWidth="136.0" layoutX="571.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="photobox_borrow" fitHeight="150.0" fitWidth="122.0" layoutX="578.0" layoutY="415.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextArea fx:id="fx_borrowpage_overview" layoutX="112.0" layoutY="248.0" prefHeight="110.0" prefWidth="377.0" promptText="Overview" />
                      </children></AnchorPane>
             </content>
           </Tab>
