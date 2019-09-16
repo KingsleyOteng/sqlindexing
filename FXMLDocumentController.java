@@ -102,6 +102,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private final TabPane books_tab_pane = new TabPane();
+    
+    @FXML
+    private ImageView photobox_borrow = new ImageView();
 
     @FXML
     private ImageView catalogue_image1_handle = new ImageView();
@@ -600,15 +603,15 @@ public class FXMLDocumentController implements Initializable {
         File file = new File(fileHandle);
         boolean backgroundLoading = true;
         Image image2 = new Image(file.toURI().toString(), backgroundLoading);
-    
-        
-        
- 
-       
         
         borrow_image_box.setImage(image2);
         borrow_image_box.setPreserveRatio(true);
         
+        File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/dummy_silo.jpeg");
+        Image image3 = new Image(file3.toURI().toString(), backgroundLoading);
+        
+        photobox_borrow.setImage(image3);
+        photobox_borrow.setPreserveRatio(true);
         
 
     }
@@ -696,23 +699,10 @@ public class FXMLDocumentController implements Initializable {
         File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image2.jpeg");
         boolean backgroundLoading = true;
         Image image2 = new Image(file.toURI().toString(), backgroundLoading);
-    
-        
-        
- 
-        // The image is being loaded in the background
-        Image image = new Image(url, backgroundLoading);
         
         borrow_image_box.setImage(image2);
         borrow_image_box.setPreserveRatio(true);
-        
-        borrow_photo_box.setImage(image2);
-        borrow_photo_box.setPreserveRatio(true);
-        //borrow_image_box.setImage(image2);
-        //borrow_image_box.setPreserveRatio(true);
-        
-        //catalogue_image1_handle.setImage(image2);
-        //catalogue_image1_handle.setPreserveRatio(true);
+ 
         
     };
 
