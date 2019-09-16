@@ -592,7 +592,6 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_description.setText("");
         fx_borrowpage_isbn.setText(buchs.getISBN1());
         fx_borrowpage_description.setText(buchs.getDescription());
-
         fx_availability_status.setText(buchs.getStatus());
         fx_borrowpage_overview.setText("");
         fx_borrowpage_borrower.setText("");
@@ -607,6 +606,8 @@ public class FXMLDocumentController implements Initializable {
         borrow_image_box.setImage(image2);
         borrow_image_box.setPreserveRatio(true);
         
+        
+        // insert a holder for future inclusion of users photos
         File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/dummy_silo.jpeg");
         Image image3 = new Image(file3.toURI().toString(), backgroundLoading);
         
