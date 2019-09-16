@@ -117,35 +117,37 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="826.0">
                      <children>
-                        <TextField fx:id="fx_borrowpage_author" layoutX="112.0" layoutY="65.0" prefHeight="27.0" prefWidth="378.0" promptText="Name" />
-                        <TextField fx:id="fx_borrowpage_title" layoutX="112.0" layoutY="103.0" prefHeight="27.0" prefWidth="378.0" promptText="Title" />
-                        <TextField fx:id="fx_borrowpage_published" layoutX="112.0" layoutY="140.0" prefHeight="27.0" prefWidth="378.0" promptText="Year" />
-                        <Label layoutX="26.0" layoutY="70.0" text="Author" />
-                        <Label layoutX="26.0" layoutY="108.0" text="Title" />
-                        <Label layoutX="25.0" layoutY="145.0" text="Published" />
-                        <Label layoutX="25.0" layoutY="183.0" text="Category" />
-                        <TextField fx:id="fx_borrowpage_description" layoutX="112.0" layoutY="178.0" prefHeight="27.0" prefWidth="378.0" promptText="Description" />
-                        <TextField fx:id="fx_borrowpage_isbn" layoutX="112.0" layoutY="212.0" prefHeight="27.0" prefWidth="378.0" promptText="ISBN" />
-                        <Label layoutX="25.0" layoutY="217.0" text="ISBN" />
-                        <TextField fx:id="fx_borrowpage_borrower" layoutX="112.0" layoutY="415.0" prefHeight="27.0" prefWidth="378.0" promptText="Name" />
-                        <TextField fx:id="fx_borrowpage_school_level" layoutX="112.0" layoutY="451.0" prefHeight="27.0" prefWidth="378.0" promptText="Year" />
-                        <Label layoutX="26.0" layoutY="420.0" text="Borrower" />
+                        <TextField fx:id="fx_borrowpage_author" layoutX="112.0" layoutY="18.0" prefHeight="27.0" prefWidth="378.0" promptText="Name" />
+                        <TextField fx:id="fx_borrowpage_title" layoutX="112.0" layoutY="56.0" prefHeight="27.0" prefWidth="378.0" promptText="Title" />
+                        <TextField fx:id="fx_borrowpage_published" layoutX="112.0" layoutY="93.0" prefHeight="27.0" prefWidth="378.0" promptText="Year" />
+                        <Label layoutX="26.0" layoutY="23.0" text="Author" />
+                        <Label layoutX="26.0" layoutY="61.0" text="Title" />
+                        <Label layoutX="25.0" layoutY="98.0" text="Published" />
+                        <Label layoutX="25.0" layoutY="136.0" text="Category" />
+                        <TextField fx:id="fx_borrowpage_description" layoutX="112.0" layoutY="131.0" prefHeight="27.0" prefWidth="378.0" promptText="Description" />
+                        <TextField fx:id="fx_borrowpage_isbn" layoutX="112.0" layoutY="165.0" prefHeight="27.0" prefWidth="378.0" promptText="ISBN" />
+                        <Label layoutX="25.0" layoutY="170.0" text="ISBN" />
+                        <TextField fx:id="fx_borrowpage_borrower" layoutX="112.0" layoutY="415.0" onKeyPressed="#jdbc_quick_search_fx_borrowpage_borrower" prefHeight="27.0" prefWidth="378.0" promptText="Surname" />
+                        <TextField fx:id="fx_borrowpage_school_level" layoutX="112.0" layoutY="451.0" onKeyPressed="#jdbc_quick_search_fx_borrowpage_school_level" prefHeight="27.0" prefWidth="378.0" promptText="Year" />
+                        <Label layoutX="26.0" layoutY="420.0" />
                         <Label layoutX="26.0" layoutY="456.0" text="School Level" />
                         <DatePicker layoutX="112.0" layoutY="519.0" />
                         <Label layoutX="26.0" layoutY="524.0" text="Date Due" />
                         <CheckBox layoutX="386.0" layoutY="524.0" mnemonicParsing="false" text="Print Receipt" />
-                        <Button id="button1" fx:id="myButton" layoutX="502.0" layoutY="70.0" mnemonicParsing="false" onAction="#borrowpage_button" prefHeight="67.0" prefWidth="274.0" text="GO" />
+                        <Button id="button1" fx:id="myButton" layoutX="502.0" layoutY="19.0" mnemonicParsing="false" onAction="#borrowpage_button" prefHeight="67.0" prefWidth="274.0" text="GO" />
                         <Label layoutX="25.0" layoutY="490.0" text="Hilltop ID#" />
-                        <TextField fx:id="fx_borrowpage_id" layoutX="111.0" layoutY="485.0" prefHeight="27.0" prefWidth="378.0" promptText="ID Number" />
-                        <Label layoutX="25.0" layoutY="248.0" text="Overview" />
+                        <TextField fx:id="fx_borrowpage_id" layoutX="111.0" layoutY="485.0" onKeyPressed="#jdbc_quick_search_fx_borrowpage_id" prefHeight="27.0" prefWidth="378.0" promptText="ID Number" />
+                        <Label layoutX="25.0" layoutY="201.0" text="Overview" />
                         <Label layoutX="26.0" layoutY="556.0" text="Borrowed" />
                         <DatePicker layoutX="112.0" layoutY="551.0" />
                         <Text layoutX="720.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
-                        <TextField fx:id="fx_availability_status" layoutX="112.0" layoutY="363.0" prefHeight="27.0" prefWidth="378.0" promptText="Status" />
-                        <Label layoutX="25.0" layoutY="367.0" text="Availability" />
+                        <TextField fx:id="fx_availability_status" layoutX="112.0" layoutY="316.0" prefHeight="27.0" prefWidth="378.0" promptText="Status" />
+                        <Label layoutX="25.0" layoutY="320.0" text="Availability" />
                         <ImageView fx:id="borrow_image_box" fitHeight="206.0" fitWidth="136.0" layoutX="571.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="photobox_borrow" fitHeight="150.0" fitWidth="122.0" layoutX="578.0" layoutY="415.0" pickOnBounds="true" preserveRatio="true" />
-                        <TextArea fx:id="fx_borrowpage_overview" layoutX="112.0" layoutY="248.0" prefHeight="110.0" prefWidth="377.0" promptText="Overview" />
+                        <TextArea fx:id="fx_borrowpage_overview" layoutX="112.0" layoutY="201.0" prefHeight="110.0" prefWidth="377.0" promptText="Overview" />
+                        <Label layoutX="25.0" layoutY="387.0" text="Borrower" />
+                        <TextField fx:id="fx_borrowpage_borrower_firstname" layoutX="111.0" layoutY="382.0" onKeyPressed="#quick_search" prefHeight="27.0" prefWidth="378.0" promptText="First name" />
                      </children></AnchorPane>
             </content>
           </Tab>

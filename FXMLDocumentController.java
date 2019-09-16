@@ -103,7 +103,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private final TabPane books_tab_pane = new TabPane();
-    
+
     @FXML
     private ImageView photobox_borrow = new ImageView();
 
@@ -161,6 +161,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TextField fx_borrowpage_borrower = new TextField();
+
+    @FXML
+    private TextField fx_borrowpage_borrower_firstname = new TextField();
 
     @FXML
     private TextField fx_borrowpage_school_level = new TextField();
@@ -321,7 +324,7 @@ public class FXMLDocumentController implements Initializable {
         Image image2 = new Image(file.toURI().toString(), backgroundLoading);
         borrow_photo_box.setImage(image2);
         borrow_photo_box.setPreserveRatio(true);
-        
+
         schoolCatalogueTable.setPlaceholder(new Label("Search books"));
         searchTableCatalogue.setPlaceholder(new Label("Search books teo"));
         table2.setPlaceholder(new Label("Search students"));
@@ -365,6 +368,12 @@ public class FXMLDocumentController implements Initializable {
         register_surnames.setUserData("lastname");
         register_ids.setToggleGroup(toggleGroupStudentRegister);
         register_ids.setUserData("studentnumber");
+        
+        // set meta data
+        fx_borrowpage_borrower_firstname.setUserData("fx_firstname");
+        fx_borrowpage_borrower.setUserData("fx_surname");
+        fx_borrowpage_school_level.setUserData("fx_schoollevel");
+        fx_borrowpage_id.setUserData("fx_id");
 
         //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
         search_bks_title.setToggleGroup(toggleGroupBookSearch);
@@ -593,29 +602,27 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_isbn.setText(buchs.getISBN1());
         fx_borrowpage_description.setText(buchs.getDescription());
         fx_availability_status.setText(buchs.getStatus());
-        fx_borrowpage_overview.setText(buchs.getOverview());       
+        fx_borrowpage_overview.setText(buchs.getOverview());
         fx_borrowpage_borrower.setText("");
         fx_borrowpage_school_level.setText("");
         fx_borrowpage_id.setText("");
-        
+
         fx_borrowpage_overview.setWrapText(true);
-        
-        String fileHandle = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/" + buchs.getFilePath() + ".jpeg"; 
+
+        String fileHandle = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/" + buchs.getFilePath() + ".jpeg";
         File file = new File(fileHandle);
         boolean backgroundLoading = true;
         Image image2 = new Image(file.toURI().toString(), backgroundLoading);
-        
+
         borrow_image_box.setImage(image2);
         borrow_image_box.setPreserveRatio(true);
-        
-        
+
         // insert a holder for future inclusion of users photos
         File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/dummy_silo.jpeg");
         Image image3 = new Image(file3.toURI().toString(), backgroundLoading);
-        
+
         photobox_borrow.setImage(image3);
         photobox_borrow.setPreserveRatio(true);
-        
 
     }
 
@@ -679,7 +686,9 @@ public class FXMLDocumentController implements Initializable {
         // this method will pass a BookObject which will populate the tabs
 
         return buch_return;
-    };
+    }
+
+    ;
     
     @FXML
     public void server_connection_issue() {
@@ -691,22 +700,47 @@ public class FXMLDocumentController implements Initializable {
         alert.setHeaderText("SERVER CONNECTION ISSUE");
         alert.setContentText("Your connection with the servers has been lost. Please make sure have a reliable network connection and try again. Riverting to local stored databases.");
         alert.showAndWait();
-    };
+    }
+
+    ;
     
     @FXML
     public void load_image() {
         System.out.println("hello");
         String url = "https://books.google.com.gh/books/content?id=YG9okGt4Wt4C&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70byCnPACD-0f58YqwlX2UmQudfhGYu12SOWgFaiHer6paDzpX5TB2g_8lachuu4XB5MND2zpglrJbIN3OmsOn66AC_9w3DTgw5wtVo7iQpyBoXAnVJ3kOgskojMy8kmw8nvZLz";
         String imagePath = "image1.jpeg";
-        
+
         File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image2.jpeg");
         boolean backgroundLoading = true;
         Image image2 = new Image(file.toURI().toString(), backgroundLoading);
-        
+
         borrow_image_box.setImage(image2);
         borrow_image_box.setPreserveRatio(true);
- 
-        
-    };
 
+    }
+
+    ;
+
+    @FXML
+    public void quick_search() throws IOException, SQLException {
+        // clear fields
+        fx_borrowpage_borrower.setText("");
+        fx_borrowpage_school_level.setText("");
+        fx_borrowpage_id.setText("");
+        
+        // grab query
+        String query = fx_borrowpage_borrower_firstname.getText();
+      
+        // search database for closest match
+        JDBC_Controller socket = new JDBC_Controller();
+        StudentRegisterd obj = new StudentRegisterd();
+        obj = socket.jdbc_quick_search(query);
+        
+        // update fields
+        fx_borrowpage_borrower.setText(obj.getLastname());
+        fx_borrowpage_school_level.setText(String.valueOf(obj.getClassd()));
+        fx_borrowpage_id.setText(String.valueOf(obj.getId()));
+
+    }
+;
 }

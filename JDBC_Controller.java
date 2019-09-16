@@ -303,4 +303,147 @@ public class JDBC_Controller {
         return obj;
     }
 
+    // jdbc find a book
+    StudentRegisterd jdbc_quick_search(String query)
+            throws MalformedURLException, IOException, SQLException {
+        StudentRegisterd obj = new StudentRegisterd();
+
+        System.out.println();
+        try {
+
+            //create socket
+            Class.forName("com.mysql.jdbc.Driver");
+            cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+            st = (Statement) cn.createStatement();
+
+            // search database
+            rs = st.executeQuery("SELECT * FROM BookDb.StudentRecords WHERE FirstName LIKE '%" + query + "%';");
+
+            // update fields and then exit
+            while (rs.next()) {
+                obj.setLastname(rs.getString("LastName"));
+                obj.setClassd(rs.getInt("ClassWhenRecordCreated"));
+                obj.setNumberofbooks(rs.getInt("NumberOfBooksBorrowed"));
+                obj.setId(rs.getInt("BorrowerID"));
+                obj.setFirstname(rs.getString("FirstName"));
+                obj.setDate("hello");
+                obj.setTimestamp("one");
+                break;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+        }
+        return obj;
+    }
+;
+    
+   
+     // jdbc find a book
+    StudentRegisterd jdbc_quick_search_fx_borrowpage_borrower(String query)
+            throws MalformedURLException, IOException, SQLException {
+        StudentRegisterd obj = new StudentRegisterd();
+
+        System.out.println();
+        try {
+
+            //create socket
+            Class.forName("com.mysql.jdbc.Driver");
+            cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+            st = (Statement) cn.createStatement();
+
+            // search database
+            rs = st.executeQuery("SELECT * FROM BookDb.StudentRecords WHERE Surname LIKE '%" + query + "%';");
+
+            // update fields and then exit
+            while (rs.next()) {
+                obj.setLastname(rs.getString("LastName"));
+                obj.setClassd(rs.getInt("ClassWhenRecordCreated"));
+                obj.setNumberofbooks(rs.getInt("NumberOfBooksBorrowed"));
+                obj.setId(rs.getInt("BorrowerID"));
+                obj.setFirstname(rs.getString("FirstName"));
+                obj.setDate("hello");
+                obj.setTimestamp("one");
+                break;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+        }
+        return obj;
+    }
+;
+    
+     // jdbc find a book
+    StudentRegisterd jdbc_quick_search_fx_borrowpage_school_level(String query)
+            throws MalformedURLException, IOException, SQLException {
+        StudentRegisterd obj = new StudentRegisterd();
+
+        System.out.println();
+        try {
+
+            //create socket
+            Class.forName("com.mysql.jdbc.Driver");
+            cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+            st = (Statement) cn.createStatement();
+
+            // search database
+            rs = st.executeQuery("SELECT * FROM BookDb.StudentRecords WHERE ClassWhenRecordCreated LIKE '%" + query + "%';");
+
+            // update fields and then exit
+            while (rs.next()) {
+                obj.setLastname(rs.getString("LastName"));
+                obj.setClassd(rs.getInt("ClassWhenRecordCreated"));
+                obj.setNumberofbooks(rs.getInt("NumberOfBooksBorrowed"));
+                obj.setId(rs.getInt("BorrowerID"));
+                obj.setFirstname(rs.getString("FirstName"));
+                obj.setDate("hello");
+                obj.setTimestamp("one");
+                break;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+        }
+        return obj;
+    }
+;
+    
+     // jdbc find a book
+    StudentRegisterd jdbc_quick_search_fx_borrowpage_id(String query)
+            throws MalformedURLException, IOException, SQLException {
+        StudentRegisterd obj = new StudentRegisterd();
+
+        System.out.println();
+        try {
+
+            //create socket
+            Class.forName("com.mysql.jdbc.Driver");
+            cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+            st = (Statement) cn.createStatement();
+
+            // search database
+            rs = st.executeQuery("SELECT * FROM BookDb.StudentRecords WHERE BorrowerID LIKE '%" + query + "%';");
+
+            // update fields and then exit
+            while (rs.next()) {
+                obj.setLastname(rs.getString("LastName"));
+                obj.setClassd(rs.getInt("ClassWhenRecordCreated"));
+                obj.setNumberofbooks(rs.getInt("NumberOfBooksBorrowed"));
+                obj.setId(rs.getInt("BorrowerID"));
+                obj.setFirstname(rs.getString("FirstName"));
+                obj.setDate("hello");
+                obj.setTimestamp("one");
+                break;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+        }
+        return obj;
+    }
+;
+    
+
+
 }

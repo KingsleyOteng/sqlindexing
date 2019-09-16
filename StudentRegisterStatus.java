@@ -15,6 +15,14 @@ public class StudentRegisterStatus {
     int id, year;
     String name, book, author;
 
+    public StudentRegisterStatus() {
+        this.id = 0;
+        this.year = 0;
+        this.name = "";
+        this.book = "";
+        this.author = "";
+    }
+    
     public StudentRegisterStatus(int id, String name, int year, String book, String author) {
         this.id = id;
         this.year = year;
