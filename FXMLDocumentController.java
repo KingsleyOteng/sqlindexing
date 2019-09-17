@@ -386,7 +386,7 @@ public class FXMLDocumentController implements Initializable {
         search_bks_isbn.setUserData("searchisbn");
         
         // default is to have the books button depressed
-        //search_bks_title.fire();
+        search_bks_title.fire();
 
         //System.out.println(toggleGroup.getSelectedToggle());
         //System.out.println(schoolCatalogueTable.lookupAll(".column-header").toString());
@@ -585,7 +585,7 @@ public class FXMLDocumentController implements Initializable {
 
         bucher = socket.jdbc_search_book(bucher, toggleGroupBookSearch.getSelectedToggle().getUserData().toString(), fxsearchtab_search.getText());
         
-        System.out.println("book>>>"+bucher[0].getBook());
+
         
         if (bucher == null) {
             this.search_cloud_notification(toggleGroupBookSearch.getSelectedToggle().getUserData().toString()+": "+fxsearchtab_search.getText());

@@ -197,9 +197,10 @@ public class JDBC_Controller {
             int i = 0;
             
             // if there is an empty results set go to google
-            if (rs.last()== false) {
-            System.out.println("Empty results set");  
-             return null;
+            if (!rs.isBeforeFirst()) {
+                System.out.println("Empty results set");  
+                return null;
+                
            
             }
 
