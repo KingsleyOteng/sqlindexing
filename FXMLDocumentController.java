@@ -564,7 +564,6 @@ public class FXMLDocumentController implements Initializable {
     private void toggle_group_action_search() throws SQLException, IOException, InterruptedException {
         String btnDepressedId;
         String searchQuery = new String();
-
         btnDepressedId = null;
 
         while (btnDepressedId == null) {
@@ -577,7 +576,11 @@ public class FXMLDocumentController implements Initializable {
         JDBC_Controller socket = new JDBC_Controller();
 
         bucher = socket.jdbc_search_book(bucher, toggleGroupBookSearch.getSelectedToggle().getUserData().toString(), fxsearchtab_search.getText());
-        this.insert_book_entry_searchtab(bucher);
+        if (bucher == null) {
+            this.search_cloud_notification();
+        } else {
+            this.insert_book_entry_searchtab(bucher);
+        };
         Thread.sleep(1000);
     }
 
@@ -684,7 +687,7 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-    
+
     @FXML
     public void search_cloud_notification() throws SQLException, IOException {
 
@@ -692,9 +695,9 @@ public class FXMLDocumentController implements Initializable {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Cloud Search Notification");
-        alert.setHeaderText("Book is not catalogued locally. Will you like to an entry from the cloud for the following entry?");
+        alert.setHeaderText("Book is not catalogued locally. Will you like to an entry from the cloud for the following ?");
         ///alert.setContentText("Confirm borrow: \"" + buch.getBook() + "\" by " + buch.getAuthor() + "?");
-        alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
+        //alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
@@ -704,8 +707,6 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-    
-    
 
     public BookObject generate_search_object(BookObject buch, String ISBN) throws SQLException, IOException {
 

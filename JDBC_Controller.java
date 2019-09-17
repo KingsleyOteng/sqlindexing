@@ -12,6 +12,8 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  * @description it handles all of the sql objects
@@ -197,7 +199,8 @@ public class JDBC_Controller {
             // if there is an empty results set go to google
             if (rs.next() == false) {
              System.out.println("Empty results set");  
-             //search_cloud_notification();
+             return null;
+           
             }
 
             while (rs.next()) {
