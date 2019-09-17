@@ -177,6 +177,7 @@ public class JDBC_Controller {
             st = (Statement) cn.createStatement();
             //rs = st.executeQuery("select * from BookDB.Catalogue where BookID =" + ISBN_locator + ";");
 
+            // generate a results set 
             switch (toggle) {
                 case "searchtitle":
                     rs = st.executeQuery("select * from BookDB.Catalogue where BookName = '" + query + "';");
@@ -192,10 +193,16 @@ public class JDBC_Controller {
             }
 
             int i = 0;
+            
+            // if there is an empty results set go to google
+            if (rs.next() == false) {
+             System.out.println("Empty results set");  
+             //search_cloud_notification();
+            }
 
             while (rs.next()) {
 
-                System.out.println("This is what null looks like "+rs.getString("BookName"));
+                
                 obj[i] = new BookObject();
                 obj[i].setBook(rs.getString("BookName"));
                 obj[i].setAuthor(rs.getString("Author"));

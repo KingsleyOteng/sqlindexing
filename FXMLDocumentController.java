@@ -571,7 +571,7 @@ public class FXMLDocumentController implements Initializable {
             btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
             searchQuery = fxsearchtab_search.getText();
             System.out.println(btnDepressedId);
-        };
+        }
 
         BookObject[] bucher = new BookObject[1000];
         JDBC_Controller socket = new JDBC_Controller();
@@ -684,6 +684,28 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
+    
+    @FXML
+    public void search_cloud_notification() throws SQLException, IOException {
+
+        Stage popupwindow = new Stage();
+        LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Cloud Search Notification");
+        alert.setHeaderText("Book is not catalogued locally. Will you like to an entry from the cloud for the following entry?");
+        ///alert.setContentText("Confirm borrow: \"" + buch.getBook() + "\" by " + buch.getAuthor() + "?");
+        alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            select_search_item_return();
+        } else {
+            popupwindow.close();
+        }
+
+    }
+    
+    
 
     public BookObject generate_search_object(BookObject buch, String ISBN) throws SQLException, IOException {
 
