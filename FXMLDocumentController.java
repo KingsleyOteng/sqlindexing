@@ -243,9 +243,6 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-       
-        
-        
         // Add a context menu to TableView
         borrowSession.setOnAction(e -> {
             try {
@@ -373,7 +370,7 @@ public class FXMLDocumentController implements Initializable {
         register_surnames.setUserData("lastname");
         register_ids.setToggleGroup(toggleGroupStudentRegister);
         register_ids.setUserData("studentnumber");
-        
+
         // set meta data
         fx_borrowpage_borrower_firstname.setUserData("fx_firstname");
         fx_borrowpage_borrower.setUserData("fx_surname");
@@ -392,8 +389,10 @@ public class FXMLDocumentController implements Initializable {
         //System.out.println(schoolCatalogueTable.lookupAll(".column-header").toString());
         String yy = schoolCatalogueTable.lookupAll(".column-header").toString();
 
-        ChangeListener<String> listener = ((observable, oldValue, newValue) -> {System.out.println(newValue + " >>> Out <<<"  + oldValue);});
-        
+        ChangeListener<String> listener = ((observable, oldValue, newValue) -> {
+            System.out.println(newValue + " >>> Out <<<" + oldValue);
+        });
+
         fx_borrowpage_borrower_firstname.textProperty().addListener(listener);
         fx_borrowpage_borrower.textProperty().addListener(listener);
         fx_borrowpage_school_level.textProperty().addListener(listener);
@@ -734,51 +733,46 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void quick_search_firstname() throws IOException, SQLException {
-        
-         
+
         // clear fields
         fx_borrowpage_borrower.setText("");
         fx_borrowpage_school_level.setText("");
         fx_borrowpage_id.setText("");
-        
+
         // grab query
         String query = fx_borrowpage_borrower_firstname.getText();
         Node node = new TextField();
-        System.out.println(((TextField)node).getUserData());
+        System.out.println(((TextField) node).getUserData());
         //search database for closest match
         JDBC_Controller socket = new JDBC_Controller();
         StudentRegisterd obj = new StudentRegisterd();
         obj = socket.jdbc_quick_search_firstname(query);
-        
 
-        
         // update fields
         fx_borrowpage_borrower.setText(obj.getLastname());
         fx_borrowpage_school_level.setText(String.valueOf(obj.getClassd()));
         fx_borrowpage_id.setText(String.valueOf(obj.getId()));
 
     }
-;
+
+    ;
     
     @FXML
     public void quick_search_lastname() throws IOException, SQLException {
-        
-         
+
         // clear fields
         fx_borrowpage_borrower_firstname.setText("");
         fx_borrowpage_school_level.setText("");
         fx_borrowpage_id.setText("");
-        
+
         // grab query
         String query = fx_borrowpage_borrower.getText();
-        
+
         //search database for closest match
         JDBC_Controller socket = new JDBC_Controller();
         StudentRegisterd obj = new StudentRegisterd();
         obj = socket.jdbc_quick_search_lastname(query);
-        
 
-        
         // update fields
         fx_borrowpage_borrower_firstname.setText(obj.getFirstname());
         fx_borrowpage_school_level.setText(String.valueOf(obj.getClassd()));
@@ -786,5 +780,5 @@ public class FXMLDocumentController implements Initializable {
 
     }
 ;
-    
+
 }
