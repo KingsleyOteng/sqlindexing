@@ -102,18 +102,7 @@ public class JDBC_Controller {
                 obj[i].setId(i);
                 i++;
 
-                //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));
-                //bpo.setSearchResult(true);
-                //bpo.setBookAuthors(rs.getString("Author"));
-                //bpo.setBookTitle(rs.getString("BookName"));
-                //bpo.setCategories(rs.getString("CategoryDescription"));
-                //bpo.setMainCategory(rs.getString("Category"));
-                //bpo.setILinkURLLargeThumbNail(ISBN_locator);
-                //bpo.setILinkURLSmallThumbNail(ISBN_locator);
-                //bpo.setISBN10(ISBN_locator);
-                //bpo.setISBN13(ISBN_locator);
-                //bpo.setPageCount(0);
-                //bpo.setPrintType(ISBN_locator);
+    
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
@@ -167,18 +156,7 @@ public class JDBC_Controller {
                 obj[i].setTimestamp(2);
                 i++;
 
-                //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));
-                //bpo.setSearchResult(true);
-                //bpo.setBookAuthors(rs.getString("Author"));
-                //bpo.setBookTitle(rs.getString("BookName"));
-                //bpo.setCategories(rs.getString("CategoryDescription"));
-                //bpo.setMainCategory(rs.getString("Category"));
-                //bpo.setILinkURLLargeThumbNail(ISBN_locator);
-                //bpo.setILinkURLSmallThumbNail(ISBN_locator);
-                //bpo.setISBN10(ISBN_locator);
-                //bpo.setISBN13(ISBN_locator);
-                //bpo.setPageCount(0);
-                //bpo.setPrintType(ISBN_locator);
+               
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
@@ -217,6 +195,7 @@ public class JDBC_Controller {
 
             while (rs.next()) {
 
+                System.out.println("This is what null looks like "+rs.getString("BookName"));
                 obj[i] = new BookObject();
                 obj[i].setBook(rs.getString("BookName"));
                 obj[i].setAuthor(rs.getString("Author"));
@@ -228,18 +207,7 @@ public class JDBC_Controller {
                 obj[i].setStatus(rs.getBoolean("BorrowedStatus"));
                 i++;
 
-                //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));
-                //bpo.setSearchResult(true);
-                //bpo.setBookAuthors(rs.getString("Author"));
-                //bpo.setBookTitle(rs.getString("BookName"));
-                //bpo.setCategories(rs.getString("CategoryDescription"));
-                //bpo.setMainCategory(rs.getString("Category"));
-                //bpo.setILinkURLLargeThumbNail(ISBN_locator);
-                //bpo.setILinkURLSmallThumbNail(ISBN_locator);
-                //bpo.setISBN10(ISBN_locator);
-                //bpo.setISBN13(ISBN_locator);
-                //bpo.setPageCount(0);
-                //bpo.setPrintType(ISBN_locator);
+
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
@@ -335,7 +303,8 @@ public class JDBC_Controller {
         }
         return obj;
     }
-;
+
+    ;
    
 
         // jdbc find a book
@@ -371,7 +340,8 @@ public class JDBC_Controller {
         }
         return obj;
     }
-;
+
+    ;
    
      // jdbc find a book
     StudentRegisterd jdbc_quick_search_fx_borrowpage_borrower(String query)
@@ -406,7 +376,8 @@ public class JDBC_Controller {
         }
         return obj;
     }
-;
+
+    ;
     
      // jdbc find a book
     StudentRegisterd jdbc_quick_search_fx_borrowpage_school_level(String query)
@@ -441,14 +412,14 @@ public class JDBC_Controller {
         }
         return obj;
     }
-;
+
+    ;
     
      // jdbc find a book
     StudentRegisterd jdbc_quick_search_fx_borrowpage_id(String query)
             throws MalformedURLException, IOException, SQLException {
         StudentRegisterd obj = new StudentRegisterd();
 
-        System.out.println();
         try {
 
             //create socket
@@ -477,7 +448,5 @@ public class JDBC_Controller {
         return obj;
     }
 ;
-    
-
 
 }

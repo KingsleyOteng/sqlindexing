@@ -562,7 +562,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void toggle_group_action_search() throws SQLException, IOException, InterruptedException {
-        String btnDepressedId = new String();
+        String btnDepressedId;
         String searchQuery = new String();
 
         btnDepressedId = null;
