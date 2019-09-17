@@ -384,19 +384,22 @@ public class FXMLDocumentController implements Initializable {
         search_bks_author.setUserData("searchauthor");
         search_bks_isbn.setToggleGroup(toggleGroupBookSearch);
         search_bks_isbn.setUserData("searchisbn");
+        
+        // default is to have the books button depressed
+        //search_bks_title.fire();
 
         //System.out.println(toggleGroup.getSelectedToggle());
         //System.out.println(schoolCatalogueTable.lookupAll(".column-header").toString());
         String yy = schoolCatalogueTable.lookupAll(".column-header").toString();
 
-        ChangeListener<String> listener = ((observable, oldValue, newValue) -> {
-            System.out.println(newValue + " >>> Out <<<" + oldValue);
-        });
+       // ChangeListener<String> listener = ((observable, oldValue, newValue) -> {
+       //     System.out.println(newValue + " >>> Out <<<" + oldValue);
+       // });
 
-        fx_borrowpage_borrower_firstname.textProperty().addListener(listener);
-        fx_borrowpage_borrower.textProperty().addListener(listener);
-        fx_borrowpage_school_level.textProperty().addListener(listener);
-        fx_borrowpage_id.textProperty().addListener(listener);
+        //fx_borrowpage_borrower_firstname.textProperty().addListener(listener);
+       // fx_borrowpage_borrower.textProperty().addListener(listener);
+       // fx_borrowpage_school_level.textProperty().addListener(listener);
+       // fx_borrowpage_id.textProperty().addListener(listener);
     }
 
     @FXML
@@ -504,12 +507,15 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void insert_book_entry_searchtab(BookObject bucher[]) throws InterruptedException {
+        
         // output the contents of the entire array
         for (int i = 0x0; i <= (bucher.length); ++i) {
             // exit when we reach the end of the array
             if (bucher[i] == null) {
                 break;
             }
+            
+            System.out.println("hello>>>>>>>>>"+bucher[i].getBook());
 
             // output to tableview
             searchTableCatalogue.getItems().add(
@@ -565,6 +571,8 @@ public class FXMLDocumentController implements Initializable {
         String btnDepressedId;
         String searchQuery = new String();
         btnDepressedId = null;
+        
+        
 
         while (btnDepressedId == null) {
             btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
@@ -576,11 +584,15 @@ public class FXMLDocumentController implements Initializable {
         JDBC_Controller socket = new JDBC_Controller();
 
         bucher = socket.jdbc_search_book(bucher, toggleGroupBookSearch.getSelectedToggle().getUserData().toString(), fxsearchtab_search.getText());
+        
+        System.out.println("book>>>"+bucher[0].getBook());
+        
         if (bucher == null) {
-            this.search_cloud_notification();
+            this.search_cloud_notification(toggleGroupBookSearch.getSelectedToggle().getUserData().toString()+": "+fxsearchtab_search.getText());
         } else {
+            System.out.println("<<<<<<hello");
             this.insert_book_entry_searchtab(bucher);
-        };
+        }
         Thread.sleep(1000);
     }
 
@@ -689,14 +701,14 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    public void search_cloud_notification() throws SQLException, IOException {
+    public void search_cloud_notification(String AlertHeader) throws SQLException, IOException {
 
         Stage popupwindow = new Stage();
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Cloud Search Notification");
-        alert.setHeaderText("Book is not catalogued locally. Will you like to an entry from the cloud for the following ?");
-        ///alert.setContentText("Confirm borrow: \"" + buch.getBook() + "\" by " + buch.getAuthor() + "?");
+        alert.setHeaderText("Book is not catalogued locally. Search cloud for book?");
+        alert.setContentText(AlertHeader);
         //alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
 
         Optional<ButtonType> result = alert.showAndWait();
