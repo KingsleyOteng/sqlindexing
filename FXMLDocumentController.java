@@ -14,12 +14,14 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -241,6 +243,9 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+       
+        
+        
         // Add a context menu to TableView
         borrowSession.setOnAction(e -> {
             try {
@@ -387,6 +392,12 @@ public class FXMLDocumentController implements Initializable {
         //System.out.println(schoolCatalogueTable.lookupAll(".column-header").toString());
         String yy = schoolCatalogueTable.lookupAll(".column-header").toString();
 
+        ChangeListener<String> listener = ((observable, oldValue, newValue) -> {System.out.println(newValue + " >>> Out <<<"  + oldValue);});
+        
+        fx_borrowpage_borrower_firstname.textProperty().addListener(listener);
+        fx_borrowpage_borrower.textProperty().addListener(listener);
+        fx_borrowpage_school_level.textProperty().addListener(listener);
+        fx_borrowpage_id.textProperty().addListener(listener);
     }
 
     @FXML
@@ -722,7 +733,9 @@ public class FXMLDocumentController implements Initializable {
     ;
 
     @FXML
-    public void quick_search() throws IOException, SQLException {
+    public void quick_search_firstname() throws IOException, SQLException {
+        
+         
         // clear fields
         fx_borrowpage_borrower.setText("");
         fx_borrowpage_school_level.setText("");
@@ -730,11 +743,14 @@ public class FXMLDocumentController implements Initializable {
         
         // grab query
         String query = fx_borrowpage_borrower_firstname.getText();
-      
-        // search database for closest match
+        Node node = new TextField();
+        System.out.println(((TextField)node).getUserData());
+        //search database for closest match
         JDBC_Controller socket = new JDBC_Controller();
         StudentRegisterd obj = new StudentRegisterd();
-        obj = socket.jdbc_quick_search(query);
+        obj = socket.jdbc_quick_search_firstname(query);
+        
+
         
         // update fields
         fx_borrowpage_borrower.setText(obj.getLastname());
@@ -743,4 +759,32 @@ public class FXMLDocumentController implements Initializable {
 
     }
 ;
+    
+    @FXML
+    public void quick_search_lastname() throws IOException, SQLException {
+        
+         
+        // clear fields
+        fx_borrowpage_borrower_firstname.setText("");
+        fx_borrowpage_school_level.setText("");
+        fx_borrowpage_id.setText("");
+        
+        // grab query
+        String query = fx_borrowpage_borrower.getText();
+        
+        //search database for closest match
+        JDBC_Controller socket = new JDBC_Controller();
+        StudentRegisterd obj = new StudentRegisterd();
+        obj = socket.jdbc_quick_search_lastname(query);
+        
+
+        
+        // update fields
+        fx_borrowpage_borrower_firstname.setText(obj.getFirstname());
+        fx_borrowpage_school_level.setText(String.valueOf(obj.getClassd()));
+        fx_borrowpage_id.setText(String.valueOf(obj.getId()));
+
+    }
+;
+    
 }

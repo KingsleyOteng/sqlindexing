@@ -220,7 +220,6 @@ public class JDBC_Controller {
                 obj[i] = new BookObject();
                 obj[i].setBook(rs.getString("BookName"));
                 obj[i].setAuthor(rs.getString("Author"));
-
                 obj[i].setId(1);
                 obj[i].setISBN1(rs.getString("ISBN1"));
                 //System.out.println("output>>> " + rs.getString("ISBN1") + rs.getString("Author"));
@@ -304,7 +303,7 @@ public class JDBC_Controller {
     }
 
     // jdbc find a book
-    StudentRegisterd jdbc_quick_search(String query)
+    StudentRegisterd jdbc_quick_search_firstname(String query)
             throws MalformedURLException, IOException, SQLException {
         StudentRegisterd obj = new StudentRegisterd();
 
@@ -337,7 +336,42 @@ public class JDBC_Controller {
         return obj;
     }
 ;
-    
+   
+
+        // jdbc find a book
+    StudentRegisterd jdbc_quick_search_lastname(String query)
+            throws MalformedURLException, IOException, SQLException {
+        StudentRegisterd obj = new StudentRegisterd();
+
+        System.out.println();
+        try {
+
+            //create socket
+            Class.forName("com.mysql.jdbc.Driver");
+            cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+            st = (Statement) cn.createStatement();
+
+            // search database
+            rs = st.executeQuery("SELECT * FROM BookDb.StudentRecords WHERE Lastname LIKE '%" + query + "%';");
+
+            // update fields and then exit
+            while (rs.next()) {
+                obj.setLastname(rs.getString("LastName"));
+                obj.setClassd(rs.getInt("ClassWhenRecordCreated"));
+                obj.setNumberofbooks(rs.getInt("NumberOfBooksBorrowed"));
+                obj.setId(rs.getInt("BorrowerID"));
+                obj.setFirstname(rs.getString("FirstName"));
+                obj.setDate("hello");
+                obj.setTimestamp("one");
+                break;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+        }
+        return obj;
+    }
+;
    
      // jdbc find a book
     StudentRegisterd jdbc_quick_search_fx_borrowpage_borrower(String query)
