@@ -682,8 +682,9 @@ public class FXMLDocumentController implements Initializable {
         String query = fxsearchtab_search.getText();
         //LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         //System.out.println("helllo>>"+buch.getAuthor());
-
-        if (!query.isEmpty() ) {
+   
+        
+        if (!query.isEmpty() && (searchTableCatalogue.getSelectionModel().getSelectedIndex()>=0)  ) {
             System.out.println("hello>>" + fxsearchtab_search.getText() + "<<");
             Stage popupwindow = new Stage();
             LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
