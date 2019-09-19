@@ -399,7 +399,6 @@ public class FXMLDocumentController implements Initializable {
         // fx_borrowpage_borrower.textProperty().addListener(listener);
         // fx_borrowpage_school_level.textProperty().addListener(listener);
         // fx_borrowpage_id.textProperty().addListener(listener);
-        
         fxsearchtab_search.setText("");
     }
 
@@ -679,11 +678,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void searchtab_borrowbtn_confirmation() throws SQLException, IOException {
-        
+
         String query = fxsearchtab_search.getText();
-        
-        while (!query.isEmpty()) {
-            System.out.println("hello>>"+fxsearchtab_search.getText()+"<<");
+
+        if (!query.isEmpty()) {
+            System.out.println("hello>>" + fxsearchtab_search.getText() + "<<");
             Stage popupwindow = new Stage();
             LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
             Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -695,8 +694,10 @@ public class FXMLDocumentController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 select_search_item_return();
+                
             } else {
                 popupwindow.close();
+               
             }
         }
 
