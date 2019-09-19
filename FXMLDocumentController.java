@@ -223,6 +223,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TableColumn<StudentRegisterStatus, Integer> id_sregister, year_sregister;
+    
+    @FXML
+    private Button button_catalogue;
 
     public FXMLDocumentController() {
         //this.toggleGroup = new ToggleGroup();
@@ -405,11 +408,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
         System.out.println("You clicked me again!");
-
+        
         BookObject[] bucher = new BookObject[1000];
         JDBC_Controller socket = new JDBC_Controller();
         bucher = socket.jdbc_find_book(bucher);
-
+        schoolCatalogueTable.getItems().clear();
         this.insert_book_entry(bucher);
         Thread.sleep(1000);
 
