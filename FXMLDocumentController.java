@@ -683,6 +683,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void searchtab_borrowbtn_confirmation() throws SQLException, IOException {
 
+    while (fxsearchtab_search.getText() != null){
         Stage popupwindow = new Stage();
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -697,6 +698,7 @@ public class FXMLDocumentController implements Initializable {
         } else {
             popupwindow.close();
         }
+    }
 
     }
 
