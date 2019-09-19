@@ -551,8 +551,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private void search_pane_query() {
-        String btnDepressedId = new String();
-        String searchQuery = new String();
+
+        // initialize
+        String btnDepressedId;
+        String searchQuery;
+
+        btnDepressedId = new String();
+        searchQuery = new String();
 
         btnDepressedId = toggleGroup.getSelectedToggle().getUserData().toString();
         searchQuery = fxsearchtab_search.getText();
@@ -568,31 +573,40 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void toggle_group_action_search() throws SQLException, IOException, InterruptedException {
+
+        // initialize
         String btnDepressedId;
         String searchQuery;
-        
+
         searchQuery = new String();
         btnDepressedId = null;
 
+        
+        searchQuery = fxsearchtab_search.getText();
+        
         // checks that there is both a query and that a toggle button is depressed
-        while ( (!searchQuery.isEmpty()) && (btnDepressedId == null) ) {
+        while ((!searchQuery.isEmpty()) && (btnDepressedId == null)) {
             btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
-            searchQuery = fxsearchtab_search.getText();
+            
             System.out.println(btnDepressedId);
         }
+        
+        System.out.println("search query>>"+searchQuery);
 
-        BookObject[] bucher = new BookObject[1000];
-        JDBC_Controller socket = new JDBC_Controller();
+        if (!searchQuery.isEmpty()) {
+            BookObject[] bucher = new BookObject[1000];
+            JDBC_Controller socket = new JDBC_Controller();
 
-        bucher = socket.jdbc_search_book(bucher, toggleGroupBookSearch.getSelectedToggle().getUserData().toString(), fxsearchtab_search.getText());
+            bucher = socket.jdbc_search_book(bucher, toggleGroupBookSearch.getSelectedToggle().getUserData().toString(), fxsearchtab_search.getText());
 
-        if (bucher == null) {
-            this.search_cloud_notification(toggleGroupBookSearch.getSelectedToggle().getUserData().toString() + ": " + fxsearchtab_search.getText());
-        } else {
-            System.out.println("<<<<<<hello");
-            this.insert_book_entry_searchtab(bucher);
+            if (bucher == null) {
+                this.search_cloud_notification(toggleGroupBookSearch.getSelectedToggle().getUserData().toString() + ": " + fxsearchtab_search.getText());
+            } else {
+                System.out.println("<<<<<<hello");
+                this.insert_book_entry_searchtab(bucher);
+            }
+            Thread.sleep(1000);
         }
-        Thread.sleep(1000);
     }
 
     ;
@@ -600,7 +614,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void switch_tab() {
         books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab, borrows_tabs);
-        System.out.println("hello hello");
         field.setText("hello");
         System.out.println(books_tab_pane.getSelectionModel().getSelectedIndex());
 
@@ -686,8 +699,8 @@ public class FXMLDocumentController implements Initializable {
         String query = fxsearchtab_search.getText();
 
         // checks that the user has populated the query field and has also selected an entry from the table before progressing.
-        if (!query.isEmpty() && (searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
-
+        //if (!query.isEmpty() && (searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
+        if ((searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
             Stage popupwindow = new Stage();
             LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
             Alert alert = new Alert(AlertType.CONFIRMATION);
