@@ -336,11 +336,14 @@ public class FXMLDocumentController implements Initializable {
 
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira Lee", "2013", "9784150410513"));
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira    Lee", "2012", "9788401468711"));
-        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
-        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
-        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee"));
-        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(111, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee", "Shelved"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(222, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte" , "Shelved"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1111, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee" , "Shelved"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2222, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily" , "Shelved"));
 
+     
+                
+                
         //table2.getItems().add(new StudentRegisterStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
         year_sregister.setCellValueFactory(new PropertyValueFactory<>("year"));
         id_sregister.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -503,10 +506,13 @@ public class FXMLDocumentController implements Initializable {
             }
 
             // output to tableview
-            schoolCatalogueTable.getItems().add(new LibraryBooksStatus(bucher[i].getId(), bucher[i].getStudent_name(), bucher[i].getStudent_year(), bucher[i].getBook(), bucher[i].getAuthor()));
+            schoolCatalogueTable.getItems().add(new LibraryBooksStatus(bucher[i].getISBN1(), bucher[i].getYear(), bucher[i].getBook(), bucher[i].getAuthor(), bucher[i].getStatus()));
         }
 
+   
     }
+    
+     
 
     @FXML
     private void insert_book_entry_searchtab(BookObject bucher[]) throws InterruptedException {

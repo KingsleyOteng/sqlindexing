@@ -31,6 +31,7 @@ public class BookObject {
         year = "";
         filePath = "";
         overview = "";
+        status = "";
     }
 
     BookObject(int id, String student_name, int student_year, String book_name, String author, String status, String isbn1, String year, String filePath, String description, String overview) {
@@ -45,6 +46,7 @@ public class BookObject {
         this.filePath = filePath;
         this.description = description;
         this.overview = overview;
+        this.status = status;
     }
 
     private static void setLibrary(String library) {
@@ -130,6 +132,9 @@ public class BookObject {
         return student_year;
     }
 
+    public int getPublishedYEar() {
+        return student_year;
+    }
     public String getBook() {
         return book_name;
     }
@@ -141,6 +146,7 @@ public class BookObject {
     public String getStatus() {
         return this.status;
     }
+
 
     public String getISBN1() {
         return isbn1;
