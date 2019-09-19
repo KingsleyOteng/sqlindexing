@@ -569,10 +569,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void toggle_group_action_search() throws SQLException, IOException, InterruptedException {
         String btnDepressedId;
-        String searchQuery = new String();
+        String searchQuery;
+        
+        searchQuery = new String();
         btnDepressedId = null;
 
-        while (btnDepressedId == null) {
+        // checks that there is both a query and that a toggle button is depressed
+        while ( (!searchQuery.isEmpty()) && (btnDepressedId == null) ) {
             btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
             searchQuery = fxsearchtab_search.getText();
             System.out.println(btnDepressedId);
@@ -679,28 +682,26 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void searchtab_borrowbtn_confirmation() throws SQLException, IOException {
 
+        // grab search query
         String query = fxsearchtab_search.getText();
-        //LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
-        //System.out.println("helllo>>"+buch.getAuthor());
-   
-        
-        if (!query.isEmpty() && (searchTableCatalogue.getSelectionModel().getSelectedIndex()>=0)  ) {
-            System.out.println("hello>>" + fxsearchtab_search.getText() + "<<");
+
+        // checks that the user has populated the query field and has also selected an entry from the table before progressing.
+        if (!query.isEmpty() && (searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
+
             Stage popupwindow = new Stage();
             LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
             Alert alert = new Alert(AlertType.CONFIRMATION);
+
             alert.setTitle("Initiate Borrowing Session");
             alert.setHeaderText("Are you sure you wish to borrow this book?");
-            ///alert.setContentText("Confirm borrow: \"" + buch.getBook() + "\" by " + buch.getAuthor() + "?");
+
             alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 select_search_item_return();
-                
             } else {
                 popupwindow.close();
-               
             }
         }
 
