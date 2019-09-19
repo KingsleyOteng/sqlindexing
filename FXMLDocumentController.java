@@ -680,8 +680,10 @@ public class FXMLDocumentController implements Initializable {
     public void searchtab_borrowbtn_confirmation() throws SQLException, IOException {
 
         String query = fxsearchtab_search.getText();
+        //LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+        
 
-        if (!query.isEmpty()) {
+        if (!query.isEmpty() ) {
             System.out.println("hello>>" + fxsearchtab_search.getText() + "<<");
             Stage popupwindow = new Stage();
             LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
