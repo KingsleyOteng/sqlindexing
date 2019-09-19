@@ -204,13 +204,13 @@ public class FXMLDocumentController implements Initializable {
     private TableView<LibraryBooksStatus> schoolCatalogueTable;
 
     @FXML
-    private TableColumn<LibraryBooksStatus, String> author_search, book_search, status_search, isbn_search;
+    private TableColumn<LibraryBooksStatus, String> author_search, book_search, status_search, isbn_search, isbn_school_cat;
 
     @FXML
     private TableColumn<LibraryBooksStatus, Integer> id, year;
 
     @FXML
-    private TableColumn<LibraryBooksStatus, String> book, author, status, isbn1;
+    private TableColumn<LibraryBooksStatus, String> book, author, status, isbn1, catalogue_pane_status;
 
     @FXML
     private TableColumn<LibraryBooksStatus, String> name, name1, book1;
@@ -298,7 +298,7 @@ public class FXMLDocumentController implements Initializable {
                 change.next();
                 if (change.wasReplaced()) {
                     schoolCatalogueTable.getColumns().clear();
-                    schoolCatalogueTable.getColumns().addAll(id, name, year, book, author);
+                    schoolCatalogueTable.getColumns().addAll(isbn1, name, year, book, author);
                     schoolCatalogueTable.refresh();
 
                 }
@@ -334,8 +334,8 @@ public class FXMLDocumentController implements Initializable {
         searchTableCatalogue.setPlaceholder(new Label("Search books teo"));
         table2.setPlaceholder(new Label("Search students"));
 
-        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira Lee", "2013", "9784150410513"));
-        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira    Lee", "2012", "9788401468711"));
+        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira Lee", "Shelved", "9784150410513"));
+        searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira    Lee", "Shelved", "9788401468711"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(111, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee", "Shelved"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(222, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte" , "Shelved"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1111, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee" , "Shelved"));
@@ -351,16 +351,20 @@ public class FXMLDocumentController implements Initializable {
         book_sregister.setCellValueFactory(new PropertyValueFactory<>("book"));
         author_sregister.setCellValueFactory(new PropertyValueFactory<>("author"));
 
+        // school catalogue table pane entries
         year.setCellValueFactory(new PropertyValueFactory<>("year"));
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        isbn_school_cat.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         book.setCellValueFactory(new PropertyValueFactory<>("book"));
         author.setCellValueFactory(new PropertyValueFactory<>("author"));
+        catalogue_pane_status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         book_search.setCellValueFactory(new PropertyValueFactory<>("book"));
         author_search.setCellValueFactory(new PropertyValueFactory<>("author"));
         status_search.setCellValueFactory(new PropertyValueFactory<>("status"));
         isbn_search.setCellValueFactory(new PropertyValueFactory<>("isbn1"));
+        
+        //isbn_school_cat.setCellValueFactory(new PropertyValueFactory<>("isbn1"));
 
         //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
         //button_title.setToggleGroup(toggleGroup);
@@ -504,7 +508,7 @@ public class FXMLDocumentController implements Initializable {
             if (bucher[i] == null) {
                 break;
             }
-
+            System.out.println(bucher[0].getBook());
             // output to tableview
             schoolCatalogueTable.getItems().add(new LibraryBooksStatus(bucher[i].getISBN1(), bucher[i].getYear(), bucher[i].getBook(), bucher[i].getAuthor(), bucher[i].getStatus()));
         }

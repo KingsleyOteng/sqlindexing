@@ -54,11 +54,12 @@
                         <Button fx:id="button_catalogue" layoutX="64.0" layoutY="16.0" mnemonicParsing="false" onAction="#borrowpage_button" prefHeight="37.0" prefWidth="565.0" text="GO" />
                         <TableView fx:id="schoolCatalogueTable" layoutX="65.0" layoutY="59.0" prefHeight="514.0" prefWidth="564.0">
                           <columns>
-                            <TableColumn fx:id="id" prefWidth="75.0" text="id" />
-                            <TableColumn fx:id="name" prefWidth="75.0" text="name" />
-                              <TableColumn fx:id="year" prefWidth="75.0" text="year" />
                               <TableColumn fx:id="book" prefWidth="75.0" text="book" />
                               <TableColumn fx:id="author" prefWidth="75.0" text="author" />
+                              <TableColumn fx:id="catalogue_pane_status" prefWidth="75.0" text="status" />
+                              <TableColumn fx:id="year" prefWidth="75.0" text="publication year" />
+                            <TableColumn fx:id="isbn_school_cat" prefWidth="75.0" text="isbn" />
+                            <TableColumn fx:id="name" prefWidth="75.0" text="name" />
                           </columns>
                         </TableView>
                         <Text layoutX="697.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
