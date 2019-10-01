@@ -223,7 +223,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TableColumn<StudentRegisterStatus, Integer> id_sregister, year_sregister;
-    
+
     @FXML
     private Button button_catalogue;
 
@@ -337,13 +337,10 @@ public class FXMLDocumentController implements Initializable {
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira Lee", "Shelved", "9784150410513"));
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("Stepford Wives", "Ira    Lee", "Shelved", "9788401468711"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(111, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee", "Shelved"));
-        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(222, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte" , "Shelved"));
-        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1111, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee" , "Shelved"));
-        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2222, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily" , "Shelved"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(222, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte", "Shelved"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1111, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee", "Shelved"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2222, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily", "Shelved"));
 
-     
-                
-                
         // earch pane
         year_sregister.setCellValueFactory(new PropertyValueFactory<>("year"));
         id_sregister.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -363,9 +360,8 @@ public class FXMLDocumentController implements Initializable {
         author_search.setCellValueFactory(new PropertyValueFactory<>("author"));
         status_search.setCellValueFactory(new PropertyValueFactory<>("status"));
         isbn_search.setCellValueFactory(new PropertyValueFactory<>("isbn1"));
-        
-        //isbn_school_cat.setCellValueFactory(new PropertyValueFactory<>("isbn1"));
 
+        //isbn_school_cat.setCellValueFactory(new PropertyValueFactory<>("isbn1"));
         //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
         //button_title.setToggleGroup(toggleGroup);
         //button_title.setUserData("title");
@@ -415,7 +411,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
         System.out.println("You clicked me again!");
-        
+
         BookObject[] bucher = new BookObject[1000];
         JDBC_Controller socket = new JDBC_Controller();
         bucher = socket.jdbc_find_book(bucher);
@@ -513,10 +509,7 @@ public class FXMLDocumentController implements Initializable {
             schoolCatalogueTable.getItems().add(new LibraryBooksStatus(bucher[i].getISBN1(), bucher[i].getYear(), bucher[i].getBook(), bucher[i].getAuthor(), bucher[i].getStatus()));
         }
 
-   
     }
-    
-     
 
     @FXML
     private void insert_book_entry_searchtab(BookObject bucher[]) throws InterruptedException {
@@ -594,17 +587,16 @@ public class FXMLDocumentController implements Initializable {
         searchQuery = new String();
         btnDepressedId = null;
 
-        
         searchQuery = fxsearchtab_search.getText();
-        
+
         // checks that there is both a query and that a toggle button is depressed
         while ((!searchQuery.isEmpty()) && (btnDepressedId == null)) {
             btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
-            
+
             System.out.println(btnDepressedId);
         }
-        
-        System.out.println("search query>>"+searchQuery);
+
+        System.out.println("search query>>" + searchQuery);
 
         if (!searchQuery.isEmpty()) {
             BookObject[] bucher = new BookObject[1000];
@@ -673,26 +665,22 @@ public class FXMLDocumentController implements Initializable {
 
         photobox_borrow.setImage(image3);
         photobox_borrow.setPreserveRatio(true);
-     }
-    
+    }
+
     @FXML
     private void select_search_item_return() throws SQLException, IOException {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         BookObject buchs = new BookObject();
 
         //buchs = this.generate_search_object(buchs, buch.getIsbn1());
-
         System.out.println(buch.getAuthor());
-        System.out.println(">>>>>>"+buch.getISBN1());
-        
+        System.out.println(">>>>>>" + buch.getISBN1());
+
         // pass the selected books fields across to the borrow pane
         JDBC_Controller socket = new JDBC_Controller();
         socket.jdbc_return_book(buch.getISBN1());
-        
-         
-     }
-    
-    
+
+    }
 
     @FXML
     public void searchtab_noselection_alert() {
@@ -750,7 +738,7 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-    
+
     @FXML
     public void searchtab_returnbtn_confirmation() throws SQLException, IOException {
 
@@ -834,10 +822,12 @@ public class FXMLDocumentController implements Initializable {
         String url = "https://books.google.com.gh/books/content?id=YG9okGt4Wt4C&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70byCnPACD-0f58YqwlX2UmQudfhGYu12SOWgFaiHer6paDzpX5TB2g_8lachuu4XB5MND2zpglrJbIN3OmsOn66AC_9w3DTgw5wtVo7iQpyBoXAnVJ3kOgskojMy8kmw8nvZLz";
         String imagePath = "image1.jpeg";
 
+        // load the file containing the image. 
         File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image2.jpeg");
         boolean backgroundLoading = true;
         Image image2 = new Image(file.toURI().toString(), backgroundLoading);
 
+        // update the image box
         borrow_image_box.setImage(image2);
         borrow_image_box.setPreserveRatio(true);
 
@@ -857,6 +847,7 @@ public class FXMLDocumentController implements Initializable {
         String query = fx_borrowpage_borrower_firstname.getText();
         Node node = new TextField();
         System.out.println(((TextField) node).getUserData());
+        
         //search database for closest match
         JDBC_Controller socket = new JDBC_Controller();
         StudentRegisterd obj = new StudentRegisterd();
@@ -893,7 +884,8 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_id.setText(String.valueOf(obj.getId()));
 
     }
-;
+
+    ;
     
     @FXML
     public void seachtab_return_btn_confirmation() throws IOException, SQLException {
@@ -907,9 +899,9 @@ public class FXMLDocumentController implements Initializable {
             LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
             Alert alert = new Alert(AlertType.CONFIRMATION);
 
+            // generate the box information
             alert.setTitle("Initiate Return Session");
             alert.setHeaderText("Are you sure you wish to return this book?");
-
             alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
 
             Optional<ButtonType> result = alert.showAndWait();
