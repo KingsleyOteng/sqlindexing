@@ -683,8 +683,11 @@ public class FXMLDocumentController implements Initializable {
         buchs = this.generate_search_object(buchs, buch.getIsbn1());
 
         System.out.println(buch.getAuthor());
-
+        
         // pass the selected books fields across to the borrow pane
+        JDBC_Controller socket = new JDBC_Controller();
+        socket.jdbc_return_book(buchs.getISBN1());
+        
          
      }
     
@@ -910,7 +913,7 @@ public class FXMLDocumentController implements Initializable {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                //select_search_item_return();
+                select_search_item_return();
             } else {
                 popupwindow.close();
             }

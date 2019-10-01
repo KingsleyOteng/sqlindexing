@@ -461,7 +461,7 @@ public class JDBC_Controller {
 ;
     
     // jdbc find a book
-    StudentRegisterd jdbc_return_book(Integer ISBN1)
+    StudentRegisterd jdbc_return_book(String ISBN1)
             throws MalformedURLException, IOException, SQLException {
         StudentRegisterd obj = new StudentRegisterd();
 
