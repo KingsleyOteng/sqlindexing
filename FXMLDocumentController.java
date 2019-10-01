@@ -683,6 +683,7 @@ public class FXMLDocumentController implements Initializable {
         buchs = this.generate_search_object(buchs, buch.getIsbn1());
 
         System.out.println(buch.getAuthor());
+        System.out.println(">>>>>>"+buch.getISBN1());
         
         // pass the selected books fields across to the borrow pane
         JDBC_Controller socket = new JDBC_Controller();
