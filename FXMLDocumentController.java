@@ -210,7 +210,7 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<LibraryBooksStatus, Integer> id, year;
 
     @FXML
-    private TableColumn<LibraryBooksStatus, String> book, author, status, isbn1, catalogue_pane_status;
+    private TableColumn<LibraryBooksStatus, String> book, author, status, isbn1, isbnx, ISBN1, catalogue_pane_status;
 
     @FXML
     private TableColumn<LibraryBooksStatus, String> name, name1, book1;
@@ -298,7 +298,7 @@ public class FXMLDocumentController implements Initializable {
                 change.next();
                 if (change.wasReplaced()) {
                     schoolCatalogueTable.getColumns().clear();
-                    schoolCatalogueTable.getColumns().addAll(isbn1, name, year, book, author);
+                    schoolCatalogueTable.getColumns().addAll(ISBN1, name, year, book, author);
                     schoolCatalogueTable.refresh();
 
                 }
@@ -344,7 +344,7 @@ public class FXMLDocumentController implements Initializable {
      
                 
                 
-        //table2.getItems().add(new StudentRegisterStatus(2, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte"));
+        // earch pane
         year_sregister.setCellValueFactory(new PropertyValueFactory<>("year"));
         id_sregister.setCellValueFactory(new PropertyValueFactory<>("id"));
         name_sregister.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -353,7 +353,7 @@ public class FXMLDocumentController implements Initializable {
 
         // school catalogue table pane entries
         year.setCellValueFactory(new PropertyValueFactory<>("year"));
-        isbn_school_cat.setCellValueFactory(new PropertyValueFactory<>("id"));
+        isbn_school_cat.setCellValueFactory(new PropertyValueFactory<>("ISBN1"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         book.setCellValueFactory(new PropertyValueFactory<>("book"));
         author.setCellValueFactory(new PropertyValueFactory<>("author"));
@@ -848,5 +848,31 @@ public class FXMLDocumentController implements Initializable {
 
     }
 ;
+    
+    @FXML
+    public void seachtab_return_btn_confirmation() throws IOException, SQLException {
+        // grab search query
+        String query = fxsearchtab_search.getText();
+
+        // checks that the user has populated the query field and has also selected an entry from the table before progressing.
+        //if (!query.isEmpty() && (searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
+        if ((searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
+            Stage popupwindow = new Stage();
+            LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+
+            alert.setTitle("Initiate Return Session");
+            alert.setHeaderText("Are you sure you wish to return this book?");
+
+            alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                select_search_item_return();
+            } else {
+                popupwindow.close();
+            }
+        }
+    }
 
 }
