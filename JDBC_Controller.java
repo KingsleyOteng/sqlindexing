@@ -473,7 +473,7 @@ public class JDBC_Controller {
             st = (Statement) cn.createStatement();
 
             // search database
-            st.executeUpdate("UPDATE Catalogue SET BorrowedStatus = 0 WHERE ISBN1 = "+ ISBN1 +";");
+            st.executeUpdate("UPDATE BookDb.Catalogue SET BorrowedStatus = 0 WHERE ISBN1 = "+ ISBN1 +";");
 
   
 

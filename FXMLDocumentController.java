@@ -680,14 +680,14 @@ public class FXMLDocumentController implements Initializable {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         BookObject buchs = new BookObject();
 
-        buchs = this.generate_search_object(buchs, buch.getIsbn1());
+        //buchs = this.generate_search_object(buchs, buch.getIsbn1());
 
         System.out.println(buch.getAuthor());
         System.out.println(">>>>>>"+buch.getISBN1());
         
         // pass the selected books fields across to the borrow pane
         JDBC_Controller socket = new JDBC_Controller();
-        socket.jdbc_return_book(buchs.getISBN1());
+        socket.jdbc_return_book(buch.getISBN1());
         
          
      }
