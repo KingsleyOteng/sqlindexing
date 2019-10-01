@@ -459,5 +459,29 @@ public class JDBC_Controller {
         return obj;
     }
 ;
+    
+    // jdbc find a book
+    StudentRegisterd jdbc_return_book(Integer ISBN1)
+            throws MalformedURLException, IOException, SQLException {
+        StudentRegisterd obj = new StudentRegisterd();
+
+        try {
+
+            //create socket
+            Class.forName("com.mysql.jdbc.Driver");
+            cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+            st = (Statement) cn.createStatement();
+
+            // search database
+            rs = st.executeQuery("UPDATE Catalogue SET BorrowedStatus = 0 WHERE ISBN1 = "+ ISBN1 +";");
+
+  
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+        }
+        return obj;
+    }
+;
 
 }

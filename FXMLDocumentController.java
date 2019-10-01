@@ -637,7 +637,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void select_search_item_return() throws SQLException, IOException {
+    private void select_search_item_borrow() throws SQLException, IOException {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         BookObject buchs = new BookObject();
 
@@ -673,8 +673,22 @@ public class FXMLDocumentController implements Initializable {
 
         photobox_borrow.setImage(image3);
         photobox_borrow.setPreserveRatio(true);
+     }
+    
+    @FXML
+    private void select_search_item_return() throws SQLException, IOException {
+        LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+        BookObject buchs = new BookObject();
 
-    }
+        buchs = this.generate_search_object(buchs, buch.getIsbn1());
+
+        System.out.println(buch.getAuthor());
+
+        // pass the selected books fields across to the borrow pane
+         
+     }
+    
+    
 
     @FXML
     public void searchtab_noselection_alert() {
@@ -725,6 +739,34 @@ public class FXMLDocumentController implements Initializable {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
+                select_search_item_borrow();
+            } else {
+                popupwindow.close();
+            }
+        }
+
+    }
+    
+    @FXML
+    public void searchtab_returnbtn_confirmation() throws SQLException, IOException {
+
+        // grab search query
+        String query = fxsearchtab_search.getText();
+
+        // checks that the user has populated the query field and has also selected an entry from the table before progressing.
+        //if (!query.isEmpty() && (searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
+        if ((searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
+            Stage popupwindow = new Stage();
+            LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+
+            alert.setTitle("Initiate Borrowing Session");
+            alert.setHeaderText("Are you sure you wish to return this book?");
+
+            alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
                 select_search_item_return();
             } else {
                 popupwindow.close();
@@ -746,7 +788,7 @@ public class FXMLDocumentController implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            select_search_item_return();
+            select_search_item_borrow();
         } else {
             popupwindow.close();
         }
@@ -868,7 +910,7 @@ public class FXMLDocumentController implements Initializable {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                select_search_item_return();
+                //select_search_item_return();
             } else {
                 popupwindow.close();
             }
