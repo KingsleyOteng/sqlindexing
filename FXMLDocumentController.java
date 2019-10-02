@@ -800,6 +800,7 @@ public class FXMLDocumentController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 select_search_item_return();
+                searchTableCatalogue.getSelectionModel().clearSelection();
             } else {
                 popupwindow.close();
             }
@@ -947,6 +948,7 @@ public class FXMLDocumentController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 select_search_item_return();
+                 
             } else {
                 popupwindow.close();
             }
