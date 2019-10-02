@@ -21,6 +21,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -46,8 +47,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 //import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 //import javafx.scene.layout.Region;
 import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 /**
@@ -808,6 +812,7 @@ public class FXMLDocumentController implements Initializable {
 
                 // clear the entry from tableview
                 searchTableCatalogue.getItems().remove(buch);
+         
 
             } else {
                 popupwindow.close();
@@ -956,7 +961,7 @@ public class FXMLDocumentController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 select_search_item_return();
-
+                
             } else {
                 popupwindow.close();
             }
@@ -964,9 +969,38 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML
-    public void popupwindow()
+    public void popupwindows()
     {
-        
+        {
+            Stage primaryStage = new Stage();
+        primaryStage.setTitle("Popup Example");
+        final Popup popup = new Popup();
+        popup.setX(300);
+        popup.setY(200);
+        popup.getContent().addAll(new Circle(25, 25, 50, Color.AQUAMARINE));
+
+        Button show = new Button("Show");
+        show.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                popup.show(primaryStage);
+            }
+        });
+
+        Button hide = new Button("Hide");
+        hide.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                popup.hide();
+            }
+        });
+
+        HBox layout = new HBox(10);
+        layout.setStyle("-fx-background-color: cornsilk; -fx-padding: 10;");
+        layout.getChildren().addAll(show, hide);
+        primaryStage.setScene(new Scene(layout));
+        primaryStage.show();
+    }
     }
 
 }
