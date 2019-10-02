@@ -390,7 +390,14 @@ public class JDBC_Controller {
 
     ;
     
-     // jdbc find a book
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 24 August 2019
+     * @description search for a book in jdbc
+     *
+     */
     StudentRegisterd jdbc_quick_search_fx_borrowpage_school_level(String query)
             throws MalformedURLException, IOException, SQLException {
         StudentRegisterd obj = new StudentRegisterd();

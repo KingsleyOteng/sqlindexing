@@ -235,14 +235,17 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 2 OCtober 2019
+     * @description label used for testing table view
+     *
+     */
     @FXML
     private void handleButtonAction(ActionEvent event, String Hello) {
         System.out.println("You clicked me!");
-        label.setText("Hello World!");
-
-        borrow_author.setPromptText("what");
-        System.out.println();
-        button1.setText("Hello");
 
     }
 
@@ -337,8 +340,11 @@ public class FXMLDocumentController implements Initializable {
         searchTableCatalogue.setPlaceholder(new Label("Search books teo"));
         table2.setPlaceholder(new Label("Search students"));
 
+        // add some default book listings
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("The Stepford Wivez", "Ira Lee", "Borrowed", "9784150410513"));
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("The Stepford Wivez", "Ira Lee", "Borrowed", "9788401468711"));
+
+        // add some default student names
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(111, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee", "Shelved"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(222, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte", "Shelved"));
         schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1111, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee", "Shelved"));
@@ -397,20 +403,20 @@ public class FXMLDocumentController implements Initializable {
         // default is to have the books button depressed
         search_bks_title.fire();
 
-        //System.out.println(toggleGroup.getSelectedToggle());
-        //System.out.println(schoolCatalogueTable.lookupAll(".column-header").toString());
         String yy = schoolCatalogueTable.lookupAll(".column-header").toString();
 
-        // ChangeListener<String> listener = ((observable, oldValue, newValue) -> {
-        //     System.out.println(newValue + " >>> Out <<<" + oldValue);
-        // });
-        //fx_borrowpage_borrower_firstname.textProperty().addListener(listener);
-        // fx_borrowpage_borrower.textProperty().addListener(listener);
-        // fx_borrowpage_school_level.textProperty().addListener(listener);
-        // fx_borrowpage_id.textProperty().addListener(listener);
         fxsearchtab_search.setText("");
     }
 
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 24 August 2019
+     * @description following method takes a book object and inserts it into
+     * table view
+     *
+     */
     @FXML
     private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
         System.out.println("You clicked me again!");
@@ -424,6 +430,15 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 24 August 2019
+     * @description following method takes a book object and inserts it into
+     * table view
+     *
+     */
     @FXML
     private void searchpage_borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
         System.out.println("You clicked me again!");
@@ -437,6 +452,14 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 2 October 2019
+     * @description when key pressed it initiates a search of records table view
+     *
+     */
     @FXML
     private void searchpage_query(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
 
@@ -459,9 +482,8 @@ public class FXMLDocumentController implements Initializable {
     /**
      *
      * @author kwadwooteng-amoako
-     * @date 24 August 2019
-     * @description following method takes a book object and inserts it into
-     * table view
+     * @date 2 October 2019
+     * @description insert a book entry table view
      *
      */
     @FXML
@@ -518,47 +540,41 @@ public class FXMLDocumentController implements Initializable {
     private void insert_book_entry_searchtab(BookObject bucher[]) throws InterruptedException {
 
         ObservableList<LibraryBooksStatus> table = FXCollections.<LibraryBooksStatus>observableArrayList();
-        
+
         // generate an observable list to ensure there are no duplicates
-        for (LibraryBooksStatus item : searchTableCatalogue.getItems())
-        {
+        for (LibraryBooksStatus item : searchTableCatalogue.getItems()) {
             table.add(item);
-       }
-        
+        }
+
         // output the contents of the entire array
         for (int i = 0x0; i <= (bucher.length); ++i) {
             // exit when we reach the end of the array
-            
-                
+
             if (bucher[i] == null) {
                 break;
             }
-           
-                // create a new object to hold the data
-                LibraryBooksStatus libObj = new LibraryBooksStatus(
-                            bucher[i].getBook(),
-                            bucher[i].getAuthor(),
-                            bucher[i].getStatus(),
-                            bucher[i].getISBN1()
-                        );
-            
-            
-                if (!table.contains(libObj))
-                {
-            
+
+            // create a new object to hold the data
+            LibraryBooksStatus libObj = new LibraryBooksStatus(
+                    bucher[i].getBook(),
+                    bucher[i].getAuthor(),
+                    bucher[i].getStatus(),
+                    bucher[i].getISBN1()
+            );
+
+            if (!table.contains(libObj)) {
+
                 System.out.println("hello>>>>>>>>>" + bucher[i].getBook());
 
                 // output to tableview
                 searchTableCatalogue.getItems().add(libObj);
-                    
-                
+
                 table.add(libObj);
             }
 
         }
 
     }
-    
 
     @FXML
     private void insert_students_entry(PupilObject kinder[]) throws InterruptedException {
@@ -609,8 +625,6 @@ public class FXMLDocumentController implements Initializable {
 
         searchQuery = new String();
         btnDepressedId = null;
-        
-        
 
         searchQuery = fxsearchtab_search.getText();
 
@@ -633,7 +647,7 @@ public class FXMLDocumentController implements Initializable {
                 this.search_cloud_notification(toggleGroupBookSearch.getSelectedToggle().getUserData().toString() + ": " + fxsearchtab_search.getText());
             } else {
                 System.out.println("<<<<<<hello");
-             
+
                 this.insert_book_entry_searchtab(bucher);
             }
             Thread.sleep(1000);
@@ -658,8 +672,6 @@ public class FXMLDocumentController implements Initializable {
     private void select_search_item_borrow() throws SQLException, IOException {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         BookObject buchs = new BookObject();
-        
-        
 
         buchs = this.generate_search_object(buchs, buch.getIsbn1());
 
@@ -875,7 +887,7 @@ public class FXMLDocumentController implements Initializable {
         String query = fx_borrowpage_borrower_firstname.getText();
         Node node = new TextField();
         System.out.println(((TextField) node).getUserData());
-        
+
         //search database for closest match
         JDBC_Controller socket = new JDBC_Controller();
         StudentRegisterd obj = new StudentRegisterd();
