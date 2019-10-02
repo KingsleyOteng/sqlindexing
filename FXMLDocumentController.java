@@ -771,7 +771,11 @@ public class FXMLDocumentController implements Initializable {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
+                // complete the borrow request
                 select_search_item_borrow();
+
+                // clear the entry from tableview
+                searchTableCatalogue.getItems().remove(buch);
             } else {
                 popupwindow.close();
             }
@@ -799,8 +803,12 @@ public class FXMLDocumentController implements Initializable {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
+                //complete the return request
                 select_search_item_return();
-                searchTableCatalogue.getSelectionModel().clearSelection();
+
+                // clear the entry from tableview
+                searchTableCatalogue.getItems().remove(buch);
+
             } else {
                 popupwindow.close();
             }
@@ -948,11 +956,17 @@ public class FXMLDocumentController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 select_search_item_return();
-                 
+
             } else {
                 popupwindow.close();
             }
         }
+    }
+    
+    @FXML
+    public void popupwindow()
+    {
+        
     }
 
 }
