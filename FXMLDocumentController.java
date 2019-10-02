@@ -549,14 +549,8 @@ public class FXMLDocumentController implements Initializable {
                 System.out.println("hello>>>>>>>>>" + bucher[i].getBook());
 
                 // output to tableview
-                searchTableCatalogue.getItems().add(
-                        new LibraryBooksStatus(
-                            bucher[i].getBook(),
-                            bucher[i].getAuthor(),
-                            bucher[i].getStatus(),
-                            bucher[i].getISBN1()
-                        )
-                    );
+                searchTableCatalogue.getItems().add(libObj);
+                    
                 
                 table.add(libObj);
             }
