@@ -10,13 +10,16 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -514,13 +517,32 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void insert_book_entry_searchtab(BookObject bucher[]) throws InterruptedException {
 
+        ObservableList<LibraryBooksStatus> table = null;
+        
+        for (LibraryBooksStatus item : searchTableCatalogue.getItems())
+        {
+            boolean add = table.add(item);
+        }
+        
+        
+        
         // output the contents of the entire array
         for (int i = 0x0; i <= (bucher.length); ++i) {
             // exit when we reach the end of the array
             if (bucher[i] == null) {
                 break;
             }
-
+            
+            // create a new object to hold the data
+            LibraryBooksStatus libObj = new LibraryBooksStatus(
+                            bucher[i].getBook(),
+                            bucher[i].getAuthor(),
+                            bucher[i].getStatus(),
+                            bucher[i].getISBN1()
+                    );
+            
+            
+            
             System.out.println("hello>>>>>>>>>" + bucher[i].getBook());
 
             // output to tableview
@@ -586,6 +608,8 @@ public class FXMLDocumentController implements Initializable {
 
         searchQuery = new String();
         btnDepressedId = null;
+        
+        
 
         searchQuery = fxsearchtab_search.getText();
 
@@ -608,6 +632,7 @@ public class FXMLDocumentController implements Initializable {
                 this.search_cloud_notification(toggleGroupBookSearch.getSelectedToggle().getUserData().toString() + ": " + fxsearchtab_search.getText());
             } else {
                 System.out.println("<<<<<<hello");
+             
                 this.insert_book_entry_searchtab(bucher);
             }
             Thread.sleep(1000);
@@ -632,6 +657,8 @@ public class FXMLDocumentController implements Initializable {
     private void select_search_item_borrow() throws SQLException, IOException {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         BookObject buchs = new BookObject();
+        
+        
 
         buchs = this.generate_search_object(buchs, buch.getIsbn1());
 
