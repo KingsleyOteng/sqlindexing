@@ -14,12 +14,17 @@ import java.util.Objects;
  */
 public class BookObject {
 
-    private int id, student_year;
-    private String student_name, book_name, author, status, isbn1, year, filePath, description, overview;
+    private int id, student_year, pagecount;
+    private String printtype, thumbnailIdentifier, language, identifier, country, student_name, book_name, author, publisher, status, isbn1, year, filePath, description, overview, categories;
     private static String library;
 
     BookObject() {
+        pagecount = 0;
+        language = "";
+        country = "";
         id = 0;
+        categories = "";
+        publisher = "";
         student_name = "";
         student_year = 0;
         book_name = "";
@@ -32,12 +37,18 @@ public class BookObject {
         filePath = "";
         overview = "";
         status = "";
+        categories = "";
+        printtype = "";
+        publisher = "";
+        identifier = "";     
+        thumbnailIdentifier = "";
     }
 
     BookObject(int id, String student_name, int student_year, String book_name, String author, String status, String isbn1, String year, String filePath, String description, String overview) {
         this.id = id;
         this.student_name = student_name;
         this.student_year = student_year;
+        this.publisher = publisher;
         this.book_name = book_name;
         this.author = author;
         this.status = status;
@@ -47,6 +58,7 @@ public class BookObject {
         this.description = description;
         this.overview = overview;
         this.status = status;
+        this.categories = categories;
     }
 
     private static void setLibrary(String library) {
@@ -57,17 +69,51 @@ public class BookObject {
         return BookObject.library;
     }
 
+  
+
     /**
      *
      * @return
      */
     
+    public  void setCategories(String categories) {
+        this.categories = categories;
+    }
+
+    public  String getCategories() {
+        return this.categories;
+    }
+    
     public void setOverview(String overview) {
         this.overview = overview;
     }
     
+    public void setLanguage(String language)
+    {
+        this.language = language;
+    };
+    
+    public void setCountry(String country)
+    {
+        this.country = country;
+    };
+    
+    public void setPageCount(int pagecount)
+    {
+        this.pagecount = pagecount;
+    };
+    
+    public void setPrintType(String Type)
+    {
+        this.printtype = Type;
+    };
+    
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
 
     public void setStudent_name(String student_name) {
@@ -102,6 +148,11 @@ public class BookObject {
         this.year = year;
     }
     
+     public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+    
+    
     public void setDescription(String description) {
         this.description = description;
     }
@@ -110,8 +161,17 @@ public class BookObject {
         this.filePath = filePath;
     }
     
+    public void setThumbNailIndentifier(String thumbnailIdentifier) {
+        this.thumbnailIdentifier = thumbnailIdentifier;
+    }
+    
+    
     public int getId() {
         return id;
+    }
+    
+    public int getPageCount() {
+        return pagecount;
     }
     
     public String getOverview()
@@ -135,6 +195,11 @@ public class BookObject {
     public int getPublishedYEar() {
         return student_year;
     }
+    
+    public String getPublisher() {
+        return publisher;
+    }
+    
     public String getBook() {
         return book_name;
     }
@@ -158,6 +223,15 @@ public class BookObject {
     
     public String getYear() {
         return year;
+    }
+    
+    
+    public String getIdentifier() {
+        return identifier;
+    }
+    
+    public String getThumbNailIndentifier(){
+        return this.thumbnailIdentifier;
     }
 
 
