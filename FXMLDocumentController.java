@@ -10,7 +10,13 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -32,6 +38,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
@@ -74,6 +81,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button returnbutton;
+    
+    @FXML
+    private DatePicker calendar_start;
+    
+    @FXML
+    private DatePicker calender_end;
 
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
@@ -410,6 +423,8 @@ public class FXMLDocumentController implements Initializable {
         String yy = schoolCatalogueTable.lookupAll(".column-header").toString();
 
         fxsearchtab_search.setText("");
+        
+       
     }
 
     // ----------------------------------------------->
@@ -709,6 +724,14 @@ public class FXMLDocumentController implements Initializable {
 
         photobox_borrow.setImage(image3);
         photobox_borrow.setPreserveRatio(true);
+        
+        // insert current date as the date the book was borrowed
+        LocalDate todaysDate = LocalDate.now();  
+        Integer defaultBorrowTime = 14;
+        calendar_start.setValue(todaysDate);
+        calender_end.setValue(todaysDate.plusDays(14));
+        
+        
     }
 
     @FXML
