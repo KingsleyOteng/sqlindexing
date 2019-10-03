@@ -59,7 +59,7 @@ public class Google_Socket {
 
         //setup connection to the google api
         //search for book based off of the isbn
-        url = new URL(GOOGLE_BOOK_SEARCH_URL + Title_locator + GOOGLE_BOOK_SEARCH_URL_END);
+        url = new URL(GOOGLE_BOOK_SEARCH_URL + myQuery + GOOGLE_BOOK_SEARCH_URL_END);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Accept", "application/json");
@@ -151,6 +151,7 @@ public class Google_Socket {
                             // set the title         
                             case "title":
                                 bpo.setBook(matcher_general.group(1));
+                                System.out.println("found a title");
                                 break;
                             // set the subtitle 
                             //case "subtitle":
