@@ -140,8 +140,7 @@
                         <TextField fx:id="fx_borrowpage_id" layoutX="111.0" layoutY="485.0" prefHeight="27.0" prefWidth="378.0" promptText="ID Number" />
                         <Label layoutX="25.0" layoutY="201.0" text="Overview" />
                         <Label layoutX="26.0" layoutY="556.0" text="Date Due" />
-                        <DatePicker fx:id="calendar_end" layoutX="112.0" layoutY="551.0" />
-                        <Text layoutX="720.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
+                        <Text layoutX="727.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
                         <TextField fx:id="fx_availability_status" layoutX="112.0" layoutY="316.0" prefHeight="27.0" prefWidth="378.0" promptText="Status" />
                         <Label layoutX="25.0" layoutY="320.0" text="Availability" />
                         <ImageView fx:id="borrow_image_box" fitHeight="206.0" fitWidth="136.0" layoutX="571.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
@@ -149,6 +148,7 @@
                         <TextArea fx:id="fx_borrowpage_overview" layoutX="112.0" layoutY="201.0" prefHeight="110.0" prefWidth="377.0" promptText="Overview" />
                         <Label layoutX="25.0" layoutY="387.0" text="Borrower" />
                         <TextField fx:id="fx_borrowpage_borrower_firstname" layoutX="111.0" layoutY="382.0" onKeyPressed="#quick_search_firstname" prefHeight="27.0" prefWidth="378.0" promptText="First name" />
+                        <DatePicker fx:id="calendar_start1" layoutX="112.0" layoutY="551.0" />
                      </children></AnchorPane>
             </content>
           </Tab>

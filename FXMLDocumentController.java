@@ -86,7 +86,7 @@ public class FXMLDocumentController implements Initializable {
     private DatePicker calendar_start;
     
     @FXML
-    private DatePicker calender_end;
+    private DatePicker calendar_start1;
 
     @FXML
     // note togglegroup and togglebuttons must be defined in controller class
@@ -726,10 +726,12 @@ public class FXMLDocumentController implements Initializable {
         photobox_borrow.setPreserveRatio(true);
         
         // insert current date as the date the book was borrowed
+        // set the return date to two weeks after the borrow date by default
         LocalDate todaysDate = LocalDate.now();  
-        Integer defaultBorrowTime = 14;
+        LocalDate returnDate = LocalDate.now().plusWeeks(2);
+        
         calendar_start.setValue(todaysDate);
-        calender_end.setValue(todaysDate.plusDays(14));
+        calendar_start1.setValue(returnDate);
         
         
     }
