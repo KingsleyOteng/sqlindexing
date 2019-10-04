@@ -1011,15 +1011,20 @@ public class FXMLDocumentController implements Initializable {
             Alert alert = new Alert(AlertType.CONFIRMATION);
 
             // generate the box information
-            alert.setTitle("Cloud Search Session");
+            alert.setTitle("Add Book");
             alert.setHeaderText("Will you like to add the following book to your catalogue?");
             alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
-            
+           
             boolean backgroundLoading = true;
             File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
             Image image3 = new Image(file3.toURI().toString(), backgroundLoading);
             
-            alert.setGraphic(new ImageView(image3));
+           
+            ImageView images = new ImageView(image3);
+                 images.setLayoutX(5); 
+                 images.setLayoutY(5); 
+                 
+            alert.setGraphic(images);
             
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
