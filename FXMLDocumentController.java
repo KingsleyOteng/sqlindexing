@@ -1013,7 +1013,11 @@ public class FXMLDocumentController implements Initializable {
             // generate the box information
             alert.setTitle("Add Book");
             alert.setHeaderText("Will you like to add the following book to your catalogue?");
-            alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
+           
+            
+             String content = String.format("The books details including thte title, author, year of publication, language, publisher and an image of the books cover will be added to your local database for later retrieval. Please ensure that the book highlighted is identical to the one which you are hoping to borrow. ");
+             
+             alert.setContentText(content);
            
             boolean backgroundLoading = true;
             File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
@@ -1023,6 +1027,7 @@ public class FXMLDocumentController implements Initializable {
             ImageView images = new ImageView(image3);
                  images.setLayoutX(5); 
                  images.setLayoutY(5); 
+                 
                  
             alert.setGraphic(images);
             
