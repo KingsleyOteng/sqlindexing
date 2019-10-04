@@ -34,6 +34,7 @@
                                     <TableColumn fx:id="isbn_search" prefWidth="75.0" text="isbn1" />
                                 </columns>
                               </TableView>
+                              <Button fx:id="popup" layoutX="703.0" layoutY="255.0" mnemonicParsing="false" onAction="#popsup1" prefHeight="72.0" prefWidth="90.0" text="GO" />
                            </children>
                         </Pane>
                         <ImageView fitHeight="37.0" fitWidth="40.0" layoutX="31.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">

@@ -78,6 +78,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button go_button2;
+    
+    @FXML
+    private Button popup;
 
     @FXML
     private Button returnbutton;
@@ -993,39 +996,39 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
+    
+    
     @FXML
-    public void popupwindows()
-    {
-        {
-            Stage primaryStage = new Stage();
-        primaryStage.setTitle("Popup Example");
-        final Popup popup = new Popup();
-        popup.setX(300);
-        popup.setY(200);
-        popup.getContent().addAll(new Circle(25, 25, 50, Color.AQUAMARINE));
+    public void popsup1() throws IOException, SQLException {
+        // grab search query
+        String query = fxsearchtab_search.getText();
 
-        Button show = new Button("Show");
-        show.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                popup.show(primaryStage);
+        // checks that the user has populated the query field and has also selected an entry from the table before progressing.
+        //if (!query.isEmpty() && (searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
+        if ((searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
+            Stage popupwindow = new Stage();
+            LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+
+            // generate the box information
+            alert.setTitle("Cloud Search Session");
+            alert.setHeaderText("Will you like to add the following book to your catalogue?");
+            alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
+            
+            boolean backgroundLoading = true;
+            File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
+            Image image3 = new Image(file3.toURI().toString(), backgroundLoading);
+            
+            alert.setGraphic(new ImageView(image3));
+            
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+               // select_search_item_return();
+                
+            } else {
+                popupwindow.close();
             }
-        });
-
-        Button hide = new Button("Hide");
-        hide.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                popup.hide();
-            }
-        });
-
-        HBox layout = new HBox(10);
-        layout.setStyle("-fx-background-color: cornsilk; -fx-padding: 10;");
-        layout.getChildren().addAll(show, hide);
-        primaryStage.setScene(new Scene(layout));
-        primaryStage.show();
-    }
+        }
     }
 
 }
