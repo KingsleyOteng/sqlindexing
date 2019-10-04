@@ -54,6 +54,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 //import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 //import javafx.scene.layout.Region;
@@ -1015,7 +1016,7 @@ public class FXMLDocumentController implements Initializable {
             alert.setHeaderText("Will you like to add the following book to your catalogue?");
            
             
-             String content = String.format("The books details including thte title, author, year of publication, language, publisher and an image of the books cover will be added to your local database for later retrieval. Please ensure that the book highlighted is identical to the one which you are hoping to borrow. ");
+             String content = String.format("The books details including thte title, author, year of publication, language, publisher and an image of the books cover will be added to your local database for later retrieval. \n Please ensure that the book highlighted is identical to the one which you are hoping to borrow. ");
              
              alert.setContentText(content);
            
@@ -1030,6 +1031,12 @@ public class FXMLDocumentController implements Initializable {
                  
                  
             alert.setGraphic(images);
+            
+            //alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            //alert.show();
+            
+            alert.setResizable(true);
+        alert.getDialogPane().setPrefSize(480, 320);
             
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
