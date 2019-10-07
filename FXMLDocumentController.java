@@ -7,7 +7,10 @@ package userinterface;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -1028,17 +1031,13 @@ public class FXMLDocumentController implements Initializable {
              String content = String.format("The books details including thte title, author, year of publication, language, publisher and an image of the books cover will be added to your local database for later retrieval. \n Please ensure that the book highlighted is identical to the one which you are hoping to borrow. ");
              
              alert.setContentText(content);
-             String ss = cloud_search.getThumbNailIndentifier().toString();
-             ss = ss.replaceAll("\"", "").toLowerCase();
-             System.out.println("??"+ss);
-             URL url = new URL(cloud_search.getThumbNailIndentifier());
-             BufferedImage img = ImageIO.read(url);
-             //File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/downloadedx.jpg");
-             //ImageIO.write(img, "jpg", file);
-           
+             
+             System.out.println("title>>>>"+cloud_search.getThumbNailIndentifier());
+            
+             
              
             boolean backgroundLoading = true;
-            File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/downloadedx.jpeg");
+            File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
             Image image3 = new Image(file3.toURI().toString(), backgroundLoading);
             
            

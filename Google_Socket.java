@@ -71,8 +71,8 @@ public class Google_Socket {
             value.append(buffer, 0, length);
         }
 
-        System.out.println("block contents: " + value.toString());
-        System.out.println("length of block:  " + value.length());
+        //System.out.println("block contents: " + value.toString());
+        //System.out.println("length of block:  " + value.length());
 
         p_general = Pattern.compile("\\s+?\"[A-Za-z]+\":\\s+?(\"?\\[?[A-Za-z0-9+#:/'.\\s+&_=?\"-]+\\]?\"?)");
 
@@ -90,14 +90,14 @@ public class Google_Socket {
             groupCount = matcher_general.groupCount();
             while (matcher_general.find()) {
 
-                System.out.println("group count " + groupCount);
+                //System.out.println("group count " + groupCount);
 
                 for (int ii = 0; ii <= groupCount; ii++) {
-                    System.out.println("hello " + ii + " " + matcher_general.group(ii));
+                 //   System.out.println("hello " + ii + " " + matcher_general.group(ii));
                 }
 
-                System.out.println("found: " + count + " : "
-                        + matcher_general.start() + " - " + matcher_general.end());
+              //  System.out.println("found: " + count + " : "
+                //        + matcher_general.start() + " - " + matcher_general.end());
 
                 // we throw the the regex key to a case statement which will then match
                 //switch(matcher_general.group(0))
