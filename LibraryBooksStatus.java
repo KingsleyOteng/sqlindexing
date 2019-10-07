@@ -14,15 +14,17 @@ import java.util.Objects;
  */
 public class LibraryBooksStatus {
 
-    int id, year;
-    String name, book, author, status, isbn1, student_year;
+    //boolean status;
+    int id, year, ISBN1;
+    String name, book, author, isbn1, status, student_year;
 
-    public LibraryBooksStatus(int id, String name, int year, String book, String author) {
-        this.id = id;
+    public LibraryBooksStatus(int ISBN1, String name, int year, String book, String author, String status) {
+        this.ISBN1 = ISBN1;
         this.year = year;
         this.name = name;
         this.book = book;
         this.author = author;
+        this.status = status;
     }
 
     public LibraryBooksStatus(String book, String author, String status, String isbn1) {
@@ -57,10 +59,18 @@ public class LibraryBooksStatus {
     public String getBOOK() {
         return book;
     }
+    
+    public int getISBN() {
+        return ISBN1;
+    }
+    
+     public int getPublishedYear() {
+        return year;
+    }
 
     public String getStatus() {
         return status;
-    }
+    };
 
     public int getId() {
         return id;

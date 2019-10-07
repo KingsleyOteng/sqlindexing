@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
 public class Google_Socket {
     
     public static final String GOOGLE_BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=";
-    public static final String GOOGLE_BOOK_SEARCH_URL_END = "download=epub";
+    public static final String GOOGLE_BOOK_SEARCH_URL_END = "+download=epub";
     
     BookObject google_find_book(
             String Title_locator

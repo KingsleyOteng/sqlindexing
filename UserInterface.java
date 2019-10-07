@@ -21,9 +21,13 @@ public class UserInterface extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        Google_Socket gs = new Google_Socket();
-        gs.google_find_book("The Art of War");
+        
+        //Google_Socket gs = new Google_Socket();
+        //BookObject bo = gs.google_find_book("The Art of War");
         //Start the user interface
+        //System.out.println(">>>>>"+bo.getBook());
+        //System.out.println(">>>>>"+bo.getAuthor());
+        
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

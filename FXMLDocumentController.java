@@ -5,6 +5,7 @@
  */
 package userinterface;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -61,6 +62,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -857,13 +859,14 @@ public class FXMLDocumentController implements Initializable {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Cloud Search Notification");
-        alert.setHeaderText("Book is not catalogued locally. Search cloud for book?");
+        alert.setHeaderText("xxBook is not catalogued locally. Search cloud for book?");
         alert.setContentText(AlertHeader);
         //alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            select_search_item_borrow();
+            System.out.println("point 1");
+            popsup1();
         } else {
             popupwindow.close();
         }
@@ -1003,25 +1006,39 @@ public class FXMLDocumentController implements Initializable {
     public void popsup1() throws IOException, SQLException {
         // grab search query
         String query = fxsearchtab_search.getText();
-
+       
+        Google_Socket gs = new Google_Socket();
+        
+        BookObject cloud_search =  gs.google_find_book(query);
+        
+         Boolean FLAGS = true;
         // checks that the user has populated the query field and has also selected an entry from the table before progressing.
         //if (!query.isEmpty() && (searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
-        if ((searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
+        if (((searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0) | FLAGS)) {
             Stage popupwindow = new Stage();
             LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
             Alert alert = new Alert(AlertType.CONFIRMATION);
 
             // generate the box information
             alert.setTitle("Add Book");
-            alert.setHeaderText("Will you like to add the following book to your catalogue?");
-           
+            alert.setHeaderText("Will you like to add the following book to your catalogue? \n");
+           System.out.println("we are here 2");
+            alert.setHeaderText("Title: " + cloud_search.getBook() + " by " + cloud_search.getAuthor()+ " "+ cloud_search.getThumbNailIndentifier() );
             
              String content = String.format("The books details including thte title, author, year of publication, language, publisher and an image of the books cover will be added to your local database for later retrieval. \n Please ensure that the book highlighted is identical to the one which you are hoping to borrow. ");
              
              alert.setContentText(content);
+             String ss = cloud_search.getThumbNailIndentifier().toString();
+             ss = ss.replaceAll("\"", "").toLowerCase();
+             System.out.println("??"+ss);
+             URL url = new URL(cloud_search.getThumbNailIndentifier());
+             BufferedImage img = ImageIO.read(url);
+             File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/downloadedx.jpg");
+             ImageIO.write(img, "jpg", file);
            
+             
             boolean backgroundLoading = true;
-            File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
+            File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/downloadedx.jpeg");
             Image image3 = new Image(file3.toURI().toString(), backgroundLoading);
             
            
