@@ -1033,8 +1033,8 @@ public class FXMLDocumentController implements Initializable {
              System.out.println("??"+ss);
              URL url = new URL(cloud_search.getThumbNailIndentifier());
              BufferedImage img = ImageIO.read(url);
-             File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/downloadedx.jpg");
-             ImageIO.write(img, "jpg", file);
+             //File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/downloadedx.jpg");
+             //ImageIO.write(img, "jpg", file);
            
              
             boolean backgroundLoading = true;
