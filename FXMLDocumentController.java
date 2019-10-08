@@ -13,6 +13,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+import java.nio.file.Files;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -1034,10 +1036,17 @@ public class FXMLDocumentController implements Initializable {
              
              System.out.println("title>>>>"+cloud_search.getThumbNailIndentifier());
             
-             
+            String resource = cloud_search.getThumbNailIndentifier();
+            resource = resource.replaceAll("\"", "").trim();
+            URL url = new URL(resource);
+            URLConnection conn = url.openConnection();
+            InputStream in = conn.getInputStream();
+            Files.copy(url.openStream(), new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image123456.jpeg").toPath());
+           
+             System.out.println("title>>>>"+resource);
              
             boolean backgroundLoading = true;
-            File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
+            File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image123456.jpeg");
             Image image3 = new Image(file3.toURI().toString(), backgroundLoading);
             
            
