@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="135.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userinterface.ISBNFXMLFrameController">
+   <children>
+      <Label layoutX="56.0" layoutY="80.0" text="ISBN" />
+      <TextField layoutX="126.0" layoutY="75.0" prefHeight="27.0" prefWidth="423.0" />
+      <Label layoutX="117.0" layoutY="14.0" text="Catalogue Update: Please provide details of the books ISBN" />
+      <Label layoutX="142.0" layoutY="31.0" text="(note: the ISBN is provided at the back of the book)" />
+      <Button layoutX="448.0" layoutY="105.0" mnemonicParsing="false" text="Cancel" />
+      <Button layoutX="513.0" layoutY="105.0" mnemonicParsing="false" text="OK" />
+   </children>
+</AnchorPane>

@@ -88,16 +88,16 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button go_button2;
-    
+
     @FXML
     private Button popup;
 
     @FXML
     private Button returnbutton;
-    
+
     @FXML
     private DatePicker calendar_start;
-    
+
     @FXML
     private DatePicker calendar_start1;
 
@@ -436,8 +436,7 @@ public class FXMLDocumentController implements Initializable {
         String yy = schoolCatalogueTable.lookupAll(".column-header").toString();
 
         fxsearchtab_search.setText("");
-        
-       
+
     }
 
     // ----------------------------------------------->
@@ -737,16 +736,15 @@ public class FXMLDocumentController implements Initializable {
 
         photobox_borrow.setImage(image3);
         photobox_borrow.setPreserveRatio(true);
-        
+
         // insert current date as the date the book was borrowed
         // set the return date to two weeks after the borrow date by default
-        LocalDate todaysDate = LocalDate.now();  
+        LocalDate todaysDate = LocalDate.now();
         LocalDate returnDate = LocalDate.now().plusWeeks(2);
-        
+
         calendar_start.setValue(todaysDate);
         calendar_start1.setValue(returnDate);
-        
-        
+
     }
 
     @FXML
@@ -850,7 +848,6 @@ public class FXMLDocumentController implements Initializable {
 
                 // clear the entry from tableview
                 searchTableCatalogue.getItems().remove(buch);
-         
 
             } else {
                 popupwindow.close();
@@ -866,13 +863,12 @@ public class FXMLDocumentController implements Initializable {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Cloud Search Notification");
-        alert.setHeaderText("xxBook is not catalogued locally. Search cloud for book?");
+        alert.setHeaderText("Book is not catalogued locally. Search cloud for book?");
         alert.setContentText(AlertHeader);
         //alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            System.out.println("point 1");
             popsup1();
         } else {
             popupwindow.close();
@@ -1000,27 +996,26 @@ public class FXMLDocumentController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 select_search_item_return();
-                
+
             } else {
                 popupwindow.close();
             }
         }
     }
-    
-    
-    
+
     @FXML
     public void popsup1() throws IOException, SQLException {
         // grab search query
         String query = fxsearchtab_search.getText();
-       
+        
+        // Create an instance of the google socket class
         Google_Socket gs = new Google_Socket();
-        
-        BookObject cloud_search =  gs.google_find_book(query);
-        
-         Boolean FLAGS = true;
+
+        // Use the method find books to locate book through Google's API
+        BookObject cloud_search = gs.google_find_book(query);
+
+        Boolean FLAGS = true;
         // checks that the user has populated the query field and has also selected an entry from the table before progressing.
-        //if (!query.isEmpty() && (searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
         if (((searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0) | FLAGS)) {
             Stage popupwindow = new Stage();
             LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
@@ -1029,87 +1024,75 @@ public class FXMLDocumentController implements Initializable {
             // generate the box information
             alert.setTitle("Add Book");
             alert.setHeaderText("Will you like to add the following book to your catalogue? \n");
-            
+
             // label
-            String title_label = cloud_search.getBook();           
-           
-            
+            String title_label = cloud_search.getBook();
+
             // label
             String author_label = cloud_search.getAuthor();
-            author_label = author_label.replaceAll("\\[", "").trim(); 
-            author_label = author_label.replaceAll("\\]", "").trim(); 
-            author_label = author_label.replaceAll("  ", "").trim(); 
-            
-            
-            alert.setHeaderText("Title: " + title_label + "\n Authored by: " + author_label );
-            
-             String content = String.format("The books details including thte title, author, year of publication, language, publisher and an image of the books cover will be added to your local database for later retrieval. \n Please ensure that the book highlighted is identical to the one which you are hoping to borrow. ");
-             
-             alert.setContentText(content);
-             
+            author_label = author_label.replaceAll("\\[", "").trim();
+            author_label = author_label.replaceAll("\\]", "").trim();
+            author_label = author_label.replaceAll("  ", "").trim();
+
+            alert.setHeaderText("Title: " + title_label + "\n Authored by: " + author_label);
+
+            String content = String.format("Is this the correct book?");
+
+            alert.setContentText(content);
+
             //System.out.println("title>>>>"+cloud_search.getThumbNailIndentifier());
-            
             // generate random string suffix
             String suffix = this.generateRandomString(32);
-            
+
             // capture the resource locator
             String resource = cloud_search.getThumbNailIndentifier();
             resource = resource.replaceAll("\"", "").trim();
             URL url = new URL(resource);
             URLConnection conn = url.openConnection();
             InputStream in = conn.getInputStream();
-            
+
             // save file from the resource locator
-            String filename = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image"+suffix+".jpeg";
+            String filename = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image" + suffix + ".jpeg";
             Files.copy(url.openStream(), new File(filename).toPath());
-           
-            //System.out.println("title>>>>"+resource);
-             
-     
-       
-      
+
             // load the data in the background from the file saved
             boolean backgroundLoading = true;
             File file3 = new File(filename);
             Image image3 = new Image(file3.toURI().toString(), backgroundLoading);
-            
-           
+
+            // set the image bounds
             ImageView images = new ImageView(image3);
-                 images.setLayoutX(5); 
-                 images.setLayoutY(5); 
-                 
-                 
+            images.setLayoutX(5);
+            images.setLayoutY(5);
+
+            // include the image in the display
             alert.setGraphic(images);
-            
-            //alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-            //alert.show();
-            
+
+            //repotion the window size
             alert.setResizable(true);
-        alert.getDialogPane().setPrefSize(480, 320);
-            
+            alert.getDialogPane().setPrefSize(480, 320);
+
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-               // select_search_item_return();
-                
+                // select_search_item_return();
+
             } else {
                 popupwindow.close();
             }
         }
     }
-    
- 
+
     private String generateRandomString(int length) {
         // Random string suffix generator
         // Source: http://www.appsdeveloperblog.com/generate-random-string-in-java-different-ways/
         Random RANDOM = new SecureRandom();
         String ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    
+
         StringBuilder returnValue = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
             returnValue.append(ALPHABET.charAt(RANDOM.nextInt(ALPHABET.length())));
         }
         return new String(returnValue);
     }
-
 
 }
