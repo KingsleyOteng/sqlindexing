@@ -1029,35 +1029,48 @@ public class FXMLDocumentController implements Initializable {
             // generate the box information
             alert.setTitle("Add Book");
             alert.setHeaderText("Will you like to add the following book to your catalogue? \n");
-           System.out.println("we are here 2");
-            alert.setHeaderText("Title: " + cloud_search.getBook() + " by " + cloud_search.getAuthor()+ " "+ cloud_search.getThumbNailIndentifier() );
+            
+            // label
+            String title_label = cloud_search.getBook();           
+           
+            
+            // label
+            String author_label = cloud_search.getAuthor();
+            author_label = author_label.replaceAll("\\[", "").trim(); 
+            author_label = author_label.replaceAll("\\]", "").trim(); 
+            author_label = author_label.replaceAll("  ", "").trim(); 
+            
+            
+            alert.setHeaderText("Title: " + title_label + "\n Authored by: " + author_label );
             
              String content = String.format("The books details including thte title, author, year of publication, language, publisher and an image of the books cover will be added to your local database for later retrieval. \n Please ensure that the book highlighted is identical to the one which you are hoping to borrow. ");
              
              alert.setContentText(content);
              
-             System.out.println("title>>>>"+cloud_search.getThumbNailIndentifier());
+            //System.out.println("title>>>>"+cloud_search.getThumbNailIndentifier());
             
             // generate random string suffix
             String suffix = this.generateRandomString(32);
             
+            // capture the resource locator
             String resource = cloud_search.getThumbNailIndentifier();
             resource = resource.replaceAll("\"", "").trim();
             URL url = new URL(resource);
             URLConnection conn = url.openConnection();
             InputStream in = conn.getInputStream();
-            Files.copy(url.openStream(), new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image"+suffix+".jpeg").toPath());
+            
+            // save file from the resource locator
+            String filename = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image"+suffix+".jpeg";
+            Files.copy(url.openStream(), new File(filename).toPath());
            
-             System.out.println("title>>>>"+resource);
+            //System.out.println("title>>>>"+resource);
              
-             int length = 30;
-        boolean includeLetters = true;
-        boolean includeNumbers = true;
+     
        
       
-             
+            // load the data in the background from the file saved
             boolean backgroundLoading = true;
-            File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image"+suffix+".jpeg");
+            File file3 = new File(filename);
             Image image3 = new Image(file3.toURI().toString(), backgroundLoading);
             
            
@@ -1086,7 +1099,8 @@ public class FXMLDocumentController implements Initializable {
     
  
     private String generateRandomString(int length) {
-        
+        // Random string suffix generator
+        // Source: http://www.appsdeveloperblog.com/generate-random-string-in-java-different-ways/
         Random RANDOM = new SecureRandom();
         String ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     
