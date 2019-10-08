@@ -15,6 +15,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
+import java.security.SecureRandom;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,6 +25,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -1036,17 +1038,26 @@ public class FXMLDocumentController implements Initializable {
              
              System.out.println("title>>>>"+cloud_search.getThumbNailIndentifier());
             
+            // generate random string suffix
+            String suffix = this.generateRandomString(32);
+            
             String resource = cloud_search.getThumbNailIndentifier();
             resource = resource.replaceAll("\"", "").trim();
             URL url = new URL(resource);
             URLConnection conn = url.openConnection();
             InputStream in = conn.getInputStream();
-            Files.copy(url.openStream(), new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image123456.jpeg").toPath());
+            Files.copy(url.openStream(), new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image"+suffix+".jpeg").toPath());
            
              System.out.println("title>>>>"+resource);
              
+             int length = 30;
+        boolean includeLetters = true;
+        boolean includeNumbers = true;
+       
+      
+             
             boolean backgroundLoading = true;
-            File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image123456.jpeg");
+            File file3 = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image"+suffix+".jpeg");
             Image image3 = new Image(file3.toURI().toString(), backgroundLoading);
             
            
@@ -1072,5 +1083,19 @@ public class FXMLDocumentController implements Initializable {
             }
         }
     }
+    
+ 
+    private String generateRandomString(int length) {
+        
+        Random RANDOM = new SecureRandom();
+        String ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    
+        StringBuilder returnValue = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            returnValue.append(ALPHABET.charAt(RANDOM.nextInt(ALPHABET.length())));
+        }
+        return new String(returnValue);
+    }
+
 
 }
