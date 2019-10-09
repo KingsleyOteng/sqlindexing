@@ -1150,9 +1150,9 @@ public class FXMLDocumentController implements Initializable {
 
         Stage popupwindow = new Stage();
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
-        Alert alert = new Alert(AlertType.ERROR);
+        Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Cataloguing complete");
-        alert.setHeaderText("Thank You");
+        alert.setHeaderText("Thank You !!");
 
         //alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
 
