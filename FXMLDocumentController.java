@@ -37,9 +37,11 @@ import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -55,6 +57,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -70,6 +73,7 @@ import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -226,6 +230,10 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TextField fx_borrowpage_title = new TextField();
+    
+    @FXML
+    private TextField hellos = new TextField();
+    
 
     @FXML
     private TableView<LibraryBooksStatus> searchTableCatalogue;
@@ -872,6 +880,8 @@ public class FXMLDocumentController implements Initializable {
             popsup1();
         } else {
             popupwindow.close();
+            
+            obtain_ISBN();
         }
 
     }
@@ -1007,7 +1017,7 @@ public class FXMLDocumentController implements Initializable {
     public void popsup1() throws IOException, SQLException {
         // grab search query
         String query = fxsearchtab_search.getText();
-        
+
         // Create an instance of the google socket class
         Google_Socket gs = new Google_Socket();
 
@@ -1075,9 +1085,16 @@ public class FXMLDocumentController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 // select_search_item_return();
+               obtain_ISBN();
+                
 
             } else {
+                
                 popupwindow.close();
+                
+    
+
+
             }
         }
     }
@@ -1094,5 +1111,59 @@ public class FXMLDocumentController implements Initializable {
         }
         return new String(returnValue);
     }
+    
+    @FXML
+    public void obtain_ISBN() throws SQLException, IOException {
 
+        Boolean flag = true;
+        String titleText = "Confirm ISBN";
+        String headerText = "Before the book may be added to the local catalogue the ISBN must be confirmed.";
+        
+        TextInputDialog dialog = new TextInputDialog("walter");
+        dialog.setTitle("Confirm ISBN");
+        dialog.setHeaderText("Before the book may be added to the local catalogue the ISBN must be confirmed.");
+        dialog.setContentText("ISBN:");
+        Optional<String> results = dialog.showAndWait();
+        results.ifPresent(name -> System.out.println("ISBN: " + name));  
+        
+        
+        // confirm the isbn 
+        this.confirm_ISBN();
+
+        
+    }
+
+    @FXML
+    public void confirm_ISBN() throws SQLException, IOException {
+
+        TextInputDialog dialog = new TextInputDialog("walter");
+        dialog.setTitle("Confirm ISBN");
+        dialog.setHeaderText("Before the book may be added to the local catalogue the ISBN must be confirmed.");
+        dialog.setContentText("ISBN:");
+        Optional<String> results = dialog.showAndWait();
+        results.ifPresent(name -> System.out.println("ISBN: " + name));  
+        thanks_dialog();
+    }
+    
+    @FXML
+    public void thanks_dialog() throws SQLException, IOException {
+
+        Alert a = new Alert(AlertType.NONE); 
+        
+        EventHandler<ActionEvent> event1 = new 
+                          EventHandler<ActionEvent>() { 
+            public void handle(ActionEvent e) 
+            { 
+                // set alert type 
+                a.setAlertType(AlertType.ERROR); 
+  
+                // set content text 
+                a.setContentText("error Dialog"); 
+  
+                // show the dialog 
+                a.show(); 
+            } 
+        }; 
+ 
+    }
 }
