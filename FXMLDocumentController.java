@@ -1148,22 +1148,16 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void thanks_dialog() throws SQLException, IOException {
 
-        Alert a = new Alert(AlertType.NONE); 
+        Stage popupwindow = new Stage();
+        LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Cataloguing complete");
+        alert.setHeaderText("Thank You");
+
+        //alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
+
+        Optional<ButtonType> result = alert.showAndWait();
         
-        EventHandler<ActionEvent> event1 = new 
-                          EventHandler<ActionEvent>() { 
-            public void handle(ActionEvent e) 
-            { 
-                // set alert type 
-                a.setAlertType(AlertType.ERROR); 
-  
-                // set content text 
-                a.setContentText("error Dialog"); 
-  
-                // show the dialog 
-                a.show(); 
-            } 
-        }; 
  
     }
 }
