@@ -230,10 +230,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TextField fx_borrowpage_title = new TextField();
-    
+
     @FXML
     private TextField hellos = new TextField();
-    
 
     @FXML
     private TableView<LibraryBooksStatus> searchTableCatalogue;
@@ -880,7 +879,7 @@ public class FXMLDocumentController implements Initializable {
             popsup1();
         } else {
             popupwindow.close();
-            
+
             obtain_ISBN();
         }
 
@@ -990,13 +989,15 @@ public class FXMLDocumentController implements Initializable {
     public void seachtab_return_btn_confirmation() throws IOException, SQLException {
         // grab search query
         String query = fxsearchtab_search.getText();
+        Stage popupwindow;
+        Alert alert;
 
         // checks that the user has populated the query field and has also selected an entry from the table before progressing.
         //if (!query.isEmpty() && (searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
         if ((searchTableCatalogue.getSelectionModel().getSelectedIndex() >= 0)) {
-            Stage popupwindow = new Stage();
+            popupwindow = new Stage();
             LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
-            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert = new Alert(AlertType.CONFIRMATION);
 
             // generate the box information
             alert.setTitle("Initiate Return Session");
@@ -1085,15 +1086,11 @@ public class FXMLDocumentController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 // select_search_item_return();
-               obtain_ISBN();
-                
+                obtain_ISBN();
 
             } else {
-                
-                popupwindow.close();
-                
-    
 
+                popupwindow.close();
 
             }
         }
@@ -1111,26 +1108,24 @@ public class FXMLDocumentController implements Initializable {
         }
         return new String(returnValue);
     }
-    
+
     @FXML
     public void obtain_ISBN() throws SQLException, IOException {
 
         Boolean flag = true;
         String titleText = "Confirm ISBN";
         String headerText = "Before the book may be added to the local catalogue the ISBN must be confirmed.";
-        
+
         TextInputDialog dialog = new TextInputDialog("walter");
         dialog.setTitle("Confirm ISBN");
         dialog.setHeaderText("Before the book may be added to the local catalogue the ISBN must be confirmed.");
         dialog.setContentText("ISBN:");
         Optional<String> results = dialog.showAndWait();
-        results.ifPresent(name -> System.out.println("ISBN: " + name));  
-        
-        
+        results.ifPresent(name -> System.out.println("ISBN: " + name));
+
         // confirm the isbn 
         this.confirm_ISBN();
 
-        
     }
 
     @FXML
@@ -1141,23 +1136,77 @@ public class FXMLDocumentController implements Initializable {
         dialog.setHeaderText("Before the book may be added to the local catalogue the ISBN must be confirmed.");
         dialog.setContentText("ISBN:");
         Optional<String> results = dialog.showAndWait();
-        results.ifPresent(name -> System.out.println("ISBN: " + name));  
+        results.ifPresent(name -> System.out.println("ISBN: " + name));
         thanks_dialog();
     }
-    
+
     @FXML
     public void thanks_dialog() throws SQLException, IOException {
 
         Stage popupwindow = new Stage();
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Cataloguing complete");
-        alert.setHeaderText("Thank You !!");
-
-        //alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
+        alert.setTitle("Cataloguing complete.");
+        alert.setHeaderText("Book has been added. Thank You !!");
 
         Optional<ButtonType> result = alert.showAndWait();
-        
- 
+
     }
-}
+
+    public String check_isbn10(String value) {
+
+        // check to ensure it's 10 variables
+        value = value.replace("-", "");
+
+        // variabls
+        Integer checksum = 0;
+        int length_of_isbn = value.length();
+
+        // sum digits
+        for (int i = 1; i <= (length_of_isbn - 1); i++) {
+            checksum = checksum + ((int) value.charAt(i)) * i;
+        }
+
+        // generate the checksum
+        checksum = (checksum % 11);
+
+        // return checksum
+        if (checksum == 0) {
+            return "X";
+        } else {
+            return checksum.toString();
+        }
+
+    };
+
+    public String check_isbn13(String value) {
+
+        // check to ensure it's 13 variables
+        value = value.replace("-", "");
+
+        // variabls
+        Integer checksum = 0;
+        int length_of_isbn = value.length();
+
+        // sum digits
+        for (int i = 1; i <= (length_of_isbn - 1); i++) {
+            if (i % 2 == 0) {
+                checksum = checksum + ((int) value.charAt(i)) * 1;
+            } else {
+                checksum = checksum + ((int) value.charAt(i)) * 3;
+            }
+        }
+
+        // generate the checksum
+        checksum = (checksum % 10);
+
+        // return checksum
+        if (checksum == 0) {
+            return "X";
+        } else {
+            return checksum.toString();
+        }
+
+    };
+    
+};
