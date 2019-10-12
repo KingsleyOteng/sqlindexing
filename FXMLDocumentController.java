@@ -5,43 +5,29 @@
  */
 package userinterface;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
 import java.security.SecureRandom;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Locale;
 import java.util.Optional;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -65,15 +51,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 //import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 //import javafx.scene.layout.Region;
 import javafx.stage.Modality;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -1153,7 +1133,14 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    public String check_isbn10(String value) {
+    public boolean check_isbn10(String value) {
+
+        // declaration
+        String final_check_sum;
+        String input_check_sum;
+
+        // grab the input checksum
+        input_check_sum = String.valueOf(value.charAt(value.length()));
 
         // check to ensure it's 10 variables
         value = value.replace("-", "");
@@ -1170,19 +1157,31 @@ public class FXMLDocumentController implements Initializable {
         // generate the checksum
         checksum = (checksum % 11);
 
-        // return checksum
+        // calculate final checksum
         if (checksum == 0) {
-            return "X";
+            final_check_sum = "X";
         } else {
-            return checksum.toString();
+            final_check_sum = checksum.toString();
         }
 
-    };
+        // return status
+        return !(input_check_sum == null ? final_check_sum != null : !input_check_sum.equals(final_check_sum));
 
-    public String check_isbn13(String value) {
+    }
+
+    ;
+
+        public boolean check_isbn13(String value) {
+
+        String input_check_sum;
+        String final_check_sum;
+
+        // grab the input checksum
+        input_check_sum = String.valueOf(value.charAt(value.length()));
 
         // check to ensure it's 13 variables
         value = value.replace("-", "");
+        value = value.replace(" ", "");
 
         // variabls
         Integer checksum = 0;
@@ -1200,13 +1199,17 @@ public class FXMLDocumentController implements Initializable {
         // generate the checksum
         checksum = (checksum % 10);
 
-        // return checksum
+        // calculate final checksum
         if (checksum == 0) {
-            return "X";
+            final_check_sum = "X";
         } else {
-            return checksum.toString();
+            final_check_sum = checksum.toString();
         }
 
-    };
-    
+        // return status
+        return !(input_check_sum == null ? final_check_sum != null : !input_check_sum.equals(final_check_sum));
+
+    }
+;
+
 };
