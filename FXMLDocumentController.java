@@ -49,9 +49,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-//import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
-//import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -1134,6 +1132,8 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public boolean check_isbn10(String value) {
+        // the following routine will check an ISBN 10 number
+        // And determine it's accuracy by returning a boolean
 
         // declaration
         String final_check_sum;
@@ -1172,7 +1172,9 @@ public class FXMLDocumentController implements Initializable {
     ;
 
         public boolean check_isbn13(String value) {
-
+        // the following routine will check an ISBN 13 number
+        // And determine it's accuracy by returning a boolean
+        
         String input_check_sum;
         String final_check_sum;
 
