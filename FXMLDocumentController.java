@@ -344,6 +344,11 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         });
+        
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<endless love"+this.check_isbn13("978-1-4754-7528-9"));
+        
+        
+        
 
         File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
         boolean backgroundLoading = true;
@@ -1179,8 +1184,8 @@ public class FXMLDocumentController implements Initializable {
         String final_check_sum;
 
         // grab the input checksum
-        input_check_sum = String.valueOf(value.charAt(value.length()));
-
+        input_check_sum = String.valueOf(value.charAt(value.length() -1));
+        System.out.println("check_sum_value start"+input_check_sum);
         // check to ensure it's 13 variables
         value = value.replace("-", "");
         value = value.replace(" ", "");
@@ -1198,6 +1203,8 @@ public class FXMLDocumentController implements Initializable {
             }
         }
 
+        System.out.println("check_sum_value start"+checksum);
+        
         // generate the checksum
         checksum = (checksum % 10);
 
