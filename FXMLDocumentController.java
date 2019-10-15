@@ -344,11 +344,8 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         });
-        
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<endless love"+this.check_isbn13("978-1-4754-7528-9"));
-        
-        
-        
+
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<endless love" + this.check_isbn13("978-1-4754-7528-9"));
 
         File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
         boolean backgroundLoading = true;
@@ -1156,7 +1153,12 @@ public class FXMLDocumentController implements Initializable {
 
         // sum digits
         for (int i = 0; i <= (length_of_isbn - 1); i++) {
-            checksum = checksum + ((int) value.charAt(i)) * (10 - i);
+            // take the nth figure and convert it to an integer
+            String y = String.valueOf(value.charAt(i));
+            Integer yInt = Integer.valueOf(y);
+
+            // store running checksum
+            checksum = checksum + (yInt * (10 - i));
         }
 
         // generate the checksum
@@ -1180,13 +1182,15 @@ public class FXMLDocumentController implements Initializable {
         public boolean check_isbn13(String value) {
         // the following routine will check an ISBN 13 number
         // And determine it's accuracy by returning a boolean
-        
+
         String input_check_sum;
         String final_check_sum;
 
         // grab the input checksum
-        input_check_sum = String.valueOf(value.charAt(value.length() -1));
-        System.out.println("check_sum_value start"+input_check_sum);
+        input_check_sum = String.valueOf(value.charAt(value.length() - 1));
+        System.out.println("check_sum_value start>>>>>>>>>>>" + value);
+        System.out.println("check_sum_value start>>>>>>>>>>>" + value.charAt(0));
+        System.out.println("check_sum_value start" + input_check_sum);
         // check to ensure it's 13 variables
         value = value.replace("-", "");
         value = value.replace(" ", "");
@@ -1196,27 +1200,43 @@ public class FXMLDocumentController implements Initializable {
         Integer length_of_isbn = value.length();
 
         // sum digits
-        for (int i = 0; i <= (length_of_isbn - 1); i++) {
-            if (i % 2 == 0) {
-                checksum = checksum + ((int) value.charAt(i)) * 1;
+        for (int i = 0; i <= (length_of_isbn - 2); i++) {
+            System.out.println("count start" + checksum);
+
+            // take the nth figure and convert it to an integer
+            String y = String.valueOf(value.charAt(i));
+            Integer yInt = Integer.valueOf(y);
+            
+            
+            if ((i % 2) == 0) {
+
+                // store running checksum
+                checksum = checksum + (yInt * 1);
             } else {
-                checksum = checksum + ((int) value.charAt(i)) * 3;
+                // store running checksum
+                checksum = checksum + (yInt * 3);
             }
+
+            System.out.println("ii>>>>>>>>>>>>>>>>>>>>>>>>>>" + i);
+            System.out.println("value>>>>>>>>>>>>>>>>>>>>>>>>>>" + y);
+            System.out.println("count end" + checksum);
         }
 
-        System.out.println("check_sum_value start"+checksum);
-        
+        System.out.println("check_sum_value start" + checksum);
+
         // generate the checksum
         checksum = (checksum % 10);
 
         // calculate final checksum
         if (checksum == 0) {
+
             final_check_sum = "X";
         } else {
-            checksum = checksum - 10;
+            checksum = 10 - checksum;
             final_check_sum = checksum.toString();
         }
 
+        System.out.println("final checksum" + final_check_sum);
         // return status
         return !(input_check_sum == null ? final_check_sum != null : !input_check_sum.equals(final_check_sum));
 
