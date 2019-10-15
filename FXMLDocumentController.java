@@ -1155,8 +1155,8 @@ public class FXMLDocumentController implements Initializable {
         Integer length_of_isbn = value.length();
 
         // sum digits
-        for (int i = 1; i <= (length_of_isbn - 1); i++) {
-            checksum = checksum + ((int) value.charAt(i)) * i;
+        for (int i = 0; i <= (length_of_isbn - 1); i++) {
+            checksum = checksum + ((int) value.charAt(i)) * (10 - i);
         }
 
         // generate the checksum
@@ -1166,6 +1166,7 @@ public class FXMLDocumentController implements Initializable {
         if (checksum == 0) {
             final_check_sum = "X";
         } else {
+            checksum = 11 - checksum;
             final_check_sum = checksum.toString();
         }
 
@@ -1212,6 +1213,7 @@ public class FXMLDocumentController implements Initializable {
         if (checksum == 0) {
             final_check_sum = "X";
         } else {
+            checksum = checksum - 10;
             final_check_sum = checksum.toString();
         }
 
