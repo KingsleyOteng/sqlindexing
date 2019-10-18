@@ -650,22 +650,20 @@ public class FXMLDocumentController implements Initializable {
         while ((!searchQuery.isEmpty()) && (btnDepressedId == null)) {
             btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
 
-            System.out.println(btnDepressedId);
+            //System.out.println(btnDepressedId);
         }
 
-        System.out.println("search query>>" + searchQuery);
+        //System.out.println("search query>>" + searchQuery);
 
         if (!searchQuery.isEmpty()) {
             BookObject[] bucher = new BookObject[1000];
             JDBC_Controller socket = new JDBC_Controller();
 
-            bucher = socket.jdbc_search_book(bucher, toggleGroupBookSearch.getSelectedToggle().getUserData().toString(), fxsearchtab_search.getText());
+            bucher = socket.jdbc_search_book(bucher, toggleGroupBookSearch.getSelectedToggle().getUserData().toString(), searchQuery);
 
             if (bucher == null) {
-                this.search_cloud_notification(toggleGroupBookSearch.getSelectedToggle().getUserData().toString() + ": " + fxsearchtab_search.getText());
+                this.search_cloud_notification(toggleGroupBookSearch.getSelectedToggle().getUserData().toString() + ": " + searchQuery);
             } else {
-                System.out.println("<<<<<<hello");
-
                 this.insert_book_entry_searchtab(bucher);
             }
             Thread.sleep(1000);
@@ -1108,6 +1106,7 @@ public class FXMLDocumentController implements Initializable {
 
         // allow only ISBN10 or ISBN13
         if ((val.length() == 10) | (val.length() == 13)) {
+                
             // generate error message
             this.isbn_error();
         } else {
