@@ -27,6 +27,9 @@ public class UserInterface extends Application {
         //Start the user interface
         //System.out.println(">>>>>"+bo.getBook());
         //System.out.println(">>>>>"+bo.getAuthor());
+        PrinterService printerService = new PrinterService();
+		
+
         
         Scene scene = new Scene(root);
         stage.setScene(scene);
