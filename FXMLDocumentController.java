@@ -641,7 +641,7 @@ public class FXMLDocumentController implements Initializable {
         String btnDepressedId;
         String searchQuery;
 
-        searchQuery = new String();
+        //searchQuery = new String();
         btnDepressedId = null;
 
         searchQuery = fxsearchtab_search.getText();
@@ -650,12 +650,12 @@ public class FXMLDocumentController implements Initializable {
         while ((!searchQuery.isEmpty()) && (btnDepressedId == null)) {
             btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
 
-            //System.out.println(btnDepressedId);
+            System.out.println(btnDepressedId);
         }
 
         //System.out.println("search query>>" + searchQuery);
 
-        if (!searchQuery.isEmpty()) {
+        if (!searchQuery.isEmpty() ) {
             BookObject[] bucher = new BookObject[1000];
             JDBC_Controller socket = new JDBC_Controller();
 
