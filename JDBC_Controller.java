@@ -12,6 +12,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.sql.PreparedStatement;
 
 /**
  * @description it handles all of the sql objects
@@ -198,6 +199,10 @@ public class JDBC_Controller {
                 return null;
 
             }
+            
+            System.out.println("Bingo Bingo");
+            st.executeUpdate("INSERT INTO BookDB.catalogue (BookName, Author) "
+          +"VALUES ('Fred', 'Flinstone')");
 
             while (rs.next()) {
 
@@ -492,26 +497,36 @@ public class JDBC_Controller {
             st = (Statement) cn.createStatement();
 
             String sqlString;
-            sqlString = "INSERT INTO BookDB.Catalogue (BookName, Author, Category, CategoryDescription, BookID, DateBorrowed,DateDue,BorrowerID,ISBN1,ISBN2,Copy,Location,ImageURL,PublicationYear,BorrowedStatus,ImageFile,BookDescription) VALUES"
-                    + "'" + obj.getBook() + "',"
-                    + "'" + obj.getAuthor() + "',"
-                    + "'xx one',"
-                    + "'xx description',"
-                    + "'1234',"
-                    + "3,"
-                    + "4,"
-                    + "'identification',"
-                    + "'ISBN1',"
-                    + "'ISBN2',"
-                    + "'Copy',"
-                    + "'Location',"
-                    + "'ImageURL',"
-                    + "2003,"
-                    + "1,"
-                    + "'file.jpg',"
-                    + "'Description')";
-
-                    rs = st.executeQuery(sqlString);
+            sqlString = "INSERT INTO BookDB.Catalogue (BookName,Author) VALUES (?,?)";
+            
+            String sqlString2 = "INSERT INTO BookDB.Catalogue  (`BookName`, `Author`, `Category`, `CategoryDescription`, `BookID`, `DateBorrowed`, `DateDue`, `BorrowerID`, `ISBN1`, `ISBN2`, `Copy`, `Location`, `ImageURL`, `PublicationYear`, `BorrowedStatus`, `ImageFile`, `BookDescription`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+          
+            PreparedStatement pstmt = cn.prepareStatement(sqlString2);
+            
+            java.util.Date today = new java.util.Date();           
+            java.sql.Date sqlDate = new java.sql.Date(today.getTime());
+            
+            pstmt.setString(1, "XX");
+            pstmt.setString(2, "YY");
+            pstmt.setString(3, "XX");
+            pstmt.setString(4, "YY");
+            pstmt.setString(5, "YY");
+            pstmt.setDate(6, sqlDate);
+            pstmt.setDate(7, sqlDate);
+            pstmt.setString(8, "XX");
+            pstmt.setString(9, "YY");
+            pstmt.setString(10, "XX");
+            pstmt.setInt(11, 1);
+            pstmt.setString(12, "XX");
+            pstmt.setString(13, "YY");
+            pstmt.setInt(14, 1);
+            pstmt.setInt(15, 1);
+            pstmt.setString(16, "XX");
+            pstmt.setString(17, "YY");
+            
+            pstmt.execute();
+            
+            //rs = st.executeQuery(sqlString);
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
@@ -519,4 +534,6 @@ public class JDBC_Controller {
     }
 ;
 
+    
+    
 }

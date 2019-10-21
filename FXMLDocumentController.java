@@ -1105,7 +1105,7 @@ public class FXMLDocumentController implements Initializable {
         
         JDBC_Controller jd = new JDBC_Controller();
         
-        //jd.jdbc_quick_insert(libObj);
+        jd.jdbc_quick_insert(libObj);
     }
 
     private String generateRandomString(int length) {
