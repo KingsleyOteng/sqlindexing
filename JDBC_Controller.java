@@ -13,7 +13,6 @@ import com.mysql.jdbc.Statement;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-
 /**
  * @description it handles all of the sql objects
  * @author kwadwooteng-amoako
@@ -103,7 +102,6 @@ public class JDBC_Controller {
                 obj[i].setId(i);
                 i++;
 
-    
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
@@ -157,7 +155,6 @@ public class JDBC_Controller {
                 obj[i].setTimestamp(2);
                 i++;
 
-               
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
@@ -165,7 +162,6 @@ public class JDBC_Controller {
 
         return obj;
     }
-    
 
     // jdbc find a book
     BookObject[] jdbc_search_book(BookObject[] obj, String toggle, String query)
@@ -191,33 +187,29 @@ public class JDBC_Controller {
                     rs = st.executeQuery("select * from BookDB.Catalogue where ISBN1 = '" + query + "';");
                     break;
                 default:
-                  
+
             }
 
             int i = 0;
-            
+
             // if there is an empty results set go to google
             if (!rs.isBeforeFirst()) {
-                System.out.println("Empty results set");  
+                System.out.println("Empty results set");
                 return null;
-                
-           
+
             }
 
             while (rs.next()) {
 
-                
                 obj[i] = new BookObject();
                 obj[i].setBook(rs.getString("BookName"));
                 obj[i].setAuthor(rs.getString("Author"));
                 obj[i].setId(1);
                 obj[i].setISBN1(rs.getString("ISBN1"));
-                
 
                 //obj[i].setStudent_name("1");
                 obj[i].setStatus(rs.getBoolean("BorrowedStatus"));
                 i++;
-
 
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -465,7 +457,8 @@ public class JDBC_Controller {
         }
         return obj;
     }
-;
+
+    ;
     
     // jdbc find a book
     StudentRegisterd jdbc_return_book(String ISBN1)
@@ -480,14 +473,49 @@ public class JDBC_Controller {
             st = (Statement) cn.createStatement();
 
             // search database
-            st.executeUpdate("UPDATE BookDb.Catalogue SET BorrowedStatus = 0 WHERE ISBN1 = "+ ISBN1 +";");
-
-  
+            st.executeUpdate("UPDATE BookDb.Catalogue SET BorrowedStatus = 0 WHERE ISBN1 = " + ISBN1 + ";");
 
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
         return obj;
+    }
+
+    ;
+
+     // jdbc find a book
+    public void jdbc_quick_insert(LibraryBooksStatus obj) throws SQLException {
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+            st = (Statement) cn.createStatement();
+
+            String sqlString;
+            sqlString = "INSERT INTO BookDB.Catalogue (BookName, Author, Category, CategoryDescription, BookID, DateBorrowed,DateDue,BorrowerID,ISBN1,ISBN2,Copy,Location,ImageURL,PublicationYear,BorrowedStatus,ImageFile,BookDescription) VALUES"
+                    + "'" + obj.getBook() + "',"
+                    + "'" + obj.getAuthor() + "',"
+                    + "'xx one',"
+                    + "'xx description',"
+                    + "'1234',"
+                    + "3,"
+                    + "4,"
+                    + "'identification',"
+                    + "'ISBN1',"
+                    + "'ISBN2',"
+                    + "'Copy',"
+                    + "'Location',"
+                    + "'ImageURL',"
+                    + "2003,"
+                    + "1,"
+                    + "'file.jpg',"
+                    + "'Description')";
+
+                    rs = st.executeQuery(sqlString);
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+        }
+
     }
 ;
 

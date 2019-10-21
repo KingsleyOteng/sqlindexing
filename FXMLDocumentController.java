@@ -1091,8 +1091,6 @@ public class FXMLDocumentController implements Initializable {
             book_name = book_name.replaceAll("\"", "").trim();
             cloud_search.setBook(book_name);
             
-            cloud_search.setStatus(false);
-            
         // create a new object to hold the data
         LibraryBooksStatus libObj = new LibraryBooksStatus(
                     cloud_search.getBook(),
@@ -1104,6 +1102,10 @@ public class FXMLDocumentController implements Initializable {
         searchTableCatalogue.getItems().add(libObj);
         
         System.out.println(cloud_search.getAuthor()); 
+        
+        JDBC_Controller jd = new JDBC_Controller();
+        
+        //jd.jdbc_quick_insert(libObj);
     }
 
     private String generateRandomString(int length) {
