@@ -1062,9 +1062,10 @@ public class FXMLDocumentController implements Initializable {
             alert.getDialogPane().setPrefSize(480, 320);
 
             Optional<ButtonType> result = alert.showAndWait();
+    
             if (result.get() == ButtonType.OK) {
                 // select_search_item_return();
-                obtain_ISBN();
+                cloud_search.setISBN1(obtain_ISBN());
 
             } else {
 
@@ -1072,6 +1073,37 @@ public class FXMLDocumentController implements Initializable {
 
             }
         }
+        
+        // label
+            String author_label = cloud_search.getAuthor();
+            author_label = author_label.replaceAll("\\[", "").trim();
+            author_label = author_label.replaceAll("\\]", "").trim();
+            author_label = author_label.replaceAll("  ", "").trim();
+            author_label = author_label.replaceAll("\"", "").trim();
+            cloud_search.setAuthor(author_label);
+            
+            cloud_search.setStatus(false);
+            
+            String book_name = cloud_search.getBook();
+            book_name = book_name.replaceAll("\\[", "").trim();
+            book_name = book_name.replaceAll("\\]", "").trim();
+            book_name = book_name.replaceAll("  ", "").trim();
+            book_name = book_name.replaceAll("\"", "").trim();
+            cloud_search.setBook(book_name);
+            
+            cloud_search.setStatus(false);
+            
+        // create a new object to hold the data
+        LibraryBooksStatus libObj = new LibraryBooksStatus(
+                    cloud_search.getBook(),
+                    cloud_search.getAuthor(),
+                    cloud_search.getStatus(),
+                    cloud_search.getISBN1()
+         );
+        
+        searchTableCatalogue.getItems().add(libObj);
+        
+        System.out.println(cloud_search.getAuthor()); 
     }
 
     private String generateRandomString(int length) {
@@ -1088,7 +1120,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    public void obtain_ISBN() throws SQLException, IOException {
+    public String obtain_ISBN() throws SQLException, IOException {
 
         Boolean flag = true;
         String titleText = "Confirm ISBN";
@@ -1107,14 +1139,16 @@ public class FXMLDocumentController implements Initializable {
         // allow only ISBN10 or ISBN13
         if ((val.length() == 10) | (val.length() == 13)) {
                 
-              // confirm the isbn 
+             // confirm the isbn 
             this.confirm_ISBN();
+            
         } else {
 
-             // generate error message
+           // generate error message
             this.isbn_error();
-         
         }
+        
+        return val;
 
     }
 
