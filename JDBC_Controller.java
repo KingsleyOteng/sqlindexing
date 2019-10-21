@@ -12,8 +12,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+
 
 /**
  * @description it handles all of the sql objects
@@ -166,6 +165,7 @@ public class JDBC_Controller {
 
         return obj;
     }
+    
 
     // jdbc find a book
     BookObject[] jdbc_search_book(BookObject[] obj, String toggle, String query)
@@ -191,7 +191,7 @@ public class JDBC_Controller {
                     rs = st.executeQuery("select * from BookDB.Catalogue where ISBN1 = '" + query + "';");
                     break;
                 default:
-                    System.out.println("hello");
+                  
             }
 
             int i = 0;
@@ -212,7 +212,7 @@ public class JDBC_Controller {
                 obj[i].setAuthor(rs.getString("Author"));
                 obj[i].setId(1);
                 obj[i].setISBN1(rs.getString("ISBN1"));
-                //System.out.println("output>>> " + rs.getString("ISBN1") + rs.getString("Author"));
+                
 
                 //obj[i].setStudent_name("1");
                 obj[i].setStatus(rs.getBoolean("BorrowedStatus"));

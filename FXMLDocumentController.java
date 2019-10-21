@@ -1107,12 +1107,13 @@ public class FXMLDocumentController implements Initializable {
         // allow only ISBN10 or ISBN13
         if ((val.length() == 10) | (val.length() == 13)) {
                 
-            // generate error message
-            this.isbn_error();
+              // confirm the isbn 
+            this.confirm_ISBN();
         } else {
 
-            // confirm the isbn 
-            this.confirm_ISBN();
+             // generate error message
+            this.isbn_error();
+         
         }
 
     }
