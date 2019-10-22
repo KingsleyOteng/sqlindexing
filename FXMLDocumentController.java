@@ -1133,7 +1133,7 @@ public class FXMLDocumentController implements Initializable {
         dialog.setHeaderText("Before the book may be added to the local catalogue the ISBN must be confirmed.");
         dialog.setContentText("ISBN:");
         Optional<String> results = dialog.showAndWait();
-        String result_out = results.toString();
+        String result_out = results.get();
         
         results.ifPresent(name -> System.out.println("ISBN: " + name));
           
@@ -1142,13 +1142,15 @@ public class FXMLDocumentController implements Initializable {
          result_out = result_out.replaceAll("\\]", "").trim();
          result_out = result_out.replaceAll("  ", "").trim();
          result_out = result_out.replaceAll("\"", "").trim();
+         result_out = result_out.replaceAll("-", "").trim();
          results = Optional.of(result_out);
 
-        String val = results.get();
+        String val = result_out;
 
         // allow only ISBN10 or ISBN13
         if ((val.length() == 10) | (val.length() == 13)) {
-                
+            
+            System.out.println(" this.confirm_ISBN();");
              // confirm the isbn 
             this.confirm_ISBN();
             
@@ -1170,9 +1172,21 @@ public class FXMLDocumentController implements Initializable {
         dialog.setHeaderText("Before the book may be added to the local catalogue the ISBN must be confirmed.");
         dialog.setContentText("ISBN:");
         Optional<String> results = dialog.showAndWait();
+        
+        System.out.println("results  " + results);
+       
+        String result_out = results.get();
+         result_out = result_out.replaceAll("\\[", "").trim();
+         result_out = result_out.replaceAll("\\]", "").trim();
+         result_out = result_out.replaceAll("  ", "").trim();
+         result_out = result_out.replaceAll("\"", "").trim();
+         result_out = result_out.replaceAll("-", "").trim();
+         results = Optional.of(result_out);
 
         String val = results.get();
-
+        System.out.println("results.get()");
+        System.out.println(results.get());
+        
         if (val.length() == 10) {
             if (this.check_isbn10(results.get())) {
                 thanks_dialog();
