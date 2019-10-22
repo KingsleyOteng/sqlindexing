@@ -503,23 +503,24 @@ public class JDBC_Controller {
           
             PreparedStatement pstmt = cn.prepareStatement(sqlString2);
             
-            java.util.Date today = new java.util.Date();           
-            java.sql.Date sqlDate = new java.sql.Date(today.getTime());
+            java.sql.Date date = getCurrentJavaSqlDate();
             
-            pstmt.setString(1, "XX");
-            pstmt.setString(2, "YY");
+            System.out.println("Book title"+obj.getBook());
+            
+            pstmt.setString(1, obj.getAuthor());
+            pstmt.setString(2, obj.getBook()    );
             pstmt.setString(3, "XX");
             pstmt.setString(4, "YY");
             pstmt.setString(5, "YY");
-            pstmt.setDate(6, sqlDate);
-            pstmt.setDate(7, sqlDate);
+            pstmt.setDate(6, date);
+            pstmt.setDate(7, date);
             pstmt.setString(8, "XX");
-            pstmt.setString(9, "YY");
+            pstmt.setString(9, obj.getIsbn1());
             pstmt.setString(10, "XX");
             pstmt.setInt(11, 1);
             pstmt.setString(12, "XX");
             pstmt.setString(13, "YY");
-            pstmt.setInt(14, 1);
+            pstmt.setInt(14, obj.getPublishedYear());
             pstmt.setInt(15, 1);
             pstmt.setString(16, "XX");
             pstmt.setString(17, "YY");
@@ -535,5 +536,8 @@ public class JDBC_Controller {
 ;
 
     
-    
+    public static java.sql.Date getCurrentJavaSqlDate() {
+    java.util.Date today = new java.util.Date();
+    return new java.sql.Date(today.getTime());
+  }
 }
