@@ -1133,8 +1133,16 @@ public class FXMLDocumentController implements Initializable {
         dialog.setHeaderText("Before the book may be added to the local catalogue the ISBN must be confirmed.");
         dialog.setContentText("ISBN:");
         Optional<String> results = dialog.showAndWait();
-        System.out.println("results  " + results);
+        String result_out = results.toString();
+        
         results.ifPresent(name -> System.out.println("ISBN: " + name));
+          
+         System.out.println("results  " + results);
+         result_out = result_out.replaceAll("\\[", "").trim();
+         result_out = result_out.replaceAll("\\]", "").trim();
+         result_out = result_out.replaceAll("  ", "").trim();
+         result_out = result_out.replaceAll("\"", "").trim();
+         results = Optional.of(result_out);
 
         String val = results.get();
 
