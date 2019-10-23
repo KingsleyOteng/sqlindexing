@@ -199,10 +199,10 @@ public class JDBC_Controller {
                 return null;
 
             }
-            
+
             System.out.println("Bingo Bingo");
             st.executeUpdate("INSERT INTO BookDB.catalogue (BookName, Author) "
-          +"VALUES ('Fred', 'Flinstone')");
+                    + "VALUES ('Fred', 'Flinstone')");
 
             while (rs.next()) {
 
@@ -498,17 +498,17 @@ public class JDBC_Controller {
 
             String sqlString;
             sqlString = "INSERT INTO BookDB.Catalogue (BookName,Author) VALUES (?,?)";
-            
+
             String sqlString2 = "INSERT INTO BookDB.Catalogue  (`BookName`, `Author`, `Category`, `CategoryDescription`, `BookID`, `DateBorrowed`, `DateDue`, `BorrowerID`, `ISBN1`, `ISBN2`, `Copy`, `Location`, `ImageURL`, `PublicationYear`, `BorrowedStatus`, `ImageFile`, `BookDescription`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-          
+
             PreparedStatement pstmt = cn.prepareStatement(sqlString2);
-            
+
             java.sql.Date date = getCurrentJavaSqlDate();
-            
-            System.out.println("Book title"+obj.getBook());
-            
+
+            System.out.println("Book title" + obj.getBook());
+
             pstmt.setString(1, obj.getAuthor());
-            pstmt.setString(2, obj.getBook()    );
+            pstmt.setString(2, obj.getBook());
             pstmt.setString(3, "XX");
             pstmt.setString(4, "YY");
             pstmt.setString(5, "YY");
@@ -524,20 +524,21 @@ public class JDBC_Controller {
             pstmt.setInt(15, 1);
             pstmt.setString(16, "XX");
             pstmt.setString(17, "YY");
-            
+
             pstmt.execute();
-            
+
             //rs = st.executeQuery(sqlString);
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
 
     }
-;
+
+    ;
 
     
     public static java.sql.Date getCurrentJavaSqlDate() {
-    java.util.Date today = new java.util.Date();
-    return new java.sql.Date(today.getTime());
-  }
+        java.util.Date today = new java.util.Date();
+        return new java.sql.Date(today.getTime());
+    }
 }

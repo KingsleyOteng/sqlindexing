@@ -654,8 +654,7 @@ public class FXMLDocumentController implements Initializable {
         }
 
         //System.out.println("search query>>" + searchQuery);
-
-        if (!searchQuery.isEmpty() ) {
+        if (!searchQuery.isEmpty()) {
             BookObject[] bucher = new BookObject[1000];
             JDBC_Controller socket = new JDBC_Controller();
 
@@ -1062,7 +1061,7 @@ public class FXMLDocumentController implements Initializable {
             alert.getDialogPane().setPrefSize(480, 320);
 
             Optional<ButtonType> result = alert.showAndWait();
-    
+
             if (result.get() == ButtonType.OK) {
                 // select_search_item_return();
                 cloud_search.setISBN1(obtain_ISBN());
@@ -1073,38 +1072,38 @@ public class FXMLDocumentController implements Initializable {
 
             }
         }
-        
+
         // label
-            String author_label = cloud_search.getAuthor();
-            author_label = author_label.replaceAll("\\[", "").trim();
-            author_label = author_label.replaceAll("\\]", "").trim();
-            author_label = author_label.replaceAll("  ", "").trim();
-            author_label = author_label.replaceAll("\"", "").trim();
-            cloud_search.setAuthor(author_label);
-            
-            cloud_search.setStatus(false);
-            
-            String book_name = cloud_search.getBook();
-            book_name = book_name.replaceAll("\\[", "").trim();
-            book_name = book_name.replaceAll("\\]", "").trim();
-            book_name = book_name.replaceAll("  ", "").trim();
-            book_name = book_name.replaceAll("\"", "").trim();
-            cloud_search.setBook(book_name);
-            
+        String author_label = cloud_search.getAuthor();
+        author_label = author_label.replaceAll("\\[", "").trim();
+        author_label = author_label.replaceAll("\\]", "").trim();
+        author_label = author_label.replaceAll("  ", "").trim();
+        author_label = author_label.replaceAll("\"", "").trim();
+        cloud_search.setAuthor(author_label);
+
+        cloud_search.setStatus(false);
+
+        String book_name = cloud_search.getBook();
+        book_name = book_name.replaceAll("\\[", "").trim();
+        book_name = book_name.replaceAll("\\]", "").trim();
+        book_name = book_name.replaceAll("  ", "").trim();
+        book_name = book_name.replaceAll("\"", "").trim();
+        cloud_search.setBook(book_name);
+
         // create a new object to hold the data
         LibraryBooksStatus libObj = new LibraryBooksStatus(
-                    cloud_search.getBook(),
-                    cloud_search.getAuthor(),
-                    cloud_search.getStatus(),
-                    cloud_search.getISBN1()
-         );
-        
+                cloud_search.getBook(),
+                cloud_search.getAuthor(),
+                cloud_search.getStatus(),
+                cloud_search.getISBN1()
+        );
+
         searchTableCatalogue.getItems().add(libObj);
-        
-        System.out.println(cloud_search.getAuthor()); 
-        
+
+        System.out.println(cloud_search.getAuthor());
+
         JDBC_Controller jd = new JDBC_Controller();
-        
+
         jd.jdbc_quick_insert(libObj);
     }
 
@@ -1134,32 +1133,32 @@ public class FXMLDocumentController implements Initializable {
         dialog.setContentText("ISBN:");
         Optional<String> results = dialog.showAndWait();
         String result_out = results.get();
-        
+
         results.ifPresent(name -> System.out.println("ISBN: " + name));
-          
-         System.out.println("results  " + results);
-         result_out = result_out.replaceAll("\\[", "").trim();
-         result_out = result_out.replaceAll("\\]", "").trim();
-         result_out = result_out.replaceAll("  ", "").trim();
-         result_out = result_out.replaceAll("\"", "").trim();
-         result_out = result_out.replaceAll("-", "").trim();
-         results = Optional.of(result_out);
+
+        System.out.println("results  " + results);
+        result_out = result_out.replaceAll("\\[", "").trim();
+        result_out = result_out.replaceAll("\\]", "").trim();
+        result_out = result_out.replaceAll("  ", "").trim();
+        result_out = result_out.replaceAll("\"", "").trim();
+        result_out = result_out.replaceAll("-", "").trim();
+        results = Optional.of(result_out);
 
         String val = result_out;
 
         // allow only ISBN10 or ISBN13
         if ((val.length() == 10) | (val.length() == 13)) {
-            
+
             System.out.println(" this.confirm_ISBN();");
-             // confirm the isbn 
+            // confirm the isbn 
             this.confirm_ISBN();
-            
+
         } else {
 
-           // generate error message
+            // generate error message
             this.isbn_error();
         }
-        
+
         return val;
 
     }
@@ -1172,21 +1171,21 @@ public class FXMLDocumentController implements Initializable {
         dialog.setHeaderText("Before the book may be added to the local catalogue the ISBN must be confirmed.");
         dialog.setContentText("ISBN:");
         Optional<String> results = dialog.showAndWait();
-        
+
         System.out.println("results  " + results);
-       
+
         String result_out = results.get();
-         result_out = result_out.replaceAll("\\[", "").trim();
-         result_out = result_out.replaceAll("\\]", "").trim();
-         result_out = result_out.replaceAll("  ", "").trim();
-         result_out = result_out.replaceAll("\"", "").trim();
-         result_out = result_out.replaceAll("-", "").trim();
-         results = Optional.of(result_out);
+        result_out = result_out.replaceAll("\\[", "").trim();
+        result_out = result_out.replaceAll("\\]", "").trim();
+        result_out = result_out.replaceAll("  ", "").trim();
+        result_out = result_out.replaceAll("\"", "").trim();
+        result_out = result_out.replaceAll("-", "").trim();
+        results = Optional.of(result_out);
 
         String val = results.get();
         System.out.println("results.get()");
         System.out.println(results.get());
-        
+
         if (val.length() == 10) {
             if (this.check_isbn10(results.get())) {
                 thanks_dialog();
