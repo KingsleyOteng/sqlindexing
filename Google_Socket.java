@@ -17,18 +17,15 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-
-
 /**
  *
  * @author kwadwooteng-amoako
  */
 public class Google_Socket {
-    
+
     public static final String GOOGLE_BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=";
     public static final String GOOGLE_BOOK_SEARCH_URL_END = "+download=epub";
-    
+
     BookObject google_find_book(
             String Title_locator
     ) throws MalformedURLException, IOException {
@@ -53,7 +50,7 @@ public class Google_Socket {
 
         //
         String myQuery = Title_locator.replaceAll(" ", "+").toLowerCase();
-                
+
         //create an object to hold the parse results
         bpo = new BookObject();
 
@@ -73,7 +70,6 @@ public class Google_Socket {
 
         //System.out.println("block contents: " + value.toString());
         //System.out.println("length of block:  " + value.length());
-
         p_general = Pattern.compile("\\s+?\"[A-Za-z]+\":\\s+?(\"?\\[?[A-Za-z0-9+#:/'.\\s+&_=?\"-]+\\]?\"?)");
 
         System.out.println("Output from Server .... \n");
@@ -91,14 +87,12 @@ public class Google_Socket {
             while (matcher_general.find()) {
 
                 //System.out.println("group count " + groupCount);
-
                 for (int ii = 0; ii <= groupCount; ii++) {
-                 //   System.out.println("hello " + ii + " " + matcher_general.group(ii));
+                    //   System.out.println("hello " + ii + " " + matcher_general.group(ii));
                 }
 
-              //  System.out.println("found: " + count + " : "
+                //  System.out.println("found: " + count + " : "
                 //        + matcher_general.start() + " - " + matcher_general.end());
-
                 // we throw the the regex key to a case statement which will then match
                 //switch(matcher_general.group(0))
                 //String matched_group;
@@ -214,7 +208,5 @@ public class Google_Socket {
         System.out.println("and we are done");
         return bpo;
     }
-    
+
 }
-
-

@@ -16,15 +16,16 @@ public class LibraryBooksStatus {
 
     //boolean status;
     int id, year, ISBN1;
-    String name, book, author, isbn1, status, student_year;
+    String name, book, author, isbn1, status, student_year, filex;
 
-    public LibraryBooksStatus(int ISBN1, String name, int year, String book, String author, String status) {
+    public LibraryBooksStatus(int ISBN1, String name, int year, String book, String author, String status, String filex) {
         this.ISBN1 = ISBN1;
         this.year = year;
         this.name = name;
         this.book = book;
         this.author = author;
         this.status = status;
+        this.filex = filex;
     }
 
     public LibraryBooksStatus(String book, String author, String status, String isbn1) {
@@ -33,6 +34,7 @@ public class LibraryBooksStatus {
         this.status = status;
         this.isbn1 = isbn1;
     }
+
 
     public LibraryBooksStatus(String book, String author, String status, String isbn1, String student_year) {
         this.book = book;
