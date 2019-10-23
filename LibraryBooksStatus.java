@@ -27,6 +27,15 @@ public class LibraryBooksStatus {
         this.status = status;
         this.filex = filex;
     }
+    
+    public LibraryBooksStatus(int ISBN1, String name, int year, String book, String author, String status) {
+        this.ISBN1 = ISBN1;
+        this.year = year;
+        this.name = name;
+        this.book = book;
+        this.author = author;
+        this.status = status;
+    }
 
     public LibraryBooksStatus(String book, String author, String status, String isbn1) {
         this.book = book;
