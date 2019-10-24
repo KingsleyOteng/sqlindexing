@@ -37,7 +37,7 @@ public class LibraryBooksStatus {
         this.status = status;
     }
 
-    public LibraryBooksStatus(String book, String author, String status, String isbn1) {
+    public LibraryBooksStatus(String book, String author, String status, String ISBN1) {
         this.book = book;
         this.author = author;
         this.status = status;
@@ -45,7 +45,7 @@ public class LibraryBooksStatus {
     }
 
 
-    public LibraryBooksStatus(String book, String author, String status, String isbn1, String student_year) {
+    public LibraryBooksStatus(String book, String author, String status, String ISBN1, String student_year) {
         this.book = book;
         this.author = author;
         this.status = status;
