@@ -52,6 +52,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import java.math.BigInteger;
 
 /**
  *
@@ -345,7 +346,7 @@ public class FXMLDocumentController implements Initializable {
             }
         });
 
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<endless love" + this.check_isbn13("978-1-4754-7528-9"));
+        //System.out.println("<<<<<<<<<<<<<<<<<<<<<<endless love" + this.check_isbn13("978-1-4754-7528-9"));
 
         File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
         boolean backgroundLoading = true;
@@ -362,10 +363,10 @@ public class FXMLDocumentController implements Initializable {
         searchTableCatalogue.getItems().add(new LibraryBooksStatus("The Stepford Wivez", "Ira Lee", "Borrowed", "9788401468711"));
 
         // add some default student names
-        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(111, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee", "Shelved"));
-        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(222, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte", "Shelved"));
-        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(1111, "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee", "Shelved"));
-        schoolCatalogueTable.getItems().add(new LibraryBooksStatus(2222, "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily", "Shelved"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus("111", "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee", "Shelved"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus("222", "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily Bronte", "Shelved"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus("1111", "kwadwo oteng-amoako", 2100, "Stepford Wives", "Ira Lee", "Shelved"));
+        schoolCatalogueTable.getItems().add(new LibraryBooksStatus("2222", "kofi oteng-boateng", 2000, "Wuthering Heights", "Emily", "Shelved"));
 
         // earch pane
         year_sregister.setCellValueFactory(new PropertyValueFactory<>("year"));
@@ -995,7 +996,9 @@ public class FXMLDocumentController implements Initializable {
     public void popsup1() throws IOException, SQLException {
         // grab search query
         String query = fxsearchtab_search.getText();
-
+        StringBuilder filename = new StringBuilder();
+        StringBuilder suffix = new StringBuilder();
+        
         // Create an instance of the google socket class
         Google_Socket gs = new Google_Socket();
 
@@ -1030,7 +1033,7 @@ public class FXMLDocumentController implements Initializable {
 
             //System.out.println("title>>>>"+cloud_search.getThumbNailIndentifier());
             // generate random string suffix
-            String suffix = this.generateRandomString(32);
+            suffix.append(this.generateRandomString(32));
 
             // capture the resource locator
             String resource = cloud_search.getThumbNailIndentifier();
@@ -1040,12 +1043,14 @@ public class FXMLDocumentController implements Initializable {
             InputStream in = conn.getInputStream();
 
             // save file from the resource locator
-            String filename = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image" + suffix + ".jpeg";
-            Files.copy(url.openStream(), new File(filename).toPath());
+            filename.append("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image" + suffix.toString() + ".jpeg");
+            System.out.println("print out"+filename.toString());
+            
+            Files.copy(url.openStream(), new File(filename.toString()).toPath());
 
             // load the data in the background from the file saved
             boolean backgroundLoading = true;
-            File file3 = new File(filename);
+            File file3 = new File(filename.toString());
             Image image3 = new Image(file3.toURI().toString(), backgroundLoading);
 
             // set the image bounds
@@ -1090,18 +1095,21 @@ public class FXMLDocumentController implements Initializable {
         book_name = book_name.replaceAll("\"", "").trim();
         cloud_search.setBook(book_name);
 
+        System.out.println("cloud_search.getISBN1()"+ cloud_search.getISBN1());
+        System.out.println("suffix"+suffix);
+        
         // create a new object to hold the data
         LibraryBooksStatus libObj = new LibraryBooksStatus(
-                Integer.getInteger(cloud_search.getISBN1()),
+                cloud_search.getISBN1(),
                 "1993",
                 0,
                 cloud_search.getBook(),
                 cloud_search.getAuthor(),
                 cloud_search.getStatus(),
-                "x.jpeg"
+                suffix.toString()
                 
         );
-
+        
         searchTableCatalogue.getItems().add(libObj);
 
         System.out.println(cloud_search.getAuthor());

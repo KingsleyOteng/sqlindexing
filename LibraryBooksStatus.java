@@ -15,10 +15,10 @@ import java.util.Objects;
 public class LibraryBooksStatus {
 
     //boolean status;
-    int id, year, ISBN1;
-    String name, book, author, isbn1, status, student_year, filex;
+    int id, year;
+    String name, book, author, status, student_year, filex, ISBN1;
 
-    public LibraryBooksStatus(int ISBN1, String name, int year, String book, String author, String status, String filex) {
+    public LibraryBooksStatus(String ISBN1, String name, int year, String book, String author, String status, String filex) {
         this.ISBN1 = ISBN1;
         this.year = year;
         this.name = name;
@@ -28,7 +28,7 @@ public class LibraryBooksStatus {
         this.filex = filex;
     }
     
-    public LibraryBooksStatus(int ISBN1, String name, int year, String book, String author, String status) {
+    public LibraryBooksStatus(String ISBN1, String name, int year, String book, String author, String status) {
         this.ISBN1 = ISBN1;
         this.year = year;
         this.name = name;
@@ -41,7 +41,7 @@ public class LibraryBooksStatus {
         this.book = book;
         this.author = author;
         this.status = status;
-        this.isbn1 = isbn1;
+        this.ISBN1 = ISBN1;
     }
 
 
@@ -59,7 +59,7 @@ public class LibraryBooksStatus {
     }
 
     public String getISBN1() {
-        return isbn1;
+        return ISBN1;
 
     }
 
@@ -71,7 +71,7 @@ public class LibraryBooksStatus {
         return book;
     }
     
-    public int getISBN() {
+    public String getISBN() {
         return ISBN1;
     }
     
@@ -107,8 +107,8 @@ public class LibraryBooksStatus {
         this.status = status;
     }
 
-    public void setISBN1(String isbn1) {
-        this.isbn1 = isbn1;
+    public void setISBN1(String ISBN1) {
+        this.ISBN1 = ISBN1;
     }
 
     public void setName(String name) {
@@ -128,15 +128,15 @@ public class LibraryBooksStatus {
     }
 
     public String getIsbn1() {
-        return isbn1;
+        return ISBN1;
     }
 
     public String getStudent_year() {
         return student_year;
     }
 
-    public void setIsbn1(String isbn1) {
-        this.isbn1 = isbn1;
+    public void setIsbn1(String ISBN1) {
+        this.ISBN1 = ISBN1;
     }
 
     public void setStudent_year(String student_year) {
@@ -179,7 +179,7 @@ public class LibraryBooksStatus {
         if (!Objects.equals(this.status, other.status)) {
             return false;
         }
-        if (!Objects.equals(this.isbn1, other.isbn1)) {
+        if (!Objects.equals(this.ISBN1, other.ISBN1)) {
             return false;
         }
         if (!Objects.equals(this.student_year, other.student_year)) {
