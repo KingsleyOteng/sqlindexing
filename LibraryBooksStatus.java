@@ -62,6 +62,11 @@ public class LibraryBooksStatus {
         return ISBN1;
 
     }
+    
+    public String getFILE() {
+        return filex;
+
+    }
 
     public int getYear() {
         return year;
@@ -125,6 +130,10 @@ public class LibraryBooksStatus {
 
     public void setYear(int year) {
         this.year = year;
+    }
+    
+    public void setFile(String file) {
+        this.filex = file;
     }
 
     public String getIsbn1() {

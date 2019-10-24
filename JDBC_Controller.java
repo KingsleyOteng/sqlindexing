@@ -522,8 +522,8 @@ public class JDBC_Controller {
             pstmt.setString(13, "YY");
             pstmt.setInt(14, obj.getPublishedYear());
             pstmt.setInt(15, 1);
-            pstmt.setString(16, "XX");
-            pstmt.setString(17, "YY");
+            pstmt.setString(16, obj.getFILE());
+            pstmt.setString(17, "YY14");
 
             pstmt.execute();
 

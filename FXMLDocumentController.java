@@ -1033,7 +1033,7 @@ public class FXMLDocumentController implements Initializable {
 
             //System.out.println("title>>>>"+cloud_search.getThumbNailIndentifier());
             // generate random string suffix
-            suffix.append(this.generateRandomString(32));
+            suffix.append("image_"+this.generateRandomString(32));
 
             // capture the resource locator
             String resource = cloud_search.getThumbNailIndentifier();
@@ -1043,7 +1043,7 @@ public class FXMLDocumentController implements Initializable {
             InputStream in = conn.getInputStream();
 
             // save file from the resource locator
-            filename.append("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image" + suffix.toString() + ".jpeg");
+            filename.append("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/" + suffix.toString() + ".jpeg");
             System.out.println("print out"+filename.toString());
             
             Files.copy(url.openStream(), new File(filename.toString()).toPath());
