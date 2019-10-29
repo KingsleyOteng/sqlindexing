@@ -347,7 +347,6 @@ public class FXMLDocumentController implements Initializable {
         });
 
         //System.out.println("<<<<<<<<<<<<<<<<<<<<<<endless love" + this.check_isbn13("978-1-4754-7528-9"));
-
         File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
         boolean backgroundLoading = true;
         Image image2 = new Image(file.toURI().toString(), backgroundLoading);
@@ -998,7 +997,7 @@ public class FXMLDocumentController implements Initializable {
         String query = fxsearchtab_search.getText();
         StringBuilder filename = new StringBuilder();
         StringBuilder suffix = new StringBuilder();
-        
+
         // Create an instance of the google socket class
         Google_Socket gs = new Google_Socket();
 
@@ -1033,7 +1032,7 @@ public class FXMLDocumentController implements Initializable {
 
             //System.out.println("title>>>>"+cloud_search.getThumbNailIndentifier());
             // generate random string suffix
-            suffix.append("image_"+this.generateRandomString(32));
+            suffix.append("image_" + this.generateRandomString(32));
 
             // capture the resource locator
             String resource = cloud_search.getThumbNailIndentifier();
@@ -1044,8 +1043,8 @@ public class FXMLDocumentController implements Initializable {
 
             // save file from the resource locator
             filename.append("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/" + suffix.toString() + ".jpeg");
-            System.out.println("print out"+filename.toString());
-            
+            System.out.println("print out" + filename.toString());
+
             Files.copy(url.openStream(), new File(filename.toString()).toPath());
 
             // load the data in the background from the file saved
@@ -1095,9 +1094,9 @@ public class FXMLDocumentController implements Initializable {
         book_name = book_name.replaceAll("\"", "").trim();
         cloud_search.setBook(book_name);
 
-        System.out.println("cloud_search.getISBN1()"+ cloud_search.getISBN1());
-        System.out.println("suffix>>>"+suffix);
-        
+        System.out.println("cloud_search.getISBN1()" + cloud_search.getISBN1());
+        System.out.println("suffix>>>" + suffix);
+
         // create a new object to hold the data
         LibraryBooksStatus libObj = new LibraryBooksStatus(
                 cloud_search.getISBN1(),
@@ -1106,10 +1105,9 @@ public class FXMLDocumentController implements Initializable {
                 cloud_search.getBook(),
                 cloud_search.getAuthor(),
                 cloud_search.getStatus(),
-                suffix.toString()+".jpeg"
-                
+                suffix.toString() + ".jpeg"
         );
-        
+
         searchTableCatalogue.getItems().add(libObj);
 
         System.out.println(cloud_search.getAuthor());

@@ -27,7 +27,7 @@ public class LibraryBooksStatus {
         this.status = status;
         this.filex = filex;
     }
-    
+
     public LibraryBooksStatus(String ISBN1, String name, int year, String book, String author, String status) {
         this.ISBN1 = ISBN1;
         this.year = year;
@@ -43,7 +43,6 @@ public class LibraryBooksStatus {
         this.status = status;
         this.ISBN1 = ISBN1;
     }
-
 
     public LibraryBooksStatus(String book, String author, String status, String ISBN1, String student_year) {
         this.book = book;
@@ -62,7 +61,7 @@ public class LibraryBooksStatus {
         return ISBN1;
 
     }
-    
+
     public String getFILE() {
         return filex;
 
@@ -75,18 +74,20 @@ public class LibraryBooksStatus {
     public String getBOOK() {
         return book;
     }
-    
+
     public String getISBN() {
         return ISBN1;
     }
-    
-     public int getPublishedYear() {
+
+    public int getPublishedYear() {
         return year;
     }
 
     public String getStatus() {
         return status;
-    };
+    }
+
+    ;
 
     public int getId() {
         return id;
@@ -131,7 +132,7 @@ public class LibraryBooksStatus {
     public void setYear(int year) {
         this.year = year;
     }
-    
+
     public void setFile(String file) {
         this.filex = file;
     }
@@ -197,5 +198,4 @@ public class LibraryBooksStatus {
         return true;
     }
 
-    
 }
