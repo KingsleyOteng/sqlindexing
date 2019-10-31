@@ -511,15 +511,15 @@ public class JDBC_Controller {
             pstmt.setString(2, obj.getBook());
             pstmt.setString(3, "XX");
             pstmt.setString(4, "YY");
-            pstmt.setString(5, "YY");
+            pstmt.setString(5, "00000");
             pstmt.setDate(6, date);
             pstmt.setDate(7, date);
             pstmt.setString(8, "XX");
             pstmt.setString(9, obj.getIsbn1());
             pstmt.setString(10, "XX");
             pstmt.setInt(11, 1);
-            pstmt.setString(12, "XX");
-            pstmt.setString(13, "YY");
+            pstmt.setString(12, "XHIBS");
+            pstmt.setString(13, "https");
             pstmt.setInt(14, obj.getPublishedYear());
             pstmt.setInt(15, 1);
             pstmt.setString(16, obj.getFILE());
