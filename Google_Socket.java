@@ -142,6 +142,7 @@ public class Google_Socket {
                             case "authors":
                                 bpo.setAuthor(matcher_general.group(1));
                                 break;
+                                
                             // set the title         
                             case "title":
                                 bpo.setBook(matcher_general.group(1));
@@ -151,26 +152,32 @@ public class Google_Socket {
                             //case "subtitle":
                             //    bpo.setBookTitle(matcher_general.group(1));
                             //    break;
+                                
                             // set the publishers name
                             case "publisher":
                                 bpo.setPublisher(matcher_general.group(1));
                                 break;
+                                
                             // set the publication date                     
                             case "publicationDate":
                                 bpo.setYear(matcher_general.group(1));
                                 break;
+                                
                             // set the category name
                             case "categories":
                                 bpo.setCategories(matcher_general.group(1));
                                 break;
+                                
                             // set the country details
                             case "country":
                                 bpo.setCountry(matcher_general.group(1));
                                 break;
+                                
                             // set the thumbnail link
                             case "language":
                                 bpo.setLanguage(matcher_general.group(1));
                                 break;
+                                
                             // set the printed page count
                             case "pageCount":
                                 bpo.setPageCount(Integer.parseInt(matcher_general.group(1)));

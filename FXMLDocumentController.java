@@ -1105,7 +1105,8 @@ public class FXMLDocumentController implements Initializable {
                 cloud_search.getBook(),
                 cloud_search.getAuthor(),
                 cloud_search.getStatus(),
-                suffix.toString() + ".jpeg"
+                suffix.toString() + ".jpeg",
+                cloud_search.getCategories()
         );
 
         searchTableCatalogue.getItems().add(libObj);
