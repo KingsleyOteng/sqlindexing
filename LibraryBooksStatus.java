@@ -16,9 +16,9 @@ public class LibraryBooksStatus {
 
     //boolean status;
     int id, year;
-    String name, book, author, status, student_year, filex, ISBN1, categories;
+    String name, book, author, status, student_year, filex, ISBN1, categories, description;
 
-    public LibraryBooksStatus(String ISBN1, String name, int year, String book, String author, String status, String filex, String category) {
+    public LibraryBooksStatus(String ISBN1, String name, int year, String book, String author, String status, String filex, String category, String description) {
         this.ISBN1 = ISBN1;
         this.year = year;
         this.name = name;
@@ -27,6 +27,7 @@ public class LibraryBooksStatus {
         this.status = status;
         this.filex = filex;
         this.categories = category;
+        this.description = description;
     }
 
     public LibraryBooksStatus(String ISBN1, String name, int year, String book, String author, String status) {
@@ -106,8 +107,12 @@ public class LibraryBooksStatus {
         return author;
     }
     
-     public String getCategories() {
+    public String getCategories() {
         return categories;
+    }
+     
+    public String getDescription() {
+        return description;
     }
 
     public void setId(int id) {
@@ -160,6 +165,10 @@ public class LibraryBooksStatus {
     
     public void setCategories(String categories) {
         this.categories = categories;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

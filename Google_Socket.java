@@ -206,7 +206,11 @@ public class Google_Socket {
                                 
                             // set isbn identifier
                             case "description":
+                                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Description \n");
                                 bpo.setDescription(matcher_general.group(1));
+                                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Description \n");
+                                System.out.println(matcher_general.group(2));
+                                System.out.println(matcher_general.group(1));
                                 break;
 
                             // set tumbnail reference
