@@ -1003,6 +1003,8 @@ public class FXMLDocumentController implements Initializable {
 
         // Use the method find books to locate book through Google's API
         BookObject cloud_search = gs.google_find_book(query);
+        
+        System.out.println("Hello \n"+cloud_search.getCategories());
 
         Boolean FLAGS = true;
         // checks that the user has populated the query field and has also selected an entry from the table before progressing.
@@ -1097,7 +1099,7 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("cloud_search.getISBN1()" + cloud_search.getISBN1());
         System.out.println("suffix>>>" + suffix);
 
-        // create a new object to hold the data
+        // create a new object to hold the data 
         LibraryBooksStatus libObj = new LibraryBooksStatus(
                 cloud_search.getISBN1(),
                 "1993",
@@ -1108,7 +1110,8 @@ public class FXMLDocumentController implements Initializable {
                 suffix.toString() + ".jpeg",
                 cloud_search.getCategories()
         );
-
+        
+        System.out.println("Categories"+cloud_search.getCategories());
         searchTableCatalogue.getItems().add(libObj);
 
         System.out.println(cloud_search.getAuthor());

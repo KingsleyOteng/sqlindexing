@@ -26,6 +26,17 @@ public class Google_Socket {
     public static final String GOOGLE_BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=";
     public static final String GOOGLE_BOOK_SEARCH_URL_END = "+download=epub";
 
+    String parse_search_phrase(String phrase)
+    {
+        // the following method reomves unwanted phrases from the parsed string
+        phrase = phrase.replaceAll("\\[", "").trim();
+        phrase = phrase.replaceAll("\\]", "").trim();
+        phrase = phrase.replaceAll("  ", "").trim();
+        phrase = phrase.replaceAll("\"", "").trim();
+        
+        return phrase;
+    }
+    
     BookObject google_find_book(
             String Title_locator
     ) throws MalformedURLException, IOException {
@@ -165,7 +176,7 @@ public class Google_Socket {
                                 
                             // set the category name
                             case "categories":
-                                bpo.setCategories(matcher_general.group(1));
+                                bpo.setCategories(this.parse_search_phrase(matcher_general.group(1)));
                                 break;
                                 
                             // set the country details
@@ -190,7 +201,12 @@ public class Google_Socket {
 
                             // set isbn identifier
                             case "identifier":
-                                bpo.setIdentifier(matcher_general.group(1));
+                                bpo.setIdentifier(this.parse_search_phrase(matcher_general.group(1)));
+                                break;
+                                
+                            // set isbn identifier
+                            case "description":
+                                bpo.setDescription(matcher_general.group(1));
                                 break;
 
                             // set tumbnail reference
