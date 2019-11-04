@@ -510,7 +510,7 @@ public class JDBC_Controller {
             pstmt.setString(1, obj.getBook());
             pstmt.setString(2, obj.getAuthor());
             pstmt.setString(3, obj.getCategories());
-            pstmt.setString(4, obj.getDescription());
+            pstmt.setString(4, "");
             pstmt.setString(5, "00000");
             pstmt.setDate(6, date);
             pstmt.setDate(7, date);
@@ -518,13 +518,12 @@ public class JDBC_Controller {
             pstmt.setString(9, obj.getIsbn1());
             pstmt.setString(10, "XX");
             pstmt.setInt(11, 1);
-            pstmt.setString(12, "XYHIBS");
+            pstmt.setString(12, "HIBS");
             pstmt.setString(13, "https");
             pstmt.setInt(14, obj.getYear());
-            System.out.println(">>>>>>>>>>>>>>obj.getYear()"  + obj.getYear());
             pstmt.setInt(15, 1);
             pstmt.setString(16, obj.getFILE());
-            pstmt.setString(17, "YY14");
+            pstmt.setString(17, obj.getDescription());
 
             pstmt.execute();
 
