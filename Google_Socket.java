@@ -161,10 +161,7 @@ public class Google_Socket {
                                 bpo.setBook(matcher_general.group(1));
                                 System.out.println("found a title");
                                 break;
-                            // set the subtitle 
-                            //case "subtitle":
-                            //    bpo.setBookTitle(matcher_general.group(1));
-                            //    break;
+           
                                 
                             // set the publishers name
                             case "publisher":

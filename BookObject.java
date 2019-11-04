@@ -15,7 +15,7 @@ import java.util.Objects;
 public class BookObject {
 
     private int id, student_year, pagecount, publishedyear;
-    private String printtype, thumbnailIdentifier, language, identifier, country, student_name, book_name, author, publisher, status, isbn1, year, filePath, description, overview, categories;
+    private String printtype, thumbnailIdentifier, language, identifier10, identifier, country, student_name, book_name, author, publisher, status, isbn1, isbn2, year, filePath, description, overview, categories;
     private static String library;
 
     BookObject() {
@@ -33,6 +33,7 @@ public class BookObject {
         status = "Shelved";
         description = "";
         isbn1 = "";
+        isbn2 = "";
         year = "";
         filePath = "";
         overview = "";
@@ -153,6 +154,9 @@ public class BookObject {
         this.isbn1 = isbn1;
     }
 
+    public void setISBN2(String isbn1) {
+        this.isbn1 = isbn2;
+    }
     public void setYear(String year) {
         this.year = year;
     }
@@ -219,6 +223,10 @@ public class BookObject {
 
     public String getISBN1() {
         return isbn1;
+    }
+    
+    public String getISBN2() {
+        return isbn2;
     }
 
     public String getFilePath() {
