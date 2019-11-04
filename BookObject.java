@@ -107,7 +107,7 @@ public class BookObject {
     ;
     
      public void setPublishedYear(int publishedyear) {
-         this.publishedyear = publishedyear;
+        this.publishedyear = publishedyear;
     }
 
     ;
@@ -124,13 +124,10 @@ public class BookObject {
 
     public void setIdentifier(String identifier) {
         this.identifier = identifier;
-        
-        if (identifier.length() == 10)
-        {
-             this.setISBN1(identifier);
-        }
-        else if (identifier.length() == 13)
-        {
+
+        if (identifier.length() == 10) {
+            this.setISBN1(identifier);
+        } else if (identifier.length() == 13) {
             this.setISBN2(identifier);
         }
     }
@@ -166,6 +163,7 @@ public class BookObject {
     public void setISBN2(String isbn1) {
         this.isbn1 = isbn2;
     }
+
     public void setYear(String year) {
         this.year = year;
     }
@@ -233,7 +231,7 @@ public class BookObject {
     public String getISBN1() {
         return isbn1;
     }
-    
+
     public String getISBN2() {
         return isbn2;
     }
