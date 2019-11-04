@@ -1102,7 +1102,7 @@ public class FXMLDocumentController implements Initializable {
         // create a new object to hold the data 
         LibraryBooksStatus libObj = new LibraryBooksStatus(
                 cloud_search.getISBN1(),
-                Integer.valueOf(cloud_search.getYear()),
+                Integer.valueOf(cloud_search.getPublishedYEar()),
                 "",
                 cloud_search.getBook(),
                 cloud_search.getAuthor(),

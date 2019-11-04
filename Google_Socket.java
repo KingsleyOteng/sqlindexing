@@ -173,8 +173,9 @@ public class Google_Socket {
                                 
                             // set the publication date                     
                             case "publishedDate":
-                                bpo.setYear(this.parse_search_phrase(matcher_general.group(1)));
-                             
+                                String phrase = this.parse_search_phrase(matcher_general.group(1));
+                                phrase = phrase.substring(0,4);
+                                bpo.setPublishedYear(Integer.valueOf(phrase.substring(0,4)));
                                 break;
                                 
                             // set the category name
