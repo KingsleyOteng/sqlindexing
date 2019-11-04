@@ -215,7 +215,7 @@ public class Google_Socket {
 
                             // set tumbnail reference
                             case "smallThumbnail":
-                                bpo.setThumbNailIndentifier(matcher_general.group(1));
+                                bpo.setThumbNailIndentifier(this.parse_search_phrase(matcher_general.group(1)));
                                 break;
 
                             // capture the introduced value
