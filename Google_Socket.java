@@ -108,7 +108,7 @@ public class Google_Socket {
                 //switch(matcher_general.group(0))
                 //String matched_group;
                 //matched_group = matcher_general.group(0);
-                testString = new String[]{"XX", "authors", "title", "subtitle", "publisher", "publicationDate", "categories", "country", "smallThumbnail", "printType", "pageCount"};
+                testString = new String[]{"XX", "authors", "title", "subtitle", "publisher", "publicationDate", "categories", "country", "smallThumbnail", "description", "printType", "pageCount"};
                 testStringList = Arrays.asList(testString);
 
                 String s;
@@ -145,7 +145,9 @@ public class Google_Socket {
                     // backout the current match phrase which will be used to update the database keyfield
                     matchedPhrase = stringIntersection1.toString();
                     if ((Arrays.asList(spltStringMatcherPhrase).contains(matchedPhrase)) && (!"XX".equals(matchedPhrase))) {
-
+                        
+                    
+                        
                         //System.out.println(">>>"+Arrays.stream(testString).filter(matcher_general.group(0)::contains).toArray().//);
                         switch (matchedPhrase) {
 
@@ -204,13 +206,9 @@ public class Google_Socket {
                                 bpo.setIdentifier(this.parse_search_phrase(matcher_general.group(1)));
                                 break;
                                 
-                            // set isbn identifier
+                            // set description data
                             case "description":
-                                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Description \n");
-                                bpo.setDescription(matcher_general.group(1));
-                                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Description \n");
-                                System.out.println(matcher_general.group(2));
-                                System.out.println(matcher_general.group(1));
+                                bpo.setDescription(this.parse_search_phrase(matcher_general.group(1)));
                                 break;
 
                             // set tumbnail reference
