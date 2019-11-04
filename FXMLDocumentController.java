@@ -737,8 +737,8 @@ public class FXMLDocumentController implements Initializable {
         BookObject buchs = new BookObject();
 
         //buchs = this.generate_search_object(buchs, buch.getIsbn1());
-        System.out.println(buch.getAuthor());
-        System.out.println(">>>>>>" + buch.getISBN1());
+        //System.out.println(buch.getAuthor());
+        //System.out.println(">>>>>>" + buch.getISBN1());
 
         // pass the selected books fields across to the borrow pane
         JDBC_Controller socket = new JDBC_Controller();
@@ -856,7 +856,6 @@ public class FXMLDocumentController implements Initializable {
             popsup1();
         } else {
             popupwindow.close();
-
             obtain_ISBN();
         }
 
@@ -1045,7 +1044,7 @@ public class FXMLDocumentController implements Initializable {
 
             // save file from the resource locator
             filename.append("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/" + suffix.toString() + ".jpeg");
-            System.out.println("print out" + filename.toString());
+            //System.out.println("print out" + filename.toString());
 
             Files.copy(url.openStream(), new File(filename.toString()).toPath());
 
@@ -1109,7 +1108,8 @@ public class FXMLDocumentController implements Initializable {
                 cloud_search.getStatus(),
                 suffix.toString() + ".jpeg",
                 cloud_search.getCategories(),
-                cloud_search.getDescription()
+                cloud_search.getDescription(),
+                cloud_search.getThumbNailIndentifier()
         );
         
         searchTableCatalogue.getItems().add(libObj);
@@ -1336,8 +1336,7 @@ public class FXMLDocumentController implements Initializable {
 
         // calculate final checksum
         if (checksum == 0) {
-
-            final_check_sum = "X";
+            final_check_sum = "0";
         } else {
             checksum = 10 - checksum;
             final_check_sum = checksum.toString();

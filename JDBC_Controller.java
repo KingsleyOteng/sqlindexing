@@ -519,7 +519,7 @@ public class JDBC_Controller {
             pstmt.setString(10, "XX");
             pstmt.setInt(11, 1);
             pstmt.setString(12, "HIBS");
-            pstmt.setString(13, "https");
+            pstmt.setString(13, obj.getThumbNailIdentifier());
             pstmt.setInt(14, obj.getYear());
             pstmt.setInt(15, 1);
             pstmt.setString(16, obj.getFILE());

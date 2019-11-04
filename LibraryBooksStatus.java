@@ -16,9 +16,9 @@ public class LibraryBooksStatus {
 
     //boolean status;
     int id, year;
-    String name, book, author, status, student_year, filex, ISBN1, categories, description;
+    String name, book, author, status, student_year, filex, ISBN1, categories, description, thumbnailidentifier;
 
-    public LibraryBooksStatus(String ISBN1, int year, String name,  String book, String author, String status, String filex, String category, String description) {
+    public LibraryBooksStatus(String ISBN1, int year, String name,  String book, String author, String status, String filex, String category, String description, String thumbnailidentifier) {
         this.ISBN1 = ISBN1;
         this.year = year;
         this.name = name;
@@ -28,6 +28,7 @@ public class LibraryBooksStatus {
         this.filex = filex;
         this.categories = category;
         this.description = description;
+        this.thumbnailidentifier = thumbnailidentifier;
     }
 
     public LibraryBooksStatus(String ISBN1, String name, int year, String book, String author, String status) {
@@ -114,6 +115,11 @@ public class LibraryBooksStatus {
     public String getDescription() {
         return description;
     }
+    
+    public String getThumbNailIdentifier()
+    {
+        return this.thumbnailidentifier;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -169,6 +175,11 @@ public class LibraryBooksStatus {
     
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public void setThumbNailIdentifier(String thumbnailidentifier)
+    {
+        this.thumbnailidentifier = thumbnailidentifier;
     }
 
     @Override

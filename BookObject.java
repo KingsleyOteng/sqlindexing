@@ -44,7 +44,7 @@ public class BookObject {
         thumbnailIdentifier = "";
     }
 
-    BookObject(int id, String student_name, int student_year, String book_name, String author, String status, String isbn1, String year, String filePath, String description, String overview, int publishedyear) {
+    BookObject(int id, String student_name, int student_year, String book_name, String author, String status, String isbn1, String year, String filePath, String description, String overview, int publishedyear, String thumbnailidentifier) {
         this.id = id;
         this.student_name = student_name;
         this.student_year = student_year;
@@ -60,6 +60,7 @@ public class BookObject {
         this.overview = overview;
         this.status = status;
         this.categories = categories;
+        this.thumbnailIdentifier = thumbnailIdentifier;
     }
 
     private static void setLibrary(String library) {
