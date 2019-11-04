@@ -124,6 +124,15 @@ public class BookObject {
 
     public void setIdentifier(String identifier) {
         this.identifier = identifier;
+        
+        if (identifier.length() == 10)
+        {
+             this.setISBN1(identifier);
+        }
+        else if (identifier.length() == 13)
+        {
+            this.setISBN2(identifier);
+        }
     }
 
     public void setStudent_name(String student_name) {
