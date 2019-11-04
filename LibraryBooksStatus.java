@@ -18,7 +18,7 @@ public class LibraryBooksStatus {
     int id, year;
     String name, book, author, status, student_year, filex, ISBN1, categories, description;
 
-    public LibraryBooksStatus(String ISBN1, String name, int year, String book, String author, String status, String filex, String category, String description) {
+    public LibraryBooksStatus(String ISBN1, int year, String name,  String book, String author, String status, String filex, String category, String description) {
         this.ISBN1 = ISBN1;
         this.year = year;
         this.name = name;

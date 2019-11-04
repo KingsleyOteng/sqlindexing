@@ -108,7 +108,7 @@ public class Google_Socket {
                 //switch(matcher_general.group(0))
                 //String matched_group;
                 //matched_group = matcher_general.group(0);
-                testString = new String[]{"XX", "authors", "title", "subtitle", "publisher", "publicationDate", "categories", "country", "smallThumbnail", "description", "printType", "pageCount"};
+                testString = new String[]{"XX", "authors", "title", "subtitle", "publisher", "publishedDate", "categories", "country", "smallThumbnail", "description", "printType", "pageCount"};
                 testStringList = Arrays.asList(testString);
 
                 String s;
@@ -172,8 +172,9 @@ public class Google_Socket {
                                 break;
                                 
                             // set the publication date                     
-                            case "publicationDate":
-                                bpo.setYear(matcher_general.group(1));
+                            case "publishedDate":
+                                bpo.setYear(this.parse_search_phrase(matcher_general.group(1)));
+                             
                                 break;
                                 
                             // set the category name

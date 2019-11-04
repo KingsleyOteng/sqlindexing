@@ -520,7 +520,8 @@ public class JDBC_Controller {
             pstmt.setInt(11, 1);
             pstmt.setString(12, "XYHIBS");
             pstmt.setString(13, "https");
-            pstmt.setInt(14, obj.getPublishedYear());
+            pstmt.setInt(14, obj.getYear());
+            System.out.println(">>>>>>>>>>>>>>obj.getYear()"  + obj.getYear());
             pstmt.setInt(15, 1);
             pstmt.setString(16, obj.getFILE());
             pstmt.setString(17, "YY14");
