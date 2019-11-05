@@ -1069,7 +1069,12 @@ public class FXMLDocumentController implements Initializable {
 
             if (result.get() == ButtonType.OK) {
                 // select_search_item_return();
-                cloud_search.setISBN1(obtain_ISBN());
+                String ISBN_Phrase = obtain_ISBN();
+                
+                if (!"".equals(ISBN_Phrase))
+                {
+                cloud_search.setISBN1(ISBN_Phrase);
+                }
 
             } else {
 
@@ -1095,7 +1100,7 @@ public class FXMLDocumentController implements Initializable {
         book_name = book_name.replaceAll("\"", "").trim();
         cloud_search.setBook(book_name);
 
-        System.out.println("cloud_search.getISBN1()" + cloud_search.getISBN1());
+        System.out.println("cloud_search.getISBN1()>" + cloud_search.getISBN1() + "<");
         System.out.println("suffix>>>" + suffix);
 
         // create a new object to hold the data 
@@ -1112,6 +1117,10 @@ public class FXMLDocumentController implements Initializable {
                 cloud_search.getThumbNailIndentifier()
         );
         
+        
+        // if no entry is returned from the ISBN lookup do not update the table
+        if (!"".equals(cloud_search.getISBN1()))
+                {
         searchTableCatalogue.getItems().add(libObj);
 
         System.out.println(cloud_search.getAuthor());
@@ -1119,6 +1128,8 @@ public class FXMLDocumentController implements Initializable {
         JDBC_Controller jd = new JDBC_Controller();
 
         jd.jdbc_quick_insert(libObj);
+                }
+                
     }
 
     private String generateRandomString(int length) {
@@ -1163,30 +1174,33 @@ public class FXMLDocumentController implements Initializable {
         // allow only ISBN10 or ISBN13
         if ((val.length() == 10) | (val.length() == 13)) {
 
-            System.out.println(" this.confirm_ISBN();");
+            //System.out.println(" this.confirm_ISBN();");
             // confirm the isbn 
-            this.confirm_ISBN();
+            System.out.println("kindly confirm the isbn");
+            val =  this.confirm_ISBN();
+            System.out.println("five position");
+            
 
         } else {
 
             // generate error message
             this.isbn_error();
+            return "";
         }
 
+        System.out.println("six position");
         return val;
 
     }
 
     @FXML
-    public void confirm_ISBN() throws SQLException, IOException {
+    public String confirm_ISBN() throws SQLException, IOException {
 
         TextInputDialog dialog = new TextInputDialog("walter");
         dialog.setTitle("Confirm ISBN");
         dialog.setHeaderText("Before the book may be added to the local catalogue the ISBN must be confirmed.");
         dialog.setContentText("ISBN:");
         Optional<String> results = dialog.showAndWait();
-
-        System.out.println("results  " + results);
 
         String result_out = results.get();
         result_out = result_out.replaceAll("\\[", "").trim();
@@ -1197,30 +1211,39 @@ public class FXMLDocumentController implements Initializable {
         results = Optional.of(result_out);
 
         String val = results.get();
-        System.out.println("results.get()");
+        
         System.out.println(results.get());
 
         if (val.length() == 10) {
             if (this.check_isbn10(results.get())) {
                 thanks_dialog();
+                
             } else {
                 isbn_error();
+                return "";
             }
 
-        } else if (val.length() == 13) {
+        } 
+        
+        if (val.length() == 13) {
 
             if (this.check_isbn13(results.get())) {
                 thanks_dialog();
+              
+                //return val;
+             
             } else {
                 isbn_error();
+                return "";
             }
+   
         } else {
             this.isbn_error();
+            return "";
         }
+       
 
-        //results.ifPresent(
-        //        name -> System.out.println("ISBN: " + name));
-        //thanks_dialog();
+        return val;
     }
 
     @FXML
@@ -1232,7 +1255,7 @@ public class FXMLDocumentController implements Initializable {
         alert.setTitle("Cataloguing complete.");
         alert.setHeaderText("Book has been added. Thank You !!");
 
-        Optional<ButtonType> result = alert.showAndWait();
+       // Optional<ButtonType> result = alert.showAndWait();
 
     }
 
