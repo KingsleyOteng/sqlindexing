@@ -1068,7 +1068,6 @@ public class FXMLDocumentController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == ButtonType.OK) {
-                
                 // select_search_item_return();
                 cloud_search.setISBN1(obtain_ISBN());
 
@@ -1113,11 +1112,8 @@ public class FXMLDocumentController implements Initializable {
                 cloud_search.getThumbNailIndentifier()
         );
         
-        if (obtain_ISBN().equals(""))
-                {
         searchTableCatalogue.getItems().add(libObj);
-                }
-       
+
         System.out.println(cloud_search.getAuthor());
 
         JDBC_Controller jd = new JDBC_Controller();
@@ -1175,7 +1171,6 @@ public class FXMLDocumentController implements Initializable {
 
             // generate error message
             this.isbn_error();
-            val = "";
         }
 
         return val;
@@ -1251,7 +1246,6 @@ public class FXMLDocumentController implements Initializable {
         alert.setHeaderText("Error in the ISBN number. \n Book has not been added.");
 
         Optional<ButtonType> result = alert.showAndWait();
-       
 
     }
 
