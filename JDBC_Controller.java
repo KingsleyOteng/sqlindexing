@@ -511,7 +511,7 @@ public class JDBC_Controller {
             pstmt.setString(1, obj.getBook());
             pstmt.setString(2, obj.getAuthor());
             pstmt.setString(3, obj.getCategories());
-            pstmt.setString(4, "");
+            pstmt.setString(4, "XX");
             pstmt.setString(5, "00000");
             pstmt.setDate(6, date);
             pstmt.setDate(7, date);
