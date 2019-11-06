@@ -201,8 +201,8 @@ public class JDBC_Controller {
             }
 
             System.out.println("Bingo Bingo");
-            st.executeUpdate("INSERT INTO BookDB.catalogue (BookName, Author) "
-                    + "VALUES ('Fred', 'Flinstone')");
+            st.executeUpdate("INSERT INTO BookDB.catalogue (BookName, Author, Category) "
+                    + "VALUES ('Fred', 'Flinstone', 'YYY')");
 
             while (rs.next()) {
 
@@ -211,7 +211,8 @@ public class JDBC_Controller {
                 obj[i].setAuthor(rs.getString("Author"));
                 obj[i].setId(1);
                 obj[i].setISBN1(rs.getString("ISBN1"));
-
+                obj[i].setISBN1(rs.getString("Category"));
+                obj[i].setISBN1(rs.getString("CategoryDescription"));
                 //obj[i].setStudent_name("1");
                 obj[i].setStatus(rs.getBoolean("BorrowedStatus"));
                 i++;
@@ -220,7 +221,7 @@ public class JDBC_Controller {
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
-
+        System.out.println("Bingo Bingo 3");
         return obj;
     }
 
