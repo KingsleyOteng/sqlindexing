@@ -697,13 +697,17 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_title.setText(buchs.getBook());
         fx_borrowpage_published.setText(String.valueOf(buchs.getYear()));
         fx_borrowpage_isbn.setText(buchs.getISBN1());
-        fx_borrowpage_description.setText(buchs.getDescription());
+        fx_borrowpage_description.setText(buchs.getCategories());
         fx_availability_status.setText(buchs.getStatus());
         fx_borrowpage_overview.setText(buchs.getOverview());
         fx_borrowpage_borrower.setText("");
         fx_borrowpage_school_level.setText("");
         fx_borrowpage_id.setText("");
-
+        
+        System.out.println(">>>>>>>>>>>>>"+buchs.getCategories());
+        System.out.println(">>>>>>>>>>>>>"+buchs.getDescription());
+        System.out.println(">>>>>>>>>>>>>"+buchs.getOverview());
+        
         fx_borrowpage_overview.setWrapText(true);
 
         String fileHandle = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/" + buchs.getFilePath() + ".jpeg";
