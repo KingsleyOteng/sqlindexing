@@ -43,7 +43,6 @@ public class JDBC_Controller {
         }
     }
 
-    
     // ----------------------------------------------->
     /**
      *
@@ -184,7 +183,6 @@ public class JDBC_Controller {
             Class.forName("com.mysql.jdbc.Driver");
             cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
             st = (Statement) cn.createStatement();
-            //rs = st.executeQuery("select * from BookDB.Catalogue where BookID =" + ISBN_locator + ";");
 
             // generate a results set 
             switch (toggle) {
@@ -223,7 +221,6 @@ public class JDBC_Controller {
                 obj[i].setISBN1(rs.getString("ISBN1"));
                 obj[i].setISBN1(rs.getString("Category"));
                 obj[i].setISBN1(rs.getString("CategoryDescription"));
-                //obj[i].setStudent_name("1");
                 obj[i].setStatus(rs.getBoolean("BorrowedStatus"));
                 i++;
 
@@ -235,7 +232,7 @@ public class JDBC_Controller {
         return obj;
     }
 
-     // ----------------------------------------------->
+    // ----------------------------------------------->
     /**
      *
      * @author kwadwooteng-amoako
@@ -246,8 +243,6 @@ public class JDBC_Controller {
     BookObject jdbc_search_singlebook(BookObject obj, String isbn_query)
             throws MalformedURLException, IOException, SQLException {
 
-        //Book_Parse_Object bpo = new Book_Parse_Object();
-        // JDBC_Controller jdbc_conn = new JDBC_Controller();
         try {
 
             // create SQL socker
@@ -274,7 +269,7 @@ public class JDBC_Controller {
                 obj.setOverview(rs.getString("BookDescription"));
                 obj.setStatus(rs.getBoolean("BorrowedStatus"));
                 obj.setCategories(rs.getString("Category"));
-                
+
                 break;
             }
         } catch (ClassNotFoundException | SQLException e) {
