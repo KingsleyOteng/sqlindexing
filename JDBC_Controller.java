@@ -43,7 +43,15 @@ public class JDBC_Controller {
         }
     }
 
-    // jdbc find a book
+    
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 11 November 2019
+     * @description jdbc find a book
+     *
+     */
     void jdbc_find_book()
             throws MalformedURLException, IOException, SQLException {
 
@@ -58,24 +66,10 @@ public class JDBC_Controller {
             while (rs.next()) {
 
                 System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));
-                //bpo.setSearchResult(true);
-                //bpo.setBookAuthors(rs.getString("Author"));
-                //bpo.setBookTitle(rs.getString("BookName"));
-                //bpo.setCategories(rs.getString("CategoryDescription"));
-                //bpo.setMainCategory(rs.getString("Category"));
-                //bpo.setILinkURLLargeThumbNail(ISBN_locator);
-                //bpo.setILinkURLSmallThumbNail(ISBN_locator);
-                //bpo.setISBN10(ISBN_locator);
-                //bpo.setISBN13(ISBN_locator);
-                //bpo.setPageCount(0);
-                //bpo.setPrintType(ISBN_locator);
-
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
-
-        //return bpo;
     }
 
     // ----------------------------------------------->
@@ -89,8 +83,6 @@ public class JDBC_Controller {
     BookObject[] jdbc_find_book(BookObject[] obj)
             throws MalformedURLException, IOException, SQLException {
 
-        //Book_Parse_Object bpo = new Book_Parse_Object();
-        // JDBC_Controller jdbc_conn = new JDBC_Controller();
         try {
             Class.forName("com.mysql.jdbc.Driver");
             cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
@@ -135,7 +127,6 @@ public class JDBC_Controller {
             Class.forName("com.mysql.jdbc.Driver");
             cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
             st = (Statement) cn.createStatement();
-            //rs = st.executeQuery("select * from BookDB.Catalogue where BookID =" + ISBN_locator + ";");
 
             switch (toggle) {
                 case "firstname":
