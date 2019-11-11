@@ -725,9 +725,6 @@ public class FXMLDocumentController implements Initializable {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         BookObject buchs = new BookObject();
 
-        //buchs = this.generate_search_object(buchs, buch.getIsbn1());
-        //System.out.println(buch.getAuthor());
-        //System.out.println(">>>>>>" + buch.getISBN1());
         // pass the selected books fields across to the borrow pane
         JDBC_Controller socket = new JDBC_Controller();
         socket.jdbc_return_book(buch.getISBN1());
@@ -739,7 +736,6 @@ public class FXMLDocumentController implements Initializable {
         Stage popupwindow = new Stage();
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
         popupwindow.initModality(Modality.APPLICATION_MODAL);
-        //popupwindow.setTitle("This is a pop up window");
 
         Label label1 = new Label("Borrow the book: " + buch.getBook() + " by " + buch.getAuthor() + "?");
         Button button1 = new Button("Borrow");
@@ -753,8 +749,7 @@ public class FXMLDocumentController implements Initializable {
         HBox hbox = new HBox();
         hbox.getChildren().addAll(label1, button1, button2);
 
-        //layout.setAlignment(Pos.CENTER);
-        //Scene scene1 = new Scene(layout, 500, 250);
+
         hbox.setAlignment(Pos.CENTER);
         Scene scene1 = new Scene(hbox, 500, 250);
 
