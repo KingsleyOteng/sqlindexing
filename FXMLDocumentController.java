@@ -1105,10 +1105,15 @@ public class FXMLDocumentController implements Initializable {
         cloud_search.setBook(book_name);
 
         System.out.println("cloud_search.getISBN1()>" + cloud_search.getISBN1() + "<");
-        System.out.println("suffix>>>" + suffix);
+        System.out.println("suffix>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + suffix);
 
+        System.out.println(cloud_search.getCategories());
+        System.out.println(cloud_search.getDescription());
+        
         // create a new object to hold the data 
         LibraryBooksStatus libObj = new LibraryBooksStatus(
+                
+                
                 cloud_search.getISBN1(),
                 Integer.valueOf(cloud_search.getPublishedYEar()),
                 "",
