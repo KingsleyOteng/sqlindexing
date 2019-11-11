@@ -708,6 +708,8 @@ public class FXMLDocumentController implements Initializable {
         System.out.println(">>>>>>>>>>>>>"+buchs.getDescription());
         System.out.println(">>>>>>>>>>>>>"+buchs.getOverview());
         
+       
+        
         fx_borrowpage_overview.setWrapText(true);
 
         String fileHandle = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/" + buchs.getFilePath() + ".jpeg";

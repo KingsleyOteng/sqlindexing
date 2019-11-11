@@ -256,6 +256,7 @@ public class JDBC_Controller {
                 obj.setFilePath(rs.getString("ImageFile"));
                 obj.setOverview(rs.getString("BookDescription"));
                 obj.setStatus(rs.getBoolean("BorrowedStatus"));
+                obj.setCategories(rs.getString("Category"));
 
                 //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));
                 //bpo.setSearchResult(true);
