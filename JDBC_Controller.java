@@ -557,7 +557,6 @@ public class JDBC_Controller {
     }
 
     ;
-
     
     public static java.sql.Date getCurrentJavaSqlDate() {
         java.util.Date today = new java.util.Date();
