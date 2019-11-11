@@ -111,7 +111,14 @@ public class JDBC_Controller {
         return obj;
     }
 
-    // jdbc find a book
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 11 November 2019
+     * @description jdbc find a student by string
+     *
+     */
     PupilObject[] jdbc_find_student(PupilObject[] obj, String toggle, String query)
             throws MalformedURLException, IOException, SQLException {
 
@@ -164,12 +171,17 @@ public class JDBC_Controller {
         return obj;
     }
 
-    // jdbc find a book
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 11 November 2019
+     * @description jdbc general search string
+     *
+     */
     BookObject[] jdbc_search_book(BookObject[] obj, String toggle, String query)
             throws MalformedURLException, IOException, SQLException {
 
-        //Book_Parse_Object bpo = new Book_Parse_Object();
-        // JDBC_Controller jdbc_conn = new JDBC_Controller();
         try {
             Class.forName("com.mysql.jdbc.Driver");
             cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
@@ -225,7 +237,14 @@ public class JDBC_Controller {
         return obj;
     }
 
-    // jdbc find a book
+     // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 11 November 2019
+     * @description jdbc find a single string
+     *
+     */
     BookObject jdbc_search_singlebook(BookObject obj, String isbn_query)
             throws MalformedURLException, IOException, SQLException {
 
@@ -257,20 +276,7 @@ public class JDBC_Controller {
                 obj.setOverview(rs.getString("BookDescription"));
                 obj.setStatus(rs.getBoolean("BorrowedStatus"));
                 obj.setCategories(rs.getString("Category"));
-
-                //System.out.println(rs.getString("BookName") + " by " + rs.getString("Author") + "; category" + rs.getString("CategoryDescription"));
-                //bpo.setSearchResult(true);
-                //bpo.setBookAuthors(rs.getString("Author"));
-                //bpo.setBookTitle(rs.getString("BookName"));
-                //bpo.setCategories(rs.getString("CategoryDescription"));
-                //bpo.setMainCategory(rs.getString("Category"));
-                //bpo.setILinkURLLargeThumbNail(ISBN_locator);
-                //bpo.setILinkURLSmallThumbNail(ISBN_locator);
-                //bpo.setISBN10(ISBN_locator);
-                //bpo.setISBN13(ISBN_locator);
-                //bpo.setPageCount(0);
-                //bpo.setPrintType(ISBN_locator);
-                // the break statement forces us to end the loop after one cycle
+                
                 break;
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -280,7 +286,14 @@ public class JDBC_Controller {
         return obj;
     }
 
-    // jdbc find a book
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 11 November 2019
+     * @description jdbc find a book string using the firstname
+     *
+     */
     StudentRegisterd jdbc_quick_search_firstname(String query)
             throws MalformedURLException, IOException, SQLException {
         StudentRegisterd obj = new StudentRegisterd();
@@ -317,7 +330,14 @@ public class JDBC_Controller {
     ;
    
 
-        // jdbc find a book
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 11 November 2019
+     * @description jdbc find a book string using the lastname
+     *
+     */
     StudentRegisterd jdbc_quick_search_lastname(String query)
             throws MalformedURLException, IOException, SQLException {
         StudentRegisterd obj = new StudentRegisterd();
@@ -353,7 +373,14 @@ public class JDBC_Controller {
 
     ;
    
-     // jdbc find a book
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 11 November 2019
+     * @description jdbc find a book string
+     *
+     */
     StudentRegisterd jdbc_quick_search_fx_borrowpage_borrower(String query)
             throws MalformedURLException, IOException, SQLException {
         StudentRegisterd obj = new StudentRegisterd();
