@@ -79,8 +79,6 @@ public class Google_Socket {
             value.append(buffer, 0, length);
         }
 
-        //System.out.println("block contents: " + value.toString());
-        //System.out.println("length of block:  " + value.length());
         p_general = Pattern.compile("\\s+?\"[A-Za-z]+\":\\s+?(\"?\\[?[A-Za-z0-9+#:/'.\\s+&_=?\"-]+\\]?\"?)");
 
         System.out.println("Output from Server .... \n");
@@ -102,12 +100,6 @@ public class Google_Socket {
                     //   System.out.println("hello " + ii + " " + matcher_general.group(ii));
                 }
 
-                //  System.out.println("found: " + count + " : "
-                //        + matcher_general.start() + " - " + matcher_general.end());
-                // we throw the the regex key to a case statement which will then match
-                //switch(matcher_general.group(0))
-                //String matched_group;
-                //matched_group = matcher_general.group(0);
                 testString = new String[]{"XX", "authors", "title", "subtitle", "publisher", "publishedDate", "categories", "country", "smallThumbnail", "description", "printType", "pageCount"};
                 testStringList = Arrays.asList(testString);
 
@@ -116,6 +108,7 @@ public class Google_Socket {
 
                 s = matcher_general.group(1);
                 stringMatcherPhrase = matcher_general.group(0);
+                
                 // add a terminator to the end of the phrase
                 stringMatcherPhrase = stringMatcherPhrase + "#XX";
 
@@ -139,9 +132,9 @@ public class Google_Socket {
                 // convert from hashset to array
                 stringIntersection = intersection.toArray();
 
-                //bpo.setIdentifier(ISBN_locator);
                 //cycle through the set of phrases scraped from
                 for (Object stringIntersection1 : stringIntersection) {
+                    
                     // backout the current match phrase which will be used to update the database keyfield
                     matchedPhrase = stringIntersection1.toString();
                     if ((Arrays.asList(spltStringMatcherPhrase).contains(matchedPhrase)) && (!"XX".equals(matchedPhrase))) {

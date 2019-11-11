@@ -346,7 +346,6 @@ public class FXMLDocumentController implements Initializable {
             }
         });
 
-        //System.out.println("<<<<<<<<<<<<<<<<<<<<<<endless love" + this.check_isbn13("978-1-4754-7528-9"));
         File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
         boolean backgroundLoading = true;
         Image image2 = new Image(file.toURI().toString(), backgroundLoading);
@@ -387,15 +386,6 @@ public class FXMLDocumentController implements Initializable {
         status_search.setCellValueFactory(new PropertyValueFactory<>("status"));
         isbn_search.setCellValueFactory(new PropertyValueFactory<>("isbn1"));
 
-        //isbn_school_cat.setCellValueFactory(new PropertyValueFactory<>("isbn1"));
-        //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
-        //button_title.setToggleGroup(toggleGroup);
-        //button_title.setUserData("title");
-        //button_author.setToggleGroup(toggleGroup);
-        //button_author.setUserData("author");
-        //button_isbn.setToggleGroup(toggleGroup);
-        //button_isbn.setUserData("isbn");
-        //create a togglegroup for all three buttons; i.e. only one may be depressed at a time
         register_firstnames.setToggleGroup(toggleGroupStudentRegister);
         register_firstnames.setUserData("firstname");
         register_surnames.setToggleGroup(toggleGroupStudentRegister);
@@ -607,9 +597,7 @@ public class FXMLDocumentController implements Initializable {
 
             table2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
         }
-        //System.out.println("run");
-        //System.out.println("kinder[0].getLastname()"+kinder[0].getLastname());
-        //table2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
+
 
     }
 
