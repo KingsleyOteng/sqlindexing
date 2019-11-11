@@ -740,7 +740,6 @@ public class FXMLDocumentController implements Initializable {
         //buchs = this.generate_search_object(buchs, buch.getIsbn1());
         //System.out.println(buch.getAuthor());
         //System.out.println(">>>>>>" + buch.getISBN1());
-
         // pass the selected books fields across to the borrow pane
         JDBC_Controller socket = new JDBC_Controller();
         socket.jdbc_return_book(buch.getISBN1());
@@ -1003,8 +1002,8 @@ public class FXMLDocumentController implements Initializable {
 
         // Use the method find books to locate book through Google's API
         BookObject cloud_search = gs.google_find_book(query);
-        
-        System.out.println("Hello \n"+cloud_search.getCategories());
+
+        System.out.println("Hello \n" + cloud_search.getCategories());
 
         Boolean FLAGS = true;
         // checks that the user has populated the query field and has also selected an entry from the table before progressing.
@@ -1071,10 +1070,9 @@ public class FXMLDocumentController implements Initializable {
             if (result.get() == ButtonType.OK) {
                 // select_search_item_return();
                 String ISBN_Phrase = obtain_ISBN();
-                
-                if (!"".equals(ISBN_Phrase))
-                {
-                cloud_search.setISBN1(ISBN_Phrase);
+
+                if (!"".equals(ISBN_Phrase)) {
+                    cloud_search.setISBN1(ISBN_Phrase);
                 }
 
             } else {
@@ -1106,11 +1104,9 @@ public class FXMLDocumentController implements Initializable {
 
         System.out.println(cloud_search.getCategories());
         System.out.println(cloud_search.getDescription());
-        
+
         // create a new object to hold the data 
         LibraryBooksStatus libObj = new LibraryBooksStatus(
-                
-                
                 cloud_search.getISBN1(),
                 Integer.valueOf(cloud_search.getPublishedYEar()),
                 "",
@@ -1122,20 +1118,18 @@ public class FXMLDocumentController implements Initializable {
                 cloud_search.getDescription(),
                 cloud_search.getThumbNailIndentifier()
         );
-        
-        
+
         // if no entry is returned from the ISBN lookup do not update the table
-        if (!"".equals(cloud_search.getISBN1()))
-                {
-        searchTableCatalogue.getItems().add(libObj);
+        if (!"".equals(cloud_search.getISBN1())) {
+            searchTableCatalogue.getItems().add(libObj);
 
-        System.out.println(cloud_search.getAuthor());
+            System.out.println(cloud_search.getAuthor());
 
-        JDBC_Controller jd = new JDBC_Controller();
+            JDBC_Controller jd = new JDBC_Controller();
 
-        jd.jdbc_quick_insert(libObj);
-                }
-                
+            jd.jdbc_quick_insert(libObj);
+        }
+
     }
 
     private String generateRandomString(int length) {
@@ -1180,12 +1174,8 @@ public class FXMLDocumentController implements Initializable {
         // allow only ISBN10 or ISBN13
         if ((val.length() == 10) | (val.length() == 13)) {
 
-            //System.out.println(" this.confirm_ISBN();");
-            // confirm the isbn 
-            System.out.println("kindly confirm the isbn");
-            val =  this.confirm_ISBN();
-            System.out.println("five position");
-            
+            // set the isbn if it exists
+            val = this.confirm_ISBN();
 
         } else {
 
@@ -1194,7 +1184,6 @@ public class FXMLDocumentController implements Initializable {
             return "";
         }
 
-        System.out.println("six position");
         return val;
 
     }
@@ -1217,37 +1206,35 @@ public class FXMLDocumentController implements Initializable {
         results = Optional.of(result_out);
 
         String val = results.get();
-        
+
         System.out.println(results.get());
 
         if (val.length() == 10) {
             if (this.check_isbn10(results.get())) {
                 thanks_dialog();
-                
+
             } else {
                 isbn_error();
                 return "";
             }
 
-        } 
-        
+        }
+
         if (val.length() == 13) {
 
             if (this.check_isbn13(results.get())) {
                 thanks_dialog();
-              
+
                 //return val;
-             
             } else {
                 isbn_error();
                 return "";
             }
-   
+
         } else {
             this.isbn_error();
             return "";
         }
-       
 
         return val;
     }
@@ -1261,8 +1248,7 @@ public class FXMLDocumentController implements Initializable {
         alert.setTitle("Cataloguing complete.");
         alert.setHeaderText("Book has been added. Thank You !!");
 
-       // Optional<ButtonType> result = alert.showAndWait();
-
+        // Optional<ButtonType> result = alert.showAndWait();
     }
 
     @FXML
