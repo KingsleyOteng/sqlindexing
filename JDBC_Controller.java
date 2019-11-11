@@ -78,7 +78,14 @@ public class JDBC_Controller {
         //return bpo;
     }
 
-    // jdbc find a book
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 11 November 2019
+     * @description jdbc find a book
+     *
+     */
     BookObject[] jdbc_find_book(BookObject[] obj)
             throws MalformedURLException, IOException, SQLException {
 
