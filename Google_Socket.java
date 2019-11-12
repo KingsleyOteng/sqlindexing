@@ -74,16 +74,19 @@ public class Google_Socket {
         br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         value = new StringBuilder();
         buffer = new char[1024];
-
+        
+        // add the buffer results read from the string table to the value string
         for (int length = 0x0; (length = br.read(buffer)) > 0;) {
             value.append(buffer, 0, length);
         }
 
+        // create the regex patter
         p_general = Pattern.compile("\\s+?\"[A-Za-z]+\":\\s+?(\"?\\[?[A-Za-z0-9+#:/'.\\s+&_=?\"-]+\\]?\"?)");
 
+        // ----> May purge
         System.out.println("Output from Server .... \n");
         int i = 1;
-        //while ((output = br.readLine()) != null)
+       
         {
 
             i++;
@@ -94,11 +97,6 @@ public class Google_Socket {
             count = 0;
             groupCount = matcher_general.groupCount();
             while (matcher_general.find()) {
-
-                //System.out.println("group count " + groupCount);
-                for (int ii = 0; ii <= groupCount; ii++) {
-                    //   System.out.println("hello " + ii + " " + matcher_general.group(ii));
-                }
 
                 testString = new String[]{"XX", "authors", "title", "subtitle", "publisher", "publishedDate", "categories", "country", "smallThumbnail", "description", "printType", "pageCount"};
                 testStringList = Arrays.asList(testString);
@@ -121,6 +119,7 @@ public class Google_Socket {
                 // initially seartch such that only candidate strings are searched
                 testStringList.contains(testSpltStringMatcherPhrase);
 
+                // create a dictionary of interesecting words
                 intersection = new HashSet<>();
 
                 // add the set of key fields
@@ -138,8 +137,6 @@ public class Google_Socket {
                     // backout the current match phrase which will be used to update the database keyfield
                     matchedPhrase = stringIntersection1.toString();
                     if ((Arrays.asList(spltStringMatcherPhrase).contains(matchedPhrase)) && (!"XX".equals(matchedPhrase))) {
-                        
-                    
                         
                         //System.out.println(">>>"+Arrays.stream(testString).filter(matcher_general.group(0)::contains).toArray().//);
                         switch (matchedPhrase) {
