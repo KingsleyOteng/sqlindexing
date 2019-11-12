@@ -98,21 +98,24 @@ public class Google_Socket {
             groupCount = matcher_general.groupCount();
             while (matcher_general.find()) {
 
+                // the book of words as an array
                 testString = new String[]{"XX", "authors", "title", "subtitle", "publisher", "publishedDate", "categories", "country", "smallThumbnail", "description", "printType", "pageCount"};
+                
+                // the book of words as a list
                 testStringList = Arrays.asList(testString);
-
-                String s;
-                String y;
-
-                s = matcher_general.group(1);
+          
+                // create a dictionary to hold a phrase
                 stringMatcherPhrase = matcher_general.group(0);
                 
                 // add a terminator to the end of the phrase
                 stringMatcherPhrase = stringMatcherPhrase + "#XX";
 
                 spltStringMatcherPhrase = stringMatcherPhrase.split("\\b+");
-
+                
+                // create a list to hold the dictionary phrases
                 List<String> testSpltStringMatcherPhrase;
+                
+                // dictionary as a list
                 testSpltStringMatcherPhrase = Arrays.asList(spltStringMatcherPhrase);
 
                 // include a dummy variable for matching
@@ -151,8 +154,7 @@ public class Google_Socket {
                                 bpo.setBook(matcher_general.group(1));
                                 System.out.println("found a title");
                                 break;
-           
-                                
+               
                             // set the publishers name
                             case "publisher":
                                 bpo.setPublisher(matcher_general.group(1));
@@ -219,7 +221,6 @@ public class Google_Socket {
             }
         }
 
-        System.out.println("and we are done");
         return bpo;
     }
 
