@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
  */
 public class Google_Socket {
 
+    // static fields used for searching the google archives
     public static final String GOOGLE_BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=";
     public static final String GOOGLE_BOOK_SEARCH_URL_END = "+download=epub";
 
@@ -59,7 +60,7 @@ public class Google_Socket {
         String[] spltStringMatcherPhrase;
         Object[] stringIntersection;
 
-        //
+        // trim the string removing all spaces
         String myQuery = Title_locator.replaceAll(" ", "+").toLowerCase();
 
         //create an object to hold the parse results
@@ -89,13 +90,13 @@ public class Google_Socket {
        
         {
 
+            // collect and track regex data
             i++;
             matcher_general = p_general.matcher(value);
-
             parseResult = "";
-
             count = 0;
             groupCount = matcher_general.groupCount();
+            
             while (matcher_general.find()) {
 
                 // the book of words as an array
@@ -220,7 +221,8 @@ public class Google_Socket {
 
             }
         }
-
+        
+        // return the string phrase
         return bpo;
     }
 
