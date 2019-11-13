@@ -704,6 +704,14 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description allow the user to select the item which they wish to borrow and populate the borrow tab
+     *
+     */
     @FXML
     private void select_search_item_borrow() throws SQLException, IOException {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
@@ -748,9 +756,9 @@ public class FXMLDocumentController implements Initializable {
         LocalDate todaysDate = LocalDate.now();
         LocalDate returnDate = LocalDate.now().plusWeeks(2);
 
+        // populate the borrow and return dates
         calendar_start.setValue(todaysDate);
         calendar_start1.setValue(returnDate);
-
     }
 
     @FXML
