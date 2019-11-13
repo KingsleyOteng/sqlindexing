@@ -1048,7 +1048,7 @@ public class FXMLDocumentController implements Initializable {
      *
      * @author kwadwooteng-amoako
      * @date 13 November 2019
-     * @description search for the students using the lastname  by accessing the database and then returning the fields
+     * @description search for the students using the return button confirmation 
      */
     @FXML
     public void seachtab_return_btn_confirmation() throws IOException, SQLException {
@@ -1079,6 +1079,12 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description generate the pop-up window for user selection
+     */                                 
     @FXML
     public void popsup1() throws IOException, SQLException {
         // grab search query
