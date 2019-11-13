@@ -939,6 +939,12 @@ public class FXMLDocumentController implements Initializable {
 
     ;
     
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description generate window when there is a server connection issue
+     */
     @FXML
     public void server_connection_issue() {
 
