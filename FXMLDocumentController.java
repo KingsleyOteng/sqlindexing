@@ -761,6 +761,13 @@ public class FXMLDocumentController implements Initializable {
         calendar_start1.setValue(returnDate);
     }
 
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description use the iSBN number to populate the entire borrow pane
+     *
+     */
     @FXML
     private void select_search_item_return() throws SQLException, IOException {
         LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
@@ -772,6 +779,13 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description alert user through a pop-up window of their book selection
+     *
+     */
     @FXML
     public void searchtab_noselection_alert() {
         Stage popupwindow = new Stage();
@@ -799,6 +813,12 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description this is the search button confirmation after hitting borrow
+     */
     @FXML
     public void searchtab_borrowbtn_confirmation() throws SQLException, IOException {
 
@@ -831,6 +851,12 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description this is the search button confirmation after hitting return
+     */
     @FXML
     public void searchtab_returnbtn_confirmation() throws SQLException, IOException {
 
@@ -844,13 +870,14 @@ public class FXMLDocumentController implements Initializable {
             LibraryBooksStatus buch = searchTableCatalogue.getSelectionModel().getSelectedItem();
             Alert alert = new Alert(AlertType.CONFIRMATION);
 
+            // set-up an alert
             alert.setTitle("Initiate Borrowing Session");
             alert.setHeaderText("Are you sure you wish to return this book?");
-
             alert.setContentText("\"" + buch.getBook() + "\" by " + buch.getAuthor());
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
+                
                 //complete the return request
                 select_search_item_return();
 
@@ -864,6 +891,12 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+     /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description this is the search button confirmation after hitting return
+     */
     @FXML
     public void search_cloud_notification(String AlertHeader) throws SQLException, IOException {
 
@@ -885,6 +918,12 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description generate a search object
+     */
     public BookObject generate_search_object(BookObject buch, String ISBN) throws SQLException, IOException {
 
         // create a socket for jdbc search
