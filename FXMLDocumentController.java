@@ -959,6 +959,12 @@ public class FXMLDocumentController implements Initializable {
 
     ;
     
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description likely redundant --- check and then delete
+     */
     @FXML
     public void load_image() {
         System.out.println("hello");
@@ -974,10 +980,14 @@ public class FXMLDocumentController implements Initializable {
         borrow_image_box.setImage(image2);
         borrow_image_box.setPreserveRatio(true);
 
-    }
+    };
 
-    ;
-
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description search for the students name by accessing the database and then returning the fields
+     */
     @FXML
     public void quick_search_firstname() throws IOException, SQLException {
 
@@ -1001,10 +1011,14 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_school_level.setText(String.valueOf(obj.getClassd()));
         fx_borrowpage_id.setText(String.valueOf(obj.getId()));
 
-    }
-
-    ;
+    };
     
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description search for the students using the lastname  by accessing the database and then returning the fields
+     */
     @FXML
     public void quick_search_lastname() throws IOException, SQLException {
 
