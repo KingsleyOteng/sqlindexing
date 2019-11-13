@@ -1044,6 +1044,12 @@ public class FXMLDocumentController implements Initializable {
 
     ;
     
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description search for the students using the lastname  by accessing the database and then returning the fields
+     */
     @FXML
     public void seachtab_return_btn_confirmation() throws IOException, SQLException {
         // grab search query
