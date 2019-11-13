@@ -544,6 +544,15 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description inserts the book entry back into the tab after a prompt
+     * table view
+     *
+     */
     @FXML
     private void insert_book_entry_searchtab(BookObject bucher[]) throws InterruptedException {
 
@@ -584,23 +593,40 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description populates the student array tab
+     *
+     */
     @FXML
     private void insert_students_entry(PupilObject kinder[]) throws InterruptedException {
-        // output the contents of the entire array
-        //table2.getItems().add(new StudentRegisterStatus(1, "otengamoako", 2, "989898", "3"));
-
+       
+        // search through the array
         for (int i = 0x0; i <= (kinder.length); ++i) {
+            
             // exit when we reach the end of the array
             if (kinder[i] == null) {
                 break;
             }
 
+            // populate the table
             table2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
         }
 
 
     }
 
+        // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description populates a search tab query
+     *
+     */
     private void search_pane_query() {
 
         // initialize
@@ -656,17 +682,24 @@ public class FXMLDocumentController implements Initializable {
             Thread.sleep(1000);
         }
     }
-
     ;
 
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 13 November 2019
+     * @description switch pane tabs 
+     *
+     */
     @FXML
     private void switch_tab() {
+        
+        // get all tab information
         books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab, borrows_tabs);
         field.setText("hello");
         System.out.println(books_tab_pane.getSelectionModel().getSelectedIndex());
 
-        //books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab, borrows_tabs);
-        //books_tab_pane.getSelectionModel().selectNext();
+        // populate
         books_tab_pane.getSelectionModel().select(3);
 
     }
