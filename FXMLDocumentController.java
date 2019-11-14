@@ -579,6 +579,7 @@ public class FXMLDocumentController implements Initializable {
 
             if (!table.contains(libObj)) {
 
+                // you may remove
                 System.out.println("hello>>>>>>>>>" + bucher[i].getBook());
 
                 // output to tableview
@@ -673,8 +674,10 @@ public class FXMLDocumentController implements Initializable {
             BookObject[] bucher = new BookObject[1000];
             JDBC_Controller socket = new JDBC_Controller();
 
+            // check that the book is not stored locally
             bucher = socket.jdbc_search_book(bucher, toggleGroupBookSearch.getSelectedToggle().getUserData().toString(), searchQuery);
 
+            // if not stored locally search googles records
             if (bucher == null) {
                 this.search_cloud_notification(toggleGroupBookSearch.getSelectedToggle().getUserData().toString() + ": " + searchQuery);
             } else {
@@ -697,7 +700,8 @@ public class FXMLDocumentController implements Initializable {
         
         // get all tab information
         books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab, borrows_tabs);
-        field.setText("hello");
+       
+        //field.setText("hello");
         System.out.println(books_tab_pane.getSelectionModel().getSelectedIndex());
 
         // populate
@@ -720,6 +724,7 @@ public class FXMLDocumentController implements Initializable {
 
         buchs = this.generate_search_object(buchs, buch.getIsbn1());
 
+        // you may remove
         System.out.println(buch.getAuthor());
 
         // pass the selected books fields across to the borrow pane

@@ -206,11 +206,9 @@ public class JDBC_Controller {
                 System.out.println("Empty results set");
                 return null;
 
-            }
+            } 
 
-            System.out.println("Bingo Bingo");
-            st.executeUpdate("INSERT INTO BookDB.catalogue (BookName, Author, Category) "
-                    + "VALUES ('Fred', 'Flinstone', 'YYY')");
+            System.out.println("Bingo Bingo Y");
 
             while (rs.next()) {
 
@@ -220,7 +218,9 @@ public class JDBC_Controller {
                 obj[i].setId(1);
                 obj[i].setISBN1(rs.getString("ISBN1"));
                 obj[i].setISBN1(rs.getString("Category"));
+                 System.out.println("Bingo Bingo 1");
                 obj[i].setISBN1(rs.getString("CategoryDescription"));
+                System.out.println("Bingo Bingo 2");
                 obj[i].setStatus(rs.getBoolean("BorrowedStatus"));
                 i++;
 
@@ -519,6 +519,7 @@ public class JDBC_Controller {
             st = (Statement) cn.createStatement();
 
             String sqlString;
+            
             sqlString = "INSERT INTO BookDB.Catalogue (BookName,Author) VALUES (?,?)";
 
             String sqlString2 = "INSERT INTO BookDB.Catalogue  (`BookName`, `Author`, `Category`, `CategoryDescription`, `BookID`, `DateBorrowed`, `DateDue`, `BorrowerID`, `ISBN1`, `ISBN2`, `Copy`, `Location`, `ImageURL`, `PublicationYear`, `BorrowedStatus`, `ImageFile`, `BookDescription`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
