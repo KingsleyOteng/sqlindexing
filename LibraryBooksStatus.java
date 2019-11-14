@@ -18,6 +18,12 @@ public class LibraryBooksStatus {
     int id, year;
     String name, book, author, status, student_year, filex, ISBN1, categories, description, thumbnailidentifier;
 
+    /**
+    * @description construct a library object 
+    * @date 14 November 2019
+    * @author kwadwooteng-amoako
+    * @parameters 10 parameters
+     */
     public LibraryBooksStatus(String ISBN1, int year, String name,  String book, String author, String status, String filex, String category, String description, String thumbnailidentifier) {
         this.ISBN1 = ISBN1;
         this.year = year;
@@ -31,6 +37,12 @@ public class LibraryBooksStatus {
         this.thumbnailidentifier = thumbnailidentifier;
     }
 
+    /**
+    * @description construct a library object 
+    * @date 14 November 2019
+    * @author kwadwooteng-amoako
+    * @parameters 6 parameters
+     */
     public LibraryBooksStatus(String ISBN1, String name, int year, String book, String author, String status) {
         this.ISBN1 = ISBN1;
         this.year = year;
@@ -40,6 +52,12 @@ public class LibraryBooksStatus {
         this.status = status;
     }
 
+    /**
+    * @description construct a library object 
+    * @date 14 November 2019
+    * @author kwadwooteng-amoako
+    * @parameters 4 parameters
+     */
     public LibraryBooksStatus(String book, String author, String status, String ISBN1) {
         this.book = book;
         this.author = author;
@@ -47,6 +65,12 @@ public class LibraryBooksStatus {
         this.ISBN1 = ISBN1;
     }
 
+    /**
+    * @description construct a library object 
+    * @date 14 November 2019
+    * @author kwadwooteng-amoako
+    * @parameters 5 parameters
+     */
     public LibraryBooksStatus(String book, String author, String status, String ISBN1, String student_year) {
         this.book = book;
         this.author = author;
@@ -54,6 +78,12 @@ public class LibraryBooksStatus {
         this.student_year = student_year;
     }
 
+     /**
+    * @description construct a library object 
+    * @date 14 November 2019
+    * @author kwadwooteng-amoako
+    * @parameters 3 parameters
+     */
     public LibraryBooksStatus(String book, String author, String status) {
         this.book = book;
         this.author = author;

@@ -32,10 +32,11 @@ import java.util.List;
 public class PrinterService implements Printable {
 
     /**
-     *
-     * @param 
-     * @return
-     */
+    * @description printerservice class
+    * @date 14 November 2019
+    * @author kwadwooteng-amoako
+    * @parameters get the list of available printers
+    */
     public List<String> getPrinters() {
 
         DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
@@ -64,6 +65,12 @@ public class PrinterService implements Printable {
 
     }
 
+     /**
+    * @description printerservice class
+    * @date 14 November 2019
+    * @author kwadwooteng-amoako
+    * @parameters generat a print
+     */
     @Override
     public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) {
 
@@ -94,6 +101,12 @@ public class PrinterService implements Printable {
         return Printable.NO_SUCH_PAGE;
     }
 
+    /**
+    * @description printerservice class
+    * @date 14 November 2019
+    * @author kwadwooteng-amoako
+    * @parameters print to a specific print a text caption
+    */
     public void printString(String printerName, String text) {
 
         // find the printService of name printerName
@@ -126,6 +139,12 @@ public class PrinterService implements Printable {
 
     }
 
+    /**
+    * @description printerservice class
+    * @date 14 November 2019
+    * @author kwadwooteng-amoako
+    * @parameters print to a specific print a byte caption
+    */
     public void printBytes(String printerName, byte[] bytes) {
 
         DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
@@ -150,6 +169,12 @@ public class PrinterService implements Printable {
         }
     }
 
+    /**
+    * @description printerservice class
+    * @date 14 November 2019
+    * @author kwadwooteng-amoako
+    * @parameters find the printer service
+    */
     private PrintService findPrintService(String printerName,
             PrintService[] services) {
         for (PrintService service : services) {
@@ -161,6 +186,12 @@ public class PrinterService implements Printable {
         return null;
     }
 
+    /**
+    * @description printerservice class
+    * @date 14 November 2019
+    * @author kwadwooteng-amoako
+    * @parameters test the printer service
+    */
     public void testprinter() {
         // byte[] left = new byte[]{0x1b, 0x61, 0x00};
         // byte[] center = new byte[]{0x1b, 0x61, 0x01};
