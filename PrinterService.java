@@ -8,7 +8,6 @@ package userinterface;
 import java.awt.print.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
 import javax.print.Doc;
 import javax.print.DocFlavor;
 import javax.print.DocPrintJob;
@@ -17,7 +16,6 @@ import javax.print.PrintServiceLookup;
 import javax.print.SimpleDoc;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
-
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -35,7 +33,7 @@ public class PrinterService implements Printable {
 
     /**
      *
-     * @param libobj
+     * @param 
      * @return
      */
     public List<String> getPrinters() {

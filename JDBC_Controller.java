@@ -554,10 +554,9 @@ public class JDBC_Controller {
             System.out.println(e);
         }
 
-    }
-
-    ;
+    };
     
+    // generate a data string and format it it into an acceptable java sql format
     public static java.sql.Date getCurrentJavaSqlDate() {
         java.util.Date today = new java.util.Date();
         return new java.sql.Date(today.getTime());

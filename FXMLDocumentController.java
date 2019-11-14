@@ -1227,6 +1227,13 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 14 November 2019
+     * @description generate a random string used for storing image data
+     */  
     private String generateRandomString(int length) {
         // Random string suffix generator
         // Source: http://www.appsdeveloperblog.com/generate-random-string-in-java-different-ways/
@@ -1240,6 +1247,12 @@ public class FXMLDocumentController implements Initializable {
         return new String(returnValue);
     }
 
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 14 November 2019
+     * @description obtain a books isbn number
+     */  
     @FXML
     public String obtain_ISBN() throws SQLException, IOException {
 
@@ -1283,10 +1296,16 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 14 November 2019
+     * @description confirm books isbn nuber
+     */  
     @FXML
     public String confirm_ISBN() throws SQLException, IOException {
 
-        TextInputDialog dialog = new TextInputDialog("walter");
+        TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Confirm ISBN");
         dialog.setHeaderText("Before the book may be added to the local catalogue the ISBN must be confirmed.");
         dialog.setContentText("ISBN:");
@@ -1334,6 +1353,12 @@ public class FXMLDocumentController implements Initializable {
         return val;
     }
 
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 14 November 2019
+     * @description generate a thanks dialog box
+     */  
     @FXML
     public void thanks_dialog() throws SQLException, IOException {
 
@@ -1346,6 +1371,12 @@ public class FXMLDocumentController implements Initializable {
         // Optional<ButtonType> result = alert.showAndWait();
     }
 
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 14 November 2019
+     * @description generate an dialog box when the isbn is found to be in error
+     */  
     @FXML
     public void isbn_error() throws SQLException, IOException {
 
@@ -1359,6 +1390,12 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 14 November 2019
+     * @description checks that the isbn-10 value is considered accurate
+     */  
     public boolean check_isbn10(String value) {
         // the following routine will check an ISBN 10 number
         // And determine it's accuracy by returning a boolean
@@ -1401,10 +1438,14 @@ public class FXMLDocumentController implements Initializable {
         // return status
         return !(input_check_sum == null ? final_check_sum != null : !input_check_sum.equals(final_check_sum));
 
-    }
+    };
 
-    ;
-
+        /**
+        *
+        * @author kwadwooteng-amoako
+        * @date 14 November 2019
+        * @description checks that the isbn-13 value is considered accurate
+        */  
         public boolean check_isbn13(String value) {
         // the following routine will check an ISBN 13 number
         // And determine it's accuracy by returning a boolean

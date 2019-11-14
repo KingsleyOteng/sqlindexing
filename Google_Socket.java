@@ -18,7 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
+ * @date the code was edited Tuesday, 12th November, 2019.
  * @author kwadwooteng-amoako
  */
 public class Google_Socket {
@@ -27,6 +27,11 @@ public class Google_Socket {
     public static final String GOOGLE_BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=";
     public static final String GOOGLE_BOOK_SEARCH_URL_END = "+download=epub";
 
+     /**
+ * @date the code was edited Tuesday, 12th November, 2019.
+ * @author kwadwooteng-amoako
+ * @description parse the returned string removing unneccesary meta information
+ */
     String parse_search_phrase(String phrase)
     {
         // the following method reomves unwanted phrases from the parsed string
@@ -38,6 +43,11 @@ public class Google_Socket {
         return phrase;
     }
     
+    /**
+ * @date the code was edited Tuesday, 12th November, 2019.
+ * @author kwadwooteng-amoako
+ * @description find the google book using a title locator
+ */
     BookObject google_find_book(
             String Title_locator
     ) throws MalformedURLException, IOException {
