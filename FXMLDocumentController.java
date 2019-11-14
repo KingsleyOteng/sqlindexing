@@ -132,9 +132,6 @@ public class FXMLDocumentController implements Initializable {
     private ImageView borrow_image_box = new ImageView();
 
     @FXML
-    private ImageView borrow_photo_box = new ImageView();
-
-    @FXML
     private ImageView image_anchor_1 = new ImageView();
 
     @FXML
@@ -345,12 +342,6 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         });
-
-        File file = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/images/image1.jpeg");
-        boolean backgroundLoading = true;
-        Image image2 = new Image(file.toURI().toString(), backgroundLoading);
-        borrow_photo_box.setImage(image2);
-        borrow_photo_box.setPreserveRatio(true);
 
         schoolCatalogueTable.setPlaceholder(new Label("Search books"));
         searchTableCatalogue.setPlaceholder(new Label("Search books teo"));

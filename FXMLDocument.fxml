@@ -179,11 +179,7 @@
             </Tab>
             <Tab text="About">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ImageView fitHeight="259.0" fitWidth="200.0" layoutX="301.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="borrow_photo_box" fitHeight="217.0" fitWidth="200.0" layoutX="285.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true" />
-                     </children></AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
             </Tab>
         </tabs>
