@@ -163,7 +163,6 @@ public class Google_Socket {
                             // set the title         
                             case "title":
                                 bpo.setBook(matcher_general.group(1));
-                                System.out.println("found a title");
                                 break;
                
                             // set the publishers name
@@ -218,7 +217,7 @@ public class Google_Socket {
                                 bpo.setThumbNailIndentifier(this.parse_search_phrase(matcher_general.group(1)));
                                 break;
 
-                            // capture the introduced value
+                            // captures an introduced string value -- forces a null termination
                             case "XX":
                                 break;
 

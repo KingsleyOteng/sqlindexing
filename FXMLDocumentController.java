@@ -410,8 +410,6 @@ public class FXMLDocumentController implements Initializable {
         // default is to have the books button depressed
         search_bks_title.fire();
 
-        String yy = schoolCatalogueTable.lookupAll(".column-header").toString();
-
         fxsearchtab_search.setText("");
 
     }
@@ -662,12 +660,15 @@ public class FXMLDocumentController implements Initializable {
 
         // checks that there is both a query and that a toggle button is depressed
         while ((!searchQuery.isEmpty()) && (btnDepressedId == null)) {
+            
+            // capture the depressed buttons id by a string
             btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
 
+            // may remove -- used to track depressed buttons
             System.out.println(btnDepressedId);
         }
 
-        //System.out.println("search query>>" + searchQuery);
+            
         if (!searchQuery.isEmpty()) {
             BookObject[] bucher = new BookObject[1000];
             JDBC_Controller socket = new JDBC_Controller();
@@ -1496,7 +1497,6 @@ public class FXMLDocumentController implements Initializable {
         // return status
         return !(input_check_sum == null ? final_check_sum != null : !input_check_sum.equals(final_check_sum));
 
-    }
-;
+    };
 
 };
