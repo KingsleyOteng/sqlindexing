@@ -580,7 +580,7 @@ public class FXMLDocumentController implements Initializable {
             if (!table.contains(libObj)) {
 
                 // you may remove
-                System.out.println("hello>>>>>>>>>" + bucher[i].getBook());
+                System.out.println("title returned>>>>>>>>>" + bucher[i].getBook());
 
                 // output to tableview
                 searchTableCatalogue.getItems().add(libObj);
