@@ -208,8 +208,6 @@ public class JDBC_Controller {
 
             } 
 
-            System.out.println("Bingo Bingo Y");
-
             while (rs.next()) {
 
                 obj[i] = new BookObject();
@@ -217,10 +215,8 @@ public class JDBC_Controller {
                 obj[i].setAuthor(rs.getString("Author"));
                 obj[i].setId(1);
                 obj[i].setISBN1(rs.getString("ISBN1"));
-                obj[i].setISBN1(rs.getString("Category"));
-                 System.out.println("Bingo Bingo 1");
-                obj[i].setISBN1(rs.getString("CategoryDescription"));
-                System.out.println("Bingo Bingo 2");
+                obj[i].setCategories(rs.getString("Category"));
+                obj[i].setDescription(rs.getString("CategoryDescription"));
                 obj[i].setStatus(rs.getBoolean("BorrowedStatus"));
                 i++;
 
@@ -228,7 +224,8 @@ public class JDBC_Controller {
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
-        System.out.println("Bingo Bingo 3");
+       
+        
         return obj;
     }
 
