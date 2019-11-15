@@ -421,12 +421,40 @@ public class FXMLDocumentController implements Initializable {
     private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
         System.out.println("You clicked me again 1111!");
 
-        BookObject[] bucher = new BookObject[1000];
+        StudentRegisterd [] student_records = new StudentRegisterd[1000];
         JDBC_Controller socket = new JDBC_Controller();
-        bucher = socket.jdbc_find_book(bucher);
+        
+        /////////////////////////////
+        student_records = socket.jdbc_name_catalogue();
         schoolCatalogueTable.getItems().clear();
-        this.insert_book_entry(bucher);
+        this.insert_student_records_entry(student_records);
         Thread.sleep(1000);
+
+    }
+    
+    // ----------------------------------------------->
+    /**
+     *
+     * @author kwadwooteng-amoako
+     * @date 2 October 2019
+     * @description when key pressed it initiates a search of records table view
+     *
+     */
+    @FXML
+    private void insert_student_records_entry(StudentRegisterStatus [] student_records ) throws MalformedURLException, IOException, SQLException, InterruptedException {
+
+        // output to tableview
+        for (int i = 0x0; i <= (student_records.length); ++i) {
+            
+            // exit when we reach the end of the array
+            if (student_records[i] == null) {
+                break;
+            }
+
+            //  public StudentRegisterStatus(int isbn, String name, int year, String book, String author, String status) {
+            schoolCatalogueTable.getItems().add(new StudentRegisterStatus(student_records[i].getISBN(), "2", 3, "2", "2", "3"));
+        }
+        
 
     }
 

@@ -12,8 +12,8 @@ package userinterface;
  */
 public class StudentRegisterStatus {
 
-    int id, year;
-    String name, book, author;
+    int id, year, isbn;
+    String name, book, author, status;
 
     public StudentRegisterStatus() {
         this.id = 0;
@@ -21,6 +21,8 @@ public class StudentRegisterStatus {
         this.name = "";
         this.book = "";
         this.author = "";
+        this.status = "";
+        this.isbn = 0;
     }
     
     public StudentRegisterStatus(int id, String name, int year, String book, String author) {
@@ -31,6 +33,16 @@ public class StudentRegisterStatus {
         this.author = author;
     }
 
+    public StudentRegisterStatus(String isbn, String name, int year, String book, String author, String status) {
+        this.isbn = Integer.valueOf(isbn);
+        this.book = book;
+        this.author = author;
+        this.status = status;
+        this.year = year;
+        this.name = name;
+        
+    }
+    
     public int getId() {
         return id;
     }

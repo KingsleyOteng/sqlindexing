@@ -12,7 +12,7 @@ package userinterface;
  */
 public class StudentRegisterd {
 
-    int classd, numberofbooks, id;
+    int classd, numberofbooks, id, isbn;
     String lastname, school, bookid, firstname,date,timestamp;
     
     public StudentRegisterd()
@@ -48,6 +48,10 @@ public class StudentRegisterd {
         return id;
     }
 
+    public int getISBN() {
+        return isbn;
+    } 
+    
     public String getSchool() {
         return school;
     }
