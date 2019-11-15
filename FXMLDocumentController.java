@@ -65,6 +65,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Label label;
+    
+    @FXML
+    private Button school_catalogue_go;
 
     @FXML
     private Button button1;
@@ -416,7 +419,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
-        System.out.println("You clicked me again!");
+        System.out.println("You clicked me again 1111!");
 
         BookObject[] bucher = new BookObject[1000];
         JDBC_Controller socket = new JDBC_Controller();
