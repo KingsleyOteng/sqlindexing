@@ -363,6 +363,42 @@ public class JDBC_Controller {
 
     ;
    
+    StudentRegisterd  jdbc_name_catalogue()
+            throws MalformedURLException, IOException, SQLException {
+        StudentRegisterd  obj = new StudentRegisterd();
+
+
+        try {
+
+            //create socket
+            Class.forName("com.mysql.jdbc.Driver");
+            cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/TestDB?zeroDateTimeBehavior=convertToNull", "root", "");
+            st = (Statement) cn.createStatement();
+
+            // search database
+            rs = st.executeQuery("SELECT * FROM BookDb.StudentRecords;");
+
+            // update fields and then exit
+            while (rs.next()) {
+               
+                obj.setLastname(rs.getString("LastName"));
+                obj.setClassd(rs.getInt("ClassWhenRecordCreated"));
+                obj.setNumberofbooks(rs.getInt("NumberOfBooksBorrowed"));
+                obj.setId(rs.getInt("BorrowerID"));
+                obj.setFirstname(rs.getString("FirstName"));
+                obj.setDate("hello");
+                obj.setTimestamp("one");
+            
+                break;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+        }
+        
+        return obj;
+    };
+    
     // ----------------------------------------------->
     /**
      *

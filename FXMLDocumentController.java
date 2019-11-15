@@ -425,9 +425,9 @@ public class FXMLDocumentController implements Initializable {
         JDBC_Controller socket = new JDBC_Controller();
         
         /////////////////////////////
-        student_records = socket.jdbc_name_catalogue();
+        //student_records = socket.jdbc_name_catalogue();
         schoolCatalogueTable.getItems().clear();
-        this.insert_student_records_entry(student_records);
+       // this.insert_student_records_entry(student_records);
         Thread.sleep(1000);
 
     }
@@ -452,7 +452,7 @@ public class FXMLDocumentController implements Initializable {
             }
 
             //  public StudentRegisterStatus(int isbn, String name, int year, String book, String author, String status) {
-            schoolCatalogueTable.getItems().add(new StudentRegisterStatus(student_records[i].getISBN(), "2", 3, "2", "2", "3"));
+           // schoolCatalogueTable.getItems().add(new StudentRegisterStatus(student_records[i].getISBN(), "2", "5", "2", "2", "3"));
         }
         
 
