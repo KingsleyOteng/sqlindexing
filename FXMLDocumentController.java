@@ -65,7 +65,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Label label;
-    
+
     @FXML
     private Button school_catalogue_go;
 
@@ -412,7 +412,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      *
      * @author kwadwooteng-amoako
-     * @date 24 August 2019
+     * @date 16 November 2019
      * @description following method takes a book object and inserts it into
      * table view
      *
@@ -421,40 +421,39 @@ public class FXMLDocumentController implements Initializable {
     private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
         System.out.println("You clicked me again 1111!");
 
-        StudentRegisterd [] student_records = new StudentRegisterd[1000];
+        StudentRegisterd[] student_records = new StudentRegisterd[1000];
         JDBC_Controller socket = new JDBC_Controller();
-        
+
         /////////////////////////////
         //student_records = socket.jdbc_name_catalogue();
         schoolCatalogueTable.getItems().clear();
-       // this.insert_student_records_entry(student_records);
+        // this.insert_student_records_entry(student_records);
         Thread.sleep(1000);
 
     }
-    
+
     // ----------------------------------------------->
     /**
      *
      * @author kwadwooteng-amoako
-     * @date 2 October 2019
+     * @date 16 November 2019
      * @description when key pressed it initiates a search of records table view
      *
      */
     @FXML
-    private void insert_student_records_entry(StudentRegisterStatus [] student_records ) throws MalformedURLException, IOException, SQLException, InterruptedException {
+    private void insert_student_records_entry(StudentRegisterStatus[] student_records) throws MalformedURLException, IOException, SQLException, InterruptedException {
 
         // output to tableview
         for (int i = 0x0; i <= (student_records.length); ++i) {
-            
+
             // exit when we reach the end of the array
             if (student_records[i] == null) {
                 break;
             }
 
             //  public StudentRegisterStatus(int isbn, String name, int year, String book, String author, String status) {
-           // schoolCatalogueTable.getItems().add(new StudentRegisterStatus(student_records[i].getISBN(), "2", "5", "2", "2", "3"));
+            // schoolCatalogueTable.getItems().add(new StudentRegisterStatus(student_records[i].getISBN(), "2", "5", "2", "2", "3"));
         }
-        
 
     }
 
@@ -624,10 +623,10 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void insert_students_entry(PupilObject kinder[]) throws InterruptedException {
-       
+
         // search through the array
         for (int i = 0x0; i <= (kinder.length); ++i) {
-            
+
             // exit when we reach the end of the array
             if (kinder[i] == null) {
                 break;
@@ -637,10 +636,9 @@ public class FXMLDocumentController implements Initializable {
             table2.getItems().add(new StudentRegisterStatus(1, kinder[0].getLastname(), 2, "989898", "3"));
         }
 
-
     }
 
-        // ----------------------------------------------->
+    // ----------------------------------------------->
     /**
      *
      * @author kwadwooteng-amoako
@@ -683,7 +681,7 @@ public class FXMLDocumentController implements Initializable {
 
         // checks that there is both a query and that a toggle button is depressed
         while ((!searchQuery.isEmpty()) && (btnDepressedId == null)) {
-            
+
             // capture the depressed buttons id by a string
             btnDepressedId = toggleGroupBookSearch.getSelectedToggle().getUserData().toString();
 
@@ -691,7 +689,6 @@ public class FXMLDocumentController implements Initializable {
             System.out.println(btnDepressedId);
         }
 
-            
         if (!searchQuery.isEmpty()) {
             BookObject[] bucher = new BookObject[1000];
             JDBC_Controller socket = new JDBC_Controller();
@@ -708,6 +705,7 @@ public class FXMLDocumentController implements Initializable {
             Thread.sleep(1000);
         }
     }
+
     ;
 
     /**
@@ -719,10 +717,10 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void switch_tab() {
-        
+
         // get all tab information
         books_tab_pane.getTabs().addAll(search_tab, newsearchtext, studentsearchqueryss, teturn_tab, borrows_tabs);
-       
+
         //field.setText("hello");
         System.out.println(books_tab_pane.getSelectionModel().getSelectedIndex());
 
@@ -731,12 +729,12 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    
     /**
      *
      * @author kwadwooteng-amoako
      * @date 13 November 2019
-     * @description allow the user to select the item which they wish to borrow and populate the borrow tab
+     * @description allow the user to select the item which they wish to borrow
+     * and populate the borrow tab
      *
      */
     @FXML
@@ -832,7 +830,6 @@ public class FXMLDocumentController implements Initializable {
         HBox hbox = new HBox();
         hbox.getChildren().addAll(label1, button1, button2);
 
-
         hbox.setAlignment(Pos.CENTER);
         Scene scene1 = new Scene(hbox, 500, 250);
 
@@ -905,7 +902,7 @@ public class FXMLDocumentController implements Initializable {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                
+
                 //complete the return request
                 select_search_item_return();
 
@@ -919,7 +916,7 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-     /**
+    /**
      *
      * @author kwadwooteng-amoako
      * @date 13 November 2019
@@ -1008,7 +1005,9 @@ public class FXMLDocumentController implements Initializable {
         borrow_image_box.setImage(image2);
         borrow_image_box.setPreserveRatio(true);
 
-    };
+    }
+
+    ;
 
     /**
      *
@@ -1039,7 +1038,9 @@ public class FXMLDocumentController implements Initializable {
         fx_borrowpage_school_level.setText(String.valueOf(obj.getClassd()));
         fx_borrowpage_id.setText(String.valueOf(obj.getId()));
 
-    };
+    }
+
+    ;
     
     /**
      *
@@ -1112,7 +1113,7 @@ public class FXMLDocumentController implements Initializable {
      * @author kwadwooteng-amoako
      * @date 13 November 2019
      * @description generate the pop-up window for user selection
-     */                                 
+     */
     @FXML
     public void popsup1() throws IOException, SQLException {
         // grab search query
@@ -1255,13 +1256,12 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    
     /**
      *
      * @author kwadwooteng-amoako
      * @date 14 November 2019
      * @description generate a random string used for storing image data
-     */  
+     */
     private String generateRandomString(int length) {
         // Random string suffix generator
         // Source: http://www.appsdeveloperblog.com/generate-random-string-in-java-different-ways/
@@ -1280,7 +1280,7 @@ public class FXMLDocumentController implements Initializable {
      * @author kwadwooteng-amoako
      * @date 14 November 2019
      * @description obtain a books isbn number
-     */  
+     */
     @FXML
     public String obtain_ISBN() throws SQLException, IOException {
 
@@ -1329,7 +1329,7 @@ public class FXMLDocumentController implements Initializable {
      * @author kwadwooteng-amoako
      * @date 14 November 2019
      * @description confirm books isbn nuber
-     */  
+     */
     @FXML
     public String confirm_ISBN() throws SQLException, IOException {
 
@@ -1386,7 +1386,7 @@ public class FXMLDocumentController implements Initializable {
      * @author kwadwooteng-amoako
      * @date 14 November 2019
      * @description generate a thanks dialog box
-     */  
+     */
     @FXML
     public void thanks_dialog() throws SQLException, IOException {
 
@@ -1404,7 +1404,7 @@ public class FXMLDocumentController implements Initializable {
      * @author kwadwooteng-amoako
      * @date 14 November 2019
      * @description generate an dialog box when the isbn is found to be in error
-     */  
+     */
     @FXML
     public void isbn_error() throws SQLException, IOException {
 
@@ -1423,7 +1423,7 @@ public class FXMLDocumentController implements Initializable {
      * @author kwadwooteng-amoako
      * @date 14 November 2019
      * @description checks that the isbn-10 value is considered accurate
-     */  
+     */
     public boolean check_isbn10(String value) {
         // the following routine will check an ISBN 10 number
         // And determine it's accuracy by returning a boolean
@@ -1466,7 +1466,9 @@ public class FXMLDocumentController implements Initializable {
         // return status
         return !(input_check_sum == null ? final_check_sum != null : !input_check_sum.equals(final_check_sum));
 
-    };
+    }
+
+    ;
 
         /**
         *
@@ -1524,6 +1526,7 @@ public class FXMLDocumentController implements Initializable {
         // return status
         return !(input_check_sum == null ? final_check_sum != null : !input_check_sum.equals(final_check_sum));
 
-    };
+    }
+;
 
 };
