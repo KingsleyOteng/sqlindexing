@@ -206,7 +206,7 @@ public class JDBC_Controller {
                 System.out.println("Empty results set");
                 return null;
 
-            } 
+            }
 
             while (rs.next()) {
 
@@ -224,8 +224,7 @@ public class JDBC_Controller {
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
-       
-        
+
         return obj;
     }
 
@@ -363,10 +362,9 @@ public class JDBC_Controller {
 
     ;
    
-    StudentRegisterd  jdbc_name_catalogue()
+    StudentRegisterd jdbc_name_catalogue()
             throws MalformedURLException, IOException, SQLException {
-        StudentRegisterd  obj = new StudentRegisterd();
-
+        StudentRegisterd obj = new StudentRegisterd();
 
         try {
 
@@ -380,7 +378,7 @@ public class JDBC_Controller {
 
             // update fields and then exit
             while (rs.next()) {
-               
+
                 obj.setLastname(rs.getString("LastName"));
                 obj.setClassd(rs.getInt("ClassWhenRecordCreated"));
                 obj.setNumberofbooks(rs.getInt("NumberOfBooksBorrowed"));
@@ -388,16 +386,18 @@ public class JDBC_Controller {
                 obj.setFirstname(rs.getString("FirstName"));
                 obj.setDate("hello");
                 obj.setTimestamp("one");
-            
+
                 break;
             }
 
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
-        
+
         return obj;
-    };
+    }
+
+    ;
     
     // ----------------------------------------------->
     /**
@@ -552,7 +552,7 @@ public class JDBC_Controller {
             st = (Statement) cn.createStatement();
 
             String sqlString;
-            
+
             sqlString = "INSERT INTO BookDB.Catalogue (BookName,Author) VALUES (?,?)";
 
             String sqlString2 = "INSERT INTO BookDB.Catalogue  (`BookName`, `Author`, `Category`, `CategoryDescription`, `BookID`, `DateBorrowed`, `DateDue`, `BorrowerID`, `ISBN1`, `ISBN2`, `Copy`, `Location`, `ImageURL`, `PublicationYear`, `BorrowedStatus`, `ImageFile`, `BookDescription`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -588,7 +588,9 @@ public class JDBC_Controller {
             System.out.println(e);
         }
 
-    };
+    }
+
+    ;
     
     // generate a data string and format it it into an acceptable java sql format
     public static java.sql.Date getCurrentJavaSqlDate() {

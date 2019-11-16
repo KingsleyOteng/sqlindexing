@@ -27,27 +27,27 @@ public class Google_Socket {
     public static final String GOOGLE_BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=";
     public static final String GOOGLE_BOOK_SEARCH_URL_END = "+download=epub";
 
-     /**
- * @date the code was edited Tuesday, 12th November, 2019.
- * @author kwadwooteng-amoako
- * @description parse the returned string removing unneccesary meta information
- */
-    String parse_search_phrase(String phrase)
-    {
+    /**
+     * @date the code was edited Tuesday, 12th November, 2019.
+     * @author kwadwooteng-amoako
+     * @description parse the returned string removing unneccesary meta
+     * information
+     */
+    String parse_search_phrase(String phrase) {
         // the following method reomves unwanted phrases from the parsed string
         phrase = phrase.replaceAll("\\[", "").trim();
         phrase = phrase.replaceAll("\\]", "").trim();
         phrase = phrase.replaceAll("  ", "").trim();
         phrase = phrase.replaceAll("\"", "").trim();
-        
+
         return phrase;
     }
-    
+
     /**
- * @date the code was edited Tuesday, 12th November, 2019.
- * @author kwadwooteng-amoako
- * @description find the google book using a title locator
- */
+     * @date the code was edited Tuesday, 12th November, 2019.
+     * @author kwadwooteng-amoako
+     * @description find the google book using a title locator
+     */
     BookObject google_find_book(
             String Title_locator
     ) throws MalformedURLException, IOException {
@@ -85,7 +85,7 @@ public class Google_Socket {
         br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         value = new StringBuilder();
         buffer = new char[1024];
-        
+
         // add the buffer results read from the string table to the value string
         for (int length = 0x0; (length = br.read(buffer)) > 0;) {
             value.append(buffer, 0, length);
@@ -97,7 +97,7 @@ public class Google_Socket {
         // ----> May purge
         System.out.println("Output from Server .... \n");
         int i = 1;
-       
+
         {
 
             // collect and track regex data
@@ -106,26 +106,26 @@ public class Google_Socket {
             parseResult = "";
             count = 0;
             groupCount = matcher_general.groupCount();
-            
+
             while (matcher_general.find()) {
 
                 // the book of words as an array
                 testString = new String[]{"XX", "authors", "title", "subtitle", "publisher", "publishedDate", "categories", "country", "smallThumbnail", "description", "printType", "pageCount"};
-                
+
                 // the book of words as a list
                 testStringList = Arrays.asList(testString);
-          
+
                 // create a dictionary to hold a phrase
                 stringMatcherPhrase = matcher_general.group(0);
-                
+
                 // add a terminator to the end of the phrase
                 stringMatcherPhrase = stringMatcherPhrase + "#XX";
 
                 spltStringMatcherPhrase = stringMatcherPhrase.split("\\b+");
-                
+
                 // create a list to hold the dictionary phrases
                 List<String> testSpltStringMatcherPhrase;
-                
+
                 // dictionary as a list
                 testSpltStringMatcherPhrase = Arrays.asList(spltStringMatcherPhrase);
 
@@ -147,11 +147,11 @@ public class Google_Socket {
 
                 //cycle through the set of phrases scraped from
                 for (Object stringIntersection1 : stringIntersection) {
-                    
+
                     // backout the current match phrase which will be used to update the database keyfield
                     matchedPhrase = stringIntersection1.toString();
                     if ((Arrays.asList(spltStringMatcherPhrase).contains(matchedPhrase)) && (!"XX".equals(matchedPhrase))) {
-                        
+
                         //System.out.println(">>>"+Arrays.stream(testString).filter(matcher_general.group(0)::contains).toArray().//);
                         switch (matchedPhrase) {
 
@@ -159,39 +159,39 @@ public class Google_Socket {
                             case "authors":
                                 bpo.setAuthor(matcher_general.group(1));
                                 break;
-                                
+
                             // set the title         
                             case "title":
                                 bpo.setBook(matcher_general.group(1));
                                 break;
-               
+
                             // set the publishers name
                             case "publisher":
                                 bpo.setPublisher(matcher_general.group(1));
                                 break;
-                                
+
                             // set the publication date                     
                             case "publishedDate":
                                 String phrase = this.parse_search_phrase(matcher_general.group(1));
-                                phrase = phrase.substring(0,4);
-                                bpo.setPublishedYear(Integer.valueOf(phrase.substring(0,4)));
+                                phrase = phrase.substring(0, 4);
+                                bpo.setPublishedYear(Integer.valueOf(phrase.substring(0, 4)));
                                 break;
-                                
+
                             // set the category name
                             case "categories":
                                 bpo.setCategories(this.parse_search_phrase(matcher_general.group(1)));
                                 break;
-                                
+
                             // set the country details
                             case "country":
                                 bpo.setCountry(matcher_general.group(1));
                                 break;
-                                
+
                             // set the thumbnail link
                             case "language":
                                 bpo.setLanguage(matcher_general.group(1));
                                 break;
-                                
+
                             // set the printed page count
                             case "pageCount":
                                 bpo.setPageCount(Integer.parseInt(matcher_general.group(1)));
@@ -206,7 +206,7 @@ public class Google_Socket {
                             case "identifier":
                                 bpo.setIdentifier(this.parse_search_phrase(matcher_general.group(1)));
                                 break;
-                                
+
                             // set description data
                             case "description":
                                 bpo.setDescription(this.parse_search_phrase(matcher_general.group(1)));
@@ -230,7 +230,7 @@ public class Google_Socket {
 
             }
         }
-        
+
         // return the string phrase
         return bpo;
     }

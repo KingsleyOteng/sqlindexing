@@ -19,12 +19,12 @@ public class LibraryBooksStatus {
     String name, book, author, status, student_year, filex, ISBN1, categories, description, thumbnailidentifier;
 
     /**
-    * @description construct a library object 
-    * @date 14 November 2019
-    * @author kwadwooteng-amoako
-    * @parameters 10 parameters
+     * @description construct a library object
+     * @date 14 November 2019
+     * @author kwadwooteng-amoako
+     * @parameters 10 parameters
      */
-    public LibraryBooksStatus(String ISBN1, int year, String name,  String book, String author, String status, String filex, String category, String description, String thumbnailidentifier) {
+    public LibraryBooksStatus(String ISBN1, int year, String name, String book, String author, String status, String filex, String category, String description, String thumbnailidentifier) {
         this.ISBN1 = ISBN1;
         this.year = year;
         this.name = name;
@@ -38,10 +38,10 @@ public class LibraryBooksStatus {
     }
 
     /**
-    * @description construct a library object 
-    * @date 14 November 2019
-    * @author kwadwooteng-amoako
-    * @parameters 6 parameters
+     * @description construct a library object
+     * @date 14 November 2019
+     * @author kwadwooteng-amoako
+     * @parameters 6 parameters
      */
     public LibraryBooksStatus(String ISBN1, String name, int year, String book, String author, String status) {
         this.ISBN1 = ISBN1;
@@ -53,10 +53,12 @@ public class LibraryBooksStatus {
     }
 
     /**
-    * @description construct a library object 
-    * @date 14 November 2019
-    * @author kwadwooteng-amoako
-    * @parameters 4 parameters
+     * @param book
+     * @param author
+     * @description construct a library object
+     * @date 14 November 2019
+     * @author kwadwooteng-amoako
+     * @parameters 4 parameters
      */
     public LibraryBooksStatus(String book, String author, String status, String ISBN1) {
         this.book = book;
@@ -66,10 +68,10 @@ public class LibraryBooksStatus {
     }
 
     /**
-    * @description construct a library object 
-    * @date 14 November 2019
-    * @author kwadwooteng-amoako
-    * @parameters 5 parameters
+     * @description construct a library object
+     * @date 14 November 2019
+     * @author kwadwooteng-amoako
+     * @parameters 5 parameters
      */
     public LibraryBooksStatus(String book, String author, String status, String ISBN1, String student_year) {
         this.book = book;
@@ -78,11 +80,11 @@ public class LibraryBooksStatus {
         this.student_year = student_year;
     }
 
-     /**
-    * @description construct a library object 
-    * @date 14 November 2019
-    * @author kwadwooteng-amoako
-    * @parameters 3 parameters
+    /**
+     * @description construct a library object
+     * @date 14 November 2019
+     * @author kwadwooteng-amoako
+     * @parameters 3 parameters
      */
     public LibraryBooksStatus(String book, String author, String status) {
         this.book = book;
@@ -137,17 +139,16 @@ public class LibraryBooksStatus {
     public String getAuthor() {
         return author;
     }
-    
+
     public String getCategories() {
         return categories;
     }
-     
+
     public String getDescription() {
         return description;
     }
-    
-    public String getThumbNailIdentifier()
-    {
+
+    public String getThumbNailIdentifier() {
         return this.thumbnailidentifier;
     }
 
@@ -198,17 +199,16 @@ public class LibraryBooksStatus {
     public void setStudent_year(String student_year) {
         this.student_year = student_year;
     }
-    
+
     public void setCategories(String categories) {
         this.categories = categories;
     }
-    
+
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    public void setThumbNailIdentifier(String thumbnailidentifier)
-    {
+
+    public void setThumbNailIdentifier(String thumbnailidentifier) {
         this.thumbnailidentifier = thumbnailidentifier;
     }
 
