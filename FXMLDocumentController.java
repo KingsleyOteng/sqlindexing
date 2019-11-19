@@ -5,6 +5,7 @@
  */
 package userinterface;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -436,7 +437,9 @@ public class FXMLDocumentController implements Initializable {
         calendar_start.getEditor().clear();
         calendar_start1.setValue(null);
         //System.out.println("You clicked me again 1111!");
-
+        
+        ProcessBuilder pb = new ProcessBuilder("Notepad.exe", "");
+        pb.start();
         //StudentRegisterd[] student_records = new StudentRegisterd[1000];
         //JDBC_Controller socket = new JDBC_Controller();
 
