@@ -419,16 +419,32 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
-        System.out.println("You clicked me again 1111!");
+        
+        
+        // clear all the fields in the date page
+        fx_borrowpage_author.setText("");
+        fx_borrowpage_title.setText("");
+        fx_borrowpage_published.setText("");
+        fx_borrowpage_description.setText("");
+        fx_borrowpage_isbn.setText("");
+        fx_borrowpage_overview.setText("");
+        fx_availability_status.setText("");
+        fx_borrowpage_borrower_firstname.setText("");
+        fx_borrowpage_borrower.setText("");
+        fx_borrowpage_school_level.setText("");
+        fx_borrowpage_id.setText("");
+        calendar_start.getEditor().clear();
+        calendar_start1.setValue(null);
+        //System.out.println("You clicked me again 1111!");
 
-        StudentRegisterd[] student_records = new StudentRegisterd[1000];
-        JDBC_Controller socket = new JDBC_Controller();
+        //StudentRegisterd[] student_records = new StudentRegisterd[1000];
+        //JDBC_Controller socket = new JDBC_Controller();
 
         /////////////////////////////
         //student_records = socket.jdbc_name_catalogue();
-        schoolCatalogueTable.getItems().clear();
+        //schoolCatalogueTable.getItems().clear();
         // this.insert_student_records_entry(student_records);
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
     }
 
