@@ -5,6 +5,7 @@
  */
 package userinterface;
 
+import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -54,6 +55,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.math.BigInteger;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -420,8 +422,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
-        
-        
+
         // clear all the fields in the date page
         fx_borrowpage_author.setText("");
         fx_borrowpage_title.setText("");
@@ -437,22 +438,33 @@ public class FXMLDocumentController implements Initializable {
         calendar_start.getEditor().clear();
         calendar_start1.setValue(null);
         //System.out.println("You clicked me again 1111!");
-        
+
         String fileHandle = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile.txt";
         File file = new File(fileHandle);
         Desktop.getDesktop().edit(file);
+
+        JTextPane jtp = new JTextPane();
+        jtp.setBackground(Color.white);
+        jtp.setText("text to print");
+
         
-            //ProcessBuilder pb = new ProcessBuilder("Notepad.exe", "/myfile.txt");
-            // pb.start();
+        // send to a printer
+        boolean show = true;
+        try {
+            jtp.print(null, null, show, null, null, show);
+        } catch (java.awt.print.PrinterException ex) {
+            ex.printStackTrace();
+        }
+
+        //ProcessBuilder pb = new ProcessBuilder("Notepad.exe", "/myfile.txt");
+        // pb.start();
         //StudentRegisterd[] student_records = new StudentRegisterd[1000];
         //JDBC_Controller socket = new JDBC_Controller();
-
         /////////////////////////////
         //student_records = socket.jdbc_name_catalogue();
         //schoolCatalogueTable.getItems().clear();
         // this.insert_student_records_entry(student_records);
         //Thread.sleep(1000);
-
     }
 
     // ----------------------------------------------->
