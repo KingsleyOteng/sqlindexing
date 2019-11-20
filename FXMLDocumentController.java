@@ -438,8 +438,12 @@ public class FXMLDocumentController implements Initializable {
         calendar_start1.setValue(null);
         //System.out.println("You clicked me again 1111!");
         
-        ProcessBuilder pb = new ProcessBuilder("Notepad.exe", "");
-        pb.start();
+        String fileHandle = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile.txt";
+        File file = new File(fileHandle);
+        Desktop.getDesktop().edit(file);
+        
+            //ProcessBuilder pb = new ProcessBuilder("Notepad.exe", "/myfile.txt");
+            // pb.start();
         //StudentRegisterd[] student_records = new StudentRegisterd[1000];
         //JDBC_Controller socket = new JDBC_Controller();
 
