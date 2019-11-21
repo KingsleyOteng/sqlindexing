@@ -131,7 +131,7 @@ public class Google_Socket {
 
                 // include a dummy variable for matching
                 // initially seartch such that only candidate strings are searched
-                testStringList.contains(testSpltStringMatcherPhrase);
+                boolean contains = testStringList.contains(testSpltStringMatcherPhrase);
 
                 // create a dictionary of interesecting words
                 intersection = new HashSet<>();
