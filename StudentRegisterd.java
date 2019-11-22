@@ -32,53 +32,58 @@ public class StudentRegisterd {
         this.timestamp = timestamp;
     }
 
-    // field to store the students lastname
+    // field to get the students lastname
     public String getLastname() {
         return lastname;
     }
 
-    // field to store the studnets class
+    // field to get the studnets class
     public int getClassd() {
         return classd;
     }
 
-    // field to store number of books borrowed. 
+    // field to get number of books borrowed. 
     public int getNumberofbooks() {
         return numberofbooks;
     }
 
-    // field to stroe the students id number
+    // field to get the students id number
     public int getId() {
         return id;
     }
 
-    // field to store the corresponding ISBN number of the book borrowed. 
+    // field to get the corresponding ISBN number of the book borrowed. 
     public int getISBN() {
         return isbn;
     } 
     
-    // field to store the school that the student attends
+    // field to get the school that the student attends
     public String getSchool() {
         return school;
     }
 
-    // field to store the book id of the book borrowed. 
+    // field to get the book id of the book borrowed. 
     public String getBookid() {
         return bookid;
     }
 
+    
+    // field to store the book id of the book borrowed. 
     public String getFirstname() {
         return firstname;
     }
 
+    // field to store the borrow date
     public String getDate() {
         return date;
     }
-
+    
+    // fields to get the time stamp
     public String getTimestamp() {
         return timestamp;
     }
 
+    // field to set the students name
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
