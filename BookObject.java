@@ -80,48 +80,57 @@ public class BookObject {
         this.categories = categories;
     }
 
+    // set information on the book categories
     public String getCategories() {
         return this.categories;
     }
 
+    // set information relating to an overview of the book
     public void setOverview(String overview) {
         this.overview = overview;
     }
 
+    // set language information
     public void setLanguage(String language) {
         this.language = language;
     }
 
     ;
     
+    // set country information
     public void setCountry(String country) {
         this.country = country;
     }
 
     ;
     
+    // set page count information
     public void setPageCount(int pagecount) {
         this.pagecount = pagecount;
     }
 
     ;
     
+    // set information relating to the year the book was published
      public void setPublishedYear(int publishedyear) {
         this.publishedyear = publishedyear;
     }
 
     ;
      
+    // set the media type
     public void setPrintType(String Type) {
         this.printtype = Type;
     }
 
     ;
     
+    // set the id number
     public void setId(int id) {
         this.id = id;
     }
 
+    // set the ISBN identifier
     public void setIdentifier(String identifier) {
         this.identifier = identifier;
 
@@ -132,22 +141,27 @@ public class BookObject {
         }
     }
 
+    // set the student name
     public void setStudent_name(String student_name) {
         this.student_name = student_name;
     }
 
+    // set the student year
     public void setStudent_year(int student_year) {
         this.student_year = student_year;
     }
 
+    // set the book name
     public void setBook(String book_name) {
         this.book_name = book_name;
     }
 
+    // set the author name
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    // set the book status
     public void setStatus(Boolean status) {
         if (status == true) {
             this.status = "Borrowed";
@@ -156,30 +170,37 @@ public class BookObject {
         }
     }
 
+    // set the ISBN number
     public void setISBN1(String isbn1) {
         this.isbn1 = isbn1;
     }
 
+    // set the ISBN number format 2
     public void setISBN2(String isbn1) {
         this.isbn1 = isbn2;
     }
 
+    // set the year that the book as published
     public void setYear(String year) {
         this.year = year;
     }
 
+    // set the books publisher
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
 
+    // provide a description of the book
     public void setDescription(String description) {
         this.description = description;
     }
 
+    // set the filepath of the book
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
 
+    // provide a link to the thumbnail identifier
     public void setThumbNailIndentifier(String thumbnailIdentifier) {
         this.thumbnailIdentifier = thumbnailIdentifier;
     }
