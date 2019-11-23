@@ -1,4 +1,4 @@
-/*
+	/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -205,70 +205,87 @@ public class BookObject {
         this.thumbnailIdentifier = thumbnailIdentifier;
     }
 
+    // obtain the book id
     public int getId() {
         return id;
     }
 
+    // obtain the page count
     public int getPageCount() {
         return pagecount;
     }
 
+    // obtain information relating to a book overview
     public String getOverview() {
         return overview;
     }
 
+    // obtain information relating to a book description
     public String getDescription() {
         return description;
     }
 
+    // obtain information relating to the student name
     public String getStudent_name() {
         return student_name;
     }
 
+    // obtain information relating to the student year
     public int getStudent_year() {
         return student_year;
     }
 
+    // obtain information relating to the year the book was published
     public int getPublishedYEar() {
         return publishedyear;
     }
 
+    // obtain information relating to the publisher
     public String getPublisher() {
         return publisher;
     }
 
+    // obtain the book name
     public String getBook() {
         return book_name;
     }
 
+    // obtain the author name
     public String getAuthor() {
         return author;
     }
 
+    // obtain the status of the book
     public String getStatus() {
         return this.status;
     }
 
+    // obtain the ISBN number
     public String getISBN1() {
         return isbn1;
     }
 
+    // obtain the ISBN number format 2
     public String getISBN2() {
         return isbn2;
     }
 
+    // obtain the file path
     public String getFilePath() {
         return filePath;
     }
 
+    // obtain the book year
     public String getYear() {
         return year;
     }
 
+    // obtain the book identifier
     public String getIdentifier() {
         return identifier;
     }
 
+    // obtain a link to the identifier
     public String getThumbNailIndentifier() {
         return this.thumbnailIdentifier;
     }
