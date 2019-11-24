@@ -42,26 +42,32 @@ public class PupilObject {
         this.bookid = bookid;
     }
 
+    // get information related to the number of books
     public int getNumberofbooksborrowed() {
         return numberofbooksborrowed;
     }
 
+    // get information related to the date
     public int getDate() {
         return date;
     }
 
+    // get the timestamp information
     public int getTimestamp() {
         return timestamp;
     }
 
+    // get the lastname information
     public String getLastname() {
         return lastname;
     }
 
+    // get the firstname information
     public String getFirstname() {
         return firstname;
     }
 
+    // get the class when the record was created information
     public String getClasswhenrecordcreated() {
         return classwhenrecordcreated;
     }
@@ -111,22 +117,27 @@ public class PupilObject {
         this.firstname = firstname;
     }
 
+    // set the class field - for when the record was created
     public void setClasswhenrecordcreated(String classwhenrecordcreated) {
         this.classwhenrecordcreated = classwhenrecordcreated;
     }
 
+    // set the borrower id
     public void setBorrowerid(String borrowerid) {
         this.borrowerid = borrowerid;
     }
 
+    // set the schcool information
     public void setSchool(String school) {
         this.school = school;
     }
 
+    // set the book id information
     public void setBookid(String bookid) {
         this.bookid = bookid;
     }
 
+    // set the designated library information
     public static void setLibrary(String library) {
         PupilObject.library = library;
     }
