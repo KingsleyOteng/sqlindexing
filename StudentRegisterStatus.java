@@ -43,6 +43,7 @@ public class StudentRegisterStatus {
         
     }
     
+    // get the user id
     public int getId() {
         return id;
     }
