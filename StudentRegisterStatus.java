@@ -48,30 +48,37 @@ public class StudentRegisterStatus {
         return id;
     }
 
+    // get the year information
     public int getYear() {
         return year;
     }
 
+    // get the name information
     public String getName() {
         return name;
     }
 
+    // get the book information
     public String getBook() {
         return book;
     }
 
+    // get the author information
     public String getAuthor() {
         return author;
     }
 
+    // set the id information
     public void setId(int id) {
         this.id = id;
     }
 
+    // set the year information
     public void setYear(int year) {
         this.year = year;
     }
 
+    // set the name information
     public void setName(String name) {
         this.name = name;
     }
