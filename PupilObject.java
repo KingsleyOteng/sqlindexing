@@ -105,7 +105,8 @@ public class PupilObject {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-
+    
+    // set the first name
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
