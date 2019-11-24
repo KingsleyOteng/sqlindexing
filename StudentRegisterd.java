@@ -88,34 +88,42 @@ public class StudentRegisterd {
         this.lastname = lastname;
     }
 
+    // field to set the students class
     public void setClassd(int classd) {
         this.classd = classd;
     }
 
+    // fiel to set the number of books
     public void setNumberofbooks(int numberofbooks) {
         this.numberofbooks = numberofbooks;
     }
 
+    // filed to set the students id
     public void setId(int id) {
         this.id = id;
     }
 
+    // set the school parameter
     public void setSchool(String school) {
         this.school = school;
     }
 
+    // set the book id parameter
     public void setBookid(String bookid) {
         this.bookid = bookid;
     }
 
+    // set the firstname parameter
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
+    // set the date parameter
     public void setDate(String date) {
         this.date = date;
     }
 
+    // set the timestamp parameter
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
