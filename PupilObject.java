@@ -66,34 +66,42 @@ public class PupilObject {
         return classwhenrecordcreated;
     }
 
+    // get the borrower id information
     public String getBorrowerid() {
         return borrowerid;
     }
 
+    // get the school infrmation
     public String getSchool() {
         return school;
     }
 
+    // get the book id information
     public String getBookid() {
         return bookid;
     }
 
+    // get the library information
     public static String getLibrary() {
         return library;
     }
 
+    // set the number of books read
     public void setNumberofbooksborrowed(int numberofbooksborrowed) {
         this.numberofbooksborrowed = numberofbooksborrowed;
     }
 
+    // set the current date
     public void setDate(int date) {
         this.date = date;
     }
 
+    // get the timestamp information
     public void setTimestamp(int timestamp) {
         this.timestamp = timestamp;
     }
 
+    // set the lastname information
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }

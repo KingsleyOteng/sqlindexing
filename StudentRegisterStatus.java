@@ -83,10 +83,12 @@ public class StudentRegisterStatus {
         this.name = name;
     }
 
+    // set the book information
     public void setBook(String book) {
         this.book = book;
     }
 
+    // set the author information
     public void setAuthor(String author) {
         this.author = author;
     }
