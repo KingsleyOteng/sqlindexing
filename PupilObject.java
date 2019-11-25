@@ -18,6 +18,7 @@ public class PupilObject {
     private String lastname, firstname, classwhenrecordcreated, borrowerid, school, bookid;
     private static String library;
 
+    // pupil object constructor
     PupilObject() {
         numberofbooksborrowed = 0;
         date = 0;
@@ -29,6 +30,7 @@ public class PupilObject {
         bookid = "";
         school = "";
     }
+
 
     public PupilObject(int numberofbooksborrowed, int date, int timestamp, String lastname, String firstname, String classwhenrecordcreated, String borrowerid, String school, String bookid) {
         this.numberofbooksborrowed = numberofbooksborrowed;
