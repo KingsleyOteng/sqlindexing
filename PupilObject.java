@@ -31,7 +31,7 @@ public class PupilObject {
         school = "";
     }
 
-
+    // method to initiate the pupil object
     public PupilObject(int numberofbooksborrowed, int date, int timestamp, String lastname, String firstname, String classwhenrecordcreated, String borrowerid, String school, String bookid) {
         this.numberofbooksborrowed = numberofbooksborrowed;
         this.date = date;
