@@ -92,28 +92,34 @@ public class LibraryBooksStatus {
         this.status = status;
     }
 
+    // get the ISBN details
     public String getISBN1() {
         return ISBN1;
 
     }
 
+    // get the file details
     public String getFILE() {
         return filex;
 
     }
-
+    
+    // get the year details
     public int getYear() {
         return year;
     }
 
+    // get the book details
     public String getBOOK() {
         return book;
     }
 
+    // get the ISBN details
     public String getISBN() {
         return ISBN1;
     }
 
+    // get the published year details
     public int getPublishedYear() {
         return year;
     }

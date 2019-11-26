@@ -18,6 +18,7 @@ public class BookObject {
     private String printtype, thumbnailIdentifier, language, identifier10, identifier, country, student_name, book_name, author, publisher, status, isbn1, isbn2, year, filePath, description, overview, categories;
     private static String library;
 
+    // constructor
     BookObject() {
         pagecount = 0;
         language = "";
