@@ -64,23 +64,22 @@ public class BookObject {
         this.thumbnailIdentifier = thumbnailIdentifier;
     }
 
+    // set the library parameter
     private static void setLibrary(String library) {
         BookObject.library = library;
     }
 
+    // get the library parameter
     private static String getLibrary() {
         return BookObject.library;
     }
 
-    /**
-     *
-     * @return
-     */
+    // set the categorisation parameter
     public void setCategories(String categories) {
         this.categories = categories;
     }
 
-    // set information on the book categories
+    // get categorisation parameter
     public String getCategories() {
         return this.categories;
     }
