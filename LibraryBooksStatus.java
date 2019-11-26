@@ -124,96 +124,119 @@ public class LibraryBooksStatus {
         return year;
     }
 
+    // get the status details
     public String getStatus() {
         return status;
     }
 
     ;
 
+    // get the book id
     public int getId() {
         return id;
     }
 
+    // get the name details
     public String getName() {
         return name;
     }
 
+    // get the book details
     public String getBook() {
         return book;
     }
 
+    // get the author details
     public String getAuthor() {
         return author;
     }
 
+    // get the category details
     public String getCategories() {
         return categories;
     }
 
+    // get the book description details
     public String getDescription() {
         return description;
     }
 
+    // get the thumbnail identifier details
     public String getThumbNailIdentifier() {
         return this.thumbnailidentifier;
     }
 
+    // set the id 
     public void setId(int id) {
         this.id = id;
     }
 
+    // set the status 
     public void setStatus(String status) {
         this.status = status;
     }
 
+    // set the first ISBN number
     public void setISBN1(String ISBN1) {
         this.ISBN1 = ISBN1;
     }
 
+    // set the name of the borrower
     public void setName(String name) {
         this.name = name;
     }
 
+    // set the book title
     public void setBook(String book) {
         this.book = book;
     }
 
+    // set the author details
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    // set the year
     public void setYear(int year) {
         this.year = year;
     }
 
+    // set the file details
     public void setFile(String file) {
         this.filex = file;
     }
 
+    // get the isbn details
     public String getIsbn1() {
         return ISBN1;
     }
 
+    // get the student year
     public String getStudent_year() {
         return student_year;
     }
 
+    // set the isbn1 number
     public void setIsbn1(String ISBN1) {
         this.ISBN1 = ISBN1;
     }
 
+    // set the student and year details
     public void setStudent_year(String student_year) {
         this.student_year = student_year;
     }
 
+    // set the categorisation
     public void setCategories(String categories) {
         this.categories = categories;
     }
-
+    
+    // set the descriptor details
     public void setDescription(String description) {
         this.description = description;
     }
 
+    // set the thumbnail identifier
     public void setThumbNailIdentifier(String thumbnailidentifier) {
         this.thumbnailidentifier = thumbnailidentifier;
     }
