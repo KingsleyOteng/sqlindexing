@@ -43,14 +43,18 @@ public class SearchBarBookStatus {
         return status;
     }
 
+    
+    // get the books isbn
     public String getIsbn1() {
         return isbn1;
     }
 
+    // set the books status
     public void setStatus(String status) {
         this.status = status;
     }
 
+    // set the book name
     public void setBook(String book) {
         this.book = book;
     }
