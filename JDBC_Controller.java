@@ -362,6 +362,7 @@ public class JDBC_Controller {
 
     ;
    
+    // set the jdbc name catalogue
     StudentRegisterd jdbc_name_catalogue()
             throws MalformedURLException, IOException, SQLException {
         StudentRegisterd obj = new StudentRegisterd();
