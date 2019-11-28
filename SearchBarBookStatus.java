@@ -31,6 +31,7 @@ public class SearchBarBookStatus {
 
     }
 
+    // get the book name
     public String getBook() {
         return book;
     }
@@ -39,6 +40,8 @@ public class SearchBarBookStatus {
         return author;
     }
 
+    
+    // get the book status
     public String getStatus() {
         return status;
     }
@@ -59,10 +62,12 @@ public class SearchBarBookStatus {
         this.book = book;
     }
 
+    // set the authors name
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    // set the isbn number
     public void setIsbn1(String isbn1) {
         this.isbn1 = isbn1;
     }

@@ -11,6 +11,7 @@ package userinterface;
  */
 class tableView {
 
+    // This is used for a tableview lookup
     static void lookupAll(String columnheader) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
