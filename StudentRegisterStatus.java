@@ -12,6 +12,8 @@ package userinterface;
  */
 public class StudentRegisterStatus {
 
+    
+    // variables
     int id, year, isbn;
     String name, book, author, status;
 

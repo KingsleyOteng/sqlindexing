@@ -14,8 +14,10 @@ import java.util.Objects;
  */
 public class SearchBarBookStatus {
 
+    // variables
     String book, author, status, isbn1;
 
+    // initialization
     public SearchBarBookStatus(String book, String author, String status) {
         this.book = book;
         this.author = author;
@@ -23,6 +25,7 @@ public class SearchBarBookStatus {
 
     }
 
+    // initialization
     public SearchBarBookStatus(String book, String author, String status, String isbn1) {
         this.book = book;
         this.author = author;
