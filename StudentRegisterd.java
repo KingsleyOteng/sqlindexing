@@ -15,11 +15,13 @@ public class StudentRegisterd {
     int classd, numberofbooks, id, isbn;
     String lastname, school, bookid, firstname,date,timestamp;
     
+    // constructor
     public StudentRegisterd()
     {
         
     };
 
+    // intialization
     public StudentRegisterd(String lastname, int classd, int numberofbooks, int id, String school, String bookid, String firstname, String date, String timestamp) {
         this.lastname = lastname;
         this.classd = classd;
