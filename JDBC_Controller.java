@@ -198,6 +198,11 @@ public class JDBC_Controller {
                 default:
 
             }
+            catch (Exception e) 
+                    {
+            System.out.println(e);
+            }
+            
 
             int i = 0;
 
