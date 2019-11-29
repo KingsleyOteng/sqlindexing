@@ -15,6 +15,7 @@ public class StudentRegisterStatus {
     int id, year, isbn;
     String name, book, author, status;
 
+    // an initializer
     public StudentRegisterStatus() {
         this.id = 0;
         this.year = 0;
@@ -25,6 +26,7 @@ public class StudentRegisterStatus {
         this.isbn = 0;
     }
     
+    // an initializer
     public StudentRegisterStatus(int id, String name, int year, String book, String author) {
         this.id = id;
         this.year = year;
@@ -33,6 +35,7 @@ public class StudentRegisterStatus {
         this.author = author;
     }
 
+    // an initializer
     public StudentRegisterStatus(String isbn, String name, int year, String book, String author, String status) {
         this.isbn = Integer.valueOf(isbn);
         this.book = book;

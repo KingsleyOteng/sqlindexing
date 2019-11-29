@@ -287,7 +287,6 @@ public class JDBC_Controller {
             throws MalformedURLException, IOException, SQLException {
         StudentRegisterd obj = new StudentRegisterd();
 
-        System.out.println();
         try {
 
             //create socket
@@ -331,7 +330,6 @@ public class JDBC_Controller {
             throws MalformedURLException, IOException, SQLException {
         StudentRegisterd obj = new StudentRegisterd();
 
-        System.out.println();
         try {
 
             //create socket
@@ -412,7 +410,6 @@ public class JDBC_Controller {
             throws MalformedURLException, IOException, SQLException {
         StudentRegisterd obj = new StudentRegisterd();
 
-        System.out.println();
         try {
 
             //create socket
@@ -455,7 +452,6 @@ public class JDBC_Controller {
             throws MalformedURLException, IOException, SQLException {
         StudentRegisterd obj = new StudentRegisterd();
 
-        System.out.println();
         try {
 
             //create socket
