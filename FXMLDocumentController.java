@@ -10,6 +10,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -55,6 +56,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.math.BigInteger;
+import java.util.Scanner;
 import javax.swing.JTextPane;
 
 /**
@@ -439,23 +441,34 @@ public class FXMLDocumentController implements Initializable {
         calendar_start1.setValue(null);
         //System.out.println("You clicked me again 1111!");
 
+        Scanner in = new Scanner(System.in);
+        File outFile = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile.txt");
+        PrintWriter out = new PrintWriter(outFile);
+
+        // Echo keyboard input out to the file.
+        while (in.hasNextLine()) 
+        {
+           // String line = in.nextLine();
+            out.println("Orientalism \\ Minimalism");
+        }
+
+        System.out.println("Done");
+        out.close(); // Important: don't forget to close!
+
         String fileHandle = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile.txt";
         File file = new File(fileHandle);
         Desktop.getDesktop().edit(file);
 
-        JTextPane jtp = new JTextPane();
-        jtp.setBackground(Color.white);
-        jtp.setText("text to print");
-
-        
+        //JTextPane jtp = new JTextPane();
+        //jtp.setBackground(Color.white);
+        // jtp.setText("text to print");
         // send to a printer
-        boolean show = true;
-        try {
-            jtp.print(null, null, show, null, null, show);
-        } catch (java.awt.print.PrinterException ex) {
-            ex.printStackTrace();
-        }
-
+        //  boolean show = true;
+        //    try {
+        //     jtp.print(null, null, show, null, null, show);
+        //   } catch (java.awt.print.PrinterException ex) {
+        //        ex.printStackTrace();
+        //     }
         //ProcessBuilder pb = new ProcessBuilder("Notepad.exe", "/myfile.txt");
         // pb.start();
         //StudentRegisterd[] student_records = new StudentRegisterd[1000];
