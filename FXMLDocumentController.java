@@ -426,6 +426,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
 
+        
+        Scanner in = new Scanner(System.in);
+        FileWriter outFile = new FileWriter("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile2.txt");
+        PrintWriter out = new PrintWriter(outFile);
+        out.printf("////////////////////////////////");
+        out.printf("// The Hilltop British School //");
+        out.printf("//    Kumasi, Daban, Ghana.   //");
+        out.printf("//    Phone: +233 244854490   //");
         // clear all the fields in the date page
         fx_borrowpage_author.setText("");
         fx_borrowpage_title.setText("");
@@ -442,11 +450,8 @@ public class FXMLDocumentController implements Initializable {
         calendar_start1.setValue(null);
         //System.out.println("You clicked me again 1111!");
 
-        Scanner in = new Scanner(System.in);
-        FileWriter outFile = new FileWriter("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile2.txt");
-        PrintWriter out = new PrintWriter(outFile);
-        out.printf("Orientalism \\ Minimalism");
-       
+        
+
         System.out.println("Done");
         out.close(); // Important: don't forget to close!
 
@@ -454,25 +459,7 @@ public class FXMLDocumentController implements Initializable {
         File file = new File(fileHandle);
         Desktop.getDesktop().edit(file);
 
-        //JTextPane jtp = new JTextPane();
-        //jtp.setBackground(Color.white);
-        // jtp.setText("text to print");
-        // send to a printer
-        //  boolean show = true;
-        //    try {
-        //     jtp.print(null, null, show, null, null, show);
-        //   } catch (java.awt.print.PrinterException ex) {
-        //        ex.printStackTrace();
-        //     }
-        //ProcessBuilder pb = new ProcessBuilder("Notepad.exe", "/myfile.txt");
-        // pb.start();
-        //StudentRegisterd[] student_records = new StudentRegisterd[1000];
-        //JDBC_Controller socket = new JDBC_Controller();
-        /////////////////////////////
-        //student_records = socket.jdbc_name_catalogue();
-        //schoolCatalogueTable.getItems().clear();
-        // this.insert_student_records_entry(student_records);
-        //Thread.sleep(1000);
+        //Desktop.getDesktop().print(file);
     }
 
     // ----------------------------------------------->
@@ -1570,6 +1557,17 @@ public class FXMLDocumentController implements Initializable {
         return !(input_check_sum == null ? final_check_sum != null : !input_check_sum.equals(final_check_sum));
 
     }
-;
+
+    ;
+        
+        /**
+        *
+        * @author kwadwooteng-amoako
+        * @date 14 November 2019
+        * @description checks that the isbn-13 value is considered accurate
+        */  
+        public void print_receipt() {
+
+        };
 
 };
