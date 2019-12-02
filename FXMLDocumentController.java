@@ -432,11 +432,18 @@ public class FXMLDocumentController implements Initializable {
         FileWriter outFile = new FileWriter("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile2.txt");
         PrintWriter out = new PrintWriter(outFile);
         out.printf("//////////////////////////////// %n");
-        out.printf(" %n");
         out.printf("// The Hilltop British School // %n");
-        out.printf(" %n");
+        out.printf("//                            // %n");
         out.printf("//    Kumasi, Daban, Ghana.   // %n");
         out.printf("//    Phone: +233 244854490   // %n");
+        out.printf("//                            // %n");
+        out.printf("//                            // %n");
+        out.printf("//                            // %n");
+        out.printf("// Borrowed: "+fx_borrowpage_title.getText() +" by " + fx_borrowpage_author.getText() + " // %n");
+        out.printf("//                            // %n");
+        out.printf("//  Date Borrowed: " + calendar_start.getEditor().toString()  +  "   // %n");
+        out.printf("//  Date Due: " + calendar_start1.getEditor().toString() +  "   // %n");
+        
         // clear all the fields in the date page
         fx_borrowpage_author.setText("");
         fx_borrowpage_title.setText("");
