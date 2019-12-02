@@ -438,11 +438,15 @@ public class FXMLDocumentController implements Initializable {
         out.printf("//    Phone: +233 244854490   // %n");
         out.printf("//                            // %n");
         out.printf("//                            // %n");
+        out.printf("//    Library: HIBS           // %n");
         out.printf("//                            // %n");
         out.printf("// Borrowed: "+fx_borrowpage_title.getText() +" by " + fx_borrowpage_author.getText() + " // %n");
         out.printf("//                            // %n");
         out.printf("//  Date Borrowed: " + calendar_start.getEditor().toString()  +  "   // %n");
         out.printf("//  Date Due: " + calendar_start1.getEditor().toString() +  "   // %n");
+        out.printf("//                            // %n");
+        out.printf("//                            // %n");
+        out.printf("//////////////////////////////// %n");
         
         // clear all the fields in the date page
         fx_borrowpage_author.setText("");
