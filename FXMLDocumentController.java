@@ -435,8 +435,8 @@ public class FXMLDocumentController implements Initializable {
         out.printf(" %n");
         out.printf("// The Hilltop British School // %n");
         out.printf(" %n");
-        out.printf("//    Kumasi, Daban, Ghana.   // \r\n");
-        out.printf("//    Phone: +233 244854490   // \r\n");
+        out.printf("//    Kumasi, Daban, Ghana.   // %n");
+        out.printf("//    Phone: +233 244854490   // %n");
         // clear all the fields in the date page
         fx_borrowpage_author.setText("");
         fx_borrowpage_title.setText("");
