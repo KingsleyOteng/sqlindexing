@@ -8,6 +8,7 @@ package userinterface;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -442,20 +443,14 @@ public class FXMLDocumentController implements Initializable {
         //System.out.println("You clicked me again 1111!");
 
         Scanner in = new Scanner(System.in);
-        File outFile = new File("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile.txt");
+        FileWriter outFile = new FileWriter("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile2.txt");
         PrintWriter out = new PrintWriter(outFile);
-
-        // Echo keyboard input out to the file.
-        while (in.hasNextLine()) 
-        {
-           // String line = in.nextLine();
-            out.println("Orientalism \\ Minimalism");
-        }
-
+        out.printf("Orientalism \\ Minimalism");
+       
         System.out.println("Done");
         out.close(); // Important: don't forget to close!
 
-        String fileHandle = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile.txt";
+        String fileHandle = "/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile2.txt";
         File file = new File(fileHandle);
         Desktop.getDesktop().edit(file);
 
