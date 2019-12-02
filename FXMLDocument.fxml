@@ -135,7 +135,7 @@
                         <DatePicker fx:id="calendar_start" layoutX="112.0" layoutY="519.0" />
                         <Label layoutX="26.0" layoutY="524.0" text="Date Start" />
                         <CheckBox layoutX="386.0" layoutY="524.0" mnemonicParsing="false" text="Print Receipt" />
-                        <Button id="button1" fx:id="myButton" layoutX="502.0" layoutY="19.0" mnemonicParsing="false" onAction="#borrowpage_button" prefHeight="67.0" prefWidth="274.0" text="ADD" />
+                        <Button id="button1" fx:id="myButton" layoutX="502.0" layoutY="19.0" mnemonicParsing="false" onAction="#borrowpage_button" prefHeight="67.0" prefWidth="274.0" text="Add" />
                         <Label layoutX="25.0" layoutY="490.0" text="Hilltop ID#" />
                         <TextField fx:id="fx_borrowpage_id" layoutX="111.0" layoutY="485.0" prefHeight="27.0" prefWidth="378.0" promptText="ID Number" />
                         <Label layoutX="25.0" layoutY="201.0" text="Overview" />
@@ -143,12 +143,14 @@
                         <Text layoutX="727.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
                         <TextField fx:id="fx_availability_status" layoutX="112.0" layoutY="316.0" prefHeight="27.0" prefWidth="378.0" promptText="Status" />
                         <Label layoutX="25.0" layoutY="320.0" text="Availability" />
-                        <ImageView fx:id="borrow_image_box" fitHeight="206.0" fitWidth="136.0" layoutX="571.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="borrow_image_box" fitHeight="266.0" fitWidth="177.0" layoutX="550.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="photobox_borrow" fitHeight="150.0" fitWidth="122.0" layoutX="578.0" layoutY="415.0" pickOnBounds="true" preserveRatio="true" />
                         <TextArea fx:id="fx_borrowpage_overview" layoutX="112.0" layoutY="201.0" prefHeight="110.0" prefWidth="377.0" promptText="Overview" />
                         <Label layoutX="25.0" layoutY="387.0" text="Borrower" />
                         <TextField fx:id="fx_borrowpage_borrower_firstname" layoutX="111.0" layoutY="382.0" onKeyPressed="#quick_search_firstname" prefHeight="27.0" prefWidth="378.0" promptText="First name" />
                         <DatePicker fx:id="calendar_start1" layoutX="112.0" layoutY="551.0" />
+                        <TextArea fx:id="fx_borrowpage_overview1" layoutX="502.0" layoutY="90.0" prefHeight="151.0" prefWidth="273.0" promptText="Book trolley" />
+                        <Button id="button1" fx:id="myButton1" layoutX="502.0" layoutY="244.0" mnemonicParsing="false" onAction="#borrowpage_button" prefHeight="67.0" prefWidth="274.0" text="Checkout" />
                      </children></AnchorPane>
             </content>
           </Tab>
