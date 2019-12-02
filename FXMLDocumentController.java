@@ -438,7 +438,7 @@ public class FXMLDocumentController implements Initializable {
         out.printf("//    Phone: +233 244854490   // %n");
         out.printf("//                            // %n");
         out.printf("//                            // %n");
-        out.printf("//    Library: HIBS           // %n");
+        out.printf("//    Library: HIBS Library   // %n");
         out.printf("//                            // %n");
         out.printf("// Borrowed: "+fx_borrowpage_title.getText() +" by " + fx_borrowpage_author.getText() + " // %n");
         out.printf("//                            // %n");
