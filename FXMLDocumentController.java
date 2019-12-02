@@ -430,10 +430,10 @@ public class FXMLDocumentController implements Initializable {
         Scanner in = new Scanner(System.in);
         FileWriter outFile = new FileWriter("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile2.txt");
         PrintWriter out = new PrintWriter(outFile);
-        out.printf("////////////////////////////////");
-        out.printf("// The Hilltop British School //");
-        out.printf("//    Kumasi, Daban, Ghana.   //");
-        out.printf("//    Phone: +233 244854490   //");
+        out.printf("//////////////////////////////// \r\n");
+        out.printf("// The Hilltop British School // \r\n");
+        out.printf("//    Kumasi, Daban, Ghana.   // \r\n");
+        out.printf("//    Phone: +233 244854490   // \r\n");
         // clear all the fields in the date page
         fx_borrowpage_author.setText("");
         fx_borrowpage_title.setText("");
