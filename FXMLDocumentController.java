@@ -446,6 +446,7 @@ public class FXMLDocumentController implements Initializable {
         out.printf("//  Date Due: " + calendar_start1.getEditor().toString() +  "   // %n");
         out.printf("//                            // %n");
         out.printf("//                            // %n");
+        out.printf("//                            // %n");
         out.printf("//////////////////////////////// %n");
         
         // clear all the fields in the date page
