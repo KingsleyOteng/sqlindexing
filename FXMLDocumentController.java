@@ -1620,7 +1620,7 @@ public class FXMLDocumentController implements Initializable {
             fx_borrowpage_id.setText("");
             calendar_start.getEditor().clear();
             calendar_start1.setValue(null);
-            Thread.sleep(50);
+            Thread.sleep(5000);
         } catch (InterruptedException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
