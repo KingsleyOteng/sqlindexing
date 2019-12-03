@@ -135,7 +135,7 @@
                         <DatePicker fx:id="calendar_start" layoutX="112.0" layoutY="519.0" />
                         <Label layoutX="26.0" layoutY="524.0" text="Date Start" />
                         <CheckBox layoutX="386.0" layoutY="524.0" mnemonicParsing="false" text="Print Receipt" />
-                        <Button id="button1" fx:id="myButton" layoutX="312.0" layoutY="553.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="179.0" text="Add" />
+                        <Button id="button1" fx:id="myButton" layoutX="312.0" layoutY="553.0" mnemonicParsing="false" onAction="#addBookToCheckOut" prefHeight="23.0" prefWidth="179.0" text="Add" />
                         <Label layoutX="25.0" layoutY="490.0" text="Hilltop ID#" />
                         <TextField fx:id="fx_borrowpage_id" layoutX="111.0" layoutY="485.0" prefHeight="27.0" prefWidth="378.0" promptText="ID Number" />
                         <Label layoutX="25.0" layoutY="201.0" text="Overview" />
@@ -149,7 +149,7 @@
                         <Label layoutX="25.0" layoutY="387.0" text="Borrower" />
                         <TextField fx:id="fx_borrowpage_borrower_firstname" layoutX="111.0" layoutY="382.0" onKeyPressed="#quick_search_firstname" prefHeight="27.0" prefWidth="378.0" promptText="First name" />
                         <DatePicker fx:id="calendar_start1" layoutX="112.0" layoutY="551.0" />
-                        <TextArea fx:id="fx_borrowpage_overview1" layoutX="502.0" layoutY="90.0" prefHeight="151.0" prefWidth="273.0" promptText="Book trolley" />
+                        <TextArea fx:id="book_trolley" layoutX="502.0" layoutY="90.0" prefHeight="151.0" prefWidth="273.0" promptText="Book trolley" />
                         <Button id="button1" fx:id="myButton1" layoutX="502.0" layoutY="18.0" mnemonicParsing="false" onAction="#borrowpage_button" prefHeight="67.0" prefWidth="274.0" text="Checkout" />
                      </children></AnchorPane>
             </content>
