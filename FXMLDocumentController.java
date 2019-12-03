@@ -71,6 +71,9 @@ import javax.swing.JTextPane;
 public class FXMLDocumentController implements Initializable {
 
     @FXML
+    private textarTextAreaea book_trolley;
+    
+    @FXML
     private Label label;
 
     @FXML
@@ -427,7 +430,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void borrowpage_button(ActionEvent event) throws MalformedURLException, IOException, SQLException, InterruptedException {
 
-        
         Scanner in = new Scanner(System.in);
         FileWriter outFile = new FileWriter("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile2.txt");
         PrintWriter out = new PrintWriter(outFile);
@@ -440,15 +442,15 @@ public class FXMLDocumentController implements Initializable {
         out.printf("//                            // %n");
         out.printf("//    Library: HIBS Library   // %n");
         out.printf("//                            // %n");
-        out.printf("// Borrowed: "+fx_borrowpage_title.getText() +" by " + fx_borrowpage_author.getText() + " // %n");
+        out.printf("// Borrowed: (1)" + fx_borrowpage_title.getText() + " by " + fx_borrowpage_author.getText() + " // %n");
         out.printf("//                            // %n");
-        out.printf("//  Date Borrowed: " + calendar_start.getEditor().toString()  +  "   // %n");
-        out.printf("//  Date Due: " + calendar_start1.getEditor().toString() +  "   // %n");
+        out.printf("//  Date Borrowed: " + calendar_start.getEditor().toString() + "   // %n");
+        out.printf("//  Date Due: " + calendar_start1.getEditor().toString() + "   // %n");
         out.printf("//                            // %n");
         out.printf("//                            // %n");
         out.printf("//                            // %n");
         out.printf("//////////////////////////////// %n");
-        
+
         // clear all the fields in the date page
         fx_borrowpage_author.setText("");
         fx_borrowpage_title.setText("");
@@ -464,8 +466,6 @@ public class FXMLDocumentController implements Initializable {
         calendar_start.getEditor().clear();
         calendar_start1.setValue(null);
         //System.out.println("You clicked me again 1111!");
-
-        
 
         System.out.println("Done");
         out.close(); // Important: don't forget to close!
@@ -1583,6 +1583,21 @@ public class FXMLDocumentController implements Initializable {
         */  
         public void print_receipt() {
 
-        };
+    }
+
+    ;
+
+    public void addBookToCheckOut() {
+       
+        StringBuilder fieldContent = new StringBuilder("");
+        
+        for (int i = 1; i <=5;i++)
+        {
+        //Concatinate each loop 
+        fieldContent.append("    Field " + i + "\n");
+        }
+
+        book_trolley.setText (fieldContent.toString());
+    };
 
 };
