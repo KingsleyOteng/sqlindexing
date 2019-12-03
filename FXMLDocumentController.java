@@ -1591,13 +1591,21 @@ public class FXMLDocumentController implements Initializable {
 
         try {
             StringBuilder fieldContent = new StringBuilder("");
+            
+             
 
-            for (int i = 1; i <= 5; i++) {
+            for (int i = 1; i <= 5; i++) 
+            {
                 //Concatinate each loop
-                fieldContent.append("\n (Book): "+ fx_borrowpage_author.getText().toString() + " " + fx_borrowpage_title.getText().toString() + "Due: 01/01/2020");
+                
+                if (i == 1) 
+                    {fieldContent.append("\n");}
+                
+                fieldContent.append("(Book): "+ fx_borrowpage_author.getText().toString() + " " + fx_borrowpage_title.getText().toString() + "Due: 01/01/2020");
             }
 
             book_trolley.setText(fieldContent.toString());
+            
             fx_borrowpage_author.setText("");
             fx_borrowpage_title.setText("");
             fx_borrowpage_published.setText("");
