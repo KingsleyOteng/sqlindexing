@@ -1602,7 +1602,7 @@ public class FXMLDocumentController implements Initializable {
                 if (i != 1) 
                     {fieldContent.append("\n");}
                 
-                fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             }
 
             book_trolley.setText(fieldContent.toString());
