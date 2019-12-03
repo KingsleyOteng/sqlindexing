@@ -58,6 +58,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.math.BigInteger;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import javax.swing.JTextPane;
 
@@ -1598,10 +1599,10 @@ public class FXMLDocumentController implements Initializable {
             {
                 //Concatinate each loop
                 
-                if (i == 1) 
+                if (i != 1) 
                     {fieldContent.append("\n");}
                 
-                fieldContent.append("(Book): "+ fx_borrowpage_author.getText().toString() + " " + fx_borrowpage_title.getText().toString() + " " + calendar_start1);
+                fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             }
 
             book_trolley.setText(fieldContent.toString());
