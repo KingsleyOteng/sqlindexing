@@ -71,7 +71,7 @@ import javax.swing.JTextPane;
 public class FXMLDocumentController implements Initializable {
 
     @FXML
-    private textarTextAreaea book_trolley;
+    private TextArea book_trolley;
     
     @FXML
     private Label label;
@@ -1593,8 +1593,8 @@ public class FXMLDocumentController implements Initializable {
         
         for (int i = 1; i <=5;i++)
         {
-        //Concatinate each loop 
-        fieldContent.append("    Field " + i + "\n");
+            //Concatinate each loop 
+            fieldContent.append(fx_borrowpage_author.getText().toString() + " " + fx_borrowpage_title.getText().toString() );
         }
 
         book_trolley.setText (fieldContent.toString());
