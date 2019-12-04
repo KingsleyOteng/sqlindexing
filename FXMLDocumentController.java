@@ -1590,10 +1590,6 @@ public class FXMLDocumentController implements Initializable {
 
     public void addBookToCheckOut() {
 
-        
-        
-        book_trolley.setWrapText(true);
-        
         try {
             StringBuilder fieldContent = new StringBuilder("");
             
