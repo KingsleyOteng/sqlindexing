@@ -1593,11 +1593,16 @@ public class FXMLDocumentController implements Initializable {
         try {
             StringBuilder fieldContent = new StringBuilder("");
             
-            fieldContent.append(book_trolley.getText().toString());
+            System.out.println("++++" + book_trolley.getText().toString());
 
             if (!(fieldContent.toString().isEmpty())) {
+                System.out.println("++++++++++++++++++++++++++++++++++++++++hello");
+                fieldContent.append(book_trolley.getText().toString());
                 fieldContent.append("\n");
             }
+            
+            
+            System.out.println("----" + fieldContent);
 
             fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
