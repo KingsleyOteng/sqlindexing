@@ -1596,15 +1596,24 @@ public class FXMLDocumentController implements Initializable {
             System.out.println("++++" + book_trolley.getText().toString());
 
             if (!(fieldContent.toString().isEmpty())) {
-                System.out.println("++++++++++++++++++++++++++++++++++++++++hello");
-                fieldContent.append(book_trolley.getText().toString());
+               
                 fieldContent.append("\n");
+                fieldContent.append(book_trolley.getText().toString() + "\n"+ "(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+  
+            
             }
+            else
+            {
+                
+                fieldContent.append(book_trolley.getText().toString());
+                
+            };
+                
             
             
             System.out.println("-->--" + fieldContent);
 
-            fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            fieldContent.append(book_trolley.getText().toString() + "(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
             book_trolley.setText(fieldContent.toString());
 
