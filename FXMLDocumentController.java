@@ -1590,6 +1590,10 @@ public class FXMLDocumentController implements Initializable {
 
     public void addBookToCheckOut() {
 
+        
+        
+        book_trolley.setWrapText(true);
+        
         try {
             StringBuilder fieldContent = new StringBuilder("");
             
@@ -1597,7 +1601,7 @@ public class FXMLDocumentController implements Initializable {
 
             if (!(fieldContent.toString().isEmpty())) {
                
-                fieldContent.append("\n");
+                fieldContent.append(">>>\n");
                 fieldContent.append(book_trolley.getText().toString() + "\n"+ "(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
   
             
@@ -1605,16 +1609,11 @@ public class FXMLDocumentController implements Initializable {
             else
             {
                 
-                fieldContent.append(book_trolley.getText().toString());
+                fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
                 
             };
                 
-            
-            
-            System.out.println("-->--" + fieldContent);
-
-            fieldContent.append(book_trolley.getText().toString() + "(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-
+         
             book_trolley.setText(fieldContent.toString());
 
             fx_borrowpage_author.setText("");
