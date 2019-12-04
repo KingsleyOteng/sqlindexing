@@ -1593,10 +1593,9 @@ public class FXMLDocumentController implements Initializable {
         try {
             StringBuilder fieldContent = new StringBuilder("");
             
-          
+            fieldContent.append(book_trolley.getText().toString());
 
             if (!(fieldContent.toString().isEmpty())) {
-                fieldContent.append(book_trolley.getText().toString());
                 fieldContent.append("\n");
             }
 
