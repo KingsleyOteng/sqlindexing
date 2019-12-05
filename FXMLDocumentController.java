@@ -273,7 +273,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event, String Hello) {
         System.out.println("You clicked me!");
-
     }
 
     @Override
@@ -292,7 +291,7 @@ public class FXMLDocumentController implements Initializable {
         });
 
         returnSession.setOnAction(e -> {
-            //complete this section
+        //complete this section
 
         });
         searchTableCatalogue.setContextMenu(new ContextMenu(borrowSession, returnSession));
@@ -313,7 +312,6 @@ public class FXMLDocumentController implements Initializable {
                     searchTableCatalogue.getColumns().clear();
                     searchTableCatalogue.getColumns().addAll(book_searchbar, author_searchbar, status_searchbar, isbn_searchbar);
                     searchTableCatalogue.refresh();
-
                 }
             }
 
@@ -333,7 +331,6 @@ public class FXMLDocumentController implements Initializable {
                     schoolCatalogueTable.getColumns().clear();
                     schoolCatalogueTable.getColumns().addAll(ISBN1, name, year, book, author);
                     schoolCatalogueTable.refresh();
-
                 }
             }
         });
@@ -1597,18 +1594,18 @@ public class FXMLDocumentController implements Initializable {
         try {
             StringBuilder fieldContent = new StringBuilder("");
 
+            // grab current information
             old = book_trolley.getText().toString();
-            System.out.println("++++" + book_trolley.getText().toString());
-
+ 
             if ((book_trolley.getText().toString()) == "") {
-
+                // append additional information
                 fieldContent.append(old);
                 fieldContent.append("\n");
                 fieldContent.append(book_trolley.getText().toString() + "\n" + "(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(". Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + " \n");
                 fieldContent.append("\n");
 
             } else {
-
+                // append additional information
                 fieldContent.append(old);
                 fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(". Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + " \n");
                 fieldContent.append("\n");
