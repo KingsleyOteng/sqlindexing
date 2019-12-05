@@ -1600,24 +1600,22 @@ public class FXMLDocumentController implements Initializable {
             old = book_trolley.getText().toString();
             System.out.println("++++" + book_trolley.getText().toString());
 
-            if ((book_trolley.getText().toString())=="") {
+            if ((book_trolley.getText().toString())=="") 
+            {
                
-                fieldContent.append(old);
-                System.out.println("top");
-                
-                fieldContent.append(">>>\n");
-                
-                fieldContent.append(book_trolley.getText().toString() + "\n"+ "(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-  
+                fieldContent.append(old);             
+                fieldContent.append("\n");             
+                fieldContent.append(book_trolley.getText().toString() + "\n"+ "(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))+" \n");
+                fieldContent.append("\n");
             
             }
             else
             {
-                //System.out.println("bottom");
+              
                 
                 fieldContent.append(old);
-                fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-                //fieldContent.append(">>>\n");
+                fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))+" \n");
+                fieldContent.append("\n");
             };
                 
          
