@@ -1604,13 +1604,13 @@ public class FXMLDocumentController implements Initializable {
 
                 fieldContent.append(old);
                 fieldContent.append("\n");
-                fieldContent.append(book_trolley.getText().toString() + "\n" + "(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + " \n");
+                fieldContent.append(book_trolley.getText().toString() + "\n" + "(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(". Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + " \n");
                 fieldContent.append("\n");
 
             } else {
 
                 fieldContent.append(old);
-                fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + " \n");
+                fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(". Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + " \n");
                 fieldContent.append("\n");
             };
 
