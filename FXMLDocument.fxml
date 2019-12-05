@@ -25,7 +25,7 @@
                               <ToggleButton fx:id="search_bks_isbn" layoutX="495.0" layoutY="65.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="198.0" text="ISBN" />
                               <Button fx:id="searchtab_borrowbtn_confirmationwndw" layoutX="701.0" layoutY="142.0" mnemonicParsing="false" onAction="#searchtab_borrowbtn_confirmation" prefHeight="27.0" prefWidth="90.0" text="Borrow" />
                               <Button fx:id="returnbutton" layoutX="701.0" layoutY="178.0" mnemonicParsing="false" onAction="#searchtab_returnbtn_confirmation" prefHeight="27.0" prefWidth="90.0" text="Return" />
-                              <Button fx:id="search_page_button_depress" layoutX="701.0" layoutY="65.0" mnemonicParsing="false" onAction="#toggle_group_action_search" prefHeight="72.0" prefWidth="90.0" text="GO" />
+                              <Button fx:id="search_page_button_depress" layoutX="701.0" layoutY="65.0" mnemonicParsing="false" onAction="#toggle_group_action_search" prefHeight="72.0" prefWidth="90.0" text="Go!" />
                               <TableView fx:id="searchTableCatalogue" layoutX="85.0" layoutY="110.0" prefHeight="422.0" prefWidth="608.0">
                                 <columns>
                                   <TableColumn fx:id="book_search" prefWidth="75.0" text="book" />
@@ -134,7 +134,7 @@
                         <Label layoutX="26.0" layoutY="456.0" text="School Level" />
                         <DatePicker fx:id="calendar_start" layoutX="112.0" layoutY="519.0" />
                         <Label layoutX="26.0" layoutY="524.0" text="Date Start" />
-                        <CheckBox layoutX="386.0" layoutY="524.0" mnemonicParsing="false" text="Print Receipt" />
+                        <CheckBox layoutX="502.0" layoutY="247.0" mnemonicParsing="false" text="Print Receipt" />
                         <Button id="button1" fx:id="myButton" layoutX="312.0" layoutY="553.0" mnemonicParsing="false" onAction="#addBookToCheckOut" prefHeight="23.0" prefWidth="179.0" text="Add" />
                         <Label layoutX="25.0" layoutY="490.0" text="Hilltop ID#" />
                         <TextField fx:id="fx_borrowpage_id" layoutX="111.0" layoutY="485.0" prefHeight="27.0" prefWidth="378.0" promptText="ID Number" />
