@@ -1587,10 +1587,8 @@ public class FXMLDocumentController implements Initializable {
 
     public void addBookToCheckOut() {
 
-        // capture the old string data
         String old = new String();
 
-        // force textarea to wrap entries
         book_trolley.setWrapText(true);
 
         try {
@@ -1640,10 +1638,7 @@ public class FXMLDocumentController implements Initializable {
             // sleep
             Thread.sleep(5000);
             
-        } 
-            catch (InterruptedException ex) 
-        {
-            // store log details
+        } catch (InterruptedException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
