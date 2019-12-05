@@ -1613,11 +1613,11 @@ public class FXMLDocumentController implements Initializable {
             }
             else
             {
-                System.out.println("bottom");
-                fieldContent.append(">>>\n");
+                //System.out.println("bottom");
+                
                 fieldContent.append(old);
                 fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-                
+                //fieldContent.append(">>>\n");
             };
                 
          
