@@ -1569,26 +1569,20 @@ public class FXMLDocumentController implements Initializable {
         // return status
         return !(input_check_sum == null ? final_check_sum != null : !input_check_sum.equals(final_check_sum));
 
-    }
-
-    ;
+    };
         
         /**
         *
         * @author kwadwooteng-amoako
         * @date 14 November 2019
-        * @description checks that the isbn-13 value is considered accurate
+        * @description implements a shopping cart facility
         */  
-        public void print_receipt() {
-
-    }
-
-    ;
-
     public void addBookToCheckOut() {
 
+        // capture the old string data
         String old = new String();
 
+        // force textarea to wrap entries
         book_trolley.setWrapText(true);
 
         try {
@@ -1638,10 +1632,12 @@ public class FXMLDocumentController implements Initializable {
             // sleep
             Thread.sleep(5000);
             
-        } catch (InterruptedException ex) {
+        } 
+            catch (InterruptedException ex) 
+        {
+            // store log details
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-;
+    };
 
 };

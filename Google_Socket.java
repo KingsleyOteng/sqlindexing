@@ -23,10 +23,12 @@ import java.util.regex.Pattern;
  */
 public class Google_Socket {
 
+    
     // static fields used for searching the google archives
     public static final String GOOGLE_BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=";
     public static final String GOOGLE_BOOK_SEARCH_URL_END = "+download=epub";
 
+    
     /**
      * @date the code was edited Tuesday, 12th November, 2019.
      * @author kwadwooteng-amoako
@@ -43,6 +45,7 @@ public class Google_Socket {
         return phrase;
     }
 
+    
     /**
      * @date the code was edited Tuesday, 12th November, 2019.
      * @author kwadwooteng-amoako
