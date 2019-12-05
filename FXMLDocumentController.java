@@ -1591,34 +1591,29 @@ public class FXMLDocumentController implements Initializable {
     public void addBookToCheckOut() {
 
         String old = new String();
-        
+
         book_trolley.setWrapText(true);
-        
+
         try {
             StringBuilder fieldContent = new StringBuilder("");
-            
+
             old = book_trolley.getText().toString();
             System.out.println("++++" + book_trolley.getText().toString());
 
-            if ((book_trolley.getText().toString())=="") 
-            {
-               
-                fieldContent.append(old);             
-                fieldContent.append("\n");             
-                fieldContent.append(book_trolley.getText().toString() + "\n"+ "(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))+" \n");
-                fieldContent.append("\n");
-            
-            }
-            else
-            {
-              
-                
+            if ((book_trolley.getText().toString()) == "") {
+
                 fieldContent.append(old);
-                fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))+" \n");
+                fieldContent.append("\n");
+                fieldContent.append(book_trolley.getText().toString() + "\n" + "(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + " \n");
+                fieldContent.append("\n");
+
+            } else {
+
+                fieldContent.append(old);
+                fieldContent.append("(Book): ").append(fx_borrowpage_author.getText().toString()).append(" ").append(fx_borrowpage_title.getText().toString()).append(" Due Date: ").append(calendar_start1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + " \n");
                 fieldContent.append("\n");
             };
-                
-         
+
             book_trolley.setText(fieldContent.toString());
 
             fx_borrowpage_author.setText("");
