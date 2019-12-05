@@ -1587,8 +1587,10 @@ public class FXMLDocumentController implements Initializable {
 
     public void addBookToCheckOut() {
 
+        // capture the old string data
         String old = new String();
 
+        // force textarea to wrap entries
         book_trolley.setWrapText(true);
 
         try {
@@ -1615,8 +1617,10 @@ public class FXMLDocumentController implements Initializable {
                 fieldContent.append("\n");
             };
 
+            // store the selected book in the shopping cart
             book_trolley.setText(fieldContent.toString());
 
+            // clear borrowpage data
             fx_borrowpage_author.setText("");
             fx_borrowpage_title.setText("");
             fx_borrowpage_published.setText("");
@@ -1628,10 +1632,18 @@ public class FXMLDocumentController implements Initializable {
             fx_borrowpage_borrower.setText("");
             fx_borrowpage_school_level.setText("");
             fx_borrowpage_id.setText("");
+            
+            // clear calendar data
             calendar_start.getEditor().clear();
             calendar_start1.setValue(null);
+            
+            // sleep
             Thread.sleep(5000);
-        } catch (InterruptedException ex) {
+            
+        } 
+            catch (InterruptedException ex) 
+        {
+            // store log details
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
