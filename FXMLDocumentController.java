@@ -437,7 +437,7 @@ public class FXMLDocumentController implements Initializable {
         Date date = Date.from(instant);
         System.out.println("Hello>>><<<<"+date);
         
-        LocalDate localDate2 = calendar_start.getValue();
+        LocalDate localDate2 = calendar_start1.getValue();
         Instant instant2 = Instant.from(localDate2.atStartOfDay(ZoneId.systemDefault()));
         Date date2 = Date.from(instant2);
         System.out.println("Hello>>><<<<"+date2);
