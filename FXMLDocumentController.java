@@ -275,6 +275,7 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("You clicked me!");
     }
 
+    // initialization routine
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
