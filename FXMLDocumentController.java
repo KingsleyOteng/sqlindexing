@@ -435,12 +435,12 @@ public class FXMLDocumentController implements Initializable {
         LocalDate localDate = calendar_start.getValue();
         Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
         Date date = Date.from(instant);
-        System.out.println("Hello>>><<<<<<"+date);
+        System.out.println("Hello>>><<<<"+date);
         
         LocalDate localDate2 = calendar_start.getValue();
         Instant instant2 = Instant.from(localDate2.atStartOfDay(ZoneId.systemDefault()));
         Date date2 = Date.from(instant2);
-        System.out.println("Hello>>><<<<<<"+date2);
+        System.out.println("Hello>>><<<<"+date2);
         
         Scanner in = new Scanner(System.in);
         FileWriter outFile = new FileWriter("/Users/kwadwooteng-amoako/NetBeansProjects/UserInterface/src/userinterface/myfile2.txt");
@@ -456,7 +456,7 @@ public class FXMLDocumentController implements Initializable {
         out.printf("//                            // %n");
         out.printf("// Borrowed: (1)" + fx_borrowpage_title.getText() + " by " + fx_borrowpage_author.getText() + " // %n");
         out.printf("//                            // %n");
-        out.printf("//  Date Borrowed: " + date + "   // %n");
+        out.printf("//  Date Borrowed: " + date + "// %n");
         out.printf("//  Date Due: " + date2 + "   // %n");
         out.printf("//                            // %n");
         out.printf("//                            // %n");
