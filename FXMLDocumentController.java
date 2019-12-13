@@ -272,7 +272,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void handleButtonAction(ActionEvent event, String Hello) {
-        System.out.println("You clicked me!");
+       
     }
 
     // initialization routine
