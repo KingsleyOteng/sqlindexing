@@ -42,7 +42,6 @@
                            </image>
                         </ImageView>
                         <TextField fx:id="fxsearchtab_search" layoutX="79.0" layoutY="21.0" onAction="#toggle_group_action_search" prefHeight="38.0" prefWidth="609.0" promptText="Search by title, author or ISBN" />
-                        <Text layoutX="716.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
                      </children>
                   </AnchorPane>
                </content>
@@ -62,7 +61,6 @@
                             <TableColumn fx:id="name" prefWidth="75.0" text="name" />
                           </columns>
                         </TableView>
-                        <Text layoutX="697.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
                         <ImageView fx:id="catalogue_image1_handle" fitHeight="192.0" fitWidth="135.0" layoutX="641.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
                      </children></AnchorPane>
                </content>
@@ -109,7 +107,6 @@
                         <DatePicker layoutX="80.0" layoutY="227.0" prefHeight="27.0" prefWidth="207.0" />
                         <Label layoutX="4.0" layoutY="232.0" text="Return Date" />
                         <Button layoutX="80.0" layoutY="331.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="700.0" text="GO" />
-                        <Text layoutX="670.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" wrappingWidth="120.21875" />
                      </children>
                   </AnchorPane>
             </content>
@@ -135,16 +132,15 @@
                         <DatePicker fx:id="calendar_start" layoutX="112.0" layoutY="519.0" />
                         <Label layoutX="26.0" layoutY="524.0" text="Date Start" />
                         <CheckBox layoutX="502.0" layoutY="247.0" mnemonicParsing="false" text="Print Receipt" />
-                        <Button id="button1" fx:id="myButton" layoutX="312.0" layoutY="553.0" mnemonicParsing="false" onAction="#addBookToCheckOut" prefHeight="23.0" prefWidth="179.0" text="Add" />
+                        <Button id="button1" fx:id="myButton" layoutX="312.0" layoutY="519.0" mnemonicParsing="false" onAction="#addBookToCheckOut" prefHeight="59.0" prefWidth="176.0" text="Add" />
                         <Label layoutX="25.0" layoutY="490.0" text="Hilltop ID#" />
                         <TextField fx:id="fx_borrowpage_id" layoutX="111.0" layoutY="485.0" prefHeight="27.0" prefWidth="378.0" promptText="ID Number" />
                         <Label layoutX="25.0" layoutY="201.0" text="Overview" />
                         <Label layoutX="26.0" layoutY="556.0" text="Date Due" />
-                        <Text layoutX="727.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
                         <TextField fx:id="fx_availability_status" layoutX="112.0" layoutY="316.0" prefHeight="27.0" prefWidth="378.0" promptText="Status" />
                         <Label layoutX="25.0" layoutY="320.0" text="Availability" />
                         <ImageView fx:id="borrow_image_box" fitHeight="266.0" fitWidth="177.0" layoutX="550.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="photobox_borrow" fitHeight="271.0" fitWidth="188.0" layoutX="543.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="photobox_borrow" fitHeight="282.0" fitWidth="208.0" layoutX="539.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
                         <TextArea fx:id="fx_borrowpage_overview" layoutX="112.0" layoutY="201.0" prefHeight="110.0" prefWidth="377.0" promptText="Overview" />
                         <Label layoutX="25.0" layoutY="387.0" text="Borrower" />
                         <TextField fx:id="fx_borrowpage_borrower_firstname" layoutX="111.0" layoutY="382.0" onKeyPressed="#quick_search_firstname" prefHeight="27.0" prefWidth="378.0" promptText="First name" />
@@ -175,7 +171,6 @@
                         <Label layoutX="14.0" layoutY="358.0" text="Borrower" />
                         <Label layoutX="14.0" layoutY="394.0" text="Year" />
                         <Button fx:id="go_button2" layoutX="80.0" layoutY="439.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="550.0" text="GO" />
-                        <Text layoutX="670.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7:41 pm" />
                      </children></AnchorPane>
                </content>
             </Tab>
