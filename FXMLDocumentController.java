@@ -449,6 +449,9 @@ public class FXMLDocumentController implements Initializable {
         out.printf("//                            // %n");
         out.printf("//                            // %n");
         out.printf("//////////////////////////////// %n");
+        
+        
+        System.out.println("Hello>>><<<<<<"+fx_borrowpage_title.getText().toString());
 
         // clear all the fields in the date page
         fx_borrowpage_author.setText("");
