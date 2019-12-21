@@ -77,6 +77,7 @@ public class Google_Socket {
         String myQuery = Title_locator.replaceAll(" ", "+").toLowerCase();
 
         //create an object to hold the parse results
+        // hold the object
         bpo = new BookObject();
 
         //setup connection to the google api
@@ -96,9 +97,7 @@ public class Google_Socket {
 
         // create the regex patter
         p_general = Pattern.compile("\\s+?\"[A-Za-z]+\":\\s+?(\"?\\[?[A-Za-z0-9+#:/'.\\s+&_=?\"-]+\\]?\"?)");
-
-        // ----> May purge
-        System.out.println("Output from Server .... \n");
+        
         int i = 1;
 
         {
