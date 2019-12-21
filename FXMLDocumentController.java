@@ -675,7 +675,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      *
      * @author kwadwooteng-amoako
-     * @date 13 November 2019
+     * @date 21 December 2019
      * @description populates the student array tab
      *
      */
