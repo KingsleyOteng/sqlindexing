@@ -17,8 +17,9 @@ utilities::utilities()
 utilities::~utilities()
 {}
 
-
-std::string utilities::getStringParser(std::string str)
+// methods
+std::string
+    utilities::getStringParser(std::string str)
 {
     // Used to split string around spaces.
     std::istringstream ss(str);
@@ -43,7 +44,8 @@ std::string utilities::getStringParser(std::string str)
 }
   
 
-std::vector<string> utilities::getStringParser()
+std::vector<string>
+    utilities::getStringParser()
 {
     // Used to split string around spaces.
     std::istringstream ss(parse_input_phrase);
@@ -68,7 +70,8 @@ std::vector<string> utilities::getStringParser()
     return detokenized_strings;
 }
 
-void        utilities::setStringParser(std::string str)
+void
+    utilities::setStringParser(std::string str)
 {
     parse_input_phrase = str;
 }

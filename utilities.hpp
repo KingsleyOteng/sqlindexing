@@ -19,20 +19,27 @@ class utilities
 {
     
 private:
+   
     
-  
-    
-  std::string                                 parse_input_phrase;
-
-public:
-
-  // constructors and destructors
+  // constructors  and destructors
   utilities();
  ~utilities();
     
-  std::string                                 getStringParser                 (std::string str);
-  std::vector<std::string>                    getStringParser                 ();
-  void                                        setStringParser                 (std::string str);
+    
+  // members
+  std::string              parse_input_phrase;
+
+public:
+    
+
+  // getters and setters
+  // setters
+  void                      setStringParser                 (std::string str);
+    
+  // getters
+  std::string               getStringParser                 (std::string str);
+  std::vector<std::string>  getStringParser                 ();
+
 
 };
 #endif /* utilities_hpp */
